@@ -1,4 +1,15 @@
-== 1.0.0 // 2009-07-01
+== 1.0.0 // 2010-04-21
 
-* Ported from Ruby Facets.
+This is the first release of the Facets Hashery.
+Most of included classes come directly from Ruby
+Facets, so they have been around a while and are
+in good working condition.
 
+Some improvements are planned for the next release.
+In particular the OrderHash and Dictionary, which
+presently have essentially the same coding, will
+diverge to target slightly different use cases.
+
+Changes:
+
+* Happy Birthday!
