@@ -1,0 +1,5 @@
+The Hashery is nest of Hash-a-like classes. Included are
+the widely used OrderedHash, the related but more featured
+Dictionary class, a number of _open_ classes, similiar
+to the standard OpenStruct, and a few variations on the
+standard Hash.

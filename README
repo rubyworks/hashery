@@ -1,0 +1,47 @@
+= Facets Hashery
+
+* home: http://rubyworks.github.com/hashery
+* work: http://github.com/rubyworks/hashery
+
+== DESCRIPTION
+
+Among Ruby Facets most common additions were an assortment
+of Hash-like classes. To better support this collection of
+of libraries it was deemed prudent to create a side project
+specifically for them. Hence the Facets Hashery.
+
+Included in this collect are the widely used OrderedHash, 
+the related but more featured Dictionary class, a number
+of _open_ classes, similiar to the standard OpenStruct, 
+and variations of the standard Hash.
+
+
+== RELEASE NOTES
+
+Please see the HISTORY file.
+
+
+== HOW TO USE
+
+For usage information, see the individual library files include
+in this collection.
+
+
+== HOW TO INSTALL
+
+To install with RubyGems simply open a console and type:
+
+  $ sudo gem install hashery
+
+Tarball packages are available for manual site installations
+via <a href="http://proutils.github.com/setup">Setup.rb</a>.
+
+
+== LICENSE
+
+Copyright (c) 2005,2010 Thomas Sawyer
+
+This program is ditributed unser the terms of the MIT license.
+
+See LICENSE file for details.
+
