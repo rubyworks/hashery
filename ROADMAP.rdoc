@@ -4,9 +4,10 @@
 
 * Improve test coverage.
 * Consider using Hashery:: namespace.
+* Should Stash have a more explict name?
 
 == 1.2.0
 
 * Add a defined property Hash. Needed?
-
+* Any other Hash-like classes to add?
 
