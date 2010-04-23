@@ -1,0 +1,12 @@
+= ROADMAP
+
+== 1.1.0
+
+* Improve test coverage.
+* Consider using Hashery:: namespace.
+
+== 1.2.0
+
+* Add a defined property Hash. Needed?
+
+
