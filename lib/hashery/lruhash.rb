@@ -7,6 +7,7 @@ require 'enumerator'
 # to LRU policy.
 
 class LRUHash
+
   include Enumerable
 
   attr_reader :max_size
@@ -194,34 +195,8 @@ class LRUHash
 
   alias inspect to_s
 
-  FETCH = Proc.new {|k| raise KeyError, 'key not found'}
-
-  # A single node in the doubly linked LRU list of nodes
-  Node = Struct.new :key, :value, :pred, :succ do
-    def unlink
-      pred.succ = succ if pred
-      succ.pred = pred if succ
-      self.succ = self.pred = nil
-      self
-    end
-
-    def insert_after(node)
-      raise 'Cannot insert after self' if equal? node
-      return self if node.succ.equal? self
-
-      unlink
-
-      self.succ = node.succ
-      self.pred = node
-
-      node.succ.pred = self if node.succ
-      node.succ = self
-
-      self
-    end
-  end
-
   private
+
   # iterate nodes
   def each_node
     n = @head.succ
@@ -264,5 +239,34 @@ class LRUHash
     raise ArgumentError, 'Invalid max_size: %p' % n unless Integer === n && n > 0
     n
   end
+
+  #
+  FETCH = Proc.new {|k| raise KeyError, 'key not found'}
+
+  # A single node in the doubly linked LRU list of nodes
+  Node = Struct.new :key, :value, :pred, :succ do
+    def unlink
+      pred.succ = succ if pred
+      succ.pred = pred if succ
+      self.succ = self.pred = nil
+      self
+    end
+
+    def insert_after(node)
+      raise 'Cannot insert after self' if equal? node
+      return self if node.succ.equal? self
+
+      unlink
+
+      self.succ = node.succ
+      self.pred = node
+
+      node.succ.pred = self if node.succ
+      node.succ = self
+
+      self
+    end
+  end
+
 end
 

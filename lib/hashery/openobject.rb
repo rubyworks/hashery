@@ -240,17 +240,18 @@ end
 
 # Core Extensions
 
-class NilClass
-  # Nil converts to an empty OpenObject.
-  def to_openobject
-    OpenObject.new
-  end
-end
-
 class Hash
   # Convert a Hash into an OpenObject.
   def to_openobject
     OpenObject[self]
+  end
+end
+
+=begin
+class NilClass
+  # Nil converts to an empty OpenObject.
+  def to_openobject
+    OpenObject.new
   end
 end
 
@@ -274,3 +275,5 @@ class Proc
     o
   end
 end
+=end
+
