@@ -19,7 +19,7 @@ class CastingHash < Hash
   end
 
   #
-  def initialize(hash, value_cast=nil, &key_cast)
+  def initialize(hash={}, value_cast=nil, &key_cast)
     @key_proc   = key_cast           || KEY_PROC
     @value_proc = value_cast.to_proc || VAL_PROC
     hash.each{ |k,v| self[k] = v }
@@ -152,7 +152,7 @@ class CastingHash < Hash
     #
     def cast(hash)
       h
-      hash.each do |k,v| 
+      hash.each do |k,v|
         h[key_proc[k]] = value_proc[v]
       end
       h
@@ -161,12 +161,11 @@ class CastingHash < Hash
 end
 
 
-class Hash
-
-  # Convert a Hash to a Stash object.
-  def to_casting_hash(value_cast=nil, &key_cast)
-    CastingHash.new(self, value_cast, &key_cast)
-  end
-
-end
-
+#class Hash
+#
+#  # Convert a Hash to a CastingHash.
+#  def to_casting_hash(value_cast=nil, &key_cast)
+#    CastingHash.new(self, value_cast, &key_cast)
+#  end
+#
+#end

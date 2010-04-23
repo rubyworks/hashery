@@ -1,19 +1,6 @@
-# = opencascade.rb
-#
-# Copyright (c) 2006 Thomas Sawyer
-#
-# Ruby License
-#
-# This module is free software. You may use, modify, and/or redistribute this
-# software under the same terms as Ruby.
-#
-# This program is distributed in the hope that it will be useful, but WITHOUT
-# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-# FOR A PARTICULAR PURPOSE.
-
-require 'facets/boolean' # bool
-require 'facets/openobject'
+#require 'facets/boolean' # bool
 #require 'facets/nullclass'
+require 'hashery/openobject'
 
 # = OpenCascade
 #
@@ -56,36 +43,37 @@ require 'facets/openobject'
 #   o = OpenCascade.new
 #   o.a.b.c  #=> null
 #
-# Unfortuately this requires an explict test for of nil? in 'if' conditions,
+# Unfortuately this requires an explict test for null? in 'if' conditions.
 #
-#   if o.a.b.c.null?  # True if null
-#   if o.a.b.c.nil?   # True if nil or null
-#   if o.a.b.c.not?   # True if nil or null or false
+#   if o.a.b.c.null?  # true if null
+#   if o.a.b.c.nil?   # true if nil or null
+#   if o.a.b.c.not?   # true if nil or null or false
 #
 # So be sure to take that into account.
 #++
 
 class OpenCascade < OpenObject
 
-  def method_missing( sym, arg=nil )
+  def method_missing(sym, *args, &blk)
     type = sym.to_s[-1,1]
     name = sym.to_s.gsub(/[=!?]$/, '').to_sym
-    if type == '='
-      self[name] = arg
-    elsif type == '!'
-      self[name] = arg
-      self
-    elsif type == '?'
+    case type
+    when '='
+      self[name] = args.first
+    when '!'
+      @hash.__send__(key, *args, &blk)
+    when '?'
       self[name]
     else
-      if val = self[name]
+      if key?(name)
+        val = self[name]
         if Hash === val
-          self[name] = self.class.new(val)
+          self[name] = OpenCascade.new(val) #self.class.new(val)
         else
           self[name]
         end
       else
-        self[name] = self.class.new
+        self[name] = OpenCascade.new #self.class.new
       end
     end
   end

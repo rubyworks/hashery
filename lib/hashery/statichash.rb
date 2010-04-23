@@ -1,40 +1,3 @@
-# = statichash
-#
-# == Copyright (c) 2005 Thomas Sawyer, Gavin Kistner
-#
-#   Ruby License
-#
-#   This module is free software. You may use, modify, and/or redistribute this
-#   software under the same terms as Ruby.
-#
-#   This program is distributed in the hope that it will be useful, but WITHOUT
-#   ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-#   FOR A PARTICULAR PURPOSE.
-#
-# == SPECIAL THANKS
-#
-# Special thanks go to Gavin Kistner.
-#
-# StaticHash is based on WriteOnceHash in basiclibrary.rb,
-# Copyright (c) 2004 by Gavin Kistner.
-#
-# It is covered under the license viewable at
-#
-#   http://phrogz.net/JS/_ReuseLicense.txt
-#
-# Reuse or modification is free provided you abide by the terms of that
-# license. (Including the first two lines above in your source code
-# usually satisfies the conditions.)
-#
-# == Author(s)
-#
-# * Thomas Sawyer
-# * Gavin Kistner
-
-# Author::    Thomas Sawyer, Gavin Kistner
-# Copyright:: Copyright (c) 2005 Thomas Sawyer, Gavin Kistner
-# License::   Ruby License
-
 # = StaticHash
 #
 # A Hash object which raises an error if any
@@ -49,47 +12,37 @@
 #
 # _produces_
 #
-#   Error: StaticHash has value for key 'name' in object:
-#       {"name"=>"Tom", "age"=>30} (RuntimeError)  
+#   ArgumentError: Duplicate key for StaticHash -- 'name'
 #
+# == Credit
+#
+# StaticHash has it's orgins in Gavin Kistner's WriteOnceHash
+# class found in his +basiclibrary.rb+ script.
 
 class StaticHash < Hash
 
-  # Set a value for a key;
-  # raises an error if that key already exists with a different value.
-  def []=(key,val)
-    if self.has_key?(key) && self[key]!=val
-      raise ArgumentError, "StaticHash already has value for key '#{key.to_s}'"
+  # Set a value for a key. Raises an error if that key already
+  # exists with a different value.
+
+  def []=(key, value)
+    if key?(key) && self[key] != value
+      raise ArgumentError, "Duplicate key for StaticHash -- #{key.inspect}"
     end
-    super
+    super(key, value)
   end
+
+  #
+  def update(hash)
+    dups = (keys | hash.keys)
+    if dups.empty?
+      super(hash)
+    else
+      raise ArgumentError, "Duplicate key for StaticHash -- #{dups.inspect}"
+    end
+  end
+
+  #
+  alias_method :merge!, :update
 
 end
 
-
-
-#  _____         _
-# |_   _|__  ___| |_
-#   | |/ _ \/ __| __|
-#   | |  __/\__ \ |_
-#   |_|\___||___/\__|
-#
-
-=begin testing
-
-  require 'test/unit'
-
-  class TC_StaticHash < Test::Unit::TestCase 
-
-    def setup
-      @sh1 = StaticHash.new
-    end
-
-    def test_assign
-      @sh1["x"] = 1
-      assert_raises( ArgumentError ){  @sh1["x"] = 2 }
-    end
-
-  end
-
-=end
