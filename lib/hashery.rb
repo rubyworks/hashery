@@ -1,6 +1,5 @@
 require 'hashery/castinghash'
 require 'hashery/dictionary'
-require 'hashery/lrucache'
 require 'hashery/lruhash'
 require 'hashery/memoizer'
 require 'hashery/opencascade'
