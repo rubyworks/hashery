@@ -5,7 +5,7 @@
 #
 # Because OpenHash is a subclass of Hash, it can do everything a Hash
 # can *unless* a Hash method has been explicity exempted for use
-# an an open read/writer via the #omit! method.
+# as an open read/writer via the #omit! method.
 
 class OpenHash < Hash
 

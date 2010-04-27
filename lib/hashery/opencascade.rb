@@ -1,6 +1,8 @@
+# OpenCascade Copyright (c) 2006 Thomas Sawyer
+
+require 'hashery/openobject'
 #require 'facets/boolean' # bool
 #require 'facets/nullclass'
-require 'hashery/openobject'
 
 # = OpenCascade
 #
@@ -79,4 +81,3 @@ class OpenCascade < OpenObject
   end
 
 end
-

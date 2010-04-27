@@ -7,7 +7,7 @@ require 'facets/basicobject'
 #
 # OpenObject is very similar to Ruby's own OpenStruct, but it offers some
 # advantages. With OpenStruct, slots with the same name as predefined
-# Object methods can not be used. With OpenObject, almost any slot can be
+# Object methods cannot be used. With OpenObject, almost any slot can be
 # defined. OpenObject is a subclass of BasicObject to ensure all method
 # slots, except those that are absolutely essential, are open for use.
 #
@@ -164,13 +164,13 @@ class OpenObject < BasicObject
   end
 
   #
-  def []=(k,v)
-    @hash[k.to_sym] = v
+  def []=(key, value)
+    @hash[key.to_sym] = value
   end
 
   #
-  def [](k)
-    @hash[k.to_sym]
+  def [](key)
+    @hash[key.to_sym]
   end
 
   #

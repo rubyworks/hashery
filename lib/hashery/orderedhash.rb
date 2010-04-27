@@ -1,417 +1,167 @@
 # = OrderedHash
 #
-# The OrderedHash class is a Hash that preserves order.
-# So it has some array-like extensions also. By defualt
-# an OrderedHash object preserves insertion order, but any
-# order can be specified including alphabetical key order.
+# A simple ordered hash implmentation, for users of
+# Ruby 1.8.7 or less.
 #
-# == Usage
+# NOTE: As of Ruby 1.9+ this class is not needed, since
+# Ruby 1.9's standard Hash tracks inseration order.
 #
-# Just require this file and use OrderedHash instead of Hash.
-#
-#   # You can do simply
-#   hsh = OrderedHash.new
-#   hsh['z'] = 1
-#   hsh['a'] = 2
-#   hsh['c'] = 3
-#   p hsh.keys     #=> ['z','a','c']
-#
-#   # or using OrderedHash[] method
-#   hsh = OrderedHash['z', 1, 'a', 2, 'c', 3]
-#   p hsh.keys     #=> ['z','a','c']
-#
-#   # but this don't preserve order
-#   hsh = OrderedHash['z'=>1, 'a'=>2, 'c'=>3]
-#   p hsh.keys     #=> ['a','c','z']
-#
-#   # OrderedHash has useful extensions: push, pop and unshift
-#   p hsh.push('to_end', 15)       #=> true, key added
-#   p hsh.push('to_end', 30)       #=> false, already - nothing happen
-#   p hsh.unshift('to_begin', 50)  #=> true, key added
-#   p hsh.unshift('to_begin', 60)  #=> false, already - nothing happen
-#   p hsh.keys                     #=> ["to_begin", "a", "c", "z", "to_end"]
-#   p hsh.pop                      #=> ["to_end", 15], if nothing remains, return nil
-#   p hsh.keys                     #=> ["to_begin", "a", "c", "z"]
-#   p hsh.shift                    #=> ["to_begin", 30], if nothing remains, return nil
-#
-# == Usage Notes
-#
-# * You can use #order_by to set internal sort order.
-# * #<< takes a two element [k,v] array and inserts.
-# * Use ::auto which creates Dictionay sub-entries as needed.
-# * And ::alpha which creates a new OrderedHash sorted by key.
-#
-# == Acknowledgments
-#
-# * Andrew Johnson (merge, to_a, inspect, shift and Hash[])
-# * Jeff Sharpe    (reverse and reverse!)
-# * Thomas Leitner (has_key? and key?)
-#
-# Ported from OrderHash 2.0, Copyright (c) 2005 Jan Molic
+# This implementation derives from the same class in
+# ActiveSupport library.
 
-class OrderedHash
+class OrderedHash < ::Hash
+  def to_yaml_type
+    "!tag:yaml.org,2002:omap"
+  end
 
-  include Enumerable
-
-  class << self
-    #--
-    # TODO is this needed? Doesn't the super class do this?
-    #++
-
-    def [](*args)
-      hsh = new
-      if Hash === args[0]
-        hsh.replace(args[0])
-      elsif (args.size % 2) != 0
-        raise ArgumentError, "odd number of elements for Hash"
-      else
-        while !args.empty?
-          hsh[args.shift] = args.shift
+  def to_yaml(opts = {})
+    YAML.quick_emit(self, opts) do |out|
+      out.seq(taguri, to_yaml_style) do |seq|
+        each do |k, v|
+          seq.add(k => v)
         end
       end
-      hsh
-    end
-
-    # Like #new but the block sets the order.
-    #
-    def new_by(*args, &blk)
-      new(*args).order_by(&blk)
-    end
-
-    # Alternate to #new which creates a dictionary sorted by key.
-    #
-    #   d = OrderedHash.alpha
-    #   d["z"] = 1
-    #   d["y"] = 2
-    #   d["x"] = 3
-    #   d  #=> {"x"=>3,"y"=>2,"z"=>2}
-    #
-    # This is equivalent to:
-    #
-    #   OrderedHash.new.order_by { |key,value| key }
-
-    def alpha(*args, &block)
-      new(*args, &block).order_by_key
-    end
-
-    # Alternate to #new which auto-creates sub-dictionaries as needed.
-    #
-    #   d = OrderedHash.auto
-    #   d["a"]["b"]["c"] = "abc"  #=> { "a"=>{"b"=>{"c"=>"abc"}}}
-    #
-    def auto(*args)
-      #AutoOrderedHash.new(*args)
-      leet = lambda { |hsh, key| hsh[key] = new(&leet) }
-      new(*args, &leet)
     end
   end
 
-   # New Dictiionary.
-
-  def initialize(*args, &blk)
-    @order = []
-    @order_by = nil
-    if blk
-      dict = self                                  # This ensure autmatic key entry effect the
-      oblk = lambda{ |hsh, key| blk[dict,key] }    # dictionary rather then just the interal hash.
-      @hash = Hash.new(*args, &oblk)
-    else
-      @hash = Hash.new(*args)
+  # Hash is ordered in Ruby 1.9!
+  if RUBY_VERSION < '1.9'
+    def initialize(*args, &block)
+      super
+      @keys = []
     end
-  end
 
-  def order
-    reorder if @order_by
-    @order
-  end
+    def self.[](*args)
+      ordered_hash = new
 
-  # Keep dictionary sorted by a specific sort order.
+      if (args.length == 1 && args.first.is_a?(Array))
+        args.first.each do |key_value_pair|
+          next unless (key_value_pair.is_a?(Array))
+          ordered_hash[key_value_pair[0]] = key_value_pair[1]
+        end
 
-  def order_by( &block )
-    @order_by = block
-    order
-    self
-  end
+        return ordered_hash
+      end
 
-  # Keep dictionary sorted by key.
-  #
-  #   d = OrderedHash.new.order_by_key
-  #   d["z"] = 1
-  #   d["y"] = 2
-  #   d["x"] = 3
-  #   d  #=> {"x"=>3,"y"=>2,"z"=>2}
-  #
-  # This is equivalent to:
-  #
-  #   OrderedHash.new.order_by { |key,value| key }
-  #
-  # The initializer OrderedHash#alpha also provides this.
+      unless (args.size % 2 == 0)
+        raise ArgumentError.new("odd number of arguments for Hash")
+      end
 
-  def order_by_key
-    @order_by = lambda { |k,v| k }
-    order
-    self
-  end
+      args.each_with_index do |val, ind|
+        next if (ind % 2 != 0)
+        ordered_hash[val] = args[ind + 1]
+      end
 
-  # Keep dictionary sorted by value.
-  #
-  #   d = OrderedHash.new.order_by_value
-  #   d["z"] = 1
-  #   d["y"] = 2
-  #   d["x"] = 3
-  #   d  #=> {"x"=>3,"y"=>2,"z"=>2}
-  #
-  # This is equivalent to:
-  #
-  #   OrderedHash.new.order_by { |key,value| value }
-
-  def order_by_value
-    @order_by = lambda { |k,v| v }
-    order
-    self
-  end
-
-  #
-  def reorder
-    if @order_by
-      assoc = @order.collect{ |k| [k,@hash[k]] }.sort_by(&@order_by)
-      @order = assoc.collect{ |k,v| k }
+      ordered_hash
     end
-    @order
-  end
 
-  #def ==( hsh2 )
-  #  return false if @order != hsh2.order
-  #  super hsh2
-  #end
-
-  def ==(hsh2)
-    if hsh2.is_a?( OrderedHash )
-      @order == hsh2.order &&
-      @hash  == hsh2.instance_variable_get("@hash")
-    else
-      false
+    def initialize_copy(other)
+      super(other)
+      @keys = other.keys
     end
-  end
 
-  def [] k
-    @hash[ k ]
-  end
-
-  def fetch(k, *a, &b)
-    @hash.fetch(k, *a, &b)
-  end
-
-  # Store operator.
-  #
-  #   h[key] = value
-  #
-  # Or with additional index.
-  #
-  #  h[key,index] = value
-
-  def []=(k, i=nil, v=nil)
-    if v
-      insert(i,k,v)
-    else
-      store(k,i)
+    def []=(key, value)
+      @keys << key unless key?(key)
+      super(key, value)
     end
-  end
 
-  def insert( i,k,v )
-    @order.insert( i,k )
-    @hash.store( k,v )
-  end
-
-  def store( a,b )
-    @order.push( a ) unless @hash.has_key?( a )
-    @hash.store( a,b )
-  end
-
-  def clear
-    @order = []
-    @hash.clear
-  end
-
-  def delete( key )
-    @order.delete( key )
-    @hash.delete( key )
-  end
-
-  def each_key
-    order.each { |k| yield( k ) }
-    self
-  end
-
-  def each_value
-    order.each { |k| yield( @hash[k] ) }
-    self
-  end
-
-  def each
-    order.each { |k| yield( k,@hash[k] ) }
-    self
-  end
-  alias each_pair each
-
-  def delete_if
-    order.clone.each { |k| delete k if yield(k,@hash[k]) }
-    self
-  end
-
-  def values
-    ary = []
-    order.each { |k| ary.push @hash[k] }
-    ary
-  end
-
-  def keys
-    order
-  end
-
-  def invert
-    hsh2 = self.class.new
-    order.each { |k| hsh2[@hash[k]] = k }
-    hsh2
-  end
-
-  def reject(&block)
-    self.dup.delete_if(&block)
-  end
-
-  def reject!( &block )
-    hsh2 = reject(&block)
-    self == hsh2 ? nil : hsh2
-  end
-
-  def replace(hsh2)
-    case hsh2
-    when Hash
-      @order = hsh2.keys
-      @hash  = hsh2
-    else
-      @order = hsh2.order
-      @hash  = hsh2.hash
+    def delete(key)
+      if has_key? key
+        index = @keys.index(key)
+        @keys.delete_at(index)
+      end
+      super(key)
     end
-    reorder
-  end
 
-  def shift
-    key = order.first
-    key ? [key,delete(key)] : super
-  end
-
-  def unshift( k,v )
-    unless @hash.include?( k )
-      @order.unshift( k )
-      @hash.store( k,v )
-      true
-    else
-      false
+    def delete_if
+      super
+      sync_keys!
+      self
     end
-  end
 
-  def <<(kv)
-    push(*kv)
-  end
-
-  def push( k,v )
-    unless @hash.include?( k )
-      @order.push( k )
-      @hash.store( k,v )
-      true
-    else
-      false
+    def reject!
+      super
+      sync_keys!
+      self
     end
-  end
 
-  def pop
-    key = order.last
-    key ? [key,delete(key)] : nil
-  end
+    def reject(&block)
+      dup.reject!(&block)
+    end
 
-  def inspect
-    ary = []
-    each {|k,v| ary << k.inspect + "=>" + v.inspect}
-    '{' + ary.join(", ") + '}'
-  end
+    def keys
+      @keys.dup
+    end
 
-  def dup
-    a = []
-    each{ |k,v| a << k; a << v }
-    self.class[*a]
-  end
+    def values
+      @keys.collect{ |key| self[key] }
+    end
 
-  def update( hsh2 )
-    hsh2.each { |k,v| self[k] = v }
-    reorder
-    self
-  end
-  alias :merge! update
+    def to_hash
+      self
+    end
 
-  def merge( hsh2 )
-    self.dup.update(hsh2)
-  end
+    def to_a
+      @keys.map{ |key| [ key, self[key] ] }
+    end
 
-  def select
-    ary = []
-    each { |k,v| ary << [k,v] if yield k,v }
-    ary
-  end
+    def each_key
+      @keys.each{ |key| yield(key) }
+    end
 
-  def reverse!
-    @order.reverse!
-    self
-  end
+    def each_value
+      @keys.each{ |key| yield(self[key]) }
+    end
 
-  def reverse
-    dup.reverse!
-  end
+    def each
+      @keys.each{ |key| yield(key, self[key]) }
+    end
 
-  #
-  def first(x=nil)
-    return @hash[order.first] unless x
-    order.first(x).collect { |k| @hash[k] }
-  end
+    alias_method :each_pair, :each
 
-  #
-  def last(x=nil)
-    return @hash[order.last] unless x
-    order.last(x).collect { |k| @hash[k] }
-  end
+    def clear
+      super
+      @keys.clear
+      self
+    end
 
-  def length
-    @order.length
-  end
-  alias :size :length
+    def shift
+      k = @keys.first
+      v = delete(k)
+      [k, v]
+    end
 
-  def empty?
-    @hash.empty?
-  end
+    def merge!(other_hash)
+      other_hash.each{ |k,v| self[k] = v }
+      self
+    end
 
-  def has_key?(key)
-    @hash.has_key?(key)
-  end
+    def merge(other_hash)
+      dup.merge!(other_hash)
+    end
 
-  def key?(key)
-    @hash.key?(key)
-  end
+    # When replacing with another hash, the initial order of our
+    # keys must come from the other hash, ordered or not.
+    def replace(other)
+      super
+      @keys = other.keys
+      self
+    end
 
-  def to_a
-    ary = []
-    each { |k,v| ary << [k,v] }
-    ary
-  end
+    def inspect
+      "#<OrderedHash #{super}>"
+    end
 
-  def to_s
-    self.to_a.to_s
-  end
-
-  def to_hash
-    @hash.dup
-  end
-
-  def to_h
-    @hash.dup
+    private
+      def sync_keys!
+        @keys.delete_if{ |k| !key?(k) }
+      end
   end
 end
+
+require 'yaml'
+
+YAML.add_builtin_type("omap") do |type, val|
+  ActiveSupport::OrderedHash[val.map(&:to_a).map(&:first)]
+end
+
