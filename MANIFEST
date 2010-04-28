@@ -1,5 +1,5 @@
 #!mast -x Syckfile bin lib meta test [A-Z]*
-lib/hashery/autoarray.rb
+lib/hashery/association.rb
 lib/hashery/castinghash.rb
 lib/hashery/dictionary.rb
 lib/hashery/ini.rb
@@ -12,7 +12,7 @@ lib/hashery/openobject.rb
 lib/hashery/orderedhash.rb
 lib/hashery/ostructable.rb
 lib/hashery/queryhash.rb
-lib/hashery/sparse_array.rb
+lib/hashery/sparsearray.rb
 lib/hashery/stash.rb
 lib/hashery/statichash.rb
 lib/hashery.rb
@@ -27,6 +27,7 @@ meta/repository
 meta/suite
 meta/summary
 meta/version
+test/case_association.rb
 test/case_dictionary.rb
 test/case_opencascade.rb
 test/case_openhash.rb
