@@ -1,3 +1,24 @@
+= RELEASE HISTORY
+
+== 1.1.0 // 2010-04-28
+
+A follow-up release of Hashery that adds two new libraries:
+Association and SparseArray. Both of these may seem like odd
+entries, but they each belong in a unique way. An Association
+is akin to a single entry Hash --it represents a pairing.
+While a SpareArray, though compatible with the Array class,
+is completely under-pinned by a Hash in order to make it
+effcient when no ebtries are given for a set of indexes,
+hence "sparse".
+
+Changes:
+
+* 2 New Libraries
+
+  * Added association.rb
+  * Added sparsearray.rb
+
+
 == 1.0.0 // 2010-04-21
 
 This is the first release of the Facets Hashery.
