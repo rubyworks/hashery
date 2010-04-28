@@ -1,5 +1,4 @@
-require 'facets/openobject'
-require 'test/unit'
+require 'hashery/openobject'
 
 class TestOpenObject1 < Test::Unit::TestCase
 

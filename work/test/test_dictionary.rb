@@ -1,8 +1,4 @@
-# Test facets/dictionary.rb
-
-require 'facets/dictionary.rb'
-
-require 'test/unit'
+require 'hashery/dictionary.rb'
 
 class TC_Dictionary < Test::Unit::TestCase
 

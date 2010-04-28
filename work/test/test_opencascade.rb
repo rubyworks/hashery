@@ -1,7 +1,4 @@
-# Test facets/opencascade.rb
-
-require 'facets/opencascade.rb'
-require 'test/unit'
+require 'hashery/opencascade.rb'
 
 class TestOpenCascade1 < Test::Unit::TestCase
 
@@ -35,14 +32,14 @@ class TestOpenCascade2 < Test::Unit::TestCase
   def test_02_001
     f0 = OpenCascade[:f0=>"f0"]
     h0 = { :h0=>"h0" }
-    assert_equal( OpenCascade[:f0=>"f0", :h0=>"h0"], f0.send(:merge,h0) )
+    assert_equal( OpenCascade[:f0=>"f0", :h0=>"h0"], f0.as_hash.merge(h0) )
     assert_equal( {:f0=>"f0", :h0=>"h0"}, h0.merge( f0 ) )
   end
 
   def test_02_002
     f1 = OpenCascade[:f1=>"f1"]
     h1 = { :h1=>"h1" }
-    f1.send(:update, h1)
+    f1.as_hash.update(h1)
     h1.update( f1 )
     assert_equal( OpenCascade[:f1=>"f1", :h1=>"h1"], f1 )
     assert_equal( {:f1=>"f1", :h1=>"h1"}, h1 )
