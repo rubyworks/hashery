@@ -1,0 +1,1152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Class: CastingHash</title>
+
+  
+    <link rel="SHORTCUT ICON" href="../assets/img/class.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="../assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="../assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="../assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      $('#documentation pre').wrapInner('<code></code>');
+      hljs.tabReplace = '    ';
+      hljs.initHighlightingOnLoad('ruby');
+
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind( "click", highlightClickTarget );
+    });
+  </script>
+</head>
+<body class="class">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="../assets/img/class.png" align="absmiddle">&nbsp;
+      
+      <a href="../index.html">Hashery</a>&nbsp;
+      <a href="/">CastingHash</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="../files/lib/hashery/castinghash_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/hashery/castinghash.rb">lib/hashery/castinghash.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        <ul>
+          
+          <!-- why was this class="link" ? -->
+          <li class="class"><a href="Hash.html">Hash</a></li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="singleton">
+              <a href="#M000017">::[]</a>
+            </li>
+          
+            
+            <li class="singleton">
+              <a href="#M000022">::new</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000036">#<<</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000034">#[]</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000035">#[]=</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000063">#cast</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000052">#delete</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000038">#fetch</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000041">#has_key?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000040">#key?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000028">#key_proc</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000029">#key_proc=</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000056">#merge!</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000051">#rekey</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000045">#rekey!</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000057">#replace</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000039">#store</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000062">#to_h</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000061">#to_hash</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000053">#update</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000030">#value_proc</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000031">#value_proc=</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000058">#values_at</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="../files/HISTORY.html">HISTORY</a></li>
+        
+          <li class="file"><a href="../files/LICENSE.html">LICENSE</a></li>
+        
+          <li class="file"><a href="../files/ROADMAP_rdoc.html">ROADMAP.rdoc</a></li>
+        
+          <li class="file"><a href="../files/README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="class"><a href="../classes/Association.html">Association</a></li>
+        
+          <li class="module"><a href="../classes/Association/Kernel.html">Association::Kernel</a></li>
+        
+          <li class="class"><a href="../classes/LinkedList.html">LinkedList</a></li>
+        
+          <li class="class"><a href="../classes/LinkedList/Node.html">LinkedList::Node</a></li>
+        
+          <li class="class"><a href="../classes/CastingHash.html">CastingHash</a></li>
+        
+          <li class="class"><a href="../classes/Dictionary.html">Dictionary</a></li>
+        
+          <li class="class"><a href="../classes/Hash.html">Hash</a></li>
+        
+          <li class="class"><a href="../classes/Ini.html">Ini</a></li>
+        
+          <li class="class"><a href="../classes/LRUHash.html">LRUHash</a></li>
+        
+          <li class="class"><a href="../classes/Memoizer.html">Memoizer</a></li>
+        
+          <li class="class"><a href="../classes/OpenCascade.html">OpenCascade</a></li>
+        
+          <li class="class"><a href="../classes/OpenHash.html">OpenHash</a></li>
+        
+          <li class="class"><a href="../classes/OpenObject.html">OpenObject</a></li>
+        
+          <li class="module"><a href="../classes/OpenStructable.html">OpenStructable</a></li>
+        
+          <li class="class"><a href="../classes/OrderedHash.html">OrderedHash</a></li>
+        
+          <li class="class"><a href="../classes/QueryHash.html">QueryHash</a></li>
+        
+          <li class="class"><a href="../classes/SparseArray.html">SparseArray</a></li>
+        
+          <li class="class"><a href="../classes/Stash.html">Stash</a></li>
+        
+          <li class="class"><a href="../classes/StaticHash.html">StaticHash</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://github.com/proutils/webri">WebRI Redfish</a> 1.2
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+        <h1>CastingHash</h1>
+      
+
+      <p>
+<a href="CastingHash.html">CastingHash</a> is just like <a
+href="Hash.html">Hash</a>, except that all keys and values are passed
+through casting procedures.
+</p>
+
+    </div>
+
+    <!-- Constants -->
+    
+    <div id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt><a name="KEY_PROC">KEY_PROC</a></dt>
+        
+        <dd class="description"><p>
+Default key conversion procedure.
+</p></dd>
+        
+      
+        <dt><a name="VAL_PROC">VAL_PROC</a></dt>
+        
+        <dd class="description"><p>
+Default value conversion procedure.
+</p></dd>
+        
+      
+      </dl>
+    </div>
+    
+
+    <!-- Attributes -->
+    
+
+    <!-- Methods -->
+    
+    <div id="public-class-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000017"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">[]</span><span
+            class="method-args">(hash)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 15</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-operator">[]</span>(<span class="ruby-identifier">hash</span>)
+    <span class="ruby-identifier">s</span> = <span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span> }
+    <span class="ruby-identifier">s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="new-method" class="method-detail ">
+        <a name="M000022"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">new</span><span
+            class="method-args">(hash={}, value_cast=nil, &key_cast)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="new-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 22</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">hash</span>={}, <span class="ruby-identifier">value_cast</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">key_cast</span>)
+    <span class="ruby-ivar">@key_proc</span>   = <span class="ruby-identifier">key_cast</span>           <span class="ruby-operator">||</span> <span class="ruby-constant">KEY_PROC</span>
+    <span class="ruby-ivar">@value_proc</span> = <span class="ruby-identifier">value_cast</span>.<span class="ruby-identifier">to_proc</span> <span class="ruby-operator">||</span> <span class="ruby-constant">VAL_PROC</span>
+    <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span> }
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000036"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">&lt;&lt;</span><span
+            class="method-args">(other)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 59</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">other</span>)
+    <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">other</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Hash</span>
+      <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">cast</span>(<span class="ruby-identifier">other</span>))
+    <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Array</span>
+      <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">other</span>[<span class="ruby-value">0</span>]] = <span class="ruby-identifier">other</span>[<span class="ruby-value">1</span>]
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000034"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">[]</span><span
+            class="method-args">(k)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 49</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">k</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">key_proc</span>[<span class="ruby-identifier">k</span>])
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000035"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">[]=</span><span
+            class="method-args">(k,v)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 54</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">key_proc</span>[<span class="ruby-identifier">k</span>], <span class="ruby-identifier">value_proc</span>[<span class="ruby-identifier">v</span>])
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="delete-method" class="method-detail ">
+        <a name="M000052"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">delete</span><span
+            class="method-args">(k)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="delete-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 118</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">k</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">key_proc</span>[<span class="ruby-identifier">k</span>])
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="fetch-method" class="method-detail ">
+        <a name="M000038"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">fetch</span><span
+            class="method-args">(k)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="fetch-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 70</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">k</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">key_proc</span>[<span class="ruby-identifier">k</span>])
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="has-key--method" class="method-detail ">
+        <a name="M000041"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">has_key?</span><span
+            class="method-args">(k)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="has-key--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 85</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">k</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">key_proc</span>[<span class="ruby-identifier">k</span>])
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="key--method" class="method-detail ">
+        <a name="M000040"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">key?</span><span
+            class="method-args">(k)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="key--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 80</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key?</span>(<span class="ruby-identifier">k</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">key_proc</span>[<span class="ruby-identifier">k</span>])
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="key-proc-method" class="method-detail ">
+        <a name="M000028"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">key_proc</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="key-proc-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 29</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key_proc</span>
+    <span class="ruby-ivar">@key_proc</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="key-proc--method" class="method-detail ">
+        <a name="M000029"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">key_proc=</span><span
+            class="method-args">(proc)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="key-proc--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 34</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key_proc=</span>(<span class="ruby-identifier">proc</span>)
+    <span class="ruby-ivar">@key_proc</span> = <span class="ruby-identifier">proc</span>.<span class="ruby-identifier">to_proc</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="merge--method" class="method-detail ">
+        <a name="M000056"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">merge!</span><span
+            class="method-args">(other)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Same as <a href="CastingHash.html#M000053">update</a>.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="merge--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 128</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">other</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">cast</span>(<span class="ruby-identifier">other</span>))
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="rekey-method" class="method-detail ">
+        <a name="M000051"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">rekey</span><span
+            class="method-args">(*args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="rekey-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 113</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rekey</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">rekey!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="rekey--method" class="method-detail ">
+        <a name="M000045"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">rekey!</span><span
+            class="method-args">(*args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Synonym for <a href="Hash.html#M000275">Hash#rekey</a>, but modifies the
+receiver in place (and returns it).
+</p>
+<pre>
+  foo = { :name=&gt;'Gavin', :wife=&gt;:Lisa }.to_stash
+  foo.rekey!{ |k| k.upcase }  #=&gt;  { &quot;NAME&quot;=&gt;&quot;Gavin&quot;, &quot;WIFE&quot;=&gt;:Lisa }
+  foo.inspect                 #=&gt;  { &quot;NAME&quot;=&gt;&quot;Gavin&quot;, &quot;WIFE&quot;=&gt;:Lisa }
+</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="rekey--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 95</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rekey!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-comment cmt"># for backward comptability (DEPRECATE?).</span>
+    <span class="ruby-identifier">block</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">pop</span>.<span class="ruby-identifier">to_sym</span>.<span class="ruby-identifier">to_proc</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-identifier">block</span> = <span class="ruby-identifier">lambda</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">k</span>} <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">block</span>
+      <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">nk</span> = <span class="ruby-identifier">block</span>[<span class="ruby-identifier">k</span>]
+        <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">nk</span>] = <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">k</span>) <span class="ruby-comment cmt">#if nk</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;3 for 2&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block</span>
+      <span class="ruby-identifier">to</span>, <span class="ruby-identifier">from</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
+      <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">to</span>] = <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">from</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">from</span>)
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="replace-method" class="method-detail ">
+        <a name="M000057"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">replace</span><span
+            class="method-args">(other)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="replace-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 133</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">other</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">cast</span>(<span class="ruby-identifier">other</span>))
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="store-method" class="method-detail ">
+        <a name="M000039"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">store</span><span
+            class="method-args">(k, v)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="store-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 75</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">store</span>(<span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">key_proc</span>[<span class="ruby-identifier">k</span>], <span class="ruby-identifier">value_proc</span>[<span class="ruby-identifier">v</span>])
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-h-method" class="method-detail method-alias">
+        <a name="M000062"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_h</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alias for <a href="CastingHash.html#M000061">to_hash</a>
+</p>
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-hash-method" class="method-detail ">
+        <a name="M000061"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_hash</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="to-hash-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 143</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_hash</span>
+    <span class="ruby-identifier">h</span> = {}; <span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span> }; <span class="ruby-identifier">h</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="CastingHash.html#M000062">to_h</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="update-method" class="method-detail ">
+        <a name="M000053"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">update</span><span
+            class="method-args">(other)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="update-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 123</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>(<span class="ruby-identifier">other</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">cast</span>(<span class="ruby-identifier">other</span>))
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="value-proc-method" class="method-detail ">
+        <a name="M000030"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">value_proc</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="value-proc-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 39</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">value_proc</span>
+    <span class="ruby-ivar">@value_proc</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="value-proc--method" class="method-detail ">
+        <a name="M000031"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">value_proc=</span><span
+            class="method-args">(proc)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="value-proc--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 44</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">value_proc=</span>(<span class="ruby-identifier">proc</span>)
+    <span class="ruby-ivar">@value_proc</span> = <span class="ruby-identifier">proc</span>.<span class="ruby-identifier">to_proc</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="values-at-method" class="method-detail ">
+        <a name="M000058"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">values_at</span><span
+            class="method-args">(*keys)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="values-at-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 138</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">keys</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">key_proc</span>))
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="private-instance-method-details" class="method-section section">
+      <h3 class="section-header">Private Instance Methods</h3>
+
+    
+      <div id="cast-method" class="method-detail ">
+        <a name="M000063"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">cast</span><span
+            class="method-args">(hash)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="cast-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/castinghash.rb, line 153</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cast</span>(<span class="ruby-identifier">hash</span>)
+      <span class="ruby-identifier">h</span>
+      <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">h</span>[<span class="ruby-identifier">key_proc</span>[<span class="ruby-identifier">k</span>]] = <span class="ruby-identifier">value_proc</span>[<span class="ruby-identifier">v</span>]
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">h</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+

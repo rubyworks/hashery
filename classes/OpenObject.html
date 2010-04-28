@@ -1,0 +1,1237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Class: OpenObject</title>
+
+  
+    <link rel="SHORTCUT ICON" href="../assets/img/class.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="../assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="../assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="../assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      $('#documentation pre').wrapInner('<code></code>');
+      hljs.tabReplace = '    ';
+      hljs.initHighlightingOnLoad('ruby');
+
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind( "click", highlightClickTarget );
+    });
+  </script>
+</head>
+<body class="class">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="../assets/img/class.png" align="absmiddle">&nbsp;
+      
+      <a href="../index.html">Hashery</a>&nbsp;
+      <a href="/">OpenObject</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="../files/lib/hashery/openobject_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/hashery/openobject.rb">lib/hashery/openobject.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        <ul>
+          
+          <li class="class">BasicObject</li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="singleton">
+              <a href="#M000277">::[]</a>
+            </li>
+          
+            
+            <li class="singleton">
+              <a href="#M000278">::new</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000303">#<<</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000300">#==</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000307">#[]</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000306">#[]=</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000290">#as_hash</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000299">#default!</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000295">#each</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000302">#eql?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000312">#fetch</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000279">#initialize_copy</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000280">#inspect</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000294">#is_a?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000291">#key?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000308">#merge!</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000314">#method_missing</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000310">#store</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000282">#to_a</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000283">#to_h</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000284">#to_hash</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000285">#to_openobject</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000289">#to_proc</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000309">#update!</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="../files/HISTORY.html">HISTORY</a></li>
+        
+          <li class="file"><a href="../files/LICENSE.html">LICENSE</a></li>
+        
+          <li class="file"><a href="../files/ROADMAP_rdoc.html">ROADMAP.rdoc</a></li>
+        
+          <li class="file"><a href="../files/README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="class"><a href="../classes/Association.html">Association</a></li>
+        
+          <li class="module"><a href="../classes/Association/Kernel.html">Association::Kernel</a></li>
+        
+          <li class="class"><a href="../classes/LinkedList.html">LinkedList</a></li>
+        
+          <li class="class"><a href="../classes/LinkedList/Node.html">LinkedList::Node</a></li>
+        
+          <li class="class"><a href="../classes/CastingHash.html">CastingHash</a></li>
+        
+          <li class="class"><a href="../classes/Dictionary.html">Dictionary</a></li>
+        
+          <li class="class"><a href="../classes/Hash.html">Hash</a></li>
+        
+          <li class="class"><a href="../classes/Ini.html">Ini</a></li>
+        
+          <li class="class"><a href="../classes/LRUHash.html">LRUHash</a></li>
+        
+          <li class="class"><a href="../classes/Memoizer.html">Memoizer</a></li>
+        
+          <li class="class"><a href="../classes/OpenCascade.html">OpenCascade</a></li>
+        
+          <li class="class"><a href="../classes/OpenHash.html">OpenHash</a></li>
+        
+          <li class="class"><a href="../classes/OpenObject.html">OpenObject</a></li>
+        
+          <li class="module"><a href="../classes/OpenStructable.html">OpenStructable</a></li>
+        
+          <li class="class"><a href="../classes/OrderedHash.html">OrderedHash</a></li>
+        
+          <li class="class"><a href="../classes/QueryHash.html">QueryHash</a></li>
+        
+          <li class="class"><a href="../classes/SparseArray.html">SparseArray</a></li>
+        
+          <li class="class"><a href="../classes/Stash.html">Stash</a></li>
+        
+          <li class="class"><a href="../classes/StaticHash.html">StaticHash</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://github.com/proutils/webri">WebRI Redfish</a> 1.2
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+
+      <h1><a href="OpenObject.html">OpenObject</a></h1>
+<p>
+<a href="OpenObject.html">OpenObject</a> is very similar to Ruby&#8217;s
+own OpenStruct, but it offers some advantages. With OpenStruct, slots with
+the same name as predefined Object methods cannot be used. With <a
+href="OpenObject.html">OpenObject</a>, almost any slot can be defined. <a
+href="OpenObject.html">OpenObject</a> is a subclass of BasicObject to
+ensure all method slots, except those that are absolutely essential, are
+open for use.
+</p>
+<p>
+Unlike a <a href="Hash.html">Hash</a>, all OpenObject&#8217;s keys are
+symbols and all keys are converted to such using to_sym on the fly.
+</p>
+
+    </div>
+
+    <!-- Constants -->
+    
+
+    <!-- Attributes -->
+    
+
+    <!-- Methods -->
+    
+    <div id="public-class-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000277"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">[]</span><span
+            class="method-args">(hash=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+PUBLIC_METHODS = /(^__|^instance_|^object_|^W|^as$|^send$|^class$|?$)/
+protected(*public_instance_methods.select{ |m| m !~ PUBLIC_METHODS })
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 33</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-operator">[]</span>(<span class="ruby-identifier">hash</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-identifier">new</span>(<span class="ruby-identifier">hash</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="new-method" class="method-detail ">
+        <a name="M000278"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">new</span><span
+            class="method-args">(hash=nil, &yld)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Inititalizer for <a href="OpenObject.html">OpenObject</a> is slightly
+different than that of <a href="Hash.html">Hash</a>. It does not take a
+default parameter, but an initial priming <a href="Hash.html">Hash</a>,
+like OpenStruct. The initializer can still take a default block however. To
+set the default value use <tt>default!(value)</tt>.
+</p>
+<pre>
+  OpenObject.new(:a=&gt;1).default!(0)
+</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="new-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 44</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">hash</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">yld</span>)
+    <span class="ruby-ivar">@hash</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">yld</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hash</span>
+      <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">store</span>(<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>) }
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000303"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">&lt;&lt;</span><span
+            class="method-args">(x)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 155</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">x</span>)
+    <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">x</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Hash</span>
+      <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">x</span>)
+    <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Array</span>
+      <span class="ruby-identifier">x</span>.<span class="ruby-identifier">each_slice</span>(<span class="ruby-value">2</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span>(<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>)<span class="ruby-operator">|</span>
+        <span class="ruby-ivar">@hash</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000300"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">==</span><span
+            class="method-args">( other )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Check equality.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 129</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">==</span>( <span class="ruby-identifier">other</span> )
+    <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">other</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-constant">OpenObject</span>
+      <span class="ruby-ivar">@hash</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">as_hash</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Hash</span>
+      <span class="ruby-ivar">@hash</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:to_hash</span>)
+        <span class="ruby-ivar">@hash</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">to_hash</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-keyword kw">false</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000307"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">[]</span><span
+            class="method-args">(key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 172</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">key</span>)
+    <span class="ruby-ivar">@hash</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_sym</span>]
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000306"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">[]=</span><span
+            class="method-args">(key, value)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 167</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+    <span class="ruby-ivar">@hash</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_sym</span>] = <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="as-hash-method" class="method-detail ">
+        <a name="M000290"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">as_hash</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+NOT SURE ABOUT THIS
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="as-hash-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 102</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">as_hash</span>
+    <span class="ruby-ivar">@hash</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="default--method" class="method-detail ">
+        <a name="M000299"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">default!</span><span
+            class="method-args">(default)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Set the default value.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="default--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 124</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">default!</span>(<span class="ruby-identifier">default</span>)
+    <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">default</span> = <span class="ruby-identifier">default</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="each-method" class="method-detail ">
+        <a name="M000295"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">each</span><span
+            class="method-args">(&yld)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Iterate over each key-value pair.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="each-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 119</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">yld</span>)
+    <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">yld</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="eql--method" class="method-detail ">
+        <a name="M000302"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">eql?</span><span
+            class="method-args">( other )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="eql--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 145</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">eql?</span>( <span class="ruby-identifier">other</span> )
+    <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">other</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-constant">OpenObject</span>
+      <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">other</span>.<span class="ruby-identifier">as_hash</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">false</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="initialize-copy-method" class="method-detail ">
+        <a name="M000279"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">initialize_copy</span><span
+            class="method-args">( orig )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="initialize-copy-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 52</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize_copy</span>( <span class="ruby-identifier">orig</span> )
+    <span class="ruby-identifier">orig</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">store</span>(<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>) }
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="inspect-method" class="method-detail ">
+        <a name="M000280"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">inspect</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Object inspection. TODO: Need to get <em>class</em> and <em>id</em> in hex
+form.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="inspect-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 58</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
+    <span class="ruby-comment cmt">#@hash.inspect</span>
+    <span class="ruby-identifier">hexid</span> = <span class="ruby-identifier">__id__</span>
+    <span class="ruby-identifier">klass</span> = <span class="ruby-value str">&quot;OpenObject&quot;</span> <span class="ruby-comment cmt"># __class__</span>
+    <span class="ruby-node">&quot;#&lt;#{klass}:#{hexid} #{@hash.inspect}&gt;&quot;</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="is-a--method" class="method-detail ">
+        <a name="M000294"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">is_a?</span><span
+            class="method-args">(klass)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="is-a--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 112</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">is_a?</span>(<span class="ruby-identifier">klass</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Hash</span>  <span class="ruby-comment cmt"># TODO: Is this wise? How to fake a subclass?</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span> <span class="ruby-operator">==</span> <span class="ruby-constant">OpenObject</span>
+    <span class="ruby-keyword kw">false</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="key--method" class="method-detail ">
+        <a name="M000291"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">key?</span><span
+            class="method-args">(key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Is a given <tt>key</tt> defined?
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="key--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 107</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key?</span>(<span class="ruby-identifier">key</span>)
+    <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_sym</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="merge--method" class="method-detail ">
+        <a name="M000308"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">merge!</span><span
+            class="method-args">(other)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="merge--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 177</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">other</span>)
+    <span class="ruby-constant">OpenObject</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">other</span>))
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-a-method" class="method-detail ">
+        <a name="M000282"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_a</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Convert to an associative array.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="to-a-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 66</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_a</span>
+    <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">to_a</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-h-method" class="method-detail ">
+        <a name="M000283"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_h</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="to-h-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 71</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_h</span>
+    <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-hash-method" class="method-detail ">
+        <a name="M000284"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_hash</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="to-hash-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 76</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_hash</span>
+    <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-openobject-method" class="method-detail ">
+        <a name="M000285"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_openobject</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="to-openobject-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 81</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_openobject</span>
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-proc-method" class="method-detail ">
+        <a name="M000289"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_proc</span><span
+            class="method-args">(response=false)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Convert to an assignment procedure.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="to-proc-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 86</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_proc</span>(<span class="ruby-identifier">response</span>=<span class="ruby-keyword kw">false</span>)
+    <span class="ruby-identifier">hash</span> = <span class="ruby-ivar">@hash</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">response</span>
+      <span class="ruby-identifier">lambda</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">o</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-node">&quot;#{k}=&quot;</span>, <span class="ruby-identifier">v</span>) <span class="ruby-keyword kw">rescue</span> <span class="ruby-keyword kw">nil</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">lambda</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-node">&quot;#{k}=&quot;</span>, <span class="ruby-identifier">v</span>) }
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="update--method" class="method-detail ">
+        <a name="M000309"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">update!</span><span
+            class="method-args">(other)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="update--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 182</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update!</span>(<span class="ruby-identifier">other</span>)
+    <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">other</span>)
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="protected-instance-method-details" class="method-section section">
+      <h3 class="section-header">Protected Instance Methods</h3>
+
+    
+      <div id="fetch-method" class="method-detail ">
+        <a name="M000312"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">fetch</span><span
+            class="method-args">(k, *d, &b)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="fetch-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 193</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">k</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">d</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span>)
+      <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_sym</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">d</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="method-missing-method" class="method-detail ">
+        <a name="M000314"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">method_missing</span><span
+            class="method-args">(sym, *args, &blk)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+def protect_slot( key )
+</p>
+<pre>
+  (class &lt;&lt; self; self; end).class_eval {
+    protected key rescue nil
+ }
+</pre>
+<p>
+end
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="method-missing-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 219</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">sym</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+      <span class="ruby-identifier">type</span> = <span class="ruby-identifier">sym</span>.<span class="ruby-identifier">to_s</span>[<span class="ruby-value">-1</span>,<span class="ruby-value">1</span>]
+      <span class="ruby-identifier">key</span>  = <span class="ruby-identifier">sym</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-regexp re">/[=?!]$/</span>,<span class="ruby-value str">''</span>).<span class="ruby-identifier">to_sym</span>
+      <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">type</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'='</span>
+        <span class="ruby-identifier">store</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>])
+      <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'!'</span>
+        <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-identifier">key</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+      <span class="ruby-comment cmt">#  if key?(key)</span>
+      <span class="ruby-comment cmt">#    fetch(key)</span>
+      <span class="ruby-comment cmt">#  else</span>
+      <span class="ruby-comment cmt">#    store(key, OpenObject.new)</span>
+      <span class="ruby-comment cmt">#  end</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'?'</span>
+        <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">key</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">key</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="store-method" class="method-detail ">
+        <a name="M000310"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">store</span><span
+            class="method-args">(k, v)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="store-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/openobject.rb, line 189</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">store</span>(<span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span>)
+      <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">store</span>(<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_sym</span>, <span class="ruby-identifier">v</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+

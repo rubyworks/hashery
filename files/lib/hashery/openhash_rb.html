@@ -1,0 +1,2100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>File: openhash.rb [Hashery]</title>
+
+  <link rel="SHORTCUT ICON" href="../../../assets/icon/file.png">
+
+  <link type="text/css" rel="stylesheet" href="../../../assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="../../../assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="../../../assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../../assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../../assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../../assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      $('#documentation pre').wrapInner('<code></code>');
+      hljs.tabReplace = '    ';
+      hljs.initHighlightingOnLoad('ruby');
+
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind( "click", highlightClickTarget );
+    });
+  </script>
+</head>
+
+<body class="file"> <!-- .file-popup is no more -->
+<div id="main">
+
+  <div class="head">
+    <h1>
+      <img src="../../../assets/icon/file.png" align="absmiddle">&nbsp;
+      <a href="../../../index.html">Hashery</a>&nbsp;
+      <a href="/">openhash.rb</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="file-stats-section" class="section">
+      <h3 class="section-header">File Stats</h3>
+      <dl>
+        <dt class="modified-date">Last Modified</dt>
+        <dd class="modified-date">Sun Apr 25 21:41:29 -0400 2010</dd>
+
+        
+
+        
+      </dl>
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="../../../files/HISTORY.html">HISTORY</a></li>
+        
+          <li class="file"><a href="../../../files/LICENSE.html">LICENSE</a></li>
+        
+          <li class="file"><a href="../../../files/ROADMAP_rdoc.html">ROADMAP.rdoc</a></li>
+        
+          <li class="file"><a href="../../../files/README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../../../assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li class="class"><a href="../../../classes/Association.html">Association</a></li>
+        
+          <li class="module"><a href="../../../classes/Association/Kernel.html">Association::Kernel</a></li>
+        
+          <li class="class"><a href="../../../classes/LinkedList.html">LinkedList</a></li>
+        
+          <li class="class"><a href="../../../classes/LinkedList/Node.html">LinkedList::Node</a></li>
+        
+          <li class="class"><a href="../../../classes/CastingHash.html">CastingHash</a></li>
+        
+          <li class="class"><a href="../../../classes/Dictionary.html">Dictionary</a></li>
+        
+          <li class="class"><a href="../../../classes/Hash.html">Hash</a></li>
+        
+          <li class="class"><a href="../../../classes/Ini.html">Ini</a></li>
+        
+          <li class="class"><a href="../../../classes/LRUHash.html">LRUHash</a></li>
+        
+          <li class="class"><a href="../../../classes/Memoizer.html">Memoizer</a></li>
+        
+          <li class="class"><a href="../../../classes/OpenCascade.html">OpenCascade</a></li>
+        
+          <li class="class"><a href="../../../classes/OpenHash.html">OpenHash</a></li>
+        
+          <li class="class"><a href="../../../classes/OpenObject.html">OpenObject</a></li>
+        
+          <li class="module"><a href="../../../classes/OpenStructable.html">OpenStructable</a></li>
+        
+          <li class="class"><a href="../../../classes/OrderedHash.html">OrderedHash</a></li>
+        
+          <li class="class"><a href="../../../classes/QueryHash.html">QueryHash</a></li>
+        
+          <li class="class"><a href="../../../classes/SparseArray.html">SparseArray</a></li>
+        
+          <li class="class"><a href="../../../classes/Stash.html">Stash</a></li>
+        
+          <li class="class"><a href="../../../classes/StaticHash.html">StaticHash</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      <!-- METHODS -->
+      <div id="methodindex-section" class="section project-section">
+        <h3 class="section-header">Method Index</h3>
+        <ul>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000085">::[]</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Association</span>
+              <a href="classes/Association.html#M000066">::[]</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000243">::[]</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000075">::[]</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000017">::[]</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000277">::[]</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000181">::[]</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000077">::alpha</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000078">::auto</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Memoizer</span>
+              <a href="classes/Memoizer.html#M000165">::cache</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000278">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000022">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">OpenStructable</span>
+              <a href="classes/OpenStructable.html#M000229">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000007">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">LinkedList::Node</span>
+              <a href="classes/LinkedList/Node.html#M000281">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">LinkedList</span>
+              <a href="classes/LinkedList.html#M000286">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000079">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000089">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Memoizer</span>
+              <a href="classes/Memoizer.html#M000160">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Ini</span>
+              <a href="classes/Ini.html#M000247">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Association</span>
+              <a href="classes/Association.html#M000067">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">OpenHash</span>
+              <a href="classes/OpenHash.html#M000000">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000180">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000076">::new_by</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000088">::new_h</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Ini</span>
+              <a href="classes/Ini.html#M000269">::read_comment_from_file</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Ini</span>
+              <a href="classes/Ini.html#M000260">::read_from_file</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Association</span>
+              <a href="classes/Association.html#M000065">::reference</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Ini</span>
+              <a href="classes/Ini.html#M000276">::to_s</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Memoizer</span>
+              <a href="classes/Memoizer.html#M000166">::uncache</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">Ini</span>
+              <a href="classes/Ini.html#M000274">::write_to_file</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000092">#&</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000094">#*</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000100">#+</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000101">#-</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000036">#<<</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000303">#<<</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000104">#<<</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000246">#<<</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000120">#<<</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000107">#<=></a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Association</span>
+              <a href="classes/Association.html#M000068">#<=></a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenStructable</span>
+              <a href="classes/OpenStructable.html#M000242">#==</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000300">#==</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000086">#==</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000110">#===</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Association::Kernel</span>
+              <a href="classes/Association/Kernel.html#M000073">#>></a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000087">#[]</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000034">#[]</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000111">#[]</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000015">#[]</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Ini</span>
+              <a href="classes/Ini.html#M000250">#[]</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000244">#[]</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LinkedList</span>
+              <a href="classes/LinkedList.html#M000287">#[]</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000307">#[]</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000245">#[]=</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000306">#[]=</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">StaticHash</span>
+              <a href="classes/StaticHash.html#M000236">#[]=</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000035">#[]=</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000042">#[]=</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Ini</span>
+              <a href="classes/Ini.html#M000251">#[]=</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000186">#[]=</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LinkedList</span>
+              <a href="classes/LinkedList.html#M000288">#[]=</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000117">#[]=</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000091">#[]=</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Memoizer</span>
+              <a href="classes/Memoizer.html#M000161">#__self__</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000290">#as_hash</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000126">#assoc</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000027">#assoc</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Association::Kernel</span>
+              <a href="classes/Association/Kernel.html#M000074">#associations</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000127">#at</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000063">#cast</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000047">#clear</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000096">#clear</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000203">#clear</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000130">#collect</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000133">#collect!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000137">#compact</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000140">#compact!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000148">#concat</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000271">#convert_key</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000149">#count</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000299">#default!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000052">#delete</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000097">#delete</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000262">#delete</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LinkedList</span>
+              <a href="classes/LinkedList.html#M000293">#delete</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000188">#delete</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000043">#delete</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000151">#delete</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000153">#delete_at</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenStructable</span>
+              <a href="classes/OpenStructable.html#M000238">#delete_field</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000044">#delete_if</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000189">#delete_if</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000105">#delete_if</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000154">#delete_if</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000059">#delete_oldest</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000125">#dup</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000156">#each</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000102">#each</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LinkedList</span>
+              <a href="classes/LinkedList.html#M000316">#each</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000295">#each</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000009">#each</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000201">#each</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000157">#each_index</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000098">#each_key</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000198">#each_key</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000010">#each_key</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000050">#each_node</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000008">#each_pair</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000103">#each_pair</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000099">#each_value</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000011">#each_value</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000200">#each_value</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000013">#empty?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000142">#empty?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LinkedList</span>
+              <a href="classes/LinkedList.html#M000292">#empty?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000302">#eql?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000158">#eql?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000248">#fetch</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000312">#fetch</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000014">#fetch</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000090">#fetch</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000038">#fetch</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000159">#fill</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000163">#first</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LinkedList</span>
+              <a href="classes/LinkedList.html#M000296">#first</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000136">#first</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000164">#flatten</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000167">#flatten!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000054">#front</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000112">#get</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000143">#has_key?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000253">#has_key?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000019">#has_key?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000041">#has_key?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000024">#has_value?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000023">#include?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000168">#include?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000254">#include?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000185">#initialize_copy</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000279">#initialize_copy</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenStructable</span>
+              <a href="classes/OpenStructable.html#M000230">#initialize_copy</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000169">#insert</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000093">#insert</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000064">#insert_after</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000280">#inspect</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000049">#inspect</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Association</span>
+              <a href="classes/Association.html#M000071">#inspect</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000123">#inspect</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenStructable</span>
+              <a href="classes/OpenStructable.html#M000239">#inspect</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000212">#inspect</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenHash</span>
+              <a href="classes/OpenHash.html#M000004">#inspect</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000109">#invert</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Association</span>
+              <a href="classes/Association.html#M000069">#invert!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000294">#is_a?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000170">#join</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000033">#key</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000020">#key?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000291">#key?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000040">#key?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000252">#key?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000144">#key?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000028">#key_proc</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000029">#key_proc=</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000108">#keys</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000016">#keys</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000193">#keys</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000171">#last</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000138">#last</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LinkedList</span>
+              <a href="classes/LinkedList.html#M000297">#last</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LinkedList</span>
+              <a href="classes/LinkedList.html#M000315">#length</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000139">#length</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000172">#map!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenStructable</span>
+              <a href="classes/OpenStructable.html#M000231">#marshal_dump</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenStructable</span>
+              <a href="classes/OpenStructable.html#M000232">#marshal_load</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000046">#max_size=</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000021">#member?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000256">#member?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000208">#merge</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000265">#merge</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000131">#merge</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000056">#merge!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000264">#merge!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000129">#merge!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000207">#merge!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000308">#merge!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">StaticHash</span>
+              <a href="classes/StaticHash.html#M000240">#merge!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenCascade</span>
+              <a href="classes/OpenCascade.html#M000228">#method_missing</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Memoizer</span>
+              <a href="classes/Memoizer.html#M000162">#method_missing</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000314">#method_missing</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenHash</span>
+              <a href="classes/OpenHash.html#M000006">#method_missing</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">QueryHash</span>
+              <a href="classes/QueryHash.html#M000224">#method_missing</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenStructable</span>
+              <a href="classes/OpenStructable.html#M000233">#new_ostruct_member</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000175">#nitems</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LinkedList</span>
+              <a href="classes/LinkedList.html#M000317">#node_delete</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LinkedList</span>
+              <a href="classes/LinkedList.html#M000320">#node_join</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LinkedList</span>
+              <a href="classes/LinkedList.html#M000318">#node_purge</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000060">#normalize_max</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenHash</span>
+              <a href="classes/OpenHash.html#M000005">#omit!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000080">#order</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000081">#order_by</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000082">#order_by_key</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000083">#order_by_value</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000176">#pack</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000122">#pop</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LinkedList</span>
+              <a href="classes/LinkedList.html#M000304">#pop</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000177">#pop</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000178">#push</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LinkedList</span>
+              <a href="classes/LinkedList.html#M000305">#push</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000121">#push</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000152">#qdelete</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000155">#qdelete_if</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000215">#qsort</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LinkedList</span>
+              <a href="classes/LinkedList.html#M000311">#queue</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000179">#rassoc</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000032">#rassoc</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000182">#reindex</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000183">#reindex!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000113">#reject</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000192">#reject</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000191">#reject!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000114">#reject!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000184">#reject!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000261">#rekey</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Hash</span>
+              <a href="classes/Hash.html#M000275">#rekey</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000051">#rekey</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000257">#rekey!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Hash</span>
+              <a href="classes/Hash.html#M000273">#rekey!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000045">#rekey!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000055">#remove_node</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000084">#reorder</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000211">#replace</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000266">#replace</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000115">#replace</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000057">#replace</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenHash</span>
+              <a href="classes/OpenHash.html#M000001">#respond_to?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Ini</span>
+              <a href="classes/Ini.html#M000255">#restore</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000187">#reverse</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000135">#reverse</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000190">#reverse!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000134">#reverse!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000195">#reverse_each</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000199">#rindex</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000132">#select</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000118">#set</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000204">#shift</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000202">#shift</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000116">#shift</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LinkedList</span>
+              <a href="classes/LinkedList.html#M000298">#shift</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000205">#shuffle</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000206">#shuffle!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000141">#size</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000012">#size</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000209">#slice</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000210">#slice!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000214">#sort</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000216">#sort!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000249">#store</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000039">#store</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000037">#store</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000095">#store</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000310">#store</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000213">#sync_keys!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LinkedList</span>
+              <a href="classes/LinkedList.html#M000313">#to_a</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000217">#to_a</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000282">#to_a</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000145">#to_a</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000197">#to_a</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000218">#to_ary</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Association</span>
+              <a href="classes/Association.html#M000072">#to_ary</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000150">#to_h</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000062">#to_h</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Ini</span>
+              <a href="classes/Ini.html#M000259">#to_h</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000219">#to_h</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">QueryHash</span>
+              <a href="classes/QueryHash.html#M000220">#to_h</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000283">#to_h</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000270">#to_h</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenHash</span>
+              <a href="classes/OpenHash.html#M000002">#to_h</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenHash</span>
+              <a href="classes/OpenHash.html#M000003">#to_hash</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000147">#to_hash</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000268">#to_hash</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000196">#to_hash</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">QueryHash</span>
+              <a href="classes/QueryHash.html#M000223">#to_hash</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000284">#to_hash</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000061">#to_hash</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Hash</span>
+              <a href="classes/Hash.html#M000319">#to_openobject</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000285">#to_openobject</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000289">#to_proc</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Association</span>
+              <a href="classes/Association.html#M000070">#to_s</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000221">#to_s</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000146">#to_s</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000048">#to_s</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Hash</span>
+              <a href="classes/Hash.html#M000272">#to_stash</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000174">#to_yaml</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000173">#to_yaml_type</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000222">#uniq</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000225">#uniq!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LinkedList</span>
+              <a href="classes/LinkedList.html#M000301">#unshift</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000119">#unshift</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000226">#unshift</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000128">#update</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000053">#update</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Ini</span>
+              <a href="classes/Ini.html#M000258">#update</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">StaticHash</span>
+              <a href="classes/StaticHash.html#M000237">#update</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000263">#update</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenStructable</span>
+              <a href="classes/OpenStructable.html#M000234">#update</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OpenObject</span>
+              <a href="classes/OpenObject.html#M000309">#update!</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000025">#value?</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000030">#value_proc</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000031">#value_proc=</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">OrderedHash</span>
+              <a href="classes/OrderedHash.html#M000194">#values</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000018">#values</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Dictionary</span>
+              <a href="classes/Dictionary.html#M000106">#values</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000227">#values_at</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">LRUHash</span>
+              <a href="classes/LRUHash.html#M000026">#values_at</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Stash</span>
+              <a href="classes/Stash.html#M000267">#values_at</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CastingHash</span>
+              <a href="classes/CastingHash.html#M000058">#values_at</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">SparseArray</span>
+              <a href="classes/SparseArray.html#M000124">#|</a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="../../../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://proutils.github.com/webri">WebRI Newfish</a> 1.2
+      <br/><br/>
+    </div>
+  </div>
+
+  <!-- .file-popup was wrapped:
+    <div id="documentation">
+      
+      <div class="description">
+          ... file.description ...
+      </div>
+      
+    </div>
+   So maybe that css is no longer needed.
+   -->
+
+  <div id="documentation">
+    <h1><a href="../../../classes/OpenHash.html">OpenHash</a></h1>
+<p>
+<a href="../../../classes/OpenHash.html">OpenHash</a> is very similar to
+Ruby&#8217;s own OpenStruct, but it offers some useful advantages in that
+it is a true <a href="../../../classes/Hash.html">Hash</a> object.
+</p>
+<p>
+Because <a href="../../../classes/OpenHash.html">OpenHash</a> is a subclass
+of <a href="../../../classes/Hash.html">Hash</a>, it can do everything a <a
+href="../../../classes/Hash.html">Hash</a> can <b>unless</b> a <a
+href="../../../classes/Hash.html">Hash</a> method has been explicity
+exempted for use as an open read/writer via the omit! method.
+</p>
+
+  </div>
+
+</div>
+</body>
+</html>
+

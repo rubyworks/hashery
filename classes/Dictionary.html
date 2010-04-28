@@ -1,0 +1,2423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Class: Dictionary</title>
+
+  
+    <link rel="SHORTCUT ICON" href="../assets/img/class.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="../assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="../assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="../assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      $('#documentation pre').wrapInner('<code></code>');
+      hljs.tabReplace = '    ';
+      hljs.initHighlightingOnLoad('ruby');
+
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind( "click", highlightClickTarget );
+    });
+  </script>
+</head>
+<body class="class">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="../assets/img/class.png" align="absmiddle">&nbsp;
+      
+      <a href="../index.html">Hashery</a>&nbsp;
+      <a href="/">Dictionary</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="../files/lib/hashery/dictionary_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/hashery/dictionary.rb">lib/hashery/dictionary.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        <ul>
+          
+          <!-- why was this class="link" ? -->
+          <li class="class"><a href="Object.html">Object</a></li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="singleton">
+              <a href="#M000075">::[]</a>
+            </li>
+          
+            
+            <li class="singleton">
+              <a href="#M000077">::alpha</a>
+            </li>
+          
+            
+            <li class="singleton">
+              <a href="#M000078">::auto</a>
+            </li>
+          
+            
+            <li class="singleton">
+              <a href="#M000079">::new</a>
+            </li>
+          
+            
+            <li class="singleton">
+              <a href="#M000076">::new_by</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000120">#<<</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000086">#==</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000087">#[]</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000091">#[]=</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000096">#clear</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000097">#delete</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000105">#delete_if</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000125">#dup</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000102">#each</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000098">#each_key</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000103">#each_pair</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000099">#each_value</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000142">#empty?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000090">#fetch</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000136">#first</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000143">#has_key?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000093">#insert</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000123">#inspect</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000109">#invert</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000144">#key?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000108">#keys</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000138">#last</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000139">#length</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000131">#merge</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000129">#merge!</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000080">#order</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000081">#order_by</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000082">#order_by_key</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000083">#order_by_value</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000122">#pop</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000121">#push</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000113">#reject</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000114">#reject!</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000084">#reorder</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000115">#replace</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000135">#reverse</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000134">#reverse!</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000132">#select</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000116">#shift</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000141">#size</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000095">#store</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000145">#to_a</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000150">#to_h</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000147">#to_hash</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000146">#to_s</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000119">#unshift</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000128">#update</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000106">#values</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+      <div id="includes-section" class="section">
+        <h3 class="section-header">Included Modules</h3>
+        <ul class="link-list">
+        
+        
+          <li class="module"><span class="include">Enumerable</span></li>
+        
+        
+        </ul>
+      </div>
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="../files/HISTORY.html">HISTORY</a></li>
+        
+          <li class="file"><a href="../files/LICENSE.html">LICENSE</a></li>
+        
+          <li class="file"><a href="../files/ROADMAP_rdoc.html">ROADMAP.rdoc</a></li>
+        
+          <li class="file"><a href="../files/README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="class"><a href="../classes/Association.html">Association</a></li>
+        
+          <li class="module"><a href="../classes/Association/Kernel.html">Association::Kernel</a></li>
+        
+          <li class="class"><a href="../classes/LinkedList.html">LinkedList</a></li>
+        
+          <li class="class"><a href="../classes/LinkedList/Node.html">LinkedList::Node</a></li>
+        
+          <li class="class"><a href="../classes/CastingHash.html">CastingHash</a></li>
+        
+          <li class="class"><a href="../classes/Dictionary.html">Dictionary</a></li>
+        
+          <li class="class"><a href="../classes/Hash.html">Hash</a></li>
+        
+          <li class="class"><a href="../classes/Ini.html">Ini</a></li>
+        
+          <li class="class"><a href="../classes/LRUHash.html">LRUHash</a></li>
+        
+          <li class="class"><a href="../classes/Memoizer.html">Memoizer</a></li>
+        
+          <li class="class"><a href="../classes/OpenCascade.html">OpenCascade</a></li>
+        
+          <li class="class"><a href="../classes/OpenHash.html">OpenHash</a></li>
+        
+          <li class="class"><a href="../classes/OpenObject.html">OpenObject</a></li>
+        
+          <li class="module"><a href="../classes/OpenStructable.html">OpenStructable</a></li>
+        
+          <li class="class"><a href="../classes/OrderedHash.html">OrderedHash</a></li>
+        
+          <li class="class"><a href="../classes/QueryHash.html">QueryHash</a></li>
+        
+          <li class="class"><a href="../classes/SparseArray.html">SparseArray</a></li>
+        
+          <li class="class"><a href="../classes/Stash.html">Stash</a></li>
+        
+          <li class="class"><a href="../classes/StaticHash.html">StaticHash</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://github.com/proutils/webri">WebRI Redfish</a> 1.2
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+
+      <h1><a href="Dictionary.html">Dictionary</a></h1>
+<p>
+The <a href="Dictionary.html">Dictionary</a> class is a <a
+href="Hash.html">Hash</a> that preserves order. So it has some array-like
+extensions also. By defualt a <a href="Dictionary.html">Dictionary</a>
+object preserves insertion order, but any order can be specified including
+alphabetical key order.
+</p>
+<h2>Usage</h2>
+<p>
+Just require this file and use <a href="Dictionary.html">Dictionary</a>
+instead of <a href="Hash.html">Hash</a>.
+</p>
+<pre>
+  # You can do simply
+  hsh = Dictionary.new
+  hsh['z'] = 1
+  hsh['a'] = 2
+  hsh['c'] = 3
+  p hsh.keys     #=&gt; ['z','a','c']
+
+  # or using Dictionary[] method
+  hsh = Dictionary['z', 1, 'a', 2, 'c', 3]
+  p hsh.keys     #=&gt; ['z','a','c']
+
+  # but this don't preserve order
+  hsh = Dictionary['z'=&gt;1, 'a'=&gt;2, 'c'=&gt;3]
+  p hsh.keys     #=&gt; ['a','c','z']
+
+  # Dictionary has useful extensions: push, pop and unshift
+  p hsh.push('to_end', 15)       #=&gt; true, key added
+  p hsh.push('to_end', 30)       #=&gt; false, already - nothing happen
+  p hsh.unshift('to_begin', 50)  #=&gt; true, key added
+  p hsh.unshift('to_begin', 60)  #=&gt; false, already - nothing happen
+  p hsh.keys                     #=&gt; [&quot;to_begin&quot;, &quot;a&quot;, &quot;c&quot;, &quot;z&quot;, &quot;to_end&quot;]
+  p hsh.pop                      #=&gt; [&quot;to_end&quot;, 15], if nothing remains, return nil
+  p hsh.keys                     #=&gt; [&quot;to_begin&quot;, &quot;a&quot;, &quot;c&quot;, &quot;z&quot;]
+  p hsh.shift                    #=&gt; [&quot;to_begin&quot;, 30], if nothing remains, return nil
+</pre>
+<h2>Usage Notes</h2>
+<ul>
+<li>You can use <a href="Dictionary.html#M000081">order_by</a> to set internal
+sort order.
+
+</li>
+<li>#<< takes a two element [k,v] array and inserts.
+
+</li>
+<li>Use ::auto which creates Dictionay sub-entries as needed.
+
+</li>
+<li>And ::alpha which creates a new <a href="Dictionary.html">Dictionary</a>
+sorted by key.
+
+</li>
+</ul>
+
+    </div>
+
+    <!-- Constants -->
+    
+
+    <!-- Attributes -->
+    
+
+    <!-- Methods -->
+    
+    <div id="public-class-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000075"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">[]</span><span
+            class="method-args">(*args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 74</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">hsh</span> = <span class="ruby-identifier">new</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Hash</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>]
+        <span class="ruby-identifier">hsh</span>.<span class="ruby-identifier">replace</span>(<span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>])
+      <span class="ruby-keyword kw">elsif</span> (<span class="ruby-identifier">args</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">%</span> <span class="ruby-value">2</span>) <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;odd number of elements for Hash&quot;</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-keyword kw">while</span> <span class="ruby-operator">!</span><span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span>
+          <span class="ruby-identifier">hsh</span>[<span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span>] = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">hsh</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="alpha-method" class="method-detail ">
+        <a name="M000077"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">alpha</span><span
+            class="method-args">(*args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alternate to <a href="Dictionary.html#M000079">new</a> which creates a
+dictionary sorted by key.
+</p>
+<pre>
+  d = Dictionary.alpha
+  d[&quot;z&quot;] = 1
+  d[&quot;y&quot;] = 2
+  d[&quot;x&quot;] = 3
+  d  #=&gt; {&quot;x&quot;=&gt;3,&quot;y&quot;=&gt;2,&quot;z&quot;=&gt;2}
+</pre>
+<p>
+This is equivalent to:
+</p>
+<pre>
+  Dictionary.new.order_by { |key,value| key }
+</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="alpha-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 106</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">alpha</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+      <span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>).<span class="ruby-identifier">order_by_key</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="auto-method" class="method-detail ">
+        <a name="M000078"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">auto</span><span
+            class="method-args">(*args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alternate to <a href="Dictionary.html#M000079">new</a> which auto-creates
+sub-dictionaries as needed.
+</p>
+<pre>
+  d = Dictionary.auto
+  d[&quot;a&quot;][&quot;b&quot;][&quot;c&quot;] = &quot;abc&quot;  #=&gt; { &quot;a&quot;=&gt;{&quot;b&quot;=&gt;{&quot;c&quot;=&gt;&quot;abc&quot;}}}
+</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="auto-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 115</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">auto</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-comment cmt">#AutoDictionary.new(*args)</span>
+      <span class="ruby-identifier">leet</span> = <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hsh</span>, <span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hsh</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">new</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">leet</span>) }
+      <span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">leet</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="new-method" class="method-detail ">
+        <a name="M000079"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">new</span><span
+            class="method-args">(*args, &blk)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+New Dictiionary.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="new-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 124</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+    <span class="ruby-ivar">@order</span> = []
+    <span class="ruby-ivar">@order_by</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">blk</span>
+      <span class="ruby-identifier">dict</span> = <span class="ruby-keyword kw">self</span>                                  <span class="ruby-comment cmt"># This ensure autmatic key entry effect the</span>
+      <span class="ruby-identifier">oblk</span> = <span class="ruby-identifier">lambda</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">hsh</span>, <span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">blk</span>[<span class="ruby-identifier">dict</span>,<span class="ruby-identifier">key</span>] }    <span class="ruby-comment cmt"># dictionary rather then just the interal hash.</span>
+      <span class="ruby-ivar">@hash</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">oblk</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-ivar">@hash</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="new-by-method" class="method-detail ">
+        <a name="M000076"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">new_by</span><span
+            class="method-args">(*args, &blk)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Like <a href="Dictionary.html#M000079">new</a> but the block sets the
+order.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="new-by-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 90</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_by</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+      <span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>).<span class="ruby-identifier">order_by</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000120"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">&lt;&lt;</span><span
+            class="method-args">(kv)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 327</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">kv</span>)
+    <span class="ruby-identifier">push</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">kv</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000086"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">==</span><span
+            class="method-args">(hsh2)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+def ==( hsh2 )
+</p>
+<pre>
+  return false if @order != hsh2.order
+  super hsh2
+</pre>
+<p>
+end
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 201</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">==</span>(<span class="ruby-identifier">hsh2</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hsh2</span>.<span class="ruby-identifier">is_a?</span>( <span class="ruby-constant">Dictionary</span> )
+      <span class="ruby-ivar">@order</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">hsh2</span>.<span class="ruby-identifier">order</span> <span class="ruby-operator">&amp;&amp;</span>
+      <span class="ruby-ivar">@hash</span>  <span class="ruby-operator">==</span> <span class="ruby-identifier">hsh2</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-value str">&quot;@hash&quot;</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">false</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000087"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">[]</span><span
+            class="method-args">(k)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 210</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span> <span class="ruby-identifier">k</span>
+    <span class="ruby-ivar">@hash</span>[ <span class="ruby-identifier">k</span> ]
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000091"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">[]=</span><span
+            class="method-args">(k, i=nil, v=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Store operator.
+</p>
+<pre>
+  h[key] = value
+</pre>
+<p>
+Or with additional index.
+</p>
+<pre>
+ h[key,index] = value
+</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 226</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">k</span>, <span class="ruby-identifier">i</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">v</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">v</span>
+      <span class="ruby-identifier">insert</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">store</span>(<span class="ruby-identifier">k</span>,<span class="ruby-identifier">i</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="clear-method" class="method-detail ">
+        <a name="M000096"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">clear</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="clear-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 244</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear</span>
+    <span class="ruby-ivar">@order</span> = []
+    <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">clear</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="delete-method" class="method-detail ">
+        <a name="M000097"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">delete</span><span
+            class="method-args">( key )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="delete-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 249</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span>( <span class="ruby-identifier">key</span> )
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">delete</span>( <span class="ruby-identifier">key</span> )
+    <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">delete</span>( <span class="ruby-identifier">key</span> )
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="delete-if-method" class="method-detail ">
+        <a name="M000105"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">delete_if</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="delete-if-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 270</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_if</span>
+    <span class="ruby-identifier">order</span>.<span class="ruby-identifier">clone</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">delete</span> <span class="ruby-identifier">k</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">k</span>,<span class="ruby-ivar">@hash</span>[<span class="ruby-identifier">k</span>]) }
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="dup-method" class="method-detail ">
+        <a name="M000125"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">dup</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="dup-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 352</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dup</span>
+    <span class="ruby-identifier">a</span> = []
+    <span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">k</span>; <span class="ruby-identifier">a</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">v</span> }
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>[<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>]
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="each-method" class="method-detail ">
+        <a name="M000102"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">each</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="each-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 264</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>
+    <span class="ruby-identifier">order</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span>( <span class="ruby-identifier">k</span>,<span class="ruby-ivar">@hash</span>[<span class="ruby-identifier">k</span>] ) }
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Dictionary.html#M000103">each_pair</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="each-key-method" class="method-detail ">
+        <a name="M000098"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">each_key</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="each-key-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 254</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_key</span>
+    <span class="ruby-identifier">order</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span>( <span class="ruby-identifier">k</span> ) }
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="each-pair-method" class="method-detail method-alias">
+        <a name="M000103"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">each_pair</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alias for <a href="Dictionary.html#M000102">each</a>
+</p>
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="each-value-method" class="method-detail ">
+        <a name="M000099"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">each_value</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="each-value-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 259</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_value</span>
+    <span class="ruby-identifier">order</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span>( <span class="ruby-ivar">@hash</span>[<span class="ruby-identifier">k</span>] ) }
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="empty--method" class="method-detail ">
+        <a name="M000142"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">empty?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="empty--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 401</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">empty?</span>
+    <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="fetch-method" class="method-detail ">
+        <a name="M000090"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">fetch</span><span
+            class="method-args">(k, *a, &b)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="fetch-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 214</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">k</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">a</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span>)
+    <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">k</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">a</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="first-method" class="method-detail ">
+        <a name="M000136"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">first</span><span
+            class="method-args">(x=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="first-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 385</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">first</span>(<span class="ruby-identifier">x</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@hash</span>[<span class="ruby-identifier">order</span>.<span class="ruby-identifier">first</span>] <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">x</span>
+    <span class="ruby-identifier">order</span>.<span class="ruby-identifier">first</span>(<span class="ruby-identifier">x</span>).<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@hash</span>[<span class="ruby-identifier">k</span>] }
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="has-key--method" class="method-detail ">
+        <a name="M000143"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">has_key?</span><span
+            class="method-args">(key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="has-key--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 405</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">key</span>)
+    <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">key</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="insert-method" class="method-detail ">
+        <a name="M000093"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">insert</span><span
+            class="method-args">( i,k,v )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="insert-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 234</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">insert</span>( <span class="ruby-identifier">i</span>,<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span> )
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">insert</span>( <span class="ruby-identifier">i</span>,<span class="ruby-identifier">k</span> )
+    <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">store</span>( <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span> )
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="inspect-method" class="method-detail ">
+        <a name="M000123"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">inspect</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="inspect-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 346</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
+    <span class="ruby-identifier">ary</span> = []
+    <span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ary</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">k</span>.<span class="ruby-identifier">inspect</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;=&gt;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">inspect</span>}
+    <span class="ruby-value str">'{'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;, &quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">'}'</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="invert-method" class="method-detail ">
+        <a name="M000109"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">invert</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="invert-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 285</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">invert</span>
+    <span class="ruby-identifier">hsh2</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">order</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hsh2</span>[<span class="ruby-ivar">@hash</span>[<span class="ruby-identifier">k</span>]] = <span class="ruby-identifier">k</span> }
+    <span class="ruby-identifier">hsh2</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="key--method" class="method-detail ">
+        <a name="M000144"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">key?</span><span
+            class="method-args">(key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="key--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 409</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key?</span>(<span class="ruby-identifier">key</span>)
+    <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">key</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="keys-method" class="method-detail ">
+        <a name="M000108"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">keys</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="keys-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 281</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">keys</span>
+    <span class="ruby-identifier">order</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="last-method" class="method-detail ">
+        <a name="M000138"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">last</span><span
+            class="method-args">(x=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="last-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 391</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">last</span>(<span class="ruby-identifier">x</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@hash</span>[<span class="ruby-identifier">order</span>.<span class="ruby-identifier">last</span>] <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">x</span>
+    <span class="ruby-identifier">order</span>.<span class="ruby-identifier">last</span>(<span class="ruby-identifier">x</span>).<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@hash</span>[<span class="ruby-identifier">k</span>] }
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="length-method" class="method-detail ">
+        <a name="M000139"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">length</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="length-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 396</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">length</span>
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">length</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Dictionary.html#M000141">size</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="merge-method" class="method-detail ">
+        <a name="M000131"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">merge</span><span
+            class="method-args">( hsh2 )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="merge-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 365</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">merge</span>( <span class="ruby-identifier">hsh2</span> )
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">hsh2</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="merge--method" class="method-detail method-alias">
+        <a name="M000129"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">merge!</span><span
+            class="method-args">( hsh2 )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alias for <a href="Dictionary.html#M000128">update</a>
+</p>
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="order-method" class="method-detail ">
+        <a name="M000080"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">order</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="order-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 136</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">order</span>
+    <span class="ruby-identifier">reorder</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@order_by</span>
+    <span class="ruby-ivar">@order</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="order-by-method" class="method-detail ">
+        <a name="M000081"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">order_by</span><span
+            class="method-args">( &block )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Keep dictionary sorted by a specific sort order.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="order-by-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 143</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">order_by</span>( <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span> )
+    <span class="ruby-ivar">@order_by</span> = <span class="ruby-identifier">block</span>
+    <span class="ruby-identifier">order</span>
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="order-by-key-method" class="method-detail ">
+        <a name="M000082"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">order_by_key</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Keep dictionary sorted by key.
+</p>
+<pre>
+  d = Dictionary.new.order_by_key
+  d[&quot;z&quot;] = 1
+  d[&quot;y&quot;] = 2
+  d[&quot;x&quot;] = 3
+  d  #=&gt; {&quot;x&quot;=&gt;3,&quot;y&quot;=&gt;2,&quot;z&quot;=&gt;2}
+</pre>
+<p>
+This is equivalent to:
+</p>
+<pre>
+  Dictionary.new.order_by { |key,value| key }
+</pre>
+<p>
+The initializer <a href="Dictionary.html#M000077">Dictionary#alpha</a> also
+provides this.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="order-by-key-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 163</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">order_by_key</span>
+    <span class="ruby-ivar">@order_by</span> = <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">k</span> }
+    <span class="ruby-identifier">order</span>
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="order-by-value-method" class="method-detail ">
+        <a name="M000083"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">order_by_value</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Keep dictionary sorted by value.
+</p>
+<pre>
+  d = Dictionary.new.order_by_value
+  d[&quot;z&quot;] = 1
+  d[&quot;y&quot;] = 2
+  d[&quot;x&quot;] = 3
+  d  #=&gt; {&quot;x&quot;=&gt;3,&quot;y&quot;=&gt;2,&quot;z&quot;=&gt;2}
+</pre>
+<p>
+This is equivalent to:
+</p>
+<pre>
+  Dictionary.new.order_by { |key,value| value }
+</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="order-by-value-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 181</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">order_by_value</span>
+    <span class="ruby-ivar">@order_by</span> = <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span> }
+    <span class="ruby-identifier">order</span>
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="pop-method" class="method-detail ">
+        <a name="M000122"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">pop</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="pop-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 341</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pop</span>
+    <span class="ruby-identifier">key</span> = <span class="ruby-identifier">order</span>.<span class="ruby-identifier">last</span>
+    <span class="ruby-identifier">key</span> <span class="ruby-value">? </span>[<span class="ruby-identifier">key</span>,<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>)] <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="push-method" class="method-detail ">
+        <a name="M000121"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">push</span><span
+            class="method-args">( k,v )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="push-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 331</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">push</span>( <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span> )
+    <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">include?</span>( <span class="ruby-identifier">k</span> )
+      <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">push</span>( <span class="ruby-identifier">k</span> )
+      <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">store</span>( <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span> )
+      <span class="ruby-keyword kw">true</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">false</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="reject-method" class="method-detail ">
+        <a name="M000113"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">reject</span><span
+            class="method-args">(&block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="reject-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 291</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reject</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">delete_if</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="reject--method" class="method-detail ">
+        <a name="M000114"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">reject!</span><span
+            class="method-args">( &block )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="reject--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 295</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reject!</span>( <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span> )
+    <span class="ruby-identifier">hsh2</span> = <span class="ruby-identifier">reject</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-keyword kw">self</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">hsh2</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">hsh2</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="reorder-method" class="method-detail ">
+        <a name="M000084"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">reorder</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="reorder-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 188</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reorder</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@order_by</span>
+      <span class="ruby-identifier">assoc</span> = <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">collect</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">k</span>,<span class="ruby-ivar">@hash</span>[<span class="ruby-identifier">k</span>]] }.<span class="ruby-identifier">sort_by</span>(<span class="ruby-operator">&amp;</span><span class="ruby-ivar">@order_by</span>)
+      <span class="ruby-ivar">@order</span> = <span class="ruby-identifier">assoc</span>.<span class="ruby-identifier">collect</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">k</span> }
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-ivar">@order</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="replace-method" class="method-detail ">
+        <a name="M000115"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">replace</span><span
+            class="method-args">(hsh2)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="replace-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 300</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">hsh2</span>)
+    <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">hsh2</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Hash</span>
+      <span class="ruby-ivar">@order</span> = <span class="ruby-identifier">hsh2</span>.<span class="ruby-identifier">keys</span>
+      <span class="ruby-ivar">@hash</span>  = <span class="ruby-identifier">hsh2</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-ivar">@order</span> = <span class="ruby-identifier">hsh2</span>.<span class="ruby-identifier">order</span>
+      <span class="ruby-ivar">@hash</span>  = <span class="ruby-identifier">hsh2</span>.<span class="ruby-identifier">hash</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">reorder</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="reverse-method" class="method-detail ">
+        <a name="M000135"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">reverse</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="reverse-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 380</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reverse</span>
+    <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">reverse!</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="reverse--method" class="method-detail ">
+        <a name="M000134"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">reverse!</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="reverse--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 375</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reverse!</span>
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">reverse!</span>
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="select-method" class="method-detail ">
+        <a name="M000132"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">select</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="select-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 369</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">select</span>
+    <span class="ruby-identifier">ary</span> = []
+    <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ary</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span> }
+    <span class="ruby-identifier">ary</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="shift-method" class="method-detail ">
+        <a name="M000116"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">shift</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="shift-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 312</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shift</span>
+    <span class="ruby-identifier">key</span> = <span class="ruby-identifier">order</span>.<span class="ruby-identifier">first</span>
+    <span class="ruby-identifier">key</span> <span class="ruby-value">? </span>[<span class="ruby-identifier">key</span>,<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>)] <span class="ruby-operator">:</span> <span class="ruby-keyword kw">super</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="size-method" class="method-detail method-alias">
+        <a name="M000141"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">size</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alias for <a href="Dictionary.html#M000139">length</a>
+</p>
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="store-method" class="method-detail ">
+        <a name="M000095"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">store</span><span
+            class="method-args">( a,b )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="store-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 239</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">store</span>( <span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span> )
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">push</span>( <span class="ruby-identifier">a</span> ) <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">has_key?</span>( <span class="ruby-identifier">a</span> )
+    <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">store</span>( <span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span> )
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-a-method" class="method-detail ">
+        <a name="M000145"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_a</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="to-a-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 413</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_a</span>
+    <span class="ruby-identifier">ary</span> = []
+    <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ary</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>] }
+    <span class="ruby-identifier">ary</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-h-method" class="method-detail ">
+        <a name="M000150"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_h</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="to-h-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 427</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_h</span>
+    <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-hash-method" class="method-detail ">
+        <a name="M000147"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_hash</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="to-hash-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 423</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_hash</span>
+    <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-s-method" class="method-detail ">
+        <a name="M000146"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="to-s-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 419</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="unshift-method" class="method-detail ">
+        <a name="M000119"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">unshift</span><span
+            class="method-args">( k,v )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="unshift-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 317</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unshift</span>( <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span> )
+    <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">include?</span>( <span class="ruby-identifier">k</span> )
+      <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">unshift</span>( <span class="ruby-identifier">k</span> )
+      <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">store</span>( <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span> )
+      <span class="ruby-keyword kw">true</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">false</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="update-method" class="method-detail ">
+        <a name="M000128"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">update</span><span
+            class="method-args">( hsh2 )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="update-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 358</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>( <span class="ruby-identifier">hsh2</span> )
+    <span class="ruby-identifier">hsh2</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span> }
+    <span class="ruby-identifier">reorder</span>
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Dictionary.html#M000129">merge!</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="values-method" class="method-detail ">
+        <a name="M000106"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">values</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="values-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/dictionary.rb, line 275</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">values</span>
+    <span class="ruby-identifier">ary</span> = []
+    <span class="ruby-identifier">order</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">push</span> <span class="ruby-ivar">@hash</span>[<span class="ruby-identifier">k</span>] }
+    <span class="ruby-identifier">ary</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+

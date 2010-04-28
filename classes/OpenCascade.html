@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Class: OpenCascade</title>
+
+  
+    <link rel="SHORTCUT ICON" href="../assets/img/class.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="../assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="../assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="../assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      $('#documentation pre').wrapInner('<code></code>');
+      hljs.tabReplace = '    ';
+      hljs.initHighlightingOnLoad('ruby');
+
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind( "click", highlightClickTarget );
+    });
+  </script>
+</head>
+<body class="class">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="../assets/img/class.png" align="absmiddle">&nbsp;
+      
+      <a href="../index.html">Hashery</a>&nbsp;
+      <a href="/">OpenCascade</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="../files/lib/hashery/opencascade_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/hashery/opencascade.rb">lib/hashery/opencascade.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        <ul>
+          
+          <!-- why was this class="link" ? -->
+          <li class="class"><a href="OpenObject.html">OpenObject</a></li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="method">
+              <a href="#M000228">#method_missing</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="../files/HISTORY.html">HISTORY</a></li>
+        
+          <li class="file"><a href="../files/LICENSE.html">LICENSE</a></li>
+        
+          <li class="file"><a href="../files/ROADMAP_rdoc.html">ROADMAP.rdoc</a></li>
+        
+          <li class="file"><a href="../files/README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="class"><a href="../classes/Association.html">Association</a></li>
+        
+          <li class="module"><a href="../classes/Association/Kernel.html">Association::Kernel</a></li>
+        
+          <li class="class"><a href="../classes/LinkedList.html">LinkedList</a></li>
+        
+          <li class="class"><a href="../classes/LinkedList/Node.html">LinkedList::Node</a></li>
+        
+          <li class="class"><a href="../classes/CastingHash.html">CastingHash</a></li>
+        
+          <li class="class"><a href="../classes/Dictionary.html">Dictionary</a></li>
+        
+          <li class="class"><a href="../classes/Hash.html">Hash</a></li>
+        
+          <li class="class"><a href="../classes/Ini.html">Ini</a></li>
+        
+          <li class="class"><a href="../classes/LRUHash.html">LRUHash</a></li>
+        
+          <li class="class"><a href="../classes/Memoizer.html">Memoizer</a></li>
+        
+          <li class="class"><a href="../classes/OpenCascade.html">OpenCascade</a></li>
+        
+          <li class="class"><a href="../classes/OpenHash.html">OpenHash</a></li>
+        
+          <li class="class"><a href="../classes/OpenObject.html">OpenObject</a></li>
+        
+          <li class="module"><a href="../classes/OpenStructable.html">OpenStructable</a></li>
+        
+          <li class="class"><a href="../classes/OrderedHash.html">OrderedHash</a></li>
+        
+          <li class="class"><a href="../classes/QueryHash.html">QueryHash</a></li>
+        
+          <li class="class"><a href="../classes/SparseArray.html">SparseArray</a></li>
+        
+          <li class="class"><a href="../classes/Stash.html">Stash</a></li>
+        
+          <li class="class"><a href="../classes/StaticHash.html">StaticHash</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://github.com/proutils/webri">WebRI Redfish</a> 1.2
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+
+      <h1><a href="OpenCascade.html">OpenCascade</a></h1>
+<p>
+<a href="OpenCascade.html">OpenCascade</a> is subclass of <a
+href="OpenObject.html">OpenObject</a>. It differs in a few significant
+ways.
+</p>
+<p>
+The main reason this class is labeled &#8220;cascade&#8221;, every internal
+<a href="Hash.html">Hash</a> is transformed into an <a
+href="OpenCascade.html">OpenCascade</a> dynamically upon access. This makes
+it easy to create &#8220;cascading&#8221; references.
+</p>
+<pre>
+  h = { :x =&gt; { :y =&gt; { :z =&gt; 1 } } }
+  c = OpenCascade[h]
+  c.x.y.z  #=&gt; 1
+</pre>
+<p>
+As soon as you access a node it automatically becomes an <a
+href="OpenCascade.html">OpenCascade</a>.
+</p>
+<pre>
+  c = OpenCascade.new   #=&gt; #&lt;OpenCascade:0x7fac3680ccf0 {}&gt;
+  c.r                   #=&gt; #&lt;OpenCascade:0x7fac368084c0 {}&gt;
+  c.a.b                 #=&gt; #&lt;OpenCascade:0x7fac3680a4f0 {}&gt;
+</pre>
+<p>
+But if you set a node, then that will be it&#8217;s value.
+</p>
+<pre>
+  c.a.b = 4             #=&gt; 4
+</pre>
+<p>
+To query a node without causing the auto-creation of an OpenCasade object,
+use the ?-mark.
+</p>
+<pre>
+  c.a.z?                #=&gt; nil
+</pre>
+<p>
+Finally, you can set a node and get the reciever back using the !-mark.
+</p>
+<pre>
+  c = OpenCascade.new   #=&gt; #&lt;OpenCascade:0x7fac3680ccf0 {}&gt;
+  c.x!(4).y!(3)         #=&gt; #&lt;OpenCascade:0x7fac3680ccf0 {:x=&gt;4, :y=&gt;3}&gt;
+</pre>
+
+    </div>
+
+    <!-- Constants -->
+    
+
+    <!-- Attributes -->
+    
+
+    <!-- Methods -->
+    
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-missing-method" class="method-detail ">
+        <a name="M000228"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">method_missing</span><span
+            class="method-args">(sym, *args, &blk)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="method-missing-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/opencascade.rb, line 59</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">sym</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+    <span class="ruby-identifier">type</span> = <span class="ruby-identifier">sym</span>.<span class="ruby-identifier">to_s</span>[<span class="ruby-value">-1</span>,<span class="ruby-value">1</span>]
+    <span class="ruby-identifier">name</span> = <span class="ruby-identifier">sym</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/[=!?]$/</span>, <span class="ruby-value str">''</span>).<span class="ruby-identifier">to_sym</span>
+    <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">type</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'='</span>
+      <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'!'</span>
+      <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-identifier">key</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+    <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'?'</span>
+      <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">name</span>]
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">key?</span>(<span class="ruby-identifier">name</span>)
+        <span class="ruby-identifier">val</span> = <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">name</span>]
+        <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Hash</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">val</span>
+          <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-constant">OpenCascade</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">val</span>) <span class="ruby-comment cmt">#self.class.new(val)</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">name</span>]
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-constant">OpenCascade</span>.<span class="ruby-identifier">new</span> <span class="ruby-comment cmt">#self.class.new</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+

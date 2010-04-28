@@ -1,0 +1,2992 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Class: SparseArray</title>
+
+  
+    <link rel="SHORTCUT ICON" href="../assets/img/class.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="../assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="../assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="../assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      $('#documentation pre').wrapInner('<code></code>');
+      hljs.tabReplace = '    ';
+      hljs.initHighlightingOnLoad('ruby');
+
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind( "click", highlightClickTarget );
+    });
+  </script>
+</head>
+<body class="class">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="../assets/img/class.png" align="absmiddle">&nbsp;
+      
+      <a href="../index.html">Hashery</a>&nbsp;
+      <a href="/">SparseArray</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="../files/lib/hashery/sparsearray_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/hashery/sparsearray.rb">lib/hashery/sparsearray.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        <ul>
+          
+          <!-- why was this class="link" ? -->
+          <li class="class"><a href="Hash.html">Hash</a></li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="singleton">
+              <a href="#M000085">::[]</a>
+            </li>
+          
+            
+            <li class="singleton">
+              <a href="#M000089">::new</a>
+            </li>
+          
+            
+            <li class="singleton">
+              <a href="#M000088">::new_h</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000092">#&</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000094">#*</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000100">#+</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000101">#-</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000104">#<<</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000107">#<=></a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000110">#===</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000111">#[]</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000117">#[]=</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000126">#assoc</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000127">#at</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000130">#collect</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000133">#collect!</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000137">#compact</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000140">#compact!</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000148">#concat</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000149">#count</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000151">#delete</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000153">#delete_at</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000154">#delete_if</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000156">#each</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000157">#each_index</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000158">#eql?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000159">#fill</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000163">#first</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000164">#flatten</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000167">#flatten!</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000112">#get</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000168">#include?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000169">#insert</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000170">#join</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000171">#last</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000172">#map!</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000175">#nitems</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000176">#pack</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000177">#pop</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000178">#push</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000152">#qdelete</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000155">#qdelete_if</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000215">#qsort</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000179">#rassoc</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000182">#reindex</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000183">#reindex!</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000184">#reject!</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000187">#reverse</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000190">#reverse!</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000195">#reverse_each</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000199">#rindex</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000118">#set</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000202">#shift</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000205">#shuffle</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000206">#shuffle!</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000209">#slice</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000210">#slice!</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000214">#sort</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000216">#sort!</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000217">#to_a</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000218">#to_ary</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000219">#to_h</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000221">#to_s</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000222">#uniq</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000225">#uniq!</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000226">#unshift</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000227">#values_at</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000124">#|</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="../files/HISTORY.html">HISTORY</a></li>
+        
+          <li class="file"><a href="../files/LICENSE.html">LICENSE</a></li>
+        
+          <li class="file"><a href="../files/ROADMAP_rdoc.html">ROADMAP.rdoc</a></li>
+        
+          <li class="file"><a href="../files/README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="class"><a href="../classes/Association.html">Association</a></li>
+        
+          <li class="module"><a href="../classes/Association/Kernel.html">Association::Kernel</a></li>
+        
+          <li class="class"><a href="../classes/LinkedList.html">LinkedList</a></li>
+        
+          <li class="class"><a href="../classes/LinkedList/Node.html">LinkedList::Node</a></li>
+        
+          <li class="class"><a href="../classes/CastingHash.html">CastingHash</a></li>
+        
+          <li class="class"><a href="../classes/Dictionary.html">Dictionary</a></li>
+        
+          <li class="class"><a href="../classes/Hash.html">Hash</a></li>
+        
+          <li class="class"><a href="../classes/Ini.html">Ini</a></li>
+        
+          <li class="class"><a href="../classes/LRUHash.html">LRUHash</a></li>
+        
+          <li class="class"><a href="../classes/Memoizer.html">Memoizer</a></li>
+        
+          <li class="class"><a href="../classes/OpenCascade.html">OpenCascade</a></li>
+        
+          <li class="class"><a href="../classes/OpenHash.html">OpenHash</a></li>
+        
+          <li class="class"><a href="../classes/OpenObject.html">OpenObject</a></li>
+        
+          <li class="module"><a href="../classes/OpenStructable.html">OpenStructable</a></li>
+        
+          <li class="class"><a href="../classes/OrderedHash.html">OrderedHash</a></li>
+        
+          <li class="class"><a href="../classes/QueryHash.html">QueryHash</a></li>
+        
+          <li class="class"><a href="../classes/SparseArray.html">SparseArray</a></li>
+        
+          <li class="class"><a href="../classes/Stash.html">Stash</a></li>
+        
+          <li class="class"><a href="../classes/StaticHash.html">StaticHash</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://github.com/proutils/webri">WebRI Redfish</a> 1.2
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+
+      <h1><a href="SparseArray.html">SparseArray</a></h1>
+<p>
+<a href="SparseArray.html">SparseArray</a> is an implemenation of the Array
+class using only Hashes. Regular Arrays are never used except once to
+delegate the <a href="SparseArray.html#M000176">pack</a> method, (and *args
+parameters of course). <a href="SparseArray.html">SparseArray</a> is almost
+fully compatible with Array. There are still a few missing methods that
+came in with Ruby 1.9 that need to be added, and negative indexes are not
+quite fully supported yet.
+</p>
+<p>
+<a href="SparseArray.html">SparseArray</a> is slower then the built in
+Array class, but not as slow as one might expect, since a <a
+href="Hash.html">Hash</a> is generally faster than an Array. It would
+interesting to see how this would perform if it were written in C.
+</p>
+
+    </div>
+
+    <!-- Constants -->
+    
+
+    <!-- Attributes -->
+    
+
+    <!-- Methods -->
+    
+    <div id="public-class-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000085"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">[]</span><span
+            class="method-args">(*args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 38</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-operator">[]</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-identifier">nha</span> = <span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">args</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">a</span> } <span class="ruby-comment cmt">#.set(nha.length,a) }</span>
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="new-method" class="method-detail ">
+        <a name="M000089"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">new</span><span
+            class="method-args">(i=0,e=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="new-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 50</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">i</span>=<span class="ruby-value">0</span>,<span class="ruby-identifier">e</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">i</span>.<span class="ruby-identifier">times</span> { <span class="ruby-identifier">set</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>,<span class="ruby-identifier">e</span>) }
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="new-h-method" class="method-detail ">
+        <a name="M000088"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">new_h</span><span
+            class="method-args">(hsh)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="new-h-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 44</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new_h</span>(<span class="ruby-identifier">hsh</span>)
+    <span class="ruby-identifier">nha</span> = <span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">replace</span>(<span class="ruby-identifier">hsh</span>)
+    <span class="ruby-comment cmt">#nha.reindex!</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000092"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">&amp;</span><span
+            class="method-args">(ha)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 56</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&amp;</span>(<span class="ruby-identifier">ha</span>)
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ha</span>.<span class="ruby-identifier">has_value?</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) <span class="ruby-keyword kw">and</span> <span class="ruby-operator">!</span><span class="ruby-identifier">nha</span>.<span class="ruby-identifier">has_value?</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>))
+        <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">nha</span>.<span class="ruby-identifier">length</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>))
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000094"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">*</span><span
+            class="method-args">(j)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 66</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">*</span>(<span class="ruby-identifier">j</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">j</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">j</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+      <span class="ruby-identifier">j</span>.<span class="ruby-identifier">times</span> { (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">nha</span>.<span class="ruby-identifier">length</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) } }
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">nha</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000100"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">+</span><span
+            class="method-args">(ha)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 76</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">+</span>(<span class="ruby-identifier">ha</span>)
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">dup</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">ha</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">nha</span>.<span class="ruby-identifier">length</span>,<span class="ruby-identifier">ha</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) }
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000101"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">-</span><span
+            class="method-args">(ha)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 82</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">-</span>(<span class="ruby-identifier">ha</span>)
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">v</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">ha</span>.<span class="ruby-identifier">has_value?</span>(<span class="ruby-identifier">v</span>) }
+    <span class="ruby-comment cmt">#ha.each { |v| nha &lt;&lt; i if !self.include?(v) }</span>
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000104"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">&lt;&lt;</span><span
+            class="method-args">(e)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 89</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">e</span>)
+    <span class="ruby-identifier">set</span>(<span class="ruby-identifier">length</span>,<span class="ruby-identifier">e</span>)
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000107"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">&lt;=&gt;</span><span
+            class="method-args">(ha)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 94</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;=&gt;</span>(<span class="ruby-identifier">ha</span>)
+    (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">ieq</span> = (<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">ha</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>))
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">ieq</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ieq</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">ha</span>.<span class="ruby-identifier">length</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000110"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">===</span><span
+            class="method-args">(ha)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 102</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">===</span>(<span class="ruby-identifier">ha</span>)
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-operator">==</span>(<span class="ruby-identifier">ha</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000111"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">[]</span><span
+            class="method-args">(i,l=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+TODO: Ranges with negative indexes not yet supported.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 110</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">l</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">l</span>
+      <span class="ruby-identifier">i</span> = <span class="ruby-identifier">size</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">i</span> = <span class="ruby-identifier">i</span><span class="ruby-operator">...</span><span class="ruby-identifier">i</span><span class="ruby-operator">+</span><span class="ruby-identifier">l</span>
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Range</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">at</span>(<span class="ruby-identifier">i</span>)
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">i</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">nha</span>.<span class="ruby-identifier">length</span>,<span class="ruby-identifier">get</span>(<span class="ruby-identifier">j</span>)) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">j</span>) }
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="SparseArray.html#M000112">get</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000117"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">[]=</span><span
+            class="method-args">(i,b,c=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 125</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">b</span>,<span class="ruby-identifier">c</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">c</span>
+      <span class="ruby-identifier">rng</span> = (<span class="ruby-constant">Integer</span>(<span class="ruby-identifier">i</span>)<span class="ruby-operator">..</span><span class="ruby-constant">Integer</span>(<span class="ruby-identifier">i</span><span class="ruby-operator">+</span><span class="ruby-identifier">b</span>))
+      <span class="ruby-identifier">b</span> = <span class="ruby-identifier">c</span>
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Range</span>
+      <span class="ruby-identifier">rng</span> = <span class="ruby-identifier">i</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-constant">Integer</span>(<span class="ruby-identifier">i</span>),<span class="ruby-identifier">b</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">b</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">b</span> <span class="ruby-operator">==</span> <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-identifier">rng</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">qdelete</span>(<span class="ruby-identifier">i</span>) }
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">reindex!</span>
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>)
+      <span class="ruby-identifier">j</span> = <span class="ruby-value">0</span>
+      <span class="ruby-identifier">rng</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">b</span>[<span class="ruby-identifier">j</span>]; <span class="ruby-identifier">j</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span> }
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">rng</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">qdelete</span>(<span class="ruby-identifier">i</span>) }
+      <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">rng</span>.<span class="ruby-identifier">fist</span>] = <span class="ruby-identifier">b</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">reindex!</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="SparseArray.html#M000118">set</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="assoc-method" class="method-detail ">
+        <a name="M000126"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assoc</span><span
+            class="method-args">(k)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="assoc-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 154</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assoc</span>(<span class="ruby-identifier">k</span>)
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">k</span> }
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="at-method" class="method-detail ">
+        <a name="M000127"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">at</span><span
+            class="method-args">(i)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="at-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 159</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">at</span>(<span class="ruby-identifier">i</span>)
+    <span class="ruby-identifier">i</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">-1</span>
+    <span class="ruby-identifier">get</span>(<span class="ruby-identifier">i</span>)
+    <span class="ruby-comment cmt">#return nil if i &lt; 0 or i &gt;= self.length</span>
+    <span class="ruby-comment cmt">#return self.fetch(i)</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="collect-method" class="method-detail ">
+        <a name="M000130"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">collect</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="collect-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 172</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">collect</span>
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) }
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="collect--method" class="method-detail ">
+        <a name="M000133"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">collect!</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="collect--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 178</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">collect!</span>
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) }
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">replace</span>(<span class="ruby-identifier">nha</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="SparseArray.html#M000172">map!</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="compact-method" class="method-detail ">
+        <a name="M000137"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">compact</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="compact-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 188</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">compact</span>
+    <span class="ruby-identifier">nha</span>, <span class="ruby-identifier">j</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>, <span class="ruby-value">0</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span>
+        <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">j</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>))
+        <span class="ruby-identifier">j</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="compact--method" class="method-detail ">
+        <a name="M000140"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">compact!</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="compact--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 199</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">compact!</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">has_value?</span>(<span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">nha</span>, <span class="ruby-identifier">j</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>, <span class="ruby-value">0</span>
+      (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span>
+          <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">j</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>))
+          <span class="ruby-identifier">j</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">replace</span>(<span class="ruby-identifier">nha</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="concat-method" class="method-detail ">
+        <a name="M000148"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">concat</span><span
+            class="method-args">(ha)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="concat-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 215</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">concat</span>(<span class="ruby-identifier">ha</span>)
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">ha</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>,<span class="ruby-identifier">ha</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) }
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="count-method" class="method-detail ">
+        <a name="M000149"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">count</span><span
+            class="method-args">(e=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="count-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 220</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">count</span>(<span class="ruby-identifier">e</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-identifier">cnt</span> = <span class="ruby-value">0</span>
+      (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cnt</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) }
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">cnt</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">cnt</span> = <span class="ruby-value">0</span>
+      (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cnt</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">e</span> }
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">cnt</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="delete-method" class="method-detail ">
+        <a name="M000151"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">delete</span><span
+            class="method-args">(e)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="delete-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 237</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">e</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">has_value?</span>(<span class="ruby-identifier">e</span>)
+      <span class="ruby-identifier">qdelete_if</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">e</span> }
+      <span class="ruby-identifier">reindex!</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">e</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="SparseArray.html#M000152">qdelete</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="delete-at-method" class="method-detail ">
+        <a name="M000153"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">delete_at</span><span
+            class="method-args">(i)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="delete-at-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 249</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_at</span>(<span class="ruby-identifier">i</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">i</span>)
+      <span class="ruby-identifier">e</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)
+      <span class="ruby-identifier">qdelete</span>(<span class="ruby-identifier">i</span>)
+      <span class="ruby-identifier">reindex!</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">e</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="delete-if-method" class="method-detail ">
+        <a name="M000154"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">delete_if</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="delete-if-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 264</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_if</span>
+    <span class="ruby-identifier">qdelete_if</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">v</span>) }
+    <span class="ruby-identifier">reindex!</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="SparseArray.html#M000155">qdelete_if</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="each-method" class="method-detail ">
+        <a name="M000156"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">each</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="each-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 269</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) }
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="each-index-method" class="method-detail ">
+        <a name="M000157"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">each_index</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="each-index-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 273</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_index</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">i</span>) }
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="eql--method" class="method-detail ">
+        <a name="M000158"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">eql?</span><span
+            class="method-args">(ha)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+empty? okay as is
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="eql--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 279</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">ha</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">ha</span>.<span class="ruby-identifier">length</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">if</span> (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">all?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>).<span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">ha</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) }
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="fill-method" class="method-detail ">
+        <a name="M000159"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">fill</span><span
+            class="method-args">(f,s=nil,l=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="fill-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 285</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fill</span>(<span class="ruby-identifier">f</span>,<span class="ruby-identifier">s</span>=<span class="ruby-keyword kw">nil</span>,<span class="ruby-identifier">l</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Range</span>)
+      <span class="ruby-identifier">r</span> = <span class="ruby-identifier">s</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">s</span> = <span class="ruby-value">0</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">s</span>
+      <span class="ruby-identifier">l</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">s</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">l</span>
+      <span class="ruby-identifier">r</span> = <span class="ruby-identifier">s</span><span class="ruby-operator">...</span>(<span class="ruby-identifier">s</span><span class="ruby-operator">+</span><span class="ruby-identifier">l</span>)
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">r</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">f</span>) }
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="first-method" class="method-detail ">
+        <a name="M000163"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">first</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="first-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 297</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">first</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">0</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="flatten-method" class="method-detail ">
+        <a name="M000164"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">flatten</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="flatten-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 302</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">flatten</span>
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">sfi</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">sfi</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>) <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">sfi</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>)
+        <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">sfi</span>.<span class="ruby-identifier">flatten</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">nha</span>.<span class="ruby-identifier">length</span>,<span class="ruby-identifier">sfi</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="flatten--method" class="method-detail ">
+        <a name="M000167"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">flatten!</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="flatten--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 315</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">flatten!</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>) <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>) }
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">replace</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">flatten</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="get-method" class="method-detail method-alias">
+        <a name="M000112"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">get</span><span
+            class="method-args">(i,l=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alias for #[]
+</p>
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="include--method" class="method-detail ">
+        <a name="M000168"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">include?</span><span
+            class="method-args">(v)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="include--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 320</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">include?</span>(<span class="ruby-identifier">v</span>)
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">has_value?</span>(<span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="insert-method" class="method-detail ">
+        <a name="M000169"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">insert</span><span
+            class="method-args">(index, *objs)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="insert-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 325</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">insert</span>(<span class="ruby-identifier">index</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">objs</span>)
+    <span class="ruby-identifier">index</span> = <span class="ruby-identifier">size</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">index</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">index</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>
+    <span class="ruby-identifier">tail</span> = <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">index</span><span class="ruby-operator">...</span><span class="ruby-identifier">size</span>]
+    <span class="ruby-identifier">objs</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">obj</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">set</span>(<span class="ruby-identifier">index</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">i</span>, <span class="ruby-identifier">obj</span>)
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">tail</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">obj</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">set</span>(<span class="ruby-identifier">objs</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">index</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">i</span>, <span class="ruby-identifier">obj</span>)
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="join-method" class="method-detail ">
+        <a name="M000170"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">join</span><span
+            class="method-args">(sep='')</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="join-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 340</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">join</span>(<span class="ruby-identifier">sep</span>=<span class="ruby-value str">''</span>)
+    <span class="ruby-identifier">s</span> = <span class="ruby-value str">''</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{self.fetch(i)}#{sep}&quot;</span> }
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-identifier">sep</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="last-method" class="method-detail ">
+        <a name="M000171"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">last</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="last-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 347</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">last</span>
+    <span class="ruby-keyword kw">self</span>[<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="map--method" class="method-detail method-alias">
+        <a name="M000172"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">map!</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alias for <a href="SparseArray.html#M000133">collect!</a>
+</p>
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="nitems-method" class="method-detail ">
+        <a name="M000175"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">nitems</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="nitems-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 357</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">nitems</span>
+    <span class="ruby-identifier">cnt</span> = <span class="ruby-value">0</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cnt</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span> }
+    <span class="ruby-identifier">cnt</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="pack-method" class="method-detail ">
+        <a name="M000176"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">pack</span><span
+            class="method-args">(*args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="pack-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 363</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pack</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">pack</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="pop-method" class="method-detail ">
+        <a name="M000177"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">pop</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="pop-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 371</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pop</span>
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">delete_at</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="push-method" class="method-detail ">
+        <a name="M000178"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">push</span><span
+            class="method-args">(*e)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="push-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 379</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">push</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">e</span>)
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">e</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="qdelete-method" class="method-detail method-alias">
+        <a name="M000152"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">qdelete</span><span
+            class="method-args">(e)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alias for <a href="SparseArray.html#M000151">delete</a>
+</p>
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="qdelete-if-method" class="method-detail method-alias">
+        <a name="M000155"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">qdelete_if</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alias for <a href="SparseArray.html#M000154">delete_if</a>
+</p>
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="qsort-method" class="method-detail ">
+        <a name="M000215"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">qsort</span><span
+            class="method-args">(ha, l, r)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="qsort-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 493</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">qsort</span>(<span class="ruby-identifier">ha</span>, <span class="ruby-identifier">l</span>, <span class="ruby-identifier">r</span>)
+    <span class="ruby-identifier">l_hold</span> = <span class="ruby-identifier">l</span>
+    <span class="ruby-identifier">r_hold</span> = <span class="ruby-identifier">r</span>
+    <span class="ruby-identifier">pivot</span> = <span class="ruby-identifier">ha</span>[<span class="ruby-identifier">l</span>]
+    <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">l</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">r</span>
+      <span class="ruby-identifier">r</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">while</span> (<span class="ruby-identifier">ha</span>[<span class="ruby-identifier">r</span>] <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">pivot</span>) <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">l</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">r</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">l</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">r</span>
+        <span class="ruby-identifier">ha</span>[<span class="ruby-identifier">l</span>] = <span class="ruby-identifier">ha</span>[<span class="ruby-identifier">r</span>]
+        <span class="ruby-identifier">l</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">l</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">while</span> (<span class="ruby-identifier">ha</span>[<span class="ruby-identifier">l</span>] <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">pivot</span>) <span class="ruby-operator">&lt;=</span> <span class="ruby-value">0</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">l</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">r</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">l</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">r</span>
+        <span class="ruby-identifier">ha</span>[<span class="ruby-identifier">r</span>] = <span class="ruby-identifier">ha</span>[<span class="ruby-identifier">l</span>]
+        <span class="ruby-identifier">r</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">ha</span>[<span class="ruby-identifier">l</span>] = <span class="ruby-identifier">pivot</span>
+    <span class="ruby-identifier">pivot</span> = <span class="ruby-identifier">l</span>
+    <span class="ruby-identifier">l</span> = <span class="ruby-identifier">l_hold</span>
+    <span class="ruby-identifier">r</span> = <span class="ruby-identifier">r_hold</span>
+    <span class="ruby-identifier">qsort</span>(<span class="ruby-identifier">ha</span>,<span class="ruby-identifier">l</span>,<span class="ruby-identifier">pivot</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">l</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">pivot</span>
+    <span class="ruby-identifier">qsort</span>(<span class="ruby-identifier">ha</span>,<span class="ruby-identifier">pivot</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>,<span class="ruby-identifier">r</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">r</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">pivot</span>
+    <span class="ruby-identifier">ha</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="rassoc-method" class="method-detail ">
+        <a name="M000179"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">rassoc</span><span
+            class="method-args">(k)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="rassoc-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 383</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rassoc</span>(<span class="ruby-identifier">k</span>)
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">k</span> }
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="reindex-method" class="method-detail ">
+        <a name="M000182"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">reindex</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="reindex-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 388</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reindex</span>
+    <span class="ruby-identifier">nha</span>, <span class="ruby-identifier">j</span>, <span class="ruby-identifier">k</span>, <span class="ruby-identifier">tl</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>
+    <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">k</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">tl</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">j</span>)
+        <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">k</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">j</span>))
+        <span class="ruby-identifier">j</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>; <span class="ruby-identifier">k</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">j</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="reindex--method" class="method-detail ">
+        <a name="M000183"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">reindex!</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="reindex--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 401</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reindex!</span>
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">replace</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">reindex</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="reject--method" class="method-detail ">
+        <a name="M000184"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">reject!</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="reject--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 405</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reject!</span>
+    <span class="ruby-identifier">chg</span>=<span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">qdelete_if</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">r</span>=<span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">v</span>); <span class="ruby-identifier">chg</span>=<span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">r</span>; <span class="ruby-identifier">r</span> }
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">chg</span>
+    <span class="ruby-identifier">reindex!</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="reverse-method" class="method-detail ">
+        <a name="M000187"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">reverse</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+def replace(ha)
+</p>
+<pre>
+  if ha.length &lt; self.length
+    (ha.length..self.length-1).each { |i| self.delete(i) }
+    (0..ha.length-1).each { |i| self.set(i,ha[i]) }
+  end
+</pre>
+<p>
+end
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="reverse-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 419</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reverse</span>
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">set</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span><span class="ruby-operator">-</span><span class="ruby-identifier">i</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) }
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="reverse--method" class="method-detail ">
+        <a name="M000190"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">reverse!</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="reverse--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 425</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reverse!</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">/</span><span class="ruby-value">2</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">ri</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span><span class="ruby-operator">-</span><span class="ruby-identifier">i</span>
+      <span class="ruby-identifier">tmp</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">ri</span>)
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">ri</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>))
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">tmp</span>)
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="reverse-each-method" class="method-detail ">
+        <a name="M000195"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">reverse_each</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="reverse-each-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 435</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reverse_each</span>
+    <span class="ruby-identifier">i</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>
+      <span class="ruby-keyword kw">yield</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>))
+      <span class="ruby-identifier">i</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="rindex-method" class="method-detail ">
+        <a name="M000199"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">rindex</span><span
+            class="method-args">(e)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="rindex-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 443</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rindex</span>(<span class="ruby-identifier">e</span>)
+    <span class="ruby-identifier">i</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-identifier">i</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="set-method" class="method-detail method-alias">
+        <a name="M000118"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">set</span><span
+            class="method-args">(i,b,c=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alias for #[]=
+</p>
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="shift-method" class="method-detail ">
+        <a name="M000202"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">shift</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="shift-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 452</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shift</span>
+    <span class="ruby-identifier">e1</span> = <span class="ruby-keyword kw">self</span>[<span class="ruby-value">0</span>]
+    <span class="ruby-identifier">tl</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+    (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">tl</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">i</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) }
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">delete_at</span>(<span class="ruby-identifier">tl</span>)
+    <span class="ruby-identifier">e1</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="shuffle-method" class="method-detail ">
+        <a name="M000205"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">shuffle</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="shuffle-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 461</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shuffle</span>
+    <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">shuffle!</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="shuffle--method" class="method-detail ">
+        <a name="M000206"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">shuffle!</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="shuffle--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 466</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shuffle!</span>
+    <span class="ruby-identifier">size</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword kw">do</span>
+      <span class="ruby-identifier">a</span> = <span class="ruby-identifier">rand</span>(<span class="ruby-identifier">size</span>).<span class="ruby-identifier">to_i</span>
+      <span class="ruby-identifier">b</span> = <span class="ruby-identifier">rand</span>(<span class="ruby-identifier">size</span>).<span class="ruby-identifier">to_i</span>
+      <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">a</span>], <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">b</span>] = <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">b</span>], <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">a</span>]
+    <span class="ruby-keyword kw">end</span> 
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="slice-method" class="method-detail ">
+        <a name="M000209"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">slice</span><span
+            class="method-args">(*args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="slice-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 477</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">slice</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword kw">self</span>[<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>]
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="slice--method" class="method-detail ">
+        <a name="M000210"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">slice!</span><span
+            class="method-args">(*args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="slice--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 481</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">slice!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-identifier">result</span> = <span class="ruby-keyword kw">self</span>[<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>]
+    <span class="ruby-keyword kw">self</span>[<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>] = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">result</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="sort-method" class="method-detail ">
+        <a name="M000214"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">sort</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="sort-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 487</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sort</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;SparseArray does not currently support sorting with blocks&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">dup</span>
+    <span class="ruby-identifier">qsort</span>(<span class="ruby-identifier">nha</span>,<span class="ruby-value">0</span>,<span class="ruby-identifier">nha</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="sort--method" class="method-detail ">
+        <a name="M000216"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">sort!</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="sort--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 518</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sort!</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;SparseArray does not currently support sorting with blocks&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+    <span class="ruby-identifier">qsort</span>(<span class="ruby-keyword kw">self</span>,<span class="ruby-value">0</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-a-method" class="method-detail ">
+        <a name="M000217"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_a</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="to-a-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 523</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_a</span>
+    <span class="ruby-identifier">a</span> = []
+    (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) }
+    <span class="ruby-identifier">a</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-ary-method" class="method-detail ">
+        <a name="M000218"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_ary</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="to-ary-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 529</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_ary</span>
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-h-method" class="method-detail ">
+        <a name="M000219"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_h</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="to-h-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 533</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_h</span>
+   <span class="ruby-identifier">h</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+   <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span> }
+   <span class="ruby-identifier">h</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-s-method" class="method-detail ">
+        <a name="M000221"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="to-s-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 539</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">join</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="uniq-method" class="method-detail ">
+        <a name="M000222"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">uniq</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="uniq-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 548</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">uniq</span>
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">nha</span>[<span class="ruby-identifier">nha</span>.<span class="ruby-identifier">length</span>] = <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">i</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">nha</span>.<span class="ruby-identifier">has_value?</span>(<span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">i</span>])
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="uniq--method" class="method-detail ">
+        <a name="M000225"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">uniq!</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="uniq--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 557</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">uniq!</span>
+    <span class="ruby-identifier">j</span> = <span class="ruby-value">0</span>
+    (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-keyword kw">self</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">j</span>].<span class="ruby-identifier">has_value?</span>(<span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">i</span>])
+        <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">j</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>] = <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">i</span>]
+        <span class="ruby-identifier">j</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    (<span class="ruby-identifier">j</span><span class="ruby-operator">+</span><span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">qdelete</span>(<span class="ruby-identifier">i</span>) }
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="unshift-method" class="method-detail ">
+        <a name="M000226"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">unshift</span><span
+            class="method-args">(e)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="unshift-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 568</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unshift</span>(<span class="ruby-identifier">e</span>)
+    <span class="ruby-identifier">i</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">i</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>))
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-identifier">i</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-value">0</span>,<span class="ruby-identifier">e</span>)
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="values-at-method" class="method-detail ">
+        <a name="M000227"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">values_at</span><span
+            class="method-args">(*ix)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="values-at-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 579</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">ix</span>)
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">ix</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span>[<span class="ruby-identifier">nha</span>.<span class="ruby-identifier">length</span>] = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">at</span>(<span class="ruby-identifier">i</span>)}
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000124"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">|</span><span
+            class="method-args">(ha)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/sparsearray.rb, line 148</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">|</span>(<span class="ruby-identifier">ha</span>)
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">dup</span>
+    <span class="ruby-identifier">ha</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">v</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">nha</span>.<span class="ruby-identifier">has_value?</span>(<span class="ruby-identifier">v</span>) }
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+

@@ -1,0 +1,1735 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Class: LRUHash</title>
+
+  
+    <link rel="SHORTCUT ICON" href="../assets/img/class.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="../assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="../assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="../assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      $('#documentation pre').wrapInner('<code></code>');
+      hljs.tabReplace = '    ';
+      hljs.initHighlightingOnLoad('ruby');
+
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind( "click", highlightClickTarget );
+    });
+  </script>
+</head>
+<body class="class">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="../assets/img/class.png" align="absmiddle">&nbsp;
+      
+      <a href="../index.html">Hashery</a>&nbsp;
+      <a href="/">LRUHash</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="../files/lib/hashery/lruhash_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/hashery/lruhash.rb">lib/hashery/lruhash.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        <ul>
+          
+          <!-- why was this class="link" ? -->
+          <li class="class"><a href="Object.html">Object</a></li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="singleton">
+              <a href="#M000007">::new</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000015">#[]</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000042">#[]=</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000027">#assoc</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000047">#clear</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000043">#delete</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000044">#delete_if</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000059">#delete_oldest</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000009">#each</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000010">#each_key</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000050">#each_node</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000008">#each_pair</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000011">#each_value</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000013">#empty?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000014">#fetch</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000054">#front</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000019">#has_key?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000024">#has_value?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000023">#include?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000064">#insert_after</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000049">#inspect</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000033">#key</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000020">#key?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000016">#keys</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000046">#max_size=</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000021">#member?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000060">#normalize_max</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000032">#rassoc</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000055">#remove_node</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000012">#size</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000037">#store</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000048">#to_s</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000025">#value?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000018">#values</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000026">#values_at</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+      <div id="includes-section" class="section">
+        <h3 class="section-header">Included Modules</h3>
+        <ul class="link-list">
+        
+        
+          <li class="module"><span class="include">Enumerable</span></li>
+        
+        
+        </ul>
+      </div>
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="../files/HISTORY.html">HISTORY</a></li>
+        
+          <li class="file"><a href="../files/LICENSE.html">LICENSE</a></li>
+        
+          <li class="file"><a href="../files/ROADMAP_rdoc.html">ROADMAP.rdoc</a></li>
+        
+          <li class="file"><a href="../files/README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="class"><a href="../classes/Association.html">Association</a></li>
+        
+          <li class="module"><a href="../classes/Association/Kernel.html">Association::Kernel</a></li>
+        
+          <li class="class"><a href="../classes/LinkedList.html">LinkedList</a></li>
+        
+          <li class="class"><a href="../classes/LinkedList/Node.html">LinkedList::Node</a></li>
+        
+          <li class="class"><a href="../classes/CastingHash.html">CastingHash</a></li>
+        
+          <li class="class"><a href="../classes/Dictionary.html">Dictionary</a></li>
+        
+          <li class="class"><a href="../classes/Hash.html">Hash</a></li>
+        
+          <li class="class"><a href="../classes/Ini.html">Ini</a></li>
+        
+          <li class="class"><a href="../classes/LRUHash.html">LRUHash</a></li>
+        
+          <li class="class"><a href="../classes/Memoizer.html">Memoizer</a></li>
+        
+          <li class="class"><a href="../classes/OpenCascade.html">OpenCascade</a></li>
+        
+          <li class="class"><a href="../classes/OpenHash.html">OpenHash</a></li>
+        
+          <li class="class"><a href="../classes/OpenObject.html">OpenObject</a></li>
+        
+          <li class="module"><a href="../classes/OpenStructable.html">OpenStructable</a></li>
+        
+          <li class="class"><a href="../classes/OrderedHash.html">OrderedHash</a></li>
+        
+          <li class="class"><a href="../classes/QueryHash.html">QueryHash</a></li>
+        
+          <li class="class"><a href="../classes/SparseArray.html">SparseArray</a></li>
+        
+          <li class="class"><a href="../classes/Stash.html">Stash</a></li>
+        
+          <li class="class"><a href="../classes/StaticHash.html">StaticHash</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://github.com/proutils/webri">WebRI Redfish</a> 1.2
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+        <h1>LRUHash</h1>
+      
+
+      <p>
+<a href="Hash.html">Hash</a> with LRU expiry policy. There are at most <a
+href="LRUHash.html#max_size">max_size</a> elements in a <a
+href="LRUHash.html">LRUHash</a>. When adding more elements old elements are
+removed according to LRU policy.
+</p>
+<p>
+by Robert Klemme
+</p>
+
+    </div>
+
+    <!-- Constants -->
+    
+    <div id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt><a name="FETCH">FETCH</a></dt>
+        
+        <dd class="description"></dd>
+        
+      
+        <dt><a name="Node">Node</a></dt>
+        
+        <dd class="description"><p>
+A single node in the doubly linked LRU list of nodes
+</p></dd>
+        
+      
+      </dl>
+    </div>
+    
+
+    <!-- Attributes -->
+    
+    <div id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="max-size-attribute-method" class="method-detail">
+        <a name="max_size"></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">max_size</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p class="missing-docs">(Not documented)</p>
+        
+        </div>
+      </div>
+      
+      <div id="default-attribute-method" class="method-detail">
+        <a name="default"></a>
+        
+        <a name="default="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">default</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p class="missing-docs">(Not documented)</p>
+        
+        </div>
+      </div>
+      
+      <div id="default-proc-attribute-method" class="method-detail">
+        <a name="default_proc"></a>
+        
+        <a name="default_proc="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">default_proc</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p class="missing-docs">(Not documented)</p>
+        
+        </div>
+      </div>
+      
+      <div id="release-proc-attribute-method" class="method-detail">
+        <a name="release_proc"></a>
+        
+        <a name="release_proc="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">release_proc</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p class="missing-docs">(Not documented)</p>
+        
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- Methods -->
+    
+    <div id="public-class-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="new-method" class="method-detail ">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">new</span><span
+            class="method-args">(max_size, default_value = nil, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="new-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 21</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">max_size</span>, <span class="ruby-identifier">default_value</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-ivar">@max_size</span> = <span class="ruby-identifier">normalize_max</span>(<span class="ruby-identifier">max_size</span>)
+    <span class="ruby-ivar">@default</span> = <span class="ruby-identifier">default_value</span>
+    <span class="ruby-ivar">@default_proc</span> = <span class="ruby-identifier">block</span>
+
+    <span class="ruby-ivar">@h</span> = {}
+    <span class="ruby-ivar">@head</span> = <span class="ruby-constant">Node</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@tail</span> = <span class="ruby-identifier">front</span>(<span class="ruby-constant">Node</span>.<span class="ruby-identifier">new</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="M000015"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">[]</span><span
+            class="method-args">(key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 81</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">key</span>)
+    <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">key</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
+      <span class="ruby-ivar">@default_proc</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@default_proc</span>[<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">k</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">default</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail method-alias">
+        <a name="M000042"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">[]=</span><span
+            class="method-args">(key, value)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alias for <a href="LRUHash.html#M000037">store</a>
+</p>
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="assoc-method" class="method-detail ">
+        <a name="M000027"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">assoc</span><span
+            class="method-args">(key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="assoc-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 117</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assoc</span>(<span class="ruby-identifier">key</span>)
+    <span class="ruby-identifier">n</span> = <span class="ruby-ivar">@h</span>[<span class="ruby-identifier">key</span>]
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">n</span>
+      <span class="ruby-identifier">front</span>(<span class="ruby-identifier">n</span>)
+      [<span class="ruby-identifier">n</span>.<span class="ruby-identifier">key</span>, <span class="ruby-identifier">n</span>.<span class="ruby-identifier">value</span>]
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="clear-method" class="method-detail ">
+        <a name="M000047"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">clear</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="clear-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 184</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear</span>
+    <span class="ruby-keyword kw">until</span> <span class="ruby-identifier">empty?</span>
+      <span class="ruby-identifier">delete_oldest</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="delete-method" class="method-detail ">
+        <a name="M000043"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">delete</span><span
+            class="method-args">(key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="delete-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 164</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>)
+    <span class="ruby-identifier">n</span> = <span class="ruby-ivar">@h</span>[<span class="ruby-identifier">key</span>] <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">remove_node</span>(<span class="ruby-identifier">n</span>).<span class="ruby-identifier">value</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="delete-if-method" class="method-detail ">
+        <a name="M000044"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">delete_if</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="delete-if-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 168</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_if</span>
+    <span class="ruby-identifier">each_node</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">remove_node</span> <span class="ruby-identifier">n</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">key</span>, <span class="ruby-identifier">n</span>.<span class="ruby-identifier">value</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="each-method" class="method-detail method-alias">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">each</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alias for <a href="LRUHash.html#M000008">each_pair</a>
+</p>
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="each-key-method" class="method-detail ">
+        <a name="M000010"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">each_key</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="each-key-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 43</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_key</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-identifier">each_node</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">key</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">enum_for</span> <span class="ruby-identifier">:each_key</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="each-pair-method" class="method-detail ">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">each_pair</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="each-pair-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 31</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_pair</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-identifier">each_node</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">yield</span> [<span class="ruby-identifier">n</span>.<span class="ruby-identifier">key</span>, <span class="ruby-identifier">n</span>.<span class="ruby-identifier">value</span>]
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">enum_for</span> <span class="ruby-identifier">:each_pair</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="LRUHash.html#M000009">each</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="each-value-method" class="method-detail ">
+        <a name="M000011"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">each_value</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="each-value-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 53</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_value</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-identifier">each_node</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">value</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">enum_for</span> <span class="ruby-identifier">:each_value</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="empty--method" class="method-detail ">
+        <a name="M000013"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">empty?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="empty--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 67</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">empty?</span>
+    <span class="ruby-ivar">@head</span>.<span class="ruby-identifier">succ</span>.<span class="ruby-identifier">equal?</span> <span class="ruby-ivar">@tail</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="fetch-method" class="method-detail ">
+        <a name="M000014"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">fetch</span><span
+            class="method-args">(key, &b)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="fetch-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 71</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">key</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span>)
+    <span class="ruby-identifier">n</span> = <span class="ruby-ivar">@h</span>[<span class="ruby-identifier">key</span>]
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">n</span>
+      <span class="ruby-identifier">front</span>(<span class="ruby-identifier">n</span>).<span class="ruby-identifier">value</span>
+    <span class="ruby-keyword kw">else</span>
+      (<span class="ruby-identifier">b</span> <span class="ruby-operator">||</span> <span class="ruby-constant">FETCH</span>)[<span class="ruby-identifier">key</span>]
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="has-key--method" class="method-detail ">
+        <a name="M000019"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">has_key?</span><span
+            class="method-args">(key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="has-key--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 95</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">key</span>)
+    <span class="ruby-ivar">@h</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">key</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="LRUHash.html#M000020">key?</a>, <a href="LRUHash.html#M000021">member?</a>, <a href="LRUHash.html#M000023">include?</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="has-value--method" class="method-detail ">
+        <a name="M000024"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">has_value?</span><span
+            class="method-args">(value)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="has-value--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 103</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_value?</span>(<span class="ruby-identifier">value</span>)
+    <span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">eql?</span> <span class="ruby-identifier">v</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">false</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="LRUHash.html#M000025">value?</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="include--method" class="method-detail method-alias">
+        <a name="M000023"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">include?</span><span
+            class="method-args">(key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alias for <a href="LRUHash.html#M000019">has_key?</a>
+</p>
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="inspect-method" class="method-detail method-alias">
+        <a name="M000049"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">inspect</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alias for <a href="LRUHash.html#M000048">to_s</a>
+</p>
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="key-method" class="method-detail ">
+        <a name="M000033"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">key</span><span
+            class="method-args">(value)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="key-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 136</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key</span>(<span class="ruby-identifier">value</span>)
+    <span class="ruby-identifier">pair</span> = <span class="ruby-identifier">rassoc</span>(<span class="ruby-identifier">value</span>) <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">pair</span>.<span class="ruby-identifier">first</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="key--method" class="method-detail method-alias">
+        <a name="M000020"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">key?</span><span
+            class="method-args">(key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alias for <a href="LRUHash.html#M000019">has_key?</a>
+</p>
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="keys-method" class="method-detail ">
+        <a name="M000016"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">keys</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="keys-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 87</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">keys</span>
+    <span class="ruby-ivar">@h</span>.<span class="ruby-identifier">keys</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="max-size--method" class="method-detail ">
+        <a name="M000046"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">max_size=</span><span
+            class="method-args">(limit)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="max-size--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 174</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">max_size=</span>(<span class="ruby-identifier">limit</span>)
+    <span class="ruby-identifier">limit</span> = <span class="ruby-identifier">normalize_max</span>(<span class="ruby-identifier">limit</span>)
+
+    <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">limit</span>
+      <span class="ruby-identifier">delete_oldest</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-ivar">@max_size</span> = <span class="ruby-identifier">limit</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="member--method" class="method-detail method-alias">
+        <a name="M000021"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">member?</span><span
+            class="method-args">(key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alias for <a href="LRUHash.html#M000019">has_key?</a>
+</p>
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="rassoc-method" class="method-detail ">
+        <a name="M000032"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">rassoc</span><span
+            class="method-args">(value)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="rassoc-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 126</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rassoc</span>(<span class="ruby-identifier">value</span>)
+    <span class="ruby-identifier">each_node</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">eql?</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">value</span>
+        <span class="ruby-identifier">front</span>(<span class="ruby-identifier">n</span>)
+        <span class="ruby-keyword kw">return</span> [<span class="ruby-identifier">n</span>.<span class="ruby-identifier">key</span>, <span class="ruby-identifier">n</span>.<span class="ruby-identifier">value</span>]
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">nil</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="size-method" class="method-detail ">
+        <a name="M000012"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">size</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="size-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 63</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">size</span>
+    <span class="ruby-ivar">@h</span>.<span class="ruby-identifier">size</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="store-method" class="method-detail ">
+        <a name="M000037"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">store</span><span
+            class="method-args">(key, value)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="store-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 140</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">store</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+    <span class="ruby-comment cmt"># same optimization as in Hash</span>
+    <span class="ruby-identifier">key</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">freeze</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">String</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">key</span>.<span class="ruby-identifier">frozen?</span>
+
+    <span class="ruby-identifier">n</span> = <span class="ruby-ivar">@h</span>[<span class="ruby-identifier">key</span>]
+
+    <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">n</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">max_size</span>
+        <span class="ruby-comment cmt"># reuse node to optimize memory usage</span>
+        <span class="ruby-identifier">n</span> = <span class="ruby-identifier">delete_oldest</span>
+        <span class="ruby-identifier">n</span>.<span class="ruby-identifier">key</span> = <span class="ruby-identifier">key</span>
+        <span class="ruby-identifier">n</span>.<span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">n</span> = <span class="ruby-constant">Node</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-ivar">@h</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">n</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">front</span>(<span class="ruby-identifier">n</span>).<span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="LRUHash.html#M000042">[]=</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="to-s-method" class="method-detail ">
+        <a name="M000048"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="to-s-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 192</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+    <span class="ruby-identifier">s</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">each_pair</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> (<span class="ruby-identifier">s</span> <span class="ruby-value">? </span>(<span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">', '</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">s</span> = <span class="ruby-value str">'{'</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'=&gt;'</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_s</span>}
+    <span class="ruby-identifier">s</span> <span class="ruby-value">? </span>(<span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'}'</span>) <span class="ruby-operator">:</span> <span class="ruby-value str">'{}'</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="LRUHash.html#M000049">inspect</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="value--method" class="method-detail method-alias">
+        <a name="M000025"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">value?</span><span
+            class="method-args">(value)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Alias for <a href="LRUHash.html#M000024">has_value?</a>
+</p>
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="values-method" class="method-detail ">
+        <a name="M000018"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">values</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="values-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 91</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">values</span>
+    <span class="ruby-ivar">@h</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">value</span>}
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="values-at-method" class="method-detail ">
+        <a name="M000026"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">values_at</span><span
+            class="method-args">(*key_list)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="values-at-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 113</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">key_list</span>)
+    <span class="ruby-identifier">key_list</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>]}
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="private-instance-method-details" class="method-section section">
+      <h3 class="section-header">Private Instance Methods</h3>
+
+    
+      <div id="delete-oldest-method" class="method-detail ">
+        <a name="M000059"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">delete_oldest</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+remove the oldest node returning the node
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="delete-oldest-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 230</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_oldest</span>
+    <span class="ruby-identifier">n</span> = <span class="ruby-ivar">@tail</span>.<span class="ruby-identifier">pred</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Cannot delete from empty hash&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@head</span>.<span class="ruby-identifier">equal?</span> <span class="ruby-identifier">n</span>
+    <span class="ruby-identifier">remove_node</span> <span class="ruby-identifier">n</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="each-node-method" class="method-detail ">
+        <a name="M000050"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">each_node</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+iterate nodes
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="each-node-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 203</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_node</span>
+    <span class="ruby-identifier">n</span> = <span class="ruby-ivar">@head</span>.<span class="ruby-identifier">succ</span>
+
+    <span class="ruby-keyword kw">until</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">equal?</span> <span class="ruby-ivar">@tail</span>
+      <span class="ruby-identifier">succ</span> = <span class="ruby-identifier">n</span>.<span class="ruby-identifier">succ</span>
+      <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">n</span>
+      <span class="ruby-identifier">n</span> = <span class="ruby-identifier">succ</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="front-method" class="method-detail ">
+        <a name="M000054"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">front</span><span
+            class="method-args">(node)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+move node to front
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="front-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 216</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">front</span>(<span class="ruby-identifier">node</span>)
+    <span class="ruby-identifier">node</span>.<span class="ruby-identifier">insert_after</span>(<span class="ruby-ivar">@head</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="insert-after-method" class="method-detail ">
+        <a name="M000064"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">insert_after</span><span
+            class="method-args">(node)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="insert-after-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 257</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">insert_after</span>(<span class="ruby-identifier">node</span>)
+      <span class="ruby-identifier">raise</span> <span class="ruby-value str">'Cannot insert after self'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">equal?</span> <span class="ruby-identifier">node</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">succ</span>.<span class="ruby-identifier">equal?</span> <span class="ruby-keyword kw">self</span>
+
+      <span class="ruby-identifier">unlink</span>
+
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">succ</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">succ</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">pred</span> = <span class="ruby-identifier">node</span>
+
+      <span class="ruby-identifier">node</span>.<span class="ruby-identifier">succ</span>.<span class="ruby-identifier">pred</span> = <span class="ruby-keyword kw">self</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">succ</span>
+      <span class="ruby-identifier">node</span>.<span class="ruby-identifier">succ</span> = <span class="ruby-keyword kw">self</span>
+
+      <span class="ruby-keyword kw">self</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="normalize-max-method" class="method-detail ">
+        <a name="M000060"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">normalize_max</span><span
+            class="method-args">(n)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Normalize the argument in order to be usable as <a
+href="LRUHash.html#max_size">max_size</a> criterion is that n.to_i must be
+an Integer and it must be larger than zero.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="normalize-max-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 239</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">normalize_max</span>(<span class="ruby-identifier">n</span>)
+    <span class="ruby-identifier">n</span> = <span class="ruby-identifier">n</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">'Invalid max_size: %p'</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">n</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">Integer</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+    <span class="ruby-identifier">n</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="remove-node-method" class="method-detail ">
+        <a name="M000055"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">remove_node</span><span
+            class="method-args">(node)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+remove the node and invoke <a
+href="LRUHash.html#release_proc">release_proc</a> if set
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="remove-node-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/hashery/lruhash.rb, line 222</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_node</span>(<span class="ruby-identifier">node</span>)
+    <span class="ruby-identifier">n</span> = <span class="ruby-ivar">@h</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">node</span>.<span class="ruby-identifier">key</span>)
+    <span class="ruby-identifier">n</span>.<span class="ruby-identifier">unlink</span>
+    <span class="ruby-identifier">release_proc</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">release_proc</span>[<span class="ruby-identifier">n</span>.<span class="ruby-identifier">key</span>, <span class="ruby-identifier">n</span>.<span class="ruby-identifier">value</span>]
+    <span class="ruby-identifier">n</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+
