@@ -13,9 +13,9 @@ specifically for them. Hence the "Facets" Hashery.
 
 Included in this collection are the widely used OrderedHash, 
 the related but more featured Dictionary class, a number
-of _open_ classes, similiar to the standard OpenStruct, 
+of _open_ classes, similar to the standard OpenStruct, 
 plus a few variations of the standard Hash and a few
-other ymuuy morsals.
+other yummy morsels.
 
 
 == RELEASE NOTES
@@ -43,11 +43,11 @@ via {Ruby Setup}[http://proutils.github.com/setup].
 
 Copyright (c) 2005, 2010 Thomas Sawyer
 
-This library is ditributed under the terms of the MIT license.
+This library is distributed under the terms of the MIT license.
 
 See LICENSE file for details.
 
-Some libaries incldued in the Hashery have special copyrights
+Some libraries included in the Hashery have special copyrights
 attributing specific authors. Please see each file for details.
 
 Contributing authors include:
