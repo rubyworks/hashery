@@ -63,7 +63,7 @@ class OpenCascade < OpenObject
     when '='
       self[name] = args.first
     when '!'
-      @hash.__send__(key, *args, &blk)
+      @hash.__send__(name, *args, &blk)
     when '?'
       self[name]
     else
