@@ -41,9 +41,19 @@ via {Ruby Setup}[http://proutils.github.com/setup].
 
 == LICENSE
 
-Copyright (c) 2005,2010 Thomas Sawyer
+Copyright (c) 2005, 2010 Thomas Sawyer
 
 This library is ditributed under the terms of the MIT license.
 
 See LICENSE file for details.
+
+Some libaries incldued in the Hashery have special copyrights
+attributing specific authors. Please see each file for details.
+
+Contributing authors include:
+
+* Robert Klemme
+* Jan Molic
+* George Moschovitis
+* Jeena Paradies
 
