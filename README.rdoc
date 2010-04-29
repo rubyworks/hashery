@@ -52,8 +52,10 @@ attributing specific authors. Please see each file for details.
 
 Contributing authors include:
 
+* Kirk Haines
 * Robert Klemme
 * Jan Molic
 * George Moschovitis
 * Jeena Paradies
+* Erik Veenstra
 
