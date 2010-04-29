@@ -1,24 +1,3 @@
-#--
-# SparseArray
-#
-# Copyright (c) 2004,2005 Thomas Sawyer
-#
-# Ruby License
-#
-# This module is free software. You may use, modify, and/or redistribute this
-# software under the same terms as Ruby.
-#
-# This program is distributed in the hope that it will be useful, but WITHOUT
-# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-# FOR A PARTICULAR PURPOSE.
-#
-# ==========================================================================
-# Revision History ::
-# --------------------------------------------------------------------------
-#  04.09    Trans    * 99% Compatible with Array
-# ==========================================================================
-#++
-
 # = SparseArray
 #
 # SparseArray is an implemenation of the Array class using only Hashes.
@@ -28,17 +7,29 @@
 # Ruby 1.9 that need to be added, and negative indexes are not quite fully
 # supported yet.
 #
-# SparseArray is slower then the built in Array class, but not as slow
-# as one might expect, since a Hash is generally faster than an Array.
-# It would interesting to see how this would perform if it were 
-# written in C.
+# Benchmarks comparing Ruby 1.6 circa 2004 compared to Ruby 1.8.7 
+# circa 2010, show that Ruby's Array implementation has improved quite
+# a bit. Where as Array was about 2-4 times faster than SparseArray in 2004,
+# it is now over 10x faster, and able to handle large sparse arrays quite
+# easily. Though surely SparseArray could still be improved, <b>SparseArray
+# is little more than an interesting novelty at this point</b>, as opposed
+# to a useful class, but we will keep her nonetheless for simple interests
+# sake.
+# 
+# NOTE: SparseArray is also the first piece of code I used TDD to create.
 #
+# Copyright (c) 2004 Thomas Sawyer
+#
+#--
+# TODO: Add auto-array features if needed (see work/autoarray).
+#++
+
 class SparseArray < Hash
 
   def self.[](*args)
-    nha = new
-    args.each { |a| nha << a } #.set(nha.length,a) }
-    nha
+    s = new
+    args.each{ |e| s << e }
+    s
   end
 
   def self.new_h(hsh)
@@ -267,11 +258,11 @@ class SparseArray < Hash
   end
 
   def each
-    (0...self.length).each { |i| yield(self.fetch(i)) }
+    (0...self.length).each{ |i| yield(get(i)) }
   end
 
   def each_index
-    (0...self.length).each { |i| yield(i) }
+    (0...self.length).each{ |i| yield(i) }
   end
 
   # empty? okay as is

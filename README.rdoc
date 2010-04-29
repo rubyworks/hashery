@@ -1,4 +1,4 @@
-= Facets Hashery
+= Hashery
 
 * home: http://rubyworks.github.com/hashery
 * work: http://github.com/rubyworks/hashery
