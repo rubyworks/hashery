@@ -1,5 +1,26 @@
 = RELEASE HISTORY
 
+== 1.2.0 // 2010-06-04
+
+This release makes two signifficant changes to the Hashery.
+First, we have a new shiny library called FuzzyHash by
+Joshua Hull. It's a cool idea that allows hash keys to be
+regular expressions. Secondly, OpenCascade is now a subclass
+of OpenHash rather than OpenObject (to go along with the
+changes of the last release), and it now support cascading
+within Arrays.
+
+Changes:
+
+* 1 New Library
+
+  * FuzzyHash by Joshua Hull
+
+* 1 Major Enhancement
+
+  * OpenCascade subclasses OpenHash and handles Array cascading.
+
+
 == 1.1.0 // 2010-04-28
 
 A follow-up release of Hashery that adds two new libraries:
@@ -34,3 +55,4 @@ diverge to target slightly different use cases.
 Changes:
 
 * Happy Birthday!
+
