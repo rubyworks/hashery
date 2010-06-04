@@ -29,6 +29,13 @@ object, use the ?-mark.
 
    c.a.z?.assert == nil
 
+OpenCascade also transforms Hashes within Arrays.
+
+  h = { :x=>[ {:a=>1}, {:a=>2} ], :y=>1 }
+  c = OpenCascade[h]
+  c.x.first.a.assert == 1
+  c.x.last.a.assert == 2
+
 Like OpenObject, OpenCascade allows you to insert entries as array
 pairs.
 

@@ -1,7 +1,4 @@
-# OpenCascade Copyright (c) 2006 Thomas Sawyer
-
-require 'hashery/openobject'
-#require 'facets/boolean' # bool
+require 'hashery/openhash'
 #require 'facets/nullclass'
 
 # = OpenCascade
@@ -32,6 +29,13 @@ require 'hashery/openobject'
 #
 #   c.a.z?                #=> nil
 #
+# OpenCascade also transforms Hashes within Arrays.
+#
+#  h = { :x=>[ {:a=>1}, {:a=>2} ], :y=>1 }
+#  c = OpenCascade[h]
+#  c.x.first.a.assert == 1
+#  c.x.last.a.assert == 2
+#
 # Finally, you can set a node and get the reciever back using
 # the !-mark.
 #
@@ -54,8 +58,9 @@ require 'hashery/openobject'
 # So be sure to take that into account.
 #++
 
-class OpenCascade < OpenObject
+class OpenCascade < OpenHash
 
+  #
   def method_missing(sym, *args, &blk)
     type = sym.to_s[-1,1]
     name = sym.to_s.gsub(/[=!?]$/, '').to_sym
@@ -63,21 +68,32 @@ class OpenCascade < OpenObject
     when '='
       self[name] = args.first
     when '!'
-      @hash.__send__(name, *args, &blk)
+      #@hash.__send__(name, *args, &blk)
+      __send__(name, *args, &blk)
     when '?'
       self[name]
     else
       if key?(name)
-        val = self[name]
-        if Hash === val
-          self[name] = OpenCascade.new(val) #self.class.new(val)
-        else
-          self[name]
-        end
+        self[name] = transform_entry(self[name])
       else
         self[name] = OpenCascade.new #self.class.new
       end
     end
   end
 
+  private
+
+    #
+    def transform_entry(entry)
+      case entry
+      when Hash
+        OpenCascade.new(entry) #self.class.new(val)
+      when Array
+        entry.map{ |e| transform_entry(e) }
+      else
+        entry
+      end
+    end
+
 end
+
