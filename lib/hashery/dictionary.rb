@@ -1,24 +1,3 @@
-# = Dictionary.rb
-#
-# Copyright (c) 2005, 2009 Jan Molic, Thomas Sawyer
-#
-# Ruby License
-#
-# This module is free software. You may use, modify, and/or redistribute this
-# software under the same terms as Ruby.
-#
-# This program is distributed in the hope that it will be useful, but WITHOUT
-# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-# FOR A PARTICULAR PURPOSE.
-#
-# == Acknowledgments
-#
-# * Andrew Johnson (merge, to_a, inspect, shift and Hash[])
-# * Jeff Sharpe    (reverse and reverse!)
-# * Thomas Leitner (has_key? and key?)
-#
-# Ported from OrderHash 2.0, Copyright (c) 2005 Jan Molic
-
 # = Dictionary
 #
 # The Dictionary class is a Hash that preserves order.
@@ -62,6 +41,18 @@
 # * Use ::auto which creates Dictionay sub-entries as needed.
 # * And ::alpha which creates a new Dictionary sorted by key.
 #
+# == Acknowledgments
+#
+# Dictionary is a ported of OrderHash 2.0 Copyright (c) 2005 Jan Molic.
+#
+# People who have contributed to this class since then include:
+#
+# * Andrew Johnson (merge, to_a, inspect, shift and Hash[])
+# * Jeff Sharpe    (reverse and reverse!)
+# * Thomas Leitner (has_key? and key?)
+#
+# Copyright (c) 2005, 2009 Jan Molic, Thomas Sawyer
+
 class Dictionary
 
   include Enumerable

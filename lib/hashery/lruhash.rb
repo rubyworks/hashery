@@ -1,12 +1,11 @@
-# LRU based Hash
-
 require 'enumerator'
 
 # Hash with LRU expiry policy.  There are at most max_size elements in a
 # LRUHash.  When adding more elements old elements are removed according
 # to LRU policy.
 #
-# by Robert Klemme
+# http://github.com/rklemme/muppet-laboratories/blob/master/lib/lruhash.rb
+# Copyright (c) 2010 Robert Klemme
 
 class LRUHash
 
