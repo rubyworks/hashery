@@ -16,6 +16,18 @@ class OpenHash < Hash
   end
 
   #
+  def <<(x)
+    case x
+    when Hash
+      update(x)
+    when Array
+      x.each_slice(2) do |(k,v)|
+        self[k] = v
+      end
+    end
+  end
+
+  #
   def respond_to?(name)
     key?(name.to_sym) || super(name)
   end
