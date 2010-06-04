@@ -53,6 +53,7 @@ attributing specific authors. Please see each file for details.
 Contributing authors include:
 
 * Kirk Haines
+* Joshua Hull
 * Robert Klemme
 * Jan Molic
 * George Moschovitis
