@@ -23,9 +23,13 @@ description:
   OpenStruct and a few variations on the standard Hash.
 
 resources:
-  homepage    : http://rubyworks.github.com/hashery
-  development : http://github.com/rubyworks/hashery
-  repository  : git://github.com/rubyworks/hashery.git
+  home  : http://rubyworks.github.com/hashery
+  code  : http://github.com/rubyworks/hashery
+  mail  : http://groups.google.com/group/rubyworks-mailinglist
+  api   : http://rubyworks.github.com/hashery/rdoc
+  host  : http://rubygems.org/gems/hashery
+  wiki  : http://wiki.github.com/rubyworks/hashery
+  repo  : git://github.com/rubyworks/hashery.git
 
 copyright:
   Copyright (c) 2010 Thomas Sawyer

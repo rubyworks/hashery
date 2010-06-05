@@ -1,0 +1,14 @@
+---
+font : 'sans serif, helvetica'
+
+size : '16px'
+
+color: '#EE6600'
+
+menu:
+  host: Rubygem
+  mail: Mailing List
+  wiki: User Guide
+  api : API Guide
+  code: Development
+
