@@ -1,8 +1,5 @@
 /* ID STYLES */
 
-
-
-
 /* LAYOUT */
 
 /* #header */
@@ -40,7 +37,7 @@
 #doc { font-family: sans serif, helvetica; font-weight: bold; line-height: 150%; padding-right: 20px; }
 #doc a { color: #773300; }
 #doc a:hover { }
-#doc p { font-weight: bold; font-size: 150%; }
+#doc p { font-weight: normal; font-size: 140%; }
 #doc h2 { color: #773300; border-color: #F7B380; }
 #doc h3 { border-color: #F7B380; }
 
