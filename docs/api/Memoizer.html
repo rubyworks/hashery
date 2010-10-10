@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Class: Memoizer</title>
+
+  
+    <link rel="SHORTCUT ICON" href="./assets/icon/class.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="./assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="./assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="./assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      $('#documentation pre').wrapInner('<code></code>');
+      hljs.tabReplace = '    ';
+      hljs.initHighlightingOnLoad('ruby');
+
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind( "click", highlightClickTarget );
+    });
+  </script>
+</head>
+<body class="class">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="./assets/icon/class.png" align="absmiddle">&nbsp;
+      
+      <a href="./index.html">Hashery</a>&nbsp;
+      <a href="/">Memoizer</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="./lib/hashery/memoizer_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/hashery/memoizer.rb">lib/hashery/memoizer.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        <ul>
+          
+          <!-- why was this class="link" ? -->
+          <li class="class"><a href="Object.html">Object</a></li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="singleton">
+              <a href="#method-c-cache">::cache</a>
+            </li>
+          
+            
+            <li class="singleton">
+              <a href="#method-c-new">::new</a>
+            </li>
+          
+            
+            <li class="singleton">
+              <a href="#method-c-uncache">::uncache</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-__self__">#__self__</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-method_missing">#method_missing</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="./HISTORY_rdoc.html">HISTORY.rdoc</a></li>
+        
+          <li class="file"><a href="./PROFILE.html">PROFILE</a></li>
+        
+          <li class="file"><a href="./LICENSE.html">LICENSE</a></li>
+        
+          <li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
+        
+          <li class="file"><a href="./VERSION.html">VERSION</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="./assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="class"><a href="./Association.html">Association</a></li>
+        
+          <li class="module"><a href="./Association/Kernel.html">Association::Kernel</a></li>
+        
+          <li class="class"><a href="./LinkedList.html">LinkedList</a></li>
+        
+          <li class="class"><a href="./LinkedList/Node.html">LinkedList::Node</a></li>
+        
+          <li class="class"><a href="./CastingHash.html">CastingHash</a></li>
+        
+          <li class="class"><a href="./Dictionary.html">Dictionary</a></li>
+        
+          <li class="class"><a href="./FuzzyHash.html">FuzzyHash</a></li>
+        
+          <li class="class"><a href="./Hash.html">Hash</a></li>
+        
+          <li class="class"><a href="./Ini.html">Ini</a></li>
+        
+          <li class="class"><a href="./LRUHash.html">LRUHash</a></li>
+        
+          <li class="class"><a href="./Memoizer.html">Memoizer</a></li>
+        
+          <li class="class"><a href="./OpenCascade.html">OpenCascade</a></li>
+        
+          <li class="class"><a href="./OpenHash.html">OpenHash</a></li>
+        
+          <li class="class"><a href="./OpenObject.html">OpenObject</a></li>
+        
+          <li class="module"><a href="./OpenStructable.html">OpenStructable</a></li>
+        
+          <li class="class"><a href="./OrderedHash.html">OrderedHash</a></li>
+        
+          <li class="class"><a href="./PropertyHash.html">PropertyHash</a></li>
+        
+          <li class="class"><a href="./QueryHash.html">QueryHash</a></li>
+        
+          <li class="class"><a href="./SparseArray.html">SparseArray</a></li>
+        
+          <li class="class"><a href="./Stash.html">Stash</a></li>
+        
+          <li class="class"><a href="./StaticHash.html">StaticHash</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="./assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://rubyworks.github.com/rdazzle">RDazzle Newfish</a> 1.4.0
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+        <h1>Memoizer</h1>
+      
+
+      <p>
+<a href="Memoizer.html">Memoizer</a> wraps objects to provide cached method
+calls.
+</p>
+<pre>
+  class X
+    def initialize ; @tick = 0 ; end
+    def tick; @tick + 1; end
+    def memo; @memo ||= Memoizer.new(self) ; end
+  end
+
+  x = X.new
+  x.tick       #=&gt; 1
+  x.memo.tick  #=&gt; 2
+  x.tick       #=&gt; 3
+  x.memo.tick  #=&gt; 2
+  x.tick       #=&gt; 4
+  x.memo.tick  #=&gt; 2
+</pre>
+<p>
+You can also use to cache collections of objects to gain code speed ups.
+</p>
+<pre>
+  points = points.collect{|point| Memoizer.cache(point)}
+</pre>
+<p>
+After our algorithm has finished using points, we want to get rid of these
+<a href="Memoizer.html">Memoizer</a> objects. That&#8217;s easy:
+</p>
+<pre>
+   points = points.collect{|point| point.__self__ }
+</pre>
+<p>
+Or if you prefer (it is ever so slightly safer):
+</p>
+<pre>
+   points = points.collect{|point| Memoizer.uncache(point)}</pre>
+
+    </div>
+
+    <!-- Constants -->
+    
+
+    <!-- Attributes -->
+    
+
+    <!-- Methods -->
+    
+    <div id="public-class-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="cache-method" class="method-detail ">
+        <a name="method-c-cache"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">cache</span><span
+            class="method-args">(object)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+def self; @self; end
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="cache-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/hashery/memoizer.rb, line 55</span>
+55:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cache</span>(<span class="ruby-identifier">object</span>)
+56:     <span class="ruby-identifier">new</span>(<span class="ruby-identifier">object</span>)
+57:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="new-method" class="method-detail ">
+        <a name="method-c-new"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">new</span><span
+            class="method-args">(object)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/hashery/memoizer.rb, line 41</span>
+41:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">object</span>)
+42:     <span class="ruby-ivar">@self</span>  = <span class="ruby-identifier">object</span>
+43:     <span class="ruby-ivar">@cache</span> = {}
+44:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="uncache-method" class="method-detail ">
+        <a name="method-c-uncache"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">uncache</span><span
+            class="method-args">(cached_object)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="uncache-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/hashery/memoizer.rb, line 59</span>
+59:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">uncache</span>(<span class="ruby-identifier">cached_object</span>)
+60:     <span class="ruby-identifier">cached_object</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-value str">'@self'</span>)
+61:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="-self--method" class="method-detail ">
+        <a name="method-i-__self__"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">__self__</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="-self--source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/hashery/memoizer.rb, line 46</span>
+46:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">__self__</span> ; <span class="ruby-ivar">@self</span> ; <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="method-missing-method" class="method-detail ">
+        <a name="method-i-method_missing"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">method_missing</span><span
+            class="method-args">(method_name, *args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Not thread-safe! Speed is important in caches... ;]
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="method-missing-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/hashery/memoizer.rb, line 49</span>
+49:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">method_name</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+50:     <span class="ruby-ivar">@cache</span>[[<span class="ruby-identifier">method_name</span>, <span class="ruby-identifier">args</span>, <span class="ruby-identifier">block</span>]] <span class="ruby-operator">||=</span> <span class="ruby-ivar">@self</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-identifier">method_name</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+51:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+

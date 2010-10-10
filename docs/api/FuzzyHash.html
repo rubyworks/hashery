@@ -1,0 +1,1048 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Class: FuzzyHash</title>
+
+  
+    <link rel="SHORTCUT ICON" href="./assets/icon/class.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="./assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="./assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="./assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      $('#documentation pre').wrapInner('<code></code>');
+      hljs.tabReplace = '    ';
+      hljs.initHighlightingOnLoad('ruby');
+
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind( "click", highlightClickTarget );
+    });
+  </script>
+</head>
+<body class="class">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="./assets/icon/class.png" align="absmiddle">&nbsp;
+      
+      <a href="./index.html">Hashery</a>&nbsp;
+      <a href="/">FuzzyHash</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="./lib/hashery/fuzzyhash_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/hashery/fuzzyhash.rb">lib/hashery/fuzzyhash.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        <ul>
+          
+          <!-- why was this class="link" ? -->
+          <li class="class"><a href="Object.html">Object</a></li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="singleton">
+              <a href="#method-c-new">::new</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-%3D%3D">#==</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-%5B%5D">#[]</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-%5B%5D%3D">#[]=</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-clear">#clear</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-count">#count</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-delete_value">#delete_value</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-each">#each</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-empty%3F">#empty?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-fuzz_test">#fuzz_test</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-fuzzy_lookup">#fuzzy_lookup</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-keys">#keys</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-match_with_result">#match_with_result</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-replace">#replace</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-reset_fuzz_test%21">#reset_fuzz_test!</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-size">#size</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-values">#values</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="./HISTORY_rdoc.html">HISTORY.rdoc</a></li>
+        
+          <li class="file"><a href="./PROFILE.html">PROFILE</a></li>
+        
+          <li class="file"><a href="./LICENSE.html">LICENSE</a></li>
+        
+          <li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
+        
+          <li class="file"><a href="./VERSION.html">VERSION</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="./assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="class"><a href="./Association.html">Association</a></li>
+        
+          <li class="module"><a href="./Association/Kernel.html">Association::Kernel</a></li>
+        
+          <li class="class"><a href="./LinkedList.html">LinkedList</a></li>
+        
+          <li class="class"><a href="./LinkedList/Node.html">LinkedList::Node</a></li>
+        
+          <li class="class"><a href="./CastingHash.html">CastingHash</a></li>
+        
+          <li class="class"><a href="./Dictionary.html">Dictionary</a></li>
+        
+          <li class="class"><a href="./FuzzyHash.html">FuzzyHash</a></li>
+        
+          <li class="class"><a href="./Hash.html">Hash</a></li>
+        
+          <li class="class"><a href="./Ini.html">Ini</a></li>
+        
+          <li class="class"><a href="./LRUHash.html">LRUHash</a></li>
+        
+          <li class="class"><a href="./Memoizer.html">Memoizer</a></li>
+        
+          <li class="class"><a href="./OpenCascade.html">OpenCascade</a></li>
+        
+          <li class="class"><a href="./OpenHash.html">OpenHash</a></li>
+        
+          <li class="class"><a href="./OpenObject.html">OpenObject</a></li>
+        
+          <li class="module"><a href="./OpenStructable.html">OpenStructable</a></li>
+        
+          <li class="class"><a href="./OrderedHash.html">OrderedHash</a></li>
+        
+          <li class="class"><a href="./PropertyHash.html">PropertyHash</a></li>
+        
+          <li class="class"><a href="./QueryHash.html">QueryHash</a></li>
+        
+          <li class="class"><a href="./SparseArray.html">SparseArray</a></li>
+        
+          <li class="class"><a href="./Stash.html">Stash</a></li>
+        
+          <li class="class"><a href="./StaticHash.html">StaticHash</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="./assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://rubyworks.github.com/rdazzle">RDazzle Newfish</a> 1.4.0
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+
+      <h1>Fuzzy <a href="Hash.html">Hash</a></h1>
+<p>
+A weird hash with special semantics for regex keys.
+</p>
+<p>
+This is useful when you want to have a lookup table that can either contain
+strings or regexes. For instance, you might want a catch all for certain
+regexes that perform a certain logic.
+</p>
+<pre>
+ &gt;&gt; hash = FuzzyHash.new
+ &gt;&gt; hash[/^\d+$/] = 'number'
+ &gt;&gt; hash[/.*/] = 'something'
+ &gt;&gt; hash['chunky'] = 'bacon'
+ &gt;&gt; hash['foo'] = 'vader'
+ 
+ &gt;&gt; hash['foo']
+ &lt;&lt; 'vader'
+ &gt;&gt; hash['food']
+ &lt;&lt; 'something'
+ &gt;&gt; hash['123']
+ &lt;&lt; 'number'
+</pre>
+<p>
+Copyright &#169; 2009 Joshua Hull
+</p>
+
+    </div>
+
+    <!-- Constants -->
+    
+
+    <!-- Attributes -->
+    
+    <div id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="fuzzies-attribute-method" class="method-detail">
+        <a name="fuzzies"></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">fuzzies</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="hash-reverse-attribute-method" class="method-detail">
+        <a name="hash_reverse"></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">hash_reverse</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="fuzzies-reverse-attribute-method" class="method-detail">
+        <a name="fuzzies_reverse"></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">fuzzies_reverse</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="hash-attribute-method" class="method-detail">
+        <a name="hash"></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">hash</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="fuzzy-hash-attribute-method" class="method-detail">
+        <a name="fuzzy_hash"></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">fuzzy_hash</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="fuzz-test-attribute-method" class="method-detail">
+        <a name="fuzz_test"></a>
+        
+        <a name="fuzz_test="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">fuzz_test</span><span
+            class="attribute-access-type">[W]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- Methods -->
+    
+    <div id="public-class-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="new-method" class="method-detail ">
+        <a name="method-c-new"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">new</span><span
+            class="method-args">(init_hash = nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/hashery/fuzzyhash.rb, line 27</span>
+27:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">init_hash</span> = <span class="ruby-keyword kw">nil</span>)
+28:     <span class="ruby-ivar">@fuzzies</span> = []
+29:     <span class="ruby-ivar">@hash_reverse</span> = {}
+30:     <span class="ruby-ivar">@fuzzies_reverse</span> = {}
+31:     <span class="ruby-ivar">@fuzzy_hash</span> = {}
+32:     <span class="ruby-ivar">@hash</span> = {}
+33:     <span class="ruby-identifier">init_hash</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>,<span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span> } <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">init_hash</span>
+34:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="method-i-%3D%3D"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">==</span><span
+            class="method-args">(o)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/hashery/fuzzyhash.rb, line 49</span>
+49:   <span class="ruby-keyword kw">def</span> <span class="ruby-operator">==</span>(<span class="ruby-identifier">o</span>)
+50:     <span class="ruby-identifier">o</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FuzzyHash</span>)
+51:     <span class="ruby-identifier">o</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:hash</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">hash</span> <span class="ruby-operator">&amp;&amp;</span>
+52:     <span class="ruby-identifier">o</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:fuzzies</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">fuzzies</span>
+53:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="method-i-%5B%5D"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">[]</span><span
+            class="method-args">(key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/hashery/fuzzyhash.rb, line 108</span>
+108:   <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">key</span>)
+109:     (<span class="ruby-identifier">hash</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">key</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>])  <span class="ruby-operator">||</span>
+110:       ((<span class="ruby-identifier">lookup</span> = <span class="ruby-identifier">fuzzy_lookup</span>(<span class="ruby-identifier">key</span>)) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">lookup</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">lookup</span>.<span class="ruby-identifier">first</span>) <span class="ruby-operator">||</span>
+111:       <span class="ruby-identifier">fuzzy_hash</span>[<span class="ruby-identifier">key</span>]
+112:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="method-i-%5B%5D%3D"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">[]=</span><span
+            class="method-args">(key, value)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/hashery/fuzzyhash.rb, line 76</span>
+76:   <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+77:     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Regexp</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">key</span>
+78:       <span class="ruby-identifier">fuzzies</span>.<span class="ruby-identifier">delete_if</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">inspect</span>.<span class="ruby-identifier">hash</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">inspect</span>.<span class="ruby-identifier">hash</span>}
+79:       <span class="ruby-identifier">fuzzies_reverse</span>.<span class="ruby-identifier">delete_if</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">inspect</span>.<span class="ruby-identifier">hash</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">inspect</span>.<span class="ruby-identifier">hash</span>}
+80:       <span class="ruby-identifier">hash_reverse</span>.<span class="ruby-identifier">delete_if</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">inspect</span>.<span class="ruby-identifier">hash</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">inspect</span>.<span class="ruby-identifier">hash</span>}
+81: 
+82:       <span class="ruby-identifier">fuzzy_hash</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span>
+83:       <span class="ruby-identifier">fuzzies</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>]
+84:       <span class="ruby-identifier">reset_fuzz_test!</span>
+85:       <span class="ruby-identifier">fuzzies_reverse</span>[<span class="ruby-identifier">value</span>] = [<span class="ruby-identifier">fuzzies</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>]
+86:     <span class="ruby-keyword kw">else</span>
+87:       <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span>
+88:       <span class="ruby-identifier">hash_reverse</span>.<span class="ruby-identifier">delete_if</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">hash</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">hash</span>}
+89:       <span class="ruby-identifier">hash_reverse</span>[<span class="ruby-identifier">value</span>] = <span class="ruby-identifier">key</span>
+90:     <span class="ruby-keyword kw">end</span>
+91:     <span class="ruby-identifier">value</span>
+92:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="clear-method" class="method-detail ">
+        <a name="method-i-clear"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">clear</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="clear-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/hashery/fuzzyhash.rb, line 36</span>
+36:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear</span>
+37:     <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">clear</span>
+38:     <span class="ruby-identifier">fuzzies</span>.<span class="ruby-identifier">clear</span>
+39:     <span class="ruby-identifier">hash_reverse</span>.<span class="ruby-identifier">clear</span>
+40:     <span class="ruby-identifier">fuzzies_reverse</span>.<span class="ruby-identifier">clear</span>
+41:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="count-method" class="method-detail method-alias">
+        <a name="method-i-count"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">count</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="delete-value-method" class="method-detail ">
+        <a name="method-i-delete_value"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">delete_value</span><span
+            class="method-args">(value)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="delete-value-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/hashery/fuzzyhash.rb, line 72</span>
+72:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_value</span>(<span class="ruby-identifier">value</span>)
+73:     <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">hash_reverse</span>[<span class="ruby-identifier">value</span>]) <span class="ruby-operator">||</span> ((<span class="ruby-identifier">rr</span> = <span class="ruby-identifier">fuzzies_reverse</span>[<span class="ruby-identifier">value</span>]) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">fuzzies</span>.<span class="ruby-identifier">delete_at</span>(<span class="ruby-identifier">rr</span>[<span class="ruby-value">0</span>]))
+74:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="each-method" class="method-detail ">
+        <a name="method-i-each"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">each</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="each-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/hashery/fuzzyhash.rb, line 67</span>
+67:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>
+68:     <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span> }
+69:     <span class="ruby-identifier">fuzzies</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">first</span>, <span class="ruby-identifier">v</span>.<span class="ruby-identifier">last</span> }
+70:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="empty--method" class="method-detail ">
+        <a name="method-i-empty%3F"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">empty?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="empty--source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/hashery/fuzzyhash.rb, line 55</span>
+55:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">empty?</span>
+56:     <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">fuzzies</span>.<span class="ruby-identifier">empty?</span>
+57:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="keys-method" class="method-detail ">
+        <a name="method-i-keys"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">keys</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="keys-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/hashery/fuzzyhash.rb, line 59</span>
+59:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">keys</span>
+60:     <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">keys</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fuzzy_hash</span>.<span class="ruby-identifier">keys</span>
+61:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="match-with-result-method" class="method-detail ">
+        <a name="method-i-match_with_result"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">match_with_result</span><span
+            class="method-args">(key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="match-with-result-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/hashery/fuzzyhash.rb, line 114</span>
+114:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">match_with_result</span>(<span class="ruby-identifier">key</span>)
+115:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">key</span>)
+116:       [<span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>], <span class="ruby-identifier">key</span>]
+117:     <span class="ruby-keyword kw">else</span>
+118:       <span class="ruby-identifier">fuzzy_lookup</span>(<span class="ruby-identifier">key</span>)
+119:     <span class="ruby-keyword kw">end</span>
+120:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="replace-method" class="method-detail ">
+        <a name="method-i-replace"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">replace</span><span
+            class="method-args">(src, dest)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="replace-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/hashery/fuzzyhash.rb, line 94</span>
+ 94:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>)
+ 95:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hash_reverse</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">src</span>)
+ 96:       <span class="ruby-identifier">key</span> = <span class="ruby-identifier">hash_reverse</span>[<span class="ruby-identifier">src</span>]
+ 97:       <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">dest</span>
+ 98:       <span class="ruby-identifier">hash_reverse</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">src</span>)
+ 99:       <span class="ruby-identifier">hash_reverse</span>[<span class="ruby-identifier">dest</span>] = <span class="ruby-identifier">key</span>
+100:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">fuzzies_reverse</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">src</span>)
+101:       <span class="ruby-identifier">key</span> = <span class="ruby-identifier">fuzzies_reverse</span>[<span class="ruby-identifier">src</span>]
+102:       <span class="ruby-identifier">fuzzies</span>[<span class="ruby-identifier">rkey</span>[<span class="ruby-value">0</span>]] = [<span class="ruby-identifier">rkey</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">dest</span>]
+103:       <span class="ruby-identifier">fuzzies_reverse</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">src</span>)
+104:       <span class="ruby-identifier">fuzzies_reverse</span>[<span class="ruby-identifier">dest</span>] = [<span class="ruby-identifier">rkey</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">rkey</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">dest</span>]
+105:     <span class="ruby-keyword kw">end</span>
+106:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="size-method" class="method-detail ">
+        <a name="method-i-size"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">size</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="size-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/hashery/fuzzyhash.rb, line 43</span>
+43:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">size</span>
+44:     <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fuzzies</span>.<span class="ruby-identifier">size</span>
+45:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="FuzzyHash.html#method-i-count">count</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="values-method" class="method-detail ">
+        <a name="method-i-values"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">values</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="values-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/hashery/fuzzyhash.rb, line 63</span>
+63:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">values</span>
+64:     <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">values</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fuzzies</span>.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">last</span>}
+65:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="private-instance-method-details" class="method-section section">
+      <h3 class="section-header">Private Instance Methods</h3>
+
+    
+      <div id="fuzz-test-method" class="method-detail ">
+        <a name="method-i-fuzz_test"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">fuzz_test</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="fuzz-test-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/hashery/fuzzyhash.rb, line 130</span>
+130:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fuzz_test</span>
+131:     <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@fuzz_test</span>
+132:       <span class="ruby-ivar">@fuzz_test</span> = <span class="ruby-constant">Object</span>.<span class="ruby-identifier">new</span>
+133:       <span class="ruby-ivar">@fuzz_test</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-value">:'@fuzzies'</span>, <span class="ruby-identifier">fuzzies</span>)
+134:       <span class="ruby-identifier">method</span> = <span class="ruby-value str">&quot;
+135:         def match(str)
+136:           case str\n
+137:       &quot;</span>
+138:       <span class="ruby-identifier">fuzzies</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">reg</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+139:         <span class="ruby-identifier">method</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;when #{reg.first.inspect}; [@fuzzies[#{index}][1], Regexp.last_match(0)];&quot;</span>
+140:       <span class="ruby-keyword kw">end</span>
+141:       <span class="ruby-identifier">method</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;end\nend\n&quot;</span>
+142:       <span class="ruby-ivar">@fuzz_test</span>.<span class="ruby-identifier">instance_eval</span> <span class="ruby-identifier">method</span>
+143:     <span class="ruby-keyword kw">end</span>
+144:     <span class="ruby-ivar">@fuzz_test</span>
+145:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="fuzzy-lookup-method" class="method-detail ">
+        <a name="method-i-fuzzy_lookup"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">fuzzy_lookup</span><span
+            class="method-args">(key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="fuzzy-lookup-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/hashery/fuzzyhash.rb, line 147</span>
+147:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fuzzy_lookup</span>(<span class="ruby-identifier">key</span>)
+148:     <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">fuzzies</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">value</span> = <span class="ruby-identifier">fuzz_test</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">key</span>))
+149:       <span class="ruby-identifier">value</span>
+150:     <span class="ruby-keyword kw">end</span>
+151:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="reset-fuzz-test--method" class="method-detail ">
+        <a name="method-i-reset_fuzz_test%21"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">reset_fuzz_test!</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="reset-fuzz-test--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/hashery/fuzzyhash.rb, line 126</span>
+126:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reset_fuzz_test!</span>
+127:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fuzz_test</span> = <span class="ruby-keyword kw">nil</span>
+128:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+
