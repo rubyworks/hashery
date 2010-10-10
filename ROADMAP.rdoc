@@ -1,9 +1,0 @@
-= ROADMAP
-
-== 1.4.0
-
-* Improve test coverage.
-* Consider using Hashery:: namespace.
-* Should Stash have a more explict name?
-* Any other Hash-like classes to add?
-
