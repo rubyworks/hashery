@@ -3,7 +3,7 @@ require 'hashery/openhash'
 
 # = OpenCascade
 #
-# OpenCascade is subclass of OpenObject. It differs in a few
+# OpenCascade is subclass of OpenHash. It differs in a few
 # significant ways.
 #
 # The main reason this class is labeled "cascade", every internal
