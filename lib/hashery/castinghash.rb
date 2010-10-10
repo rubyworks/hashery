@@ -20,8 +20,8 @@ class CastingHash < Hash
 
   #
   def initialize(hash={}, value_cast=nil, &key_cast)
-    @key_proc   = key_cast           || KEY_PROC
-    @value_proc = value_cast.to_proc || VAL_PROC
+    @key_proc   = (key_cast   || KEY_PROC)
+    @value_proc = (value_cast || VAL_PROC).to_proc
     hash.each{ |k,v| self[k] = v }
   end
 
