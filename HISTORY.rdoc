@@ -1,5 +1,21 @@
 = RELEASE HISTORY
 
+== 1.3.0 // 2010-10-01
+
+This release fixes a minor bug in CastingHash and adds a new
+PropertyHash class.
+
+Changes:
+
+* 1 New Library
+
+  * Added PropertyHash
+
+* 1 Bug Fix
+
+  * Fixed CastingHash#new where #to_proc is called against NilClass
+
+
 == 1.2.0 // 2010-06-04
 
 This release makes two signifficant changes to the Hashery.

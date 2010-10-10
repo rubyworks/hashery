@@ -37,9 +37,8 @@ test/case_openhash.rb
 test/case_openobject.rb
 test/case_sparsearray.rb
 test/case_stash.rb
+HISTORY.rdoc
 PROFILE
 LICENSE
 README.rdoc
-ROADMAP.rdoc
-HISTORY
 VERSION
