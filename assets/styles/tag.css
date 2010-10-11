@@ -2,6 +2,7 @@
 
 html { font-family: sans serif, helvetica; font-size: 16px }
 body { position: relative; color: #222233; background: #ffffff; }
+code { font-size: 0.9em; }
 
   ul { padding: 0 0 10px 0; }
   li { padding: 0 0 3px 0; font-size: 0.9em; line-height: 130%; }
@@ -9,14 +10,13 @@ pre { margin: 10px 0; font-family: monospace; color: white; }
 pre code { padding: 10px 10px; }
 
  img { border: none; }
-  td { vertical-align: top; text-align: left; }
    p { text-align: justify; font-size: 100%; line-height: 150%; margin: 0 0 1.2em 0; }
    a { text-decoration: none; color: #773300; }
    a:hover { text-decoration: underline; }
 
 /* headers */
 
-h1, h2, h3, h4, h5, h6 { margin: 1.75em 0 0.7em 0; }
+h1, h2, h3, h4, h5, h6 { margin: 10px 0 0.25em 0; }
 h1 { font-size: 200%; }
 h2 { font-size: 150%; }
 h3 { font-size: 120%; }
