@@ -3,15 +3,6 @@
 #
 # Copyright (c) 2005 Thomas Sawyer
 #
-# Ruby License
-#
-# This module is free software. You may use, modify, and/or redistribute this
-# software under the same terms as Ruby.
-#
-# This program is distributed in the hope that it will be useful, but WITHOUT
-# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-# FOR A PARTICULAR PURPOSE.
-#
 # ==========================================================================
 # Revision History ::
 # --------------------------------------------------------------------------
@@ -58,35 +49,53 @@
 #
 module OpenStructable
 
+  def self.include(base)
+    if Hash > base
+      base.module_eval do
+        define_method(:__table__) do
+          self
+        end
+      end
+      protected :__table__
+    end
+  end
+
   def initialize(hash=nil)
     @__table__ = {}
     if hash
       for k,v in hash
-        @__table__[k.to_sym] = v
+        __table__[k.to_sym] = v
         new_ostruct_member(k)
       end
     end
   end
 
+  #
+  def __table__
+    @__table__ ||= {}
+  end
+  protected :__table__
+
   # duplicate an OpenStruct object members.
   def initialize_copy(orig)
     super
-    @__table__ = @__table__.dup
+    __table__.replace(__table__.dup)
   end
 
   def marshal_dump
-    @table
+    __table__
   end
-  def marshal_load(x)
-    @table = x
-    @table.each_key{|key| new_ostruct_member(key)}
+
+  def marshal_load(hash)
+    __table__.replace(hash)
+    __table__.each_key{|key| new_ostruct_member(key)}
   end
 
   def new_ostruct_member(name)
     unless self.respond_to?(name)
       self.instance_eval %{
-        def #{name}; @__table__[:#{name}]; end
-        def #{name}=(x); @__table__[:#{name}] = x; end
+        def #{name}; __table__[:#{name}]; end
+        def #{name}=(x); __table__[:#{name}] = x; end
       }
     end
   end
@@ -95,15 +104,16 @@ module OpenStructable
   # Generate additional attributes and values.
   #
   def update(hash)
-    @__table__ ||= {}
+    #__table__ ||= {}
     if hash
       for k,v in hash
-        @__table__[k.to_sym] = v
+        __table__[k.to_sym] = v
         new_ostruct_member(k)
       end
     end
   end
 
+  #
   def method_missing(mid, *args) # :nodoc:
     mname = mid.to_s
     len = args.length
@@ -115,12 +125,12 @@ module OpenStructable
         raise TypeError, "can't modify frozen #{self.class}", caller(1)
       end
       mname.chop!
-      @__table__ ||= {}
-      @__table__[mname.intern] = args[0]
+      #@__table__ ||= {}
+      __table__[mname.intern] = args[0]
       self.new_ostruct_member(mname)
     elsif len == 0
-      @__table__ ||= {}
-      @__table__[mid]
+      #@__table__ ||= {}
+      __table__[mid]
     else
       raise NoMethodError, "undefined method `#{mname}' for #{self}", caller(1)
     end
@@ -130,8 +140,8 @@ module OpenStructable
   # Remove the named field from the object.
   #
   def delete_field(name)
-    @__table__ ||= {}
-    @__table__.delete name.to_sym
+    #@__table__ ||= {}
+    __table__.delete(name.to_sym)
   end
 
   #
@@ -145,15 +155,21 @@ module OpenStructable
     str << ">"
   end
 
-  def __table__ # :nodoc:
-    @__table__ ||= {}
-  end
-  protected :__table__
-
   # Compare this object and +other+ for equality.
+  #--
+  # TODO: OpenStruct could be compared too, but only if it is loaded. How?
+  #++
   def ==(other)
-    return false unless(other.kind_of?(OpenStruct))
-    return @__table__ == other.table
+    case other
+    when OpenStructable
+      __table__ == other.__table__
+    #when OpenStruct
+    #  __table__ == other.__table__
+    when Hash
+      __table__ == other
+    else
+      false
+    end
   end
 
 end
@@ -168,42 +184,3 @@ class OpenStruct
 end
 =end
 
-
-
-#  _____         _
-# |_   _|__  ___| |_
-#   | |/ _ \/ __| __|
-#   | |  __/\__ \ |_
-#   |_|\___||___/\__|
-#
-
-=begin testing
-
-  require 'test/unit'
-
-  # fixture
-
-  class Record
-    include OpenStructable
-  end
-
-  # test
-
-  class TC_OpenStructable < Test::Unit::TestCase
-
-    def test_record
-      record = nil
-      assert_nothing_raised {
-        record = Record.new
-        record.name    = "John Smith"
-        record.age     = 70
-        record.pension = 300
-      }
-      assert_equal( "John Smith", record.name )
-      assert_equal( 70, record.age )
-      assert_equal( nil, record.address )
-    end
-
-  end
-
-=end

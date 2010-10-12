@@ -1,0 +1,56 @@
+= OpenStructable
+
+OpensStructable is a mixin module which can provide OpenStruct behavior to
+any class or object. OpenStructable allows extention of data objects
+with arbitrary attributes.
+
+  require 'hashery/ostructable'
+
+  class Record
+    include OpenStructable
+  end
+
+Now let's create a new record and see if we can assign values to open
+properties.
+
+    record = Record.new
+    record.name    = "John Smith"
+    record.age     = 70
+    record.pension = 300
+
+We can see that the values were set.
+
+    record.name.assert    == "John Smith"
+    record.age.assert     == 70
+    record.pension.assert == 300
+
+If we havent' assigned a value to a property it should just return +nil+.
+
+    record.address.assert == nil
+
+OpenStructable is also smart enough to adjust itself to work with a subclass
+of a Hash.
+
+    class HashRecord < Hash
+      include OpenStructable
+    end
+
+We can apply similar settings as above.
+
+    record = HashRecord.new
+    record.name    = "John Doe"
+    record.age     = 40
+    record.pension = 200
+
+We can see that the values were set.
+
+    record.name.assert    == "John Doe"
+    record.age.assert     == 40
+    record.pension.assert == 200
+
+The differnce here is that the data is accessible via the normal Hash 
+methods too.
+
+    record.assert == {:name=>"John Doe", :age=>40, :pension=>200}
+
+Notice that entries are converted to Symbols, not Strings.
