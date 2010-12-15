@@ -1,19 +1,10 @@
 --- 
-title: Hashery
-suite: rubyworks
-summary: Facets bread collection of Hash-like classes.
-license: MIT
+title  : Hashery
+summary: Facets-bread collection of Hash-like classes.
+license: Apache 2.0
 contact: Trans <transfire@gmail.com>
+company: RubyWorks
 created: 2010-04-21
-
-authors:
-  - Thomas Sawyer
-  - Kirk Haines
-  - Robert Klemme
-  - Jan Molic
-  - George Moschovitis
-  - Jeena Paradies
-  - Erik Veenstra
 
 description:
   The Hashery is a collection of Hash-like classes, spun-off
@@ -21,6 +12,10 @@ description:
   used OrderedHash, the related but more featured Dictionary
   class, a number of open classes, similiar to the standard 
   OpenStruct and a few variations on the standard Hash.
+
+requires:
+  - syckle (build)
+  - qed (test)
 
 resources:
   home  : http://rubyworks.github.com/hashery
@@ -31,5 +26,18 @@ resources:
   wiki  : http://wiki.github.com/rubyworks/hashery
   repo  : git://github.com/rubyworks/hashery.git
 
+maintainers:
+  - Trans <transfire@gmail.com>
+
+authors:
+  - Thomas Sawyer
+  - Kirk Haines
+  - Robert Klemme
+  - Jan Molic
+  - George Moschovitis
+  - Jeena Paradies
+  - Erik Veenstra
+
 copyright:
   Copyright (c) 2010 Thomas Sawyer
+

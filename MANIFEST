@@ -1,4 +1,4 @@
-#!mast -x Syckfile bin lib meta test [A-Z]*
+#!mast -x [A-Z][a-z]* bin lib man spec test [A-Z]*
 lib/hashery/association.rb
 lib/hashery/casting_hash.rb
 lib/hashery/castinghash.rb
@@ -38,7 +38,5 @@ test/case_openobject.rb
 test/case_sparsearray.rb
 test/case_stash.rb
 HISTORY.rdoc
-PROFILE
 LICENSE
 README.rdoc
-VERSION
