@@ -50,7 +50,7 @@ unless defined? BasicObject  # in case it already exists!
       # Detect method additions to Kernel and remove them in the
       # BlankSlate class.
       def method_added(name)
-        facets_basic_object_method_added(name)
+        basic_object_method_added(name)
         return if self != Kernel
         BasicObject.hide(name)
       end
@@ -64,7 +64,7 @@ unless defined? BasicObject  # in case it already exists!
       # Detect method additions to Object and remove them in the
       # BlankSlate class.
       def method_added(name)
-        facets_basic_object_method_added(name)
+        basic_object_method_added(name)
         return if self != Object
         BasicObject.hide(name)
       end
@@ -72,4 +72,3 @@ unless defined? BasicObject  # in case it already exists!
   end
 
 end
-
