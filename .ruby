@@ -5,6 +5,7 @@ title: Hashery
 contact: Trans <transfire@gmail.com>
 maintainers: 
 - Trans <transfire@gmail.com>
+pom_verison: 1.0.0
 requires: 
 - group: 
   - build
@@ -20,11 +21,14 @@ resources:
   api: http://rubyworks.github.com/hashery/docs/api
   mail: http://groups.google.com/group/rubyworks-mailinglist
   host: http://rubygems.org/gems/hashery
-  home: http://rubyworks.github.com/hashery
   wiki: http://wiki.github.com/rubyworks/hashery
-pom_verison: 1.0.0
+  home: http://rubyworks.github.com/hashery
 manifest: 
+- .ruby
 - lib/hashery/association.rb
+- lib/hashery/basic_struct.rb
+- lib/hashery/basicobject.rb
+- lib/hashery/basicstruct.rb
 - lib/hashery/casting_hash.rb
 - lib/hashery/castinghash.rb
 - lib/hashery/dictionary.rb
@@ -55,6 +59,7 @@ manifest:
 - lib/hashery/static_hash.rb
 - lib/hashery/statichash.rb
 - lib/hashery.rb
+- lib/hashery.yml
 - test/case_association.rb
 - test/case_dictionary.rb
 - test/case_opencascade.rb
@@ -65,10 +70,11 @@ manifest:
 - HISTORY.rdoc
 - LICENSE
 - README.rdoc
+- NOTICE
 version: 1.4.0
-copyright: Copyright (c) 2010 Thomas Sawyer
 licenses: 
 - Apache 2.0
+copyright: Copyright (c) 2010 Thomas Sawyer
 description: The Hashery is a collection of Hash-like classes, spun-off from the original Ruby Facets library. Included are the widely used OrderedHash, the related but more featured Dictionary class, a number of open classes, similiar to the standard OpenStruct and a few variations on the standard Hash.
 summary: Facets-bread collection of Hash-like classes.
 authors: 

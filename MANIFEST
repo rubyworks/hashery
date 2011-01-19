@@ -1,5 +1,9 @@
-#!mast -x [A-Z][a-z]* bin lib man spec test [A-Z]*
+#!mast -x [A-Z][a-z]* .ruby bin lib man spec test [A-Z]*
+.ruby
 lib/hashery/association.rb
+lib/hashery/basic_struct.rb
+lib/hashery/basicobject.rb
+lib/hashery/basicstruct.rb
 lib/hashery/casting_hash.rb
 lib/hashery/castinghash.rb
 lib/hashery/dictionary.rb
@@ -30,6 +34,7 @@ lib/hashery/stash.rb
 lib/hashery/static_hash.rb
 lib/hashery/statichash.rb
 lib/hashery.rb
+lib/hashery.yml
 test/case_association.rb
 test/case_dictionary.rb
 test/case_opencascade.rb
@@ -40,3 +45,4 @@ test/case_stash.rb
 HISTORY.rdoc
 LICENSE
 README.rdoc
+NOTICE
