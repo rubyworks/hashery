@@ -1,11 +1,4 @@
-unless defined?(BasicObject)
-  begin
-    require 'facets/basicobject'
-  rescue LoadError => error
-    puts "Please `gem install facets`. Hashery on Ruby 1.8.x or lower requires Facets for a BasicObject class."
-    raise error
-  end
-end
+require 'hashery/basicobject'
 
 #require 'facets/hash/to_h'
 #require 'facets/kernel/object_class'
