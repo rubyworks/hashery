@@ -30,9 +30,15 @@ rdoc:
   service : RDoc
   template: newfish
   include : ~
-  exclude : [ Syckfile ]
+  exclude : [Syckfile]
   output  : site/doc/api
   active  : true
+
+qedoc:
+  service: custom
+  cycle: main
+  document: |
+    puts `qedoc -o site/doc/qed -t "Hashery Demonstrandum" qed`
 
 syntax:
   service  : Syntax

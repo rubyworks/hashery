@@ -60,6 +60,16 @@ manifest:
 - lib/hashery/statichash.rb
 - lib/hashery.rb
 - lib/hashery.yml
+- qed/01_openhash.rdoc
+- qed/02_queryhash.rdoc
+- qed/03_castinghash.rdoc
+- qed/04_statichash.rdoc
+- qed/05_association.rdoc
+- qed/06_opencascade.rdoc
+- qed/07_fuzzyhash.rdoc
+- qed/08_properyhash.rdoc
+- qed/09_ostructable.rdoc
+- qed/applique/ae.rb
 - test/case_association.rb
 - test/case_dictionary.rb
 - test/case_opencascade.rb
