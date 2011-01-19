@@ -31,7 +31,7 @@ rdoc:
   template: newfish
   include : ~
   exclude : [ Syckfile ]
-  output  : site/docs/api
+  output  : site/doc/api
   active  : true
 
 syntax:
