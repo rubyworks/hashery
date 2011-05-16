@@ -16,6 +16,7 @@ description:
 requires:
   - syckle (build)
   - qed (test)
+  - lemon (test)
 
 resources:
   home  : http://rubyworks.github.com/hashery

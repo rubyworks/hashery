@@ -1,4 +1,4 @@
-#!mast -x [A-Z][a-z]* .ruby bin lib man qed spec test [A-Z]*
+#!mast .ruby bin lib man qed spec test [A-Z][A-Z]*
 .ruby
 lib/hashery/association.rb
 lib/hashery/basic_struct.rb
@@ -53,6 +53,6 @@ test/case_openobject.rb
 test/case_sparsearray.rb
 test/case_stash.rb
 HISTORY.rdoc
-LICENSE
+APACHE2.txt
 README.rdoc
-NOTICE
+NOTICE.rdoc
