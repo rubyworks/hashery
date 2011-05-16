@@ -41,10 +41,11 @@
 #
 # === Example object
 #
-#   A Ini#comment stores:
+# Ini#comment stores:
+#
 #   "this is the first comment which will be saved in the comment attribute"
 #
-#   A Ini object stores:
+# Ini's internal hash stores:
 #
 #   {
 #    "mail" => "info@example.com",

@@ -124,6 +124,8 @@ class Dictionary
     end
   end
 
+  #
+
   def order
     reorder if @order_by
     @order
@@ -176,6 +178,7 @@ class Dictionary
   end
 
   #
+
   def reorder
     if @order_by
       assoc = @order.collect{ |k| [k,@hash[k]] }.sort_by(&@order_by)

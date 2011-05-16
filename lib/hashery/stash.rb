@@ -1,7 +1,43 @@
-# Stash is just like Hash, except that all keys are
-# converted to Strings.
+# The Stash class is a Hash compatible class which converts
+# all keys to strings. This has two advantages. First it
+# means hash entries have indifferent access. <tt>1</tt>,
+# <tt>"1"</tt> and <tt>:1</tt> are all equivalent. Any object
+# that defines <tt>#to_s</tt> can be used as a key. Secondly,
+# since strings are garbage collected so are Stash objects. 
+# 
+# The Stash class works like a normal Hash. But notice the
+# significant distinction of indifferent key access.
+# 
+#   s = Stash.new
+#   s[:x] = 1
+#   s[:x]       #=> 1
+#   s['x']      #=> 1
+# 
+# We can see that internally the key has indeed been converted
+# to a String.
+# 
+#   s.to_h      #=> {'x'=>1 }
+# 
+# Becuase of the way in which Stash is designed, it has a nice
+# secondary usage. Stash defines a private method called
+# #convert_key. This method handles the conversion of the key
+# whenever the underlying hash is altered. If you have need
+# for a different kind of Hash, one the has a special restraint
+# on the key, it is easy enough to subclass Stash and override
+# the is method. Eg.
+# 
+#   class Upash < Stash
+#     def convert_key(key)
+#       key.to_s.upcase
+#     end
+#   end
+# 
+#   u = Upash.new
+#   u.replace(:a=>1, :b=>2)
+#   u.to_h  #=> { 'A'=>1, 'B'=>2 }
 #
-# Note this doesn't yet handle default_proc.
+#
+# NOTE: Stash does not yet handle default_proc.
 
 class Stash < Hash
 
