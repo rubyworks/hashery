@@ -1,5 +1,7 @@
+.yardoc
 log
 ri
 pkg
 tmp
 site/doc
+site/qed
