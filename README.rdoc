@@ -62,9 +62,9 @@ Well git in there!
 
 === Testing
 
-Hashery use QED[http://rubyworks.github.com/qed] and (the more experimental)
-Lemon[http://rubyworks.github.com/lemon] test frameworks. Both are used 
-in nearly the same fashion:
+Hashery uses QED[http://rubyworks.github.com/qed] and
+Lemon[http://rubyworks.github.com/lemon] test frameworks.
+Both are used  in nearly the same fashion:
 
   $ qed -Ilib qed/
 
@@ -74,7 +74,7 @@ And
 
 === Patches
 
-Hashery repository is hosted on GitHub[http://github.com/rubyworks/hashery].
+Hashery's repository is hosted on GitHub[http://github.com/rubyworks/hashery].
 If you'd like to offer up a fix or feature change then fork the repo and 
 submit a pull request (preferably in a topic branch). I assume you have heard
 all the talk about proper etiquette, so I won't bugger you with it yet
@@ -82,9 +82,10 @@ again.
 
 === Donations
 
-Yea, we FOSS programmers need to eat too ;) No, seriously any help can offer
-goes a long way toward continued development of Rubyworks projects, including
-Hashery. See Rubyworks[http://rubyworks.github.com].
+Yes, we FOSS programmers need to eat too! ;-) No seriously, any help you can
+offer goes a long way toward continued development of Rubyworks projects,
+including Hashery. See the upper right-hand corner on the
+Rubyworks[http://rubyworks.github.com] hompage. Thanks.
 
 
 == COPYRIGHT/LICENSE
