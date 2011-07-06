@@ -1,5 +1,16 @@
 = RELEASE HISTORY
 
+== 1.5.0 / 2011-07-06
+
+This release is primarily to switch the license to BSD 2-Clause.
+The only API fix was to BasicObject which now has a #key method.
+
+Changes:
+
+* Switch license to BSD-2-Clause license.
+* Add BasicObject#key method (b/c #index is deprecated in Ruby 1.9).
+
+
 == 1.4.0 / 2011-01-19
 
 This release includes a copy of Ruby Facets' BasicObject class, which

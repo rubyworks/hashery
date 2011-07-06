@@ -55,13 +55,43 @@ Developers whose code has contributed the project include:
 * Erik Veenstra
 
 
-== LICENSE
+== CONTRIBUTE
 
-(BSD 2-Clause License)
+Don't be a lump on a log. See an issue? Have a suggestion? Want to help?
+Well git in there!
+
+=== Testing
+
+Hashery use QED[http://rubyworks.github.com/qed] and (the more experimental)
+Lemon[http://rubyworks.github.com/lemon] test frameworks. Both are used 
+in nearly the same fashion:
+
+  $ qed -Ilib qed/
+
+And
+
+  $ lemon -Ilib test/
+
+=== Patches
+
+Hashery repository is hosted on GitHub[http://github.com/rubyworks/hashery].
+If you'd like to offer up a fix or feature change then fork the repo and 
+submit a pull request (preferably in a topic branch). I assume you have heard
+all the talk about proper etiquette, so I won't bugger you with it yet
+again.
+
+=== Donations
+
+Yea, we FOSS programmers need to eat too ;) No, seriously any help can offer
+goes a long way toward continued development of Rubyworks projects, including
+Hashery. See Rubyworks[http://rubyworks.github.com].
+
+
+== COPYRIGHT/LICENSE
 
 Copyright (c) 2010 Thomas Sawyer
 
-Licensed under the BSD 2-clauselLicense.
+Licensed under the BSD 2-clause License.
 
 See COPYING.rdoc file for further details.
 
