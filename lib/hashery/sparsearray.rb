@@ -389,8 +389,14 @@ class SparseArray < Hash
     nha
   end
 
+  #
   def reindex!
     self.replace(self.reindex)
+  end
+
+  #
+  def index(*args)
+    key(*args)
   end
 
   def reject!
@@ -528,7 +534,7 @@ class SparseArray < Hash
   end
 
   def to_s
-    self.join
+    self.to_a.to_s
   end
 
   #
