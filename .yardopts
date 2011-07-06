@@ -1,0 +1,8 @@
+--output-dir doc
+--title Hashery
+--protected
+--private
+lib/
+-
+[A-Z]*.*
+

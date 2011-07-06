@@ -60,6 +60,7 @@ extensions: []
 extra_rdoc_files: 
 - README.rdoc
 files: 
+- .yardopts
 - .ruby
 - lib/hashery/association.rb
 - lib/hashery/basic_struct.rb
@@ -107,16 +108,14 @@ files:
 - qed/09_ostructable.rdoc
 - qed/applique/ae.rb
 - test/case_association.rb
+- test/case_basicstruct.rb
 - test/case_dictionary.rb
 - test/case_opencascade.rb
 - test/case_openhash.rb
-- test/case_openobject.rb
 - test/case_sparsearray.rb
 - test/case_stash.rb
 - HISTORY.rdoc
-- PROFILE
 - README.rdoc
-- VERSION
 - COPYING.rdoc
 homepage: http://rubyworks.github.com/hashery
 licenses: 

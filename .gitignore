@@ -1,7 +1,7 @@
 .yardoc
 log
-ri
 pkg
 tmp
-site/doc
-site/qed
+doc
+site/qed.html
+QED.rdoc

@@ -17,6 +17,7 @@ gem:
 
 yard:
   yardopts: true
+  priority: 2
 
 qedoc:
   title: Hashery Demonstrandum
