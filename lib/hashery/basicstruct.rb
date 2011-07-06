@@ -43,7 +43,7 @@ class BasicStruct < BasicObject
   #   BasicObject.new(:a=>1).default!(0)
   #
   def initialize(hash=nil, &yld)
-    @table = Hash.new(&yld)
+    @table = ::Hash.new(&yld)
     if hash
       hash.each{ |k,v| store(k,v) }
     end
@@ -111,8 +111,8 @@ class BasicStruct < BasicObject
 
   #
   def is_a?(klass)
-    return true if klass == Hash  # TODO: Is this wise? How to fake a subclass?
-    return true if klass == BasicObject
+    return true if klass == ::Hash  # TODO: Is this wise? How to fake a subclass?
+    return true if klass == ::BasicObject
     false
   end
 
@@ -155,9 +155,9 @@ class BasicStruct < BasicObject
   #
   def <<(x)
     case x
-    when Hash
+    when ::Hash
       @table.update(x)
-    when Array
+    when ::Array
       x.each_slice(2) do |(k,v)|
         @table[k] = v
       end
