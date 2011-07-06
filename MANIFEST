@@ -53,6 +53,7 @@ test/case_openobject.rb
 test/case_sparsearray.rb
 test/case_stash.rb
 HISTORY.rdoc
-APACHE2.txt
+PROFILE
 README.rdoc
-NOTICE.rdoc
+VERSION
+COPYING.rdoc

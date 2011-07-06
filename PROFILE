@@ -1,7 +1,7 @@
 --- 
 title  : Hashery
 summary: Facets-bread collection of Hash-like classes.
-license: Apache 2.0
+license: BSD-2-Clause
 contact: Trans <transfire@gmail.com>
 company: RubyWorks
 created: 2010-04-21
@@ -25,13 +25,12 @@ resources:
   api   : http://rubyworks.github.com/hashery/docs/api
   host  : http://rubygems.org/gems/hashery
   wiki  : http://wiki.github.com/rubyworks/hashery
-  repo  : git://github.com/rubyworks/hashery.git
 
-maintainers:
-  - Trans <transfire@gmail.com>
+repositories:
+  public: git://github.com/rubyworks/hashery.git
 
 authors:
-  - Thomas Sawyer
+  - Thomas Sawyer <transfire@gmail.com>
   - Kirk Haines
   - Robert Klemme
   - Jan Molic

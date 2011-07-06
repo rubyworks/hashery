@@ -1,0 +1,41 @@
+---
+email:
+  service : Email
+  file    : ~
+  subject : ~
+  mailto  :
+    - ruby-talk@ruby-lang.org
+    - rubyworks-mailinglist@googlegroups.com
+  active  : true
+
+github:
+  active: true
+
+gem:
+  autospec : true
+  active   : true
+
+yard:
+  yardopts: true
+
+qedoc:
+  title: Hashery Demonstrandum
+  output:
+    - QED.rdoc
+    - site/qed.html
+
+lemon:
+  service: Custom
+  test: |
+    abort unless system "lemon -Ilib test/"
+
+dnote:
+  files    : lib
+  labels   : ~
+  exclude  : [work]
+  output   : log/DNOTE.rdoc
+
+vclog:
+  output   : log/history.rdoc
+  type     : history
+
