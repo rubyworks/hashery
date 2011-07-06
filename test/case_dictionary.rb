@@ -1,11 +1,25 @@
-require 'hashery/dictionary.rb'
+require 'hashery/dictionary'
 require 'ae/legacy'
 
 TestCase Dictionary do
+  include AE::Legacy::Assertions
 
-  Unit :create do
+  Meta :[] do
     d = Dictionary['z', 1, 'a', 2, 'c', 3]
     assert_equal( ['z','a','c'], d.keys )
+  end
+
+  Meta :new => "with default" do
+    d = Dictionary.new{ |hash,key| hash[key] = 0 }
+    d[:a] = 0
+    d[:b] += 1
+    assert_equal [0, 1],  d.values
+    assert_equal [:a,:b], d.keys
+  end
+
+  Unit :[] do
+    d = Dictionary['a', 1]
+    d['a'].assert == 1
   end
 
   Unit :[]= do
@@ -94,19 +108,12 @@ TestCase Dictionary do
     assert_equal( ['c','a','z'], d.keys )
   end
 
-  Unit :enumerable do
+  Unit :collect => "enumerable method" do
     d = Dictionary[]
     d[:a] = "a"
     d[:c] = "b"
-    assert_equal( ["A","B"], d.collect{|k,v| v.capitalize} )
-  end
-
-  Unit :autohash do
-    d = Dictionary.new{ |hash,key| hash[key] = 0 }
-    d[:a] = 0
-    d[:b] += 1
-    assert_equal([0, 1], d.values)
-    assert_equal([:a,:b], d.keys)
+    r = d.collect{|k,v| v.capitalize}
+    r.assert == ["A","B"]
   end
 
   Unit :dup => "with array values" do
@@ -121,10 +128,10 @@ TestCase Dictionary do
     d[:a] = "a"
     d[:b] = "b"
     d[:c] = "c"
-    assert_equal( "a"         , d.first )
-    assert_equal( []          , d.first(0) )
-    assert_equal( ["a"]       , d.first(1) )
-    assert_equal( ["a", "b"]  , d.first(2) )
+    d.first.assert == "a"
+    d.first(0).assert == []
+    assert_equal ["a"]       , d.first(1)
+    assert_equal ["a", "b"]  , d.first(2)
   end
 
   Unit :last do
@@ -132,10 +139,10 @@ TestCase Dictionary do
     d[:a] = "a"
     d[:b] = "b"
     d[:c] = "c"
-    assert_equal( "c"         , d.last )
-    assert_equal( []          , d.last(0) )
-    assert_equal( ["c"]       , d.last(1) )
-    assert_equal( ["b", "c"]  , d.last(2) )
+    d.last.assert == "c"
+    d.last(0).assert == []
+    d.last(1).assert == ["c"]
+    d.last(2).assert == ["b", "c"]
   end
 
 end

@@ -5,6 +5,7 @@ require 'ae/legacy'
 # SparseArray is tested by comparison to standard Array.
 
 Case SparseArray do
+  include AE::Legacy::Assertions
 
   def aha(a)
     return a, SparseArray[*a]
@@ -17,7 +18,7 @@ Case SparseArray do
 
   Unit :to_a do
     a, ha = aha [1,3,'a',8,nil,[1]]
-    assert_equal(a, ha.to_a)     #
+    assert_equal(a, ha.to_a)
     assert_equal(a.to_s, ha.to_s)
   end
 
@@ -199,7 +200,7 @@ Case SparseArray do
 
   Unit :nitems do
     a, ha = aha [4,5,nil,6,nil]
-    assert_equal(a.nitems, ha.nitems)
+    ha.nitems.assert == 3
   end
 
   Unit :pop do

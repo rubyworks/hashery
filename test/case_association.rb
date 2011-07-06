@@ -2,7 +2,7 @@ require 'hashery/association'
 
 Case Association do
 
-  Unit :new do
+  Meta :new do
     Association.new(:A, :B)
   end
 

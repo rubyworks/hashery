@@ -2,19 +2,19 @@ require 'hashery/opencascade'
 require 'ae/legacy' # bacause imitation BasicObject sucks
 
 TestCase OpenCascade do
+  include AE::Legacy::Assertions
 
-  Unit :new do
-    o = OpenCascade.new(:a=>1)
-    assert_equal(OpenCascade.new, o.assert)
+  Meta :new do
+    OpenCascade.new(:a=>1)
   end
 
-  Unit :[] => "initialization" do
+  Meta :[] => "initialization" do
     o = OpenCascade[:a=>1,:b=>2]
     assert_equal(1, o.a)
     assert_equal(2, o.b)
   end
 
-  Unit :[] => "mutlt-depth lookup" do
+  Meta :[] => "mutli-depth lookup" do
     o = OpenCascade[:a=>1,:b=>2,:c=>{:x=>9}]
     assert_equal(9, o.c.x)
   end
@@ -28,7 +28,7 @@ TestCase OpenCascade do
   Unit :[] => "basic assignment with primed OpenCascade" do
     o = OpenCascade[:a=>1]
     o[:b] = 2
-    assert_equal({:a=>1,:b=>2}, o.to_h)
+    o.to_h.assert == {:a=>1,:b=>2}
   end
 
   Unit :to_a do
@@ -51,11 +51,12 @@ TestCase OpenCascade do
 
   Unit :update! do
     o = OpenCascade[:f1=>"f1"]
-    h = { :h1=>"h1" }
-    o.update!(h)
+    o.update!(:h1=>"h1")
+    o.assert == OpenCascade[:f1=>"f1", :h1=>"h1"]
+
+    h = {:h1=>"h1"}
     h.update(o)
-    assert_equal(OpenCascade[:f1=>"f1", :h1=>"h1"], o)
-    assert_equal({:f1=>"f1", :h1=>"h1"}, h)
+    h.assert == {:f1=>"f1", :h1=>"h1"}
   end
 
   Unit :method_missing => "writer and reader" do

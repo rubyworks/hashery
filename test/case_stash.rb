@@ -2,7 +2,7 @@ require 'hashery/stash'
 
 TestCase Stash do
 
-  Unit :[] => 'class level fetch' do
+  Meta :[] => 'class level fetch' do
     s = Stash[:a=>1, :b=>2]
     assert(s)
   end
