@@ -16,7 +16,19 @@ copyrights:
   license: BSD-2-Clause
 replacements: []
 alternatives: []
-requirements: []
+requirements:
+- name: detroit
+  groups:
+  - build
+  development: true
+- name: qed
+  groups:
+  - test
+  development: true
+- name: lemon
+  groups:
+  - test
+  development: true
 dependencies: []
 conflicts: []
 repositories:
@@ -37,6 +49,7 @@ revision: 0
 created: '2010-04-21'
 summary: Facets-bread collection of Hash-like classes.
 title: Hashery
+version: 1.5.0
 name: hashery
 description: ! 'The Hashery is a collection of Hash-like classes, spun-off from the
   original
@@ -46,5 +59,4 @@ description: ! 'The Hashery is a collection of Hash-like classes, spun-off from 
   more featured Dictionary class, a number of open classes, similiar to the
 
   standard OpenStruct and a few variations on the standard Hash.'
-version: ''
 date: '2011-10-30'
