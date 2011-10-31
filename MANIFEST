@@ -1,6 +1,6 @@
-#!mast .yardopts .ruby bin lib man qed spec test [A-Z][A-Z]*.*
-.yardopts
+#!mast .ruby .yardopts bin lib man qed spec test [A-Z]*.*
 .ruby
+.yardopts
 lib/hashery/association.rb
 lib/hashery/basic_struct.rb
 lib/hashery/basicobject.rb
@@ -55,4 +55,5 @@ test/case_sparsearray.rb
 test/case_stash.rb
 HISTORY.rdoc
 README.rdoc
+QED.rdoc
 COPYING.rdoc

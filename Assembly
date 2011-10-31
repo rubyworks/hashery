@@ -39,4 +39,5 @@ dnote:
 vclog:
   output   : log/history.rdoc
   type     : history
+  active   : false
 

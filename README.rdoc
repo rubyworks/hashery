@@ -1,10 +1,12 @@
 = Hashery
 
+{Homepage}[http://rubyworks.github.com/hashery] |
+{Development}[http://github.com/rubyworks/hashery] |
+{Report Issue}[http://github.com/rubyworks/hashery/issues] |
+{Mailing List}[http://googlegroups.com/group.rubyworks-mailinglist] |
+{IRC}[irc://irc.freenode.net/rubyworks]
 
-== RESOURCES
-
-* {Homepage}[http://rubyworks.github.com/hashery]
-* {Development}[http://github.com/rubyworks/hashery]
+{<img src="http://travis-ci.org/rubyworks/hasery.png" />}[http://travis-ci.org/rubyworks/hashery]
 
 
 == DESCRIPTION
