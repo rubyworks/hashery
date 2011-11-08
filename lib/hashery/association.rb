@@ -7,7 +7,9 @@
 # link-lists, simple ordered maps and mixed collections,
 # among them.
 #
-# NOTE: This class is still fairly experimental.
+# NOTE: This class is still fairly experimental. And it is not
+# loaded along with the other Hashery libraries when using
+# `require 'hashery'`.
 #
 # == Usage
 #
