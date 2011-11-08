@@ -79,8 +79,8 @@ And
 Hashery's repository is hosted on GitHub[http://github.com/rubyworks/hashery].
 If you'd like to offer up a fix or feature change then fork the repo and 
 submit a pull request (preferably in a topic branch). I assume you have heard
-all the talk about proper etiquette, so I won't bugger you with it yet
-again.
+all the talk about proper {practices}[http://learn.github.com/p/intro.html],
+so I won't bug you with it yet again.
 
 === Donations
 
@@ -90,11 +90,11 @@ including Hashery. See the upper right-hand corner on the
 Rubyworks[http://rubyworks.github.com] hompage. Thanks.
 
 
-== COPYRIGHT/LICENSE
+== COPYRIGHTS
 
-Copyright (c) 2010 Thomas Sawyer
+Copyright (c) 2010 Rubyworks
 
-Licensed under the BSD 2-clause License.
+Licensed under the *BSD-2-clause* license.
 
 See COPYING.rdoc file for further details.
 
