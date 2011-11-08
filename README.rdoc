@@ -46,7 +46,7 @@ via {Ruby Setup}[http://proutils.github.com/setup].
 
 == AUTHORS
 
-Developers whose code has contributed the project include:
+Developers who have contributed code to the project include:
 
 * Kirk Haines
 * Joshua Hull
