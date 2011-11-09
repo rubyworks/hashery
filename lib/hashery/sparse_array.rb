@@ -399,16 +399,17 @@ class SparseArray < Hash
   end
 
   #
-  def index(obj=nil)
+  def index(obj=nil) 
     if block_given?
-      each do |k,v|
-        return v if yield(k)
+      self.size.times do |i|
+        return i if yield(self.fetch(i))
       end     
     else
-      each do |k,v|
-        return v if obj == k
+      self.size.times do |i|
+        return i if obj == self.fetch(i)
       end
     end
+    nil
   end
 
   #
