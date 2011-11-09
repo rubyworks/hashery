@@ -1,6 +1,48 @@
-/* ID STYLES */
 
-/* LAYOUT */
+/* TAG STYLES */
+
+html { font-family: sans serif, helvetica; font-size: 16px }
+body { position: relative; color: #222233; background: #ffffff; }
+code { font-size: 0.9em; }
+
+  ul { padding: 0 0 10px 0; }
+  li { padding: 0 0 3px 0; font-size: 0.9em; line-height: 130%; }
+pre { margin: 10px 0; font-family: monospace; color: white; }
+pre code { padding: 10px 10px; }
+
+ img { border: none; }
+   p { text-align: justify; font-size: 100%; line-height: 150%; margin: 0 0 1.2em 0; }
+   a { text-decoration: none; color: #773300; }
+   a:hover { text-decoration: underline; }
+
+/* headers */
+
+h1, h2, h3, h4, h5, h6 { margin: 10px 0 0.25em 0; }
+h1 { font-size: 200%; }
+h2 { font-size: 150%; }
+h3 { font-size: 120%; }
+h4 { font-size: 100%; }
+
+
+/* CLASS STYLES */
+
+.centered {
+  width: 760px;
+  margin: 0 auto;
+}
+
+.colorized {
+  background: #EE6600;
+  color: #333333;
+}
+
+.highlighted {
+  background: #EE6600;
+  color: #F7B380;
+}
+
+
+/* ID STYLES */
 
 /* #header */
 
@@ -50,4 +92,6 @@
 #footer { margin-top: 0; padding: 30px 0 60px 0; border-top: 1px solid #ccc; }
 #footer .advert { border: 1px solid :eee; }
 #footer .copyright { margin-top: 10px; padding: 20px 0px 35px 0px; font-size: 0.8em; color: #aaa; }
+
+
 
