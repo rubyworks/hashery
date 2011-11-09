@@ -1,5 +1,5 @@
 ---
-script: "`$TESTCOMMAND`"
+script: "bundle exec $TESTCOMMAND"
 rvm:
   - 1.8.7
   - 1.9.2
