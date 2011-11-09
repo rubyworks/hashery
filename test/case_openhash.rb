@@ -1,17 +1,21 @@
-require 'hashery/openhash'
+require 'lemon'
+require 'ae'
 
-TestCase OpenHash do
+require 'hashery/open_hash'
 
-  Meta :new do
-    o = OpenHash.new(:a=>1, :b=>2)
-    o.a.assert == 1
-    o.b.assert == 2
-  end
+testcase OpenHash do
 
-  Meta :new do
-    o = OpenHash.new(:a=>1, :b=>2)
-    o.a.assert == 1
-    o.b.assert == 2
+  class_method :new do
+    test do
+      o = OpenHash.new(:a=>1, :b=>2)
+      o.a.assert == 1
+      o.b.assert == 2
+    end
+    test do
+      o = OpenHash.new(:a=>1, :b=>2)
+      o.a.assert == 1
+      o.b.assert == 2
+    end
   end
 
 end

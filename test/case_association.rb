@@ -1,27 +1,41 @@
+require 'lemon'
+require 'ae'
+
 require 'hashery/association'
 
-Case Association do
+testcase Association do
 
-  Meta :new do
-    Association.new(:A, :B)
+  class_method :new do
+    test do
+      Association.new(:A, :B)
+    end
   end
 
-  Unit :to_ary do
-    k,v = [],[]
-    ohash = [ 'A' >> '3', 'B' >> '2', 'C' >> '1' ]
-    ohash.each { |e1,e2| k << e1 ; v << e2 }
-    k.assert == ['A','B','C']
-    v.assert == ['3','2','1']
+  method :to_ary do
+    test do
+      k,v = [],[]
+      ohash = [ 'A' >> '3', 'B' >> '2', 'C' >> '1' ]
+      ohash.each { |e1,e2| k << e1 ; v << e2 }
+      k.assert == ['A','B','C']
+      v.assert == ['3','2','1']
+    end
   end
 
-  Unit :index do
-    complex = [ 'Drop Menu' >> [ 'Button 1', 'Button 2', 'Button 3' ], 'Help' ]
-    complex[0].index.assert == 'Drop Menu'
+  method :index do
+    test do
+      complex = [ 'Drop Menu' >> [ 'Button 1', 'Button 2', 'Button 3' ], 'Help' ]
+      complex[0].index.assert == 'Drop Menu'
+    end
   end
 
-  Unit :associations do
-    complex = [ :a >> :b, :a >> :c ]
-    :a.associations.assert == [ :b, :c ]
+end
+
+testcase Object do
+  method :associations do
+    test do
+      complex = [ :a >> :b, :a >> :c ]
+      :a.associations.assert == [ :b, :c ]
+    end
   end
 
 end
