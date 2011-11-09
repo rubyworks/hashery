@@ -9,7 +9,7 @@ email:
   active  : true
 
 github:
-  gh-pages: pages
+  gh_pages: pages
 
 gem:
   active: true
