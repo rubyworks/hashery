@@ -399,10 +399,19 @@ class SparseArray < Hash
   end
 
   #
-  def index(*args)
-    key(*args)
+  def index(obj=nil)
+    if block_given?
+      each do |k,v|
+        return v if yield(k)
+      end     
+    else
+      each do |k,v|
+        return v if obj == k
+      end
+    end
   end
 
+  #
   def reject!
     chg=nil
     qdelete_if { |i,v| r=yield(v); chg=true if r; r }
