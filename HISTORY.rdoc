@@ -12,8 +12,10 @@ now has a #key method. And this release switches licensing to BSD 2-Clause.
 
 Changes:
 
-* Switch license to BSD-2-Clause license.
+* Use CoreExt mixin for core Hash extensions.
 * Add BasicObject#key method (b/c #index is deprecated in Ruby 1.9).
+* Deprecate SparseArray class.
+* Switch license to BSD-2-Clause license.
 
 
 == 1.4.0 / 2011-01-19
