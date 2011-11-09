@@ -1,4 +1,7 @@
-require 'hashery/basic_object'
+unless defined?(BasicObject)
+  require 'blankslate'
+  BasicObject = BlankSlate
+end
 
 # = BasicStruct
 #
