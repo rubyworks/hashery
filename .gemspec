@@ -8,7 +8,7 @@ module DotRuby
   class GemSpec
 
     # For which revision of .ruby is this gemspec intended?
-    REVISION = 0
+    REVISION = 0 unless defined?(REVISION)
 
     #
     PATTERNS = {
@@ -17,7 +17,7 @@ module DotRuby
       :ext_files  => 'ext/{**/}extconf.rb',
       :doc_files  => '*.{txt,rdoc,md,markdown,tt,textile}',
       :test_files => '{test/{**/}*_test.rb,spec/{**/}*_spec.rb}'
-    }
+    } unless defined?(PATTERNS)
 
     #
     def self.instance
