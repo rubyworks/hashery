@@ -1,3 +1,5 @@
+require 'hashery/core_ext'
+
 # The KeyHash class is a Hash compatible class which converts
 # all keys to strings. This has two advantages. First it
 # means hash entries have indifferent access. <tt>1</tt>,

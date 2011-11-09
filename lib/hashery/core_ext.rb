@@ -44,13 +44,13 @@ module Hashery
         if block.arity == 1  # TODO: is this condition needed?
           hash.each do |k, v|
             nk = block[k]
-            nk = (NA == nk ? k : nk)
+            #nk = (NA == nk ? k : nk)  # TODO: Can't support this here.
             hash2[nk] = v
           end
         else
           hash.each do |k, v|
             nk = block[k,v]
-            nk = (NA == nk ? k : nk)
+            #nk = (NA == nk ? k : nk)  # TODO:
             hash2[nk] = v
           end
         end
