@@ -5,24 +5,24 @@ end
 
 # = BasicStruct
 #
-# BasicObject is very similar to Ruby's own OpenStruct, but it offers some
+# BasicStruct is very similar to Ruby's own OpenStruct, but it offers some
 # advantages. With OpenStruct, slots with the same name as predefined
-# Object methods cannot be used. With BasicObject, almost any slot can be
-# defined. BasicObject is a subclass of BasicObject to ensure all method
+# Object methods cannot be used. With BasicStruct, almost any slot can be
+# defined. BasicStruct is a subclass of BasicObject to ensure all method
 # slots, except those that are absolutely essential, are open for use.
 #
 #--
-# If you wish to pass an BasicObject to a routine that normal takes a Hash,
+# If you wish to pass a BasicStruct to a routine that normal takes a Hash,
 # but are uncertain it can handle the distictions properly you can convert
 # easily to a Hash using #as_hash! and the result will automatically be
-# converted back to an BasicObject on return.
+# converted back to an BasicStruct on return.
 #
-#   o = BasicObject.new(:a=>1,:b=>2)
+#   o = BasicStruct.new(:a=>1,:b=>2)
 #   o.as_hash!{ |h| h.update(:a=>6) }
 #   o #=> #<BasicObject {:a=>6,:b=>2}>
 #++
 #
-# Unlike a Hash, all BasicObject's keys are symbols and all keys are converted
+# Unlike a Hash, all BasicStruct's keys are symbols and all keys are converted
 # to such using #to_sym on the fly.
 
 class BasicStruct < BasicObject
