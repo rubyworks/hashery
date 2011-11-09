@@ -83,13 +83,13 @@ class BasicStruct < BasicObject
   def to_proc(response=false)
     hash = @table
     if response
-      lambda do |o|
+      ::Proc.new do |o|
         hash.each do |k,v|
           o.__send__("#{k}=", v) rescue nil
         end
       end
     else
-      lambda do |o|
+      ::Proc.new do |o|
         hash.each{ |k,v| o.__send__("#{k}=", v) }
       end
     end
@@ -125,9 +125,9 @@ class BasicStruct < BasicObject
   # Check equality.
   def ==( other )
     case other
-    when BasicObject
+    when ::BasicStruct
       @table == other.as_hash
-    when Hash
+    when ::Hash
       @table == other
     else
       if other.respond_to?(:to_hash)
@@ -141,7 +141,7 @@ class BasicStruct < BasicObject
   #
   def eql?( other )
     case other
-    when BasicObject
+    when ::BasicStruct
       @table.eql?(other.as_hash)
     else
       false
@@ -181,15 +181,24 @@ class BasicStruct < BasicObject
     self
   end
 
+  #
+  def respond_to?(key)
+    key?(key)
+  end
+
+  # NOTE: These were protected, why?
+
+  #
+  def store(k, v)
+    @table.store(k.to_sym, v)
+  end
+
+  #
+  def fetch(k, *d, &b)
+    @table.fetch(k.to_sym, *d, &b)
+  end
+
   protected
-
-    def store(k, v)
-      @table.store(k.to_sym, v)
-    end
-
-    def fetch(k, *d, &b)
-      @table.fetch(k.to_sym, *d, &b)
-    end
 
     #def as_hash!
     #  Functor.new do |op,*a,&b|
