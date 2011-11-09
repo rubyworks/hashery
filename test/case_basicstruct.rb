@@ -92,11 +92,20 @@ testcase BasicStruct do
       f1 = BasicStruct[:f1=>"f1"]
       h1 = { :h1=>"h1" }
       f1.as_hash.update(h1)
-      h1.update(f1)
       assert( f1 == BasicStruct[:f1=>"f1", :h1=>"h1"] )
-      assert( h1 == {:f1=>"f1", :h1=>"h1"} )
     end
   end
+
+  #method :as_hash do
+  #  test do
+  #    f1 = BasicStruct[:f1=>"f1"]
+  #    h1 = { :h1=>"h1" }
+  #    f1.as_hash.update(h1)
+  #    h1.update(f1)
+  #    assert( f1 == BasicStruct[:f1=>"f1", :h1=>"h1"] )
+  #    assert( h1 == {:f1=>"f1", :h1=>"h1"} )
+  #  end
+  #end
 
   method :<< do
     test "passing a hash" do
@@ -146,10 +155,23 @@ end
 TestCase Hash do
 
   method :to_basicstruct do
-    h = {'a'=>1, 'b'=>2}
-    o = h.to_basicstruct
-    assert( o.a == 1 )
-    assert( o.b == 2 )
+    test do
+      h = {'a'=>1, 'b'=>2}
+      o = h.to_basicstruct
+      assert( o.a == 1 )
+      assert( o.b == 2 )
+    end
+  end
+
+  method :update do
+    test "by BasicStruct" do
+      raise NotImplementedError, "Ruby 1.8 does not know #to_hash."
+
+      h1 = { :h1=>"h1" }
+      f1 = BasicStruct[:f1=>"f1"]
+      h1.update(f1)
+      assert( h1 == {:f1=>"f1", :h1=>"h1"} )
+    end
   end
 
 end

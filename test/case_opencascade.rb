@@ -45,7 +45,10 @@ testcase OpenCascade do
   method :to_a do
     test do
       o = OpenCascade[:a=>1,:b=>2]
-      assert_equal([[:a,1], [:b,2]], o.to_a)
+      a = o.to_a
+      a.assert.include?([:a,1])
+      a.assert.include?([:b,2])
+      a.size.assert == 2
     end
   end
 
