@@ -9,11 +9,10 @@ email:
   active  : true
 
 github:
-  active: true
+  gh-pages: pages
 
 gem:
-  autospec : true
-  active   : true
+  active: true
 
 yard:
   yardopts: true
