@@ -1,12 +1,8 @@
 ---
 email:
-  service : Email
-  file    : ~
-  subject : ~
-  mailto  :
+  mailto:
     - ruby-talk@ruby-lang.org
     - rubyworks-mailinglist@googlegroups.com
-  active  : true
 
 github:
   gh_pages: pages
@@ -22,21 +18,21 @@ qedoc:
   title: Hashery Demonstrandum
   output:
     - QED.rdoc
-    - site/qed.html
+    - pages/qed.html
 
-lemon:
-  service: Custom
-  test: |
-    abort unless system "lemon -Ilib test/"
+#lemon:
+#  service: Custom
+#  test: |
+#    abort unless system "lemon -Ilib test/"
 
 dnote:
-  files    : lib
-  labels   : ~
-  exclude  : [work]
-  output   : log/DNOTE.rdoc
+  labels: ~
+  output: log/Notes.rdoc
 
 vclog:
-  output   : log/history.rdoc
-  type     : history
-  active   : false
+  output:
+    - log/History.rdoc
+    - log/Changes.rdoc
+  active: false
+
 
