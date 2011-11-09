@@ -1,5 +1,5 @@
 ---
-script: "bundle exec qed && bundle exec ruby-test test/"
+script: "bundle exec ruby-test -Ilib test/"
 rvm:
   - 1.8.7
   - 1.9.2
