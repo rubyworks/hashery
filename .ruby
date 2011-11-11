@@ -60,4 +60,4 @@ description: ! 'The Hashery is a collection of Hash-like classes, spun-off from 
   more featured Dictionary class, a number of open classes, similiar to the
 
   standard OpenStruct and a few variations on the standard Hash.'
-date: '2011-11-08'
+date: '2011-11-10'

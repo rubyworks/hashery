@@ -1,6 +1,6 @@
 = RELEASE HISTORY
 
-== 1.5.0 / 2011-07-06
+== 1.5.0 / 2011-11-10
 
 In this release, CoreExt module has been addeed to encapsulate
 methods that extend Ruby's core Hash class (there are only a few).
