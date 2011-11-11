@@ -18,7 +18,7 @@ qedoc:
   title: Hashery Demonstrandum
   output:
     - QED.rdoc
-    - pages/qed.html
+    - web/qed.html
 
 #lemon:
 #  service: Custom
@@ -27,7 +27,7 @@ qedoc:
 
 dnote:
   labels: ~
-  output: log/Notes.rdoc
+  output: work/NOTES.rdoc
 
 vclog:
   output:
