@@ -40,7 +40,7 @@ resources:
   home: http://rubyworks.github.com/hashery
   code: http://github.com/rubyworks/hashery
   mail: http://groups.google.com/group/rubyworks-mailinglist
-  docs: http://rubydocs.info/gems/hashery/frames
+  docs: http://rubydoc.info/gems/hashery/frames
   wiki: http://wiki.github.com/rubyworks/hashery
   gems: http://rubygems.org/gems/hashery
 extra: {}
@@ -60,4 +60,4 @@ description: ! 'The Hashery is a collection of Hash-like classes, spun-off from 
   more featured Dictionary class, a number of open classes, similiar to the
 
   standard OpenStruct and a few variations on the standard Hash.'
-date: '2011-11-10'
+date: '2011-11-11'
