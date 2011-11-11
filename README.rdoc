@@ -6,7 +6,7 @@
 {Mailing List}[http://googlegroups.com/group.rubyworks-mailinglist] |
 {IRC}[irc://irc.freenode.net/rubyworks]
 
-{<img src="http://travis-ci.org/rubyworks/hasery.png" />}[http://travis-ci.org/rubyworks/hashery]
+{<img src="http://travis-ci.org/rubyworks/hashery.png" />}[http://travis-ci.org/rubyworks/hashery]
 
 
 == DESCRIPTION
