@@ -12,17 +12,19 @@ testcase OpenCascade do
   end
 
   class_method :[] do
-    test "initialization" do
+    test "hash" do
       o = OpenCascade[:a=>1,:b=>2]
       assert_equal(1, o.a)
       assert_equal(2, o.b)
     end
-  end
-
-  class_method :[] do
-    test "mutli-depth lookup" do
+    test "hash in hash" do
       o = OpenCascade[:a=>1,:b=>2,:c=>{:x=>9}]
       assert_equal(9, o.c.x)
+    end
+    test "hash in hash in hash" do
+      h = {:a=>1,:x=>{:y=>{:z=>1}}}
+      c = OpenCascade[h]
+      assert_equal(1, c.x.y.z)
     end
   end
 
@@ -82,6 +84,17 @@ testcase OpenCascade do
       o = OpenCascade.new
       10.times{ |i| o.__send__("n#{i}=", 1 ) }
       10.times{ |i| assert_equal(1, o.__send__("n#{i}")) }
+    end
+  end
+
+  method :<< do
+    test do
+      c = OpenCascade.new
+      c << [:x,8]
+      c << [:y,9]
+
+      assert_equal(8, c.x)
+      assert_equal(9, c.y)
     end
   end
 
