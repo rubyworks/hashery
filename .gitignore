@@ -1,8 +1,10 @@
+.rbx
+.reap/digest
 .yardoc
+doc
 log
 pkg
 tmp
-doc
-site/qed.html
+web
 QED.rdoc
-pages
+Gemfile.lock

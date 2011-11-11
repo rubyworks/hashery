@@ -5,7 +5,7 @@ email:
     - rubyworks-mailinglist@googlegroups.com
 
 github:
-  gh_pages: pages
+  gh_pages: web
 
 gem:
   active: true
