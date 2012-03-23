@@ -1,5 +1,3 @@
-# = OpenHash
-#
 # OpenHash is very similar to Ruby's own OpenStruct, but it offers some
 # useful advantages in that it is a true Hash object.
 #

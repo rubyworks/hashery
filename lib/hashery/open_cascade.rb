@@ -1,8 +1,6 @@
 require 'hashery/open_hash'
 #require 'facets/nullclass'
 
-# = OpenCascade
-#
 # OpenCascade is subclass of OpenHash. It differs in a few
 # significant ways.
 #
@@ -42,22 +40,6 @@ require 'hashery/open_hash'
 #   c = OpenCascade.new   #=> #<OpenCascade:0x7fac3680ccf0 {}>
 #   c.x!(4).y!(3)         #=> #<OpenCascade:0x7fac3680ccf0 {:x=>4, :y=>3}>
 #
-#--
-# Last, when an entry is not found, 'null' is returned rather then 'nil'.
-# This allows for run-on entries withuot error. Eg.
-#
-#   o = OpenCascade.new
-#   o.a.b.c  #=> null
-#
-# Unfortuately this requires an explict test for null? in 'if' conditions.
-#
-#   if o.a.b.c.null?  # true if null
-#   if o.a.b.c.nil?   # true if nil or null
-#   if o.a.b.c.not?   # true if nil or null or false
-#
-# So be sure to take that into account.
-#++
-
 class OpenCascade < OpenHash
 
   #
@@ -96,4 +78,20 @@ class OpenCascade < OpenHash
     end
 
 end
+
+#--
+# Last, when an entry is not found, 'null' is returned rather then 'nil'.
+# This allows for run-on entries withuot error. Eg.
+#
+#   o = OpenCascade.new
+#   o.a.b.c  #=> null
+#
+# Unfortuately this requires an explict test for null? in 'if' conditions.
+#
+#   if o.a.b.c.null?  # true if null
+#   if o.a.b.c.nil?   # true if nil or null
+#   if o.a.b.c.not?   # true if nil or null or false
+#
+# So be sure to take that into account.
+#++
 

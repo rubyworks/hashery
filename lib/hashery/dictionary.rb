@@ -43,7 +43,7 @@
 #
 # == Acknowledgments
 #
-# Dictionary is a ported of OrderHash 2.0 Copyright (c) 2005 Jan Molic.
+# Dictionary is a port of OrderHash 2.0 Copyright (c) 2005 Jan Molic.
 #
 # People who have contributed to this class since then include:
 #
@@ -51,7 +51,7 @@
 # * Jeff Sharpe    (reverse and reverse!)
 # * Thomas Leitner (has_key? and key?)
 #
-# Copyright (c) 2005, 2009 Jan Molic, Thomas Sawyer
+# OrderedHash is public domain.
 
 class Dictionary
 

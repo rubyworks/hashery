@@ -1,14 +1,4 @@
-# ini.rb - read and write ini files
-#
-# Copyright (C) 2007 Jeena Paradies
-# License: GPL
-# Author: Jeena Paradies (info@jeenaparadies.net)
-#
-# This file provides a read-wite handling for ini files.
-# The data of a ini file is represented by a object which
-# is populated with strings.
-
-# Class with methods to read from and write into ini files.
+# Hash class with methods to read from and write into ini files.
 #
 # A ini file is a text file in a specific format,
 # it may include several fields which are sparated by
@@ -83,10 +73,14 @@
 #   # => /tmp/example
 #   ini.write()
 # 
+# == Acknowlegements
+#
+# IniHash is based on ini.rb.
+#
+# Copyright (C) 2007 Jeena Paradies <info@jeenaparadies.net>
 
-class Ini
-  
-  
+class IniHash
+
   #
   # :inihash is a hash which holds all ini data
   # :comment is a string which holds the comments on the top of the file
@@ -145,6 +139,11 @@ class Ini
   #
   def to_h
     @inihash.dup
+  end
+
+  # @todo Sublcass Hash instead of delegating.
+  def method_missing(s,*a,&b)
+    @inihash.send(s, *a, &b) if @inihash.respond_to?(s)
   end
 
   #
@@ -265,4 +264,3 @@ class Ini
   end
   
 end
-

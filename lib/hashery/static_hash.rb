@@ -1,20 +1,14 @@
-# = StaticHash
-#
-# A Hash object which raises an error if any
+# StaticHash ia a Hash object which raises an error if any
 # previously-defined key attempts to be set again.
 #
-# == Synopsis
-#
-#   foo = StaticHash.new
-#   foo['name'] = 'Tom'    #=> 'Tom'
-#   foo['age']  = 30       #=> 30
-#   foo['name'] = 'Bob'
+#     foo = StaticHash.new
+#     foo['name'] = 'Tom'    #=> 'Tom'
+#     foo['age']  = 30       #=> 30
+#     foo['name'] = 'Bob'
 #
 # _produces_
 #
-#   ArgumentError: Duplicate key for StaticHash -- 'name'
-#
-# == Credit
+#     ArgumentError: Duplicate key for StaticHash -- 'name'
 #
 # StaticHash has it's orgins in Gavin Kistner's WriteOnceHash
 # class found in his +basiclibrary.rb+ script.

@@ -1,6 +1,4 @@
-# = OrderedHash
-#
-# A simple ordered hash implmentation, for users of
+# OrderedHash is asimple ordered hash implmentation, for users of
 # Ruby 1.8.7 or less.
 #
 # NOTE: As of Ruby 1.9+ this class is not needed, since

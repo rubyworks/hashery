@@ -1,31 +1,6 @@
-#--
-# OpenStructable
-#
-# Copyright (c) 2005 Thomas Sawyer
-#
-# ==========================================================================
-# Revision History ::
-# --------------------------------------------------------------------------
-# 05.04.28  Trans
-#   - Minor modifications to documentation.
-# ==========================================================================
-#
-# TODO
-# Keep this uptodate with ostruct.rb.
-#
-# TODO Ask Matz
-# See if Matz will accept it into core so we don't have to anymore.
-#
-# TODO Marshalling
-# As with OpenStruct, marshalling is problematic at the moment.
-#
-#++
-
 # OpensStructable is a mixin module which can provide OpenStruct behavior to
 # any class or object. OpenStructable allows extention of data objects
 # with arbitrary attributes.
-#
-# == Usage
 #
 #   require 'ostructable'
 #
@@ -41,13 +16,19 @@
 #   puts record.name     # -> "John Smith"
 #   puts record.address  # -> nil
 #
-# == Author(s)
-#
-# * Thomas Sawyer
-# * Yukihiro Matsumoto
-# * Gavin Sinclair (Documentation)
+# @author 7rans
+# @author Yukihiro Matsumoto
+# @author Gavin Sinclair
 #
 module OpenStructable
+
+  # TODO: Update to matchh current OpenStruct class.
+
+  # TODO: Keep this uptodate with ostruct.rb.
+
+  # TODO: See if Matz will accept it into core so we don't have to anymore.
+
+  # TODO: As with OpenStruct, marshalling is problematic at the moment.
 
   def self.include(base)
     if Hash > base
@@ -155,10 +136,11 @@ module OpenStructable
     str << ">"
   end
 
-  # Compare this object and +other+ for equality.
-  #--
   # TODO: OpenStruct could be compared too, but only if it is loaded. How?
-  #++
+
+  #
+  # Compare this object and +other+ for equality.
+  #
   def ==(other)
     case other
     when OpenStructable
@@ -183,4 +165,3 @@ class OpenStruct
   include OpenStructable
 end
 =end
-

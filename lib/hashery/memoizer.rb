@@ -1,9 +1,3 @@
-# Memoizer
-#
-# Copyright (c) 2006 Erik Veenstra
-#
-# See http://javathink.blogspot.com/2008/09/what-is-memoizer-and-why-should-you.html
-
 # Memoizer wraps objects to provide cached method calls.
 #
 #   class X
@@ -33,6 +27,12 @@
 #
 #    points = points.collect{|point| Memoizer.uncache(point)}
 #
+# Memoizer is the work of Erik Veenstra
+#
+# Copyright (c) 2006 Erik Veenstra
+#
+# See http://javathink.blogspot.com/2008/09/what-is-memoizer-and-why-should-you.html
+
 class Memoizer
 
   #private :class, :clone, :display, :type, :method, :to_a, :to_s
@@ -61,4 +61,3 @@ class Memoizer
   end
 
 end
-

@@ -1,9 +1,9 @@
 # CastingHash is just like Hash, except that all keys and values
 # are passed through casting procedures.
-#--
-# TODO: Handle default_proc.
-#++
+#
 class CastingHash < Hash
+
+  # TODO: Handle default_proc.
 
   # Default key conversion procedure.
   KEY_PROC = lambda{ |x| x } #.to_s }
