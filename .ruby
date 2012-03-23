@@ -1,6 +1,6 @@
 ---
 source:
-- var
+- meta
 authors:
 - name: Trans
   email: transfire@gmail.com
@@ -14,8 +14,6 @@ copyrights:
 - holder: Rubyworks
   year: '2010'
   license: BSD-2-Clause
-replacements: []
-alternatives: []
 requirements:
 - name: blankslate
 - name: detroit
@@ -31,6 +29,7 @@ requirements:
   - test
   development: true
 dependencies: []
+alternatives: []
 conflicts: []
 repositories:
 - uri: git://github.com/rubyworks/hashery.git
@@ -50,7 +49,7 @@ revision: 0
 created: '2010-04-21'
 summary: Facets-bread collection of Hash-like classes.
 title: Hashery
-version: 1.5.0
+version: 1.5.1
 name: hashery
 description: ! 'The Hashery is a collection of Hash-like classes, spun-off from the
   original
@@ -60,4 +59,4 @@ description: ! 'The Hashery is a collection of Hash-like classes, spun-off from 
   more featured Dictionary class, a number of open classes, similiar to the
 
   standard OpenStruct and a few variations on the standard Hash.'
-date: '2011-11-11'
+date: '2012-03-23'
