@@ -63,6 +63,12 @@ class OpenCascade < OpenHash
     end
   end
 
+  def each
+    super do |key, entry|
+      yield([key, transform_entry(entry)])
+    end
+  end
+
   private
 
     #
