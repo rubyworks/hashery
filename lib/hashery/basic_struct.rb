@@ -34,12 +34,12 @@ class BasicStruct < BasicObject
     new(hash)
   end
 
-  # Inititalizer for BasicObject is slightly different than that of Hash.
+  # Inititalizer for BasicStruct is slightly different than that of Hash.
   # It does not take a default parameter, but an initial priming Hash,
   # like OpenStruct. The initializer can still take a default block
   # however. To set the default value use <code>#default!(value)</code>.
   #
-  #   BasicObject.new(:a=>1).default!(0)
+  #   BasicStruct.new(:a=>1).default!(0)
   #
   def initialize(hash=nil, &yld)
     @table = ::Hash.new(&yld)
@@ -58,7 +58,7 @@ class BasicStruct < BasicObject
   def inspect
     #@table.inspect
     hexid = __id__
-    klass = "BasicObject" # __class__
+    klass = "BasicStruct" # __class__
     "#<#{klass}:#{hexid} #{@table.inspect}>"
   end
 
@@ -111,7 +111,7 @@ class BasicStruct < BasicObject
   #
   def is_a?(klass)
     return true if klass == ::Hash  # TODO: Is this wise? How to fake a subclass?
-    return true if klass == ::BasicObject
+    return true if klass == ::BasicStruct
     false
   end
 
@@ -175,7 +175,7 @@ class BasicStruct < BasicObject
 
   #
   def merge!(other)
-    BasicObject.new(@table.merge!(other))
+    BasicStruct.new(@table.merge!(other))
   end
 
   #
