@@ -27,9 +27,6 @@ end
 
 class BasicStruct < BasicObject
 
-  #PUBLIC_METHODS = /(^__|^instance_|^object_|^\W|^as$|^send$|^class$|\?$)/
-  #protected(*public_instance_methods.select{ |m| m !~ PUBLIC_METHODS })
-
   def self.[](hash=nil)
     new(hash)
   end
@@ -42,7 +39,7 @@ class BasicStruct < BasicObject
   #   BasicStruct.new(:a=>1).default!(0)
   #
   def initialize(hash=nil, &yld)
-    @table = ::Hash.new(&yld)
+    super(&yld)
     if hash
       hash.each{ |k,v| store(k,v) }
     end
@@ -64,18 +61,20 @@ class BasicStruct < BasicObject
 
   # Convert to an associative array.
   def to_a
-    @table.to_a
-  end
-
-  #
-  def to_h
-    @table.dup
+    super
   end
 
   #
   def to_hash
-    @table.dup
+    h = {}
+    each do |k,v|
+      h[k] = v
+    end
+    h
   end
+
+  #
+  alias_method :to_h, :to_hash
 
   #
   def to_basicstruct
@@ -84,7 +83,7 @@ class BasicStruct < BasicObject
 
   # Convert to an assignment procedure.
   def to_proc(response=false)
-    hash = @table
+    hash = self #@table
     if response
       ::Proc.new do |o|
         hash.each do |k,v|
@@ -99,13 +98,13 @@ class BasicStruct < BasicObject
   end
 
   # NOT SURE ABOUT THIS
-  def as_hash
-    @table
-  end
+  #def as_hash
+  #  @table
+  #end
 
   # Is a given +key+ defined?
   def key?(key)
-    @table.key?(key.to_sym)
+    super(key.to_sym)
   end
 
   #
@@ -117,24 +116,25 @@ class BasicStruct < BasicObject
 
   # Iterate over each key-value pair.
   def each(&yld)
-    @table.each(&yld)
+    super(&yld)
   end
 
   # Set the default value.
-  def default!(default)
-    @table.default = default
+  def default=(default)
+    #@table.default = default
+    super(default)
   end
 
   # Check equality.
   def ==( other )
     case other
     when ::BasicStruct
-      @table == other.as_hash
+      to_hash == other.to_hash  # as_hash
     when ::Hash
-      @table == other
+      to_hash == other
     else
       if other.respond_to?(:to_hash)
-        @table == other.to_hash
+        to_hash == other.to_hash
       else
         false
       end
@@ -145,7 +145,7 @@ class BasicStruct < BasicObject
   def eql?( other )
     case other
     when ::BasicStruct
-      @table.eql?(other.as_hash)
+      super(other.to_hash)  # other.as_hash
     else
       false
     end
@@ -155,32 +155,32 @@ class BasicStruct < BasicObject
   def <<(x)
     case x
     when ::Hash
-      @table.update(x)
+      self.update(x)
     when ::Array
       x.each_slice(2) do |(k,v)|
-        @table[k] = v
+        self[k] = v
       end
     end
   end
 
   #
   def []=(key, value)
-    @table[key.to_sym] = value
+    super(key.to_sym, value)
   end
 
   #
   def [](key)
-    @table[key.to_sym]
+    super(key.to_sym)
   end
 
-  #
+  # TODO: Should this work like #merge or #update ?
   def merge!(other)
-    BasicStruct.new(@table.merge!(other))
+    ::BasicStruct.new(to_hash.merge(other))
   end
 
   #
   def update!(other)
-    @table.update(other)
+    self.update(other)
     self
   end
 
@@ -193,12 +193,12 @@ class BasicStruct < BasicObject
 
   #
   def store(k, v)
-    @table.store(k.to_sym, v)
+    super(k.to_sym, v)
   end
 
   #
   def fetch(k, *d, &b)
-    @table.fetch(k.to_sym, *d, &b)
+    super(k.to_sym, *d, &b)
   end
 
   protected
@@ -232,7 +232,7 @@ class BasicStruct < BasicObject
       when '='
         store(key, args[0])
       when '!'
-        @table.__send__(key, *args, &blk)
+        __send__(key, *args, &blk)
       #  if key?(key)
       #    fetch(key)
       #  else

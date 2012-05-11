@@ -1,6 +1,6 @@
 require 'hashery/basic_struct'
 
-# BasicCascade is subclass of OpenHash. It differs in a few
+# BasicCascade is subclass of BasicStruct. It differs in a few
 # significant ways.
 #
 # The main reason this class is labeled "cascade", every internal
@@ -57,7 +57,7 @@ class BasicCascade < BasicStruct
       if key?(name)
         self[name] = transform_entry(self[name])
       else
-        self[name] = BasicCascade.new #self.class.new
+        self[name] = ::BasicCascade.new  # TODO: can't get `self.class` ?
       end
     end
   end
@@ -73,9 +73,9 @@ class BasicCascade < BasicStruct
     #
     def transform_entry(entry)
       case entry
-      when Hash
-        BasicCascade.new(entry) #self.class.new(val)
-      when Array
+      when ::Hash
+        ::BasicCascade.new(entry) #self.class.new(entry)
+      when ::Array
         entry.map{ |e| transform_entry(e) }
       else
         entry
