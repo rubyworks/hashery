@@ -1,10 +1,14 @@
-require 'hashery/keyhash'
+require 'hashery/key_hash'
 
-Stash = KeyHash
+module Hashery
+  # Stash is the original name for the KeyHash.
+  Stash = KeyHash
+end
 
 class Hash
   # Convert Hash to Stash.
   def to_stash
-    Stash[self]
+    Hashery::Stash[self]
   end
 end
+

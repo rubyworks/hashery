@@ -1,123 +1,123 @@
-# Copyright (c) 2005 Thomas Sawyer
+module Hashery
 
-# = Association
-#
-# General binary association allows one object to be
-# associated with another. It has a variety of uses,
-# link-lists, simple ordered maps and mixed collections,
-# among them.
-#
-# NOTE: This class is still fairly experimental. And it is not
-# loaded along with the other Hashery libraries when using
-# `require 'hashery'`.
-#
-# == Usage
-#
-# Associations can be used to draw simple relationships.
-#
-#   :Apple >> :Fruit
-#   :Apple >> :Red
-#
-#   :Apple.associations #=> [ :Fruit, :Red ]
-#
-# It can also be used for simple lists of ordered pairs.
-#
-#   c = [ :a >> 1, :b >> 2 ]
-#   c.each { |k,v| puts "#{k} associated with #{v} }
-#
-# produces
-#
-#   a associated with 1
-#   b associated with 2
-#
-# == Limitations
-#
-# The method :>> is used to construct the association.
-# It is a rarely used method so it is generally available.
-# But you can't use it for any of the following classes
-# becuase they use #>> for other things.
-#
-#   Bignum
-#   Fixnum
-#   Date
-#   IPAddr
-#   Process::Status
-#
-#--
-# TODO: Should associations be singleton?
-#
-# TODO: Is it really wise to keep a table of all associations?
-#++
-
-class Association
-  include Comparable
-
-  class << self
-    # Store association references.
-    def reference
-      @reference ||= Hash.new{ |h,k,v| h[k]=[] }
-    end
-
-    def [](index, value)
-      new(index, value)
-    end
-
-    #def new(index, value)
-    #  lookup[[index, value]] ||= new(index, value)
-    #end
-
-    #def lookup
-    #  @lookup ||= {}
-    #end
-  end
-
-  attr_accessor :index
-  attr_accessor :value
-
-  def initialize(index, value=nil)
-    @index = index
-    @value = value
-
-    unless index.associations.include?(value)
-      index.associations << value
-    end
-  end
-
-  def <=>(assoc)
-    return -1 if self.value < assoc.value
-    return  1 if self.value > assoc.value
-    return  0 if self.value == assoc.value
-  end
-
-  def invert!
-    temp = @index
-    @index = @value
-    @value = temp
-  end
-
-  def to_s
-    return "#{index.to_s}#{value.to_s}"
-  end
-
-  def inspect
-    %{#{@index.inspect} >> #{@value.inspect}}
-  end
-
-  def to_ary
-    [ @index, @value ]
-  end
-
-  # Object extensions.
+  # Association is general binary association that allows one
+  # object to be associated with another. It has a variety of uses,
+  # such as linked-lists, simple ordered maps and mixed collections,
+  # among them.
   #
-  module Kernel
+  # NOTE: This class is still fairly experimental. And it is not
+  # loaded along with the other Hashery libraries when using
+  # `require 'hashery'`.
+  #
+  # == Usage
+  #
+  # Associations can be used to draw simple relationships.
+  #
+  #   :Apple >> :Fruit
+  #   :Apple >> :Red
+  #
+  #   :Apple.associations #=> [ :Fruit, :Red ]
+  #
+  # It can also be used for simple lists of ordered pairs.
+  #
+  #   c = [ :a >> 1, :b >> 2 ]
+  #   c.each { |k,v| puts "#{k} associated with #{v} }
+  #
+  # produces
+  #
+  #   a associated with 1
+  #   b associated with 2
+  #
+  # == Limitations
+  #
+  # The method :>> is used to construct the association.
+  # It is a rarely used method so it is generally available.
+  # But you can't use it for any of the following classes
+  # becuase they use #>> for other things.
+  #
+  #   Bignum
+  #   Fixnum
+  #   Date
+  #   IPAddr
+  #   Process::Status
+  #
+  #--
+  # TODO: Should associations be singleton?
+  #
+  # TODO: Is it really wise to keep a table of all associations?
+  #++
 
-    # Define an association with +self+.
-    def >>(to)
-      Association.new(self, to)
+  class Association
+    include Comparable
+
+    class << self
+      # Store association references.
+      def reference
+        @reference ||= Hash.new{ |h,k,v| h[k]=[] }
+      end
+
+      def [](index, value)
+        new(index, value)
+      end
+
+      #def new(index, value)
+      #  lookup[[index, value]] ||= new(index, value)
+      #end
+
+      #def lookup
+      #  @lookup ||= {}
+      #end
     end
 
-    def associations
-      Association.reference[self]
+    attr_accessor :index
+    attr_accessor :value
+
+    def initialize(index, value=nil)
+      @index = index
+      @value = value
+
+      unless index.associations.include?(value)
+        index.associations << value
+      end
+    end
+
+    def <=>(assoc)
+      return -1 if self.value < assoc.value
+      return  1 if self.value > assoc.value
+      return  0 if self.value == assoc.value
+    end
+
+    def invert!
+      temp = @index
+      @index = @value
+      @value = temp
+    end
+
+    def to_s
+      return "#{index.to_s}#{value.to_s}"
+    end
+
+    def inspect
+      %{#{@index.inspect} >> #{@value.inspect}}
+    end
+
+    def to_ary
+      [ @index, @value ]
+    end
+
+    # Object extensions.
+    #
+    module Kernel
+
+      # Define an association with +self+.
+      def >>(to)
+        Association.new(self, to)
+      end
+
+      def associations
+        Association.reference[self]
+      end
+
     end
 
   end
@@ -125,9 +125,8 @@ class Association
 end
 
 class Object #:nodoc:
-  include Association::Kernel
+  include Hashery::Association::Kernel
 end
-
 
 #--
 # Setup the >> method in classes that use it already.
@@ -160,3 +159,4 @@ end
 # end
 #++
 
+# Copyright (c) 2005 Thomas Sawyer
