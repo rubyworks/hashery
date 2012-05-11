@@ -1,5 +1,41 @@
 = RELEASE HISTORY
 
+== 2.0.0 / 2012-05-11
+
+This is a huge release for Hashery which both culls some of it's
+less fitting classes and modules while greatly improving the remaining.
+The first and most immediate change with this release is that it 
+finally uses a proper namespace. All classes and modules are now 
+appropriately kept in the `Hashery` namespace. To get the old behavior 
+you can `include Hashery` as the toplevel.
+
+Changes:
+
+* Use proper Hashery namespace.
+* Add CRUDHash, which also serves a good base class.
+* Improved OpenHash to be nearly 100% open.
+* Deprecate BasicStruct, as it would be better to improve OpenStruct.
+* Deprecate BasicCascade, though it never really came to be.
+* Deprecate BasicObject emulator, as it is no longer needed.
+* Deprecate Memoizer, not sure how that got in here anyway.
+* Deprecate Ostructable, which can be paired up with better OpenStruct.
+* Removed open_object.rb, which has long been deprecated.
+
+
+== 1.5.1 / 2012-05-09
+
+This release adds transformative #each method to OpenCascade, to
+ensure #each returns an OpenCascade. Also, BasicCascade has been
+added that is like OpenCascade by fully open by use of BasicObject
+as a base class.
+
+Changes:
+
+* Fix OpenCascade#each (porecreat).
+* Introduce BasicCascade class.
+* Renamed `Ini` class to `IniHash` class.
+
+
 == 1.5.0 / 2011-11-10
 
 In this release, CoreExt module has been addeed to encapsulate

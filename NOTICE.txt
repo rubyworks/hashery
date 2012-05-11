@@ -38,7 +38,7 @@ FuzzyHash is based on the same by Joshua Hull.
     Copyright (c) 2009 Joshua Hull
 
 
-SlashedHash is based on same by Daniel Parker
+PathHash is based on SlashedHash by Daniel Parker
 
     HashMagic by Daniel Parker <gems@behindlogic.com>
     Copyright (c) 2006 BehindLogic
