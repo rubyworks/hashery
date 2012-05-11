@@ -1,165 +1,73 @@
-# CastingHash is just like Hash, except that all keys and values
-# are passed through casting procedures.
-#
-class CastingHash < Hash
+module Hashery
 
-  # TODO: Handle default_proc.
-
-  # Default key conversion procedure.
-  KEY_PROC = lambda{ |x| x } #.to_s }
-
-  # Default value conversion procedure.
-  VAL_PROC = lambda{ |x| x }
-
+  # CastingHash is just like CRUDHash, except that both keys and values
+  # can be passed through casting procedures.
   #
-  def self.[](hash)
-    s = new
-    hash.each{ |k,v| s[k] = v }
-    s
-  end
-
+  # The `#value_proc` only effects storing. Perhaps a cast procedure for
+  # read value might be a useful feature, but is currently not supported.
   #
-  def initialize(hash={}, value_cast=nil, &key_cast)
-    @key_proc   = (key_cast   || KEY_PROC)
-    @value_proc = (value_cast || VAL_PROC).to_proc
-    hash.each{ |k,v| self[k] = v }
-  end
+  class CastingHash < CRUDHash
 
-  #
-  def key_proc
-    @key_proc
-  end
-
-  #
-  def key_proc=(proc)
-    @key_proc = proc.to_proc
-  end
-
-  #
-  def value_proc
-    @value_proc
-  end
-
-  #
-  def value_proc=(proc)
-    @value_proc = proc.to_proc
-  end
-
-  #
-  def [](k)
-    super(key_proc[k])
-  end
-
-  #
-  def []=(k,v)
-    super(key_proc[k], value_proc[v])
-  end
-
-  #
-  def <<(other)
-    case other
-    when Hash
-      super(cast(other))
-    when Array
-      self[other[0]] = other[1]
-    else
-      raise ArgumentError
+    #
+    def self.[](hash)
+      s = new
+      hash.each{ |k,v| s[k] = v }
+      s
     end
-  end
 
-  def fetch(k)
-    super(key_proc[k])
-  end
-
-  #
-  def store(k, v)
-    super(key_proc[k], value_proc[v])
-  end
-
-  #
-  def key?(k)
-    super(key_proc[k])
-  end
-
-  #
-  def has_key?(k)
-    super(key_proc[k])
-  end
-
-  # Synonym for Hash#rekey, but modifies the receiver in place (and returns it).
-  #
-  #   foo = { :name=>'Gavin', :wife=>:Lisa }.to_stash
-  #   foo.rekey!{ |k| k.upcase }  #=>  { "NAME"=>"Gavin", "WIFE"=>:Lisa }
-  #   foo.inspect                 #=>  { "NAME"=>"Gavin", "WIFE"=>:Lisa }
-  #
-  def rekey!(*args, &block)
-    # for backward comptability (DEPRECATE?).
-    block = args.pop.to_sym.to_proc if args.size == 1
-    if args.empty?
-      block = lambda{|k| k} unless block
-      keys.each do |k|
-        nk = block[k]
-        self[nk] = delete(k) #if nk
-      end
-    else
-      raise ArgumentError, "3 for 2" if block
-      to, from = *args
-      self[to] = delete(from) if has_key?(from)
+    #
+    def value_proc(&block)
+      @value_proc = block if block
+      @value_proc
     end
-    self
-  end
 
-  #
-  def rekey(*args, &block)
-    dup.rekey!(*args, &block)
-  end
+    #
+    def value_proc=(proc)
+      raise ArgumentError unless Proc === proc or NilClass === proc
+      @value_proc = proc
+    end
 
-  #
-  def delete(k)
-    super(key_proc[k])
-  end
+    # CRUD method for create and update.
+    def store(key, value)
+      self[cast_key(key)] = cast_value(value)
+    end
 
-  #
-  def update(other)
-    super(cast(other))
-  end
+    #
+    def replace(other)
+      super cast(other)
+    end
 
-  # Same as #update.
-  def merge!(other)
-    super(cast(other))
-  end
+    #
+    def to_hash
+      h = {}; each{ |k,v| h[k] = v }; h
+    end
 
-  #
-  def replace(other)
-    super(cast(other))
-  end
-
-  #
-  def values_at(*keys)
-    super(keys.map(&key_proc))
-  end
-
-  #
-  def to_hash
-    h = {}; each{ |k,v| h[k] = v }; h
-  end
-
-  #
-  alias_method :to_h, :to_hash
+    #
+    alias_method :to_h, :to_hash
 
   private
 
     #
+    # Cast a given +hash+ according to the `#key_proc` and `#value_proc`.
+    #
+    # @param [#each] hash
+    #
     def cast(hash)
-      h
+      h = {}
       hash.each do |k,v|
-        h[key_proc[k]] = value_proc[v]
+        h[cast_key(k)] = cast_value(v)
       end
       h
     end
 
-end
+    #
+    def cast_value(value)
+      @value_proc ? @value_proc.call(value) : value
+    end
 
+  end
+
+end
 
 #class Hash
 #
