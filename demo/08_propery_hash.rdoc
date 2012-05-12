@@ -1,9 +1,5 @@
 = PropertyHash
 
-Require the library.
-
-    require 'hashery/propertyhash'
-
 The Property hash can be used an object in itself.
 
      h = PropertyHash.new(:a=>1, :b=>2)

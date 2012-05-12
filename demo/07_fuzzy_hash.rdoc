@@ -1,9 +1,5 @@
 = FuzzyHash
 
-Require the library.
-
-    require 'hashery/fuzzyhash'
-
 Should accept strings and retrieve based on them.
 
     l = FuzzyHash.new

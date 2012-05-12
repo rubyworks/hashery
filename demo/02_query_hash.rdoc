@@ -4,8 +4,6 @@ A QueryHash is a Hash that provides open access much like
 an OpenHash, but it limits readers to query methods (i.e.
 method ending in ?-marks).
 
-  require 'hashery/queryhash'
-
   q = QueryHash.new
   q.a = 1
   q.b = 2

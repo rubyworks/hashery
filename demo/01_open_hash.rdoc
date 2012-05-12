@@ -4,8 +4,6 @@ An OpenHash is a Hash that provides +open+ access to its entries via method
 calls. Writers (methods ending in =-marks) assign entries. Methods without
 special puncuation will retrieve entries. 
 
-  require 'hashery/openhash'
-
   o = OpenHash.new
   o.a = 1
   o.b = 2
@@ -34,7 +32,7 @@ For some usecases it may be necessary to give up access to one or
 more Hash methods in favor of access to the hash entries. This can
 be done using the #omit! method.
 
-  o.omit!(:map, :merge)
+  o.open!(:map, :merge)
   o.map.assert == 3
   o.merge = 4
   o.merge.assert == 4

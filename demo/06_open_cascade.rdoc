@@ -1,10 +1,5 @@
 = OpenCascade
 
-OpenCascade is subclass of OpenObject. It differs in a few
-significant ways.
-
-   require 'hashery/opencascade'
-
 The reason this class is labeled "cascade", is that every internal
 Hash is transformed into an OpenCascade dynamically upon access.
 This makes it easy to create _cascading_ references.
@@ -16,8 +11,8 @@ This makes it easy to create _cascading_ references.
 As soon as you access a node it automatically becomes an OpenCascade.
 
     c = OpenCascade.new
-    assert c.r.is_a?(OpenCascade)
-    assert c.a.b.is_a?(OpenCascade)
+    assert(OpenCascade === c.r)
+    assert(OpenCascade === c.a.b)
 
 But if you set a node, then that will be it's value.
 
@@ -31,10 +26,10 @@ object, use the ?-mark.
 
 OpenCascade also transforms Hashes within Arrays.
 
-  h = { :x=>[ {:a=>1}, {:a=>2} ], :y=>1 }
-  c = OpenCascade[h]
-  assert c.x.first.a == 1
-  assert c.x.last.a == 2
+   h = { :x=>[ {:a=>1}, {:a=>2} ], :y=>1 }
+   c = OpenCascade[h]
+   assert c.x.first.a == 1
+   assert c.x.last.a == 2
 
 Like OpenObject, OpenCascade allows you to insert entries as array
 pairs.
