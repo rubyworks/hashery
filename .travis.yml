@@ -1,5 +1,6 @@
 ---
-# NOTE: For some reaons this fails for 1.9.2 on Travis CO.
+language: ruby
+# NOTE: For some reason this fails for 1.9.2 on Travis CO.
 # It passes for 1.9.2 just fine om local machine. Can't
 # figure out why.
 script: "bundle exec $TESTCOMMAND"

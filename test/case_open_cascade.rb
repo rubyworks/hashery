@@ -1,14 +1,10 @@
-require 'lemon'
-require 'ae'
-require 'ae/legacy' # bacause imitation BasicObject sucks
-
-require 'hashery/open_cascade'
+require 'helper'
 
 testcase OpenCascade do
   include AE::Legacy::Assertions
 
   class_method :new do
-    OpenCascade.new(:a=>1)
+    OpenCascade[:a=>1]
   end
 
   class_method :[] do

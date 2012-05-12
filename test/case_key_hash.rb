@@ -1,8 +1,4 @@
-require 'lemon'
-require 'ae'
-require 'ae/pry'
-
-require 'hashery/key_hash'
+require 'helper'
 
 testcase KeyHash do
 

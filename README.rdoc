@@ -66,19 +66,22 @@ Well git in there!
 
 Hashery uses QED[http://rubyworks.github.com/qed] and
 Lemon[http://rubyworks.github.com/lemon] test frameworks.
-Both are used  in nearly the same fashion:
+The QED framework to create well tested high-level documentation.
+Run the QED specs via:
 
-  $ qed -Ilib qed/
+  $ qed -Ilib demo/
 
-And
+Lemon is used to create low-level unit tests. Run these via the 
+RubyTest univeral test harness.
 
-  $ lemon -Ilib test/
+  $ rubytest -Ilib test/
+
 
 === Patches
 
 Hashery's repository is hosted on GitHub[http://github.com/rubyworks/hashery].
-If you'd like to offer up a fix or feature change then fork the repo and 
-submit a pull request (preferably in a topic branch). I assume you have heard
+If you'd like to offer up a fix or feature, fork the repo and submit a pull
+request (preferably in a topic branch). I assume you have heard
 all the talk about proper {practices}[http://learn.github.com/p/intro.html],
 so I won't bug you with it yet again.
 
@@ -100,5 +103,5 @@ See COPYING.rdoc file for further details.
 
 Some libraries included in the Hashery have special copyrights
 attributing specific authors. Please see each library script for
-specifics.
+specifics and the NOITCE.txt file for an overview.
 

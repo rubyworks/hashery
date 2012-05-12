@@ -1,8 +1,4 @@
-require 'lemon'
-require 'ae'
-require 'ae/legacy'
-
-require 'hashery/dictionary'
+require 'helper'
 
 testcase Dictionary do
   include AE::Legacy::Assertions

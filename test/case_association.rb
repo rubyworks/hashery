@@ -1,6 +1,6 @@
-require 'lemon'
-require 'ae'
+require 'helper'
 
+# must be required independently
 require 'hashery/association'
 
 testcase Association do
