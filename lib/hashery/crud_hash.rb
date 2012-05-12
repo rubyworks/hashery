@@ -12,7 +12,7 @@ module Hashery
   # In addition to the CRUD features, CRUDHash supports a `#key_proc`, akin to
   # `#default_proc`, that can be used to normalize keys.
   #
-  class CRUDHash << ::Hash
+  class CRUDHash < ::Hash
 
     #
     # @example
@@ -46,7 +46,7 @@ module Hashery
 
     # CRUD method for create and update.
     def store(key, value)
-      self[cast_key(key)] = value
+      super(cast_key(key), value)
     end
 
     # CRUD method for delete.
@@ -70,7 +70,13 @@ module Hashery
 
     #
     def [](key)
-      key?(key) ? fetch(key) : nil
+      if key?(key)
+        fetch(key)
+      elsif default_proc
+        default_proc.call(self, key)
+      else
+        default
+      end
     end
 
     #
@@ -98,7 +104,7 @@ module Hashery
 
     #
     def each #:yield:
-      each do |k,v|
+      super do |k,v|
         yield(k, v)
       end
     end
@@ -112,7 +118,7 @@ module Hashery
     #
     def replace(other)
       super cast(other)
-    end
+   end
 
     #
     def values_at(*keys)
@@ -123,13 +129,13 @@ module Hashery
     # @todo Should CRUDHash#to_h duplicate or just return `self`?
     def to_h
       dup
-    end unless method_defined?(:to_h)
+    end #unless method_defined?(:to_h)
 
     #
     # @todo Should CRUDHash#to_hash convert to traditional hash?
     def to_hash
-      dup
-    end unless method_defined?(:to_hash)
+      h = {}; each{ |k,v| h[k] = v }; h
+    end #unless method_defined?(:to_hash)
 
   private
 
