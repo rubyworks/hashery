@@ -1,3 +1,5 @@
+require 'hashery/crud_hash'
+
 module Hashery
 
   # CastingHash is just like CRUDHash, except that both keys and values
@@ -29,7 +31,8 @@ module Hashery
 
     # CRUD method for create and update.
     def store(key, value)
-      self[cast_key(key)] = cast_value(value)
+      #super(cast_key(key), cast_value(value))
+      super(key, cast_value(value))
     end
 
     #
