@@ -30,7 +30,7 @@ when it can not be accessed via a reader method.
 
 For some usecases it may be necessary to give up access to one or
 more Hash methods in favor of access to the hash entries. This can
-be done using the #omit! method.
+be done using the `#open!` method.
 
   o.open!(:map, :merge)
   o.map.assert == 3
@@ -38,8 +38,7 @@ be done using the #omit! method.
   o.merge.assert == 4
 
 Becuase of nature of a writer, a certain set of Hash methods are always
-protected, namely any of those ending in a puctuation mark. In addition,
-the implementation protects all shadow methods (e.g. __id__).
+protected, mainly those buffeted by two underscore (e.g. `__id__`).
 
   o.__id__ = 4
   o.__id__.assert! == 4
