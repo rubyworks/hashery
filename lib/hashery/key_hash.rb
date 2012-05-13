@@ -2,15 +2,12 @@ require 'hashery/crud_hash'
 
 module Hashery
 
-  # The KeyHash class is a Hash compatible class which converts
-  # all keys to strings. This has two advantages. First it
-  # means hash entries have indifferent access. <tt>1</tt>,
-  # <tt>"1"</tt> and <tt>:1</tt> are all equivalent. Any object
-  # that defines <tt>#to_s</tt> can be used as a key. Secondly,
-  # since strings are garbage collected so are KeyHash objects. 
-  # 
-  # The KeyHash class works like a normal Hash. But notice the
-  # significant distinction of indifferent key access.
+  # The KeyHash class is a Hash class which accepts a block for
+  # normalizing keys.
+  #
+  # The KeyHash class is essentially the same as a normal Hash.
+  # But notice the significant distinction of indifferent key
+  # access.
   # 
   #   s = KeyHash.new
   #   s[:x] = 1
@@ -22,27 +19,22 @@ module Hashery
   # 
   #   s.to_h      #=> {'x'=>1 }
   # 
-  # Becuase of the way in which KeyHash is designed, it has a nice
-  # secondary usage. KeyHash defines a private method called
-  # #convert_key. This method handles the conversion of the key
-  # whenever the underlying hash is altered. If you have need
-  # for a different kind of Hash, one the has a special restraint
-  # on the key, it is easy enough to subclass KeyHash and override
-  # the is method. Eg.
+  # By default all keys are converted to strings. This has two advantages
+  # over a regular Hash is many usecases. First it means hash entries have
+  # indifferent access. <tt>1</tt>, <tt>"1"</tt> and <tt>:1</tt> are all
+  # equivalent --any object that defines <tt>#to_s</tt> can be used as a key.
+  # Secondly, since strings are garbage collected so will default KeyHash
+  # objects. 
   # 
-  #   class Upash < KeyHash
-  #     def convert_key(key)
-  #       key.to_s.upcase
-  #     end
-  #   end
-  # 
-  #   u = Upash.new
-  #   u.replace(:a=>1, :b=>2)
-  #   u.to_h  #=> { 'A'=>1, 'B'=>2 }
+  # But keys can be normalized by any function. Theses functions can be quite
+  # unique.
   #
+  #   h = KeyHash.new(0){ |k| k.to_i }
+  #   h[1.34] += 1
+  #   h[1.20] += 1
+  #   h[1.00] += 1
+  #   h  #=> { 1 => 3 }
   #
-  # NOTE: KeyHash does not yet handle default_proc.
-
   class KeyHash < CRUDHash
 
     #
@@ -53,22 +45,12 @@ module Hashery
     end
 
     #
-    def initialize(*args, &block)
-      #@key_proc = Proc.new{ |k| k.to_s }
-      new(*args, &block)
-    end
-
+    # Unlike a regular Hash, a KeyHash's block sets the `key_proc` rather
+    # than the `default_proc`.
     #
-    def to_hash
-      h = {}; each{ |k,v| h[k] = v }; h
-    end
-
-    alias_method :to_h, :to_hash
-
-  private
-
-    def convert_key(key)
-      @key_proc ? super(key) : key.to_s
+    def initialize(*default, &block)
+      super(*default)
+      @key_proc = block || Proc.new{ |k| k.to_s }
     end
 
   end

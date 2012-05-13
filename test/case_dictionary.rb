@@ -174,5 +174,153 @@ testcase Dictionary do
     end
   end
 
+  method :select do
+    test do
+      d = Dictionary[:a=>1, :b=>2, :c=>3]
+      r = d.select{ |k,v| v % 2 == 1 }
+      r.assert == [[:a, 1], [:c, 3]]
+    end
+  end
+
+  method :to_h do
+    test do
+      d = Dictionary[:a=>1, :b=>2]
+      h = d.to_h
+      h.assert == {:a=>1, :b=>2}
+    end
+  end
+
+  method :replace do
+    test do
+      d1 = Dictionary[:a=>1, :b=>2]
+      d2 = Dictionary[:c=>3, :d=>4]
+      d1.replace(d2)
+      d1.to_h.assert == {:c=>3, :d=>4}
+    end
+  end
+
+  method :reverse do
+    test do
+      d = Dictionary[:a=>1, :b=>2, :c=>3]
+      r = d.reverse
+      r.first.assert == 3
+    end
+  end
+
+  method :invert do
+    test do
+      d = Dictionary[:a=>1, :b=>2, :c=>3]
+      r = d.invert
+      Dictionary.assert === r
+      r.to_h.assert == {1=>:a, 2=>:b, 3=>:c}
+    end
+  end
+
+  method :each_key do
+    d = Dictionary[:a=>1, :b=>2, :c=>3]
+    a = []
+    d.each_key{ |k| a << k }
+    a.assert == [:a, :b, :c]
+  end
+
+  method :each_value do
+    d = Dictionary[:a=>1, :b=>2, :c=>3]
+    a = []
+    d.each_value{ |v| a << v }
+    a.assert == [1, 2, 3]
+  end
+
+  method :clear do
+    d = Dictionary[:a=>1, :b=>2, :c=>3]
+    d.clear
+    d.to_a.assert == []
+  end
+
+  method :fetch do
+    d = Dictionary[:a=>1, :b=>2, :c=>3]
+    d.fetch(:a).assert == 1
+  end
+
+  method :key? do
+    test do
+      d = Dictionary[:a=>1, :b=>2, :c=>3]
+      d.assert.key?(:a)
+      d.refute.key?(:b)
+    end
+  end
+
+  method :has_key? do
+    test do
+      d = Dictionary[:a=>1, :b=>2, :c=>3]
+      d.assert.has_key?(:a)
+      d.refute.has_key?(:b)
+    end
+  end
+
+  method :length do
+    test do
+      d = Dictionary[:a=>1, :b=>2, :c=>3]
+      d.length.assert == 3
+    end
+  end
+
+  method :to_a do
+    test do
+      d = Dictionary[:a=>1, :b=>2, :c=>3]
+      d.to_a.assert == [[:a,1], [:b,2], [:c,3]]
+    end
+  end
+
+  method :to_hash do
+    test do
+      d = Dictionary[:a=>1, :b=>2, :c=>3]
+      d.to_hash.assert == {:a=>1, :b=>2, :c=>3}
+    end
+  end
+
+  method :empty? do
+    test "is emtpy" do
+      d = Dictionary[]
+      d.assert.empty?
+    end
+
+    test 'is not emtpy' do
+      d = Dictionary[:a=>1, :b=>2, :c=>3]
+      d.refute.empty?
+    end
+  end
+
+  method :order_by_key do
+    test do
+      d = Dictionary[:b=>1, :c=>2, :a=>4]
+      d.order_by_key
+      d.order.assert == [:a, :b, :c]
+    end
+  end
+
+  method :order_by_value do
+    test do
+      d = Dictionary[:b=>1, :c=>2, :a=>4]
+      d.order_by_value
+      d.order.assert == [:b, :c, :a]
+    end
+  end
+
+  class_method :alpha do
+    test do
+      d = Dictionary.alpha
+      d.update(:b=>1, :c=>2, :a=>4)
+      d.order.assert == [:a, :b, :c]
+    end
+  end
+
+  class_method :auto do
+    test do
+      d = Dictionary.auto
+      s = d[:foo]
+      s.class.assert == Dictionary
+    end
+  end
+
 end
 

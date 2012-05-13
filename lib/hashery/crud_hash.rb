@@ -3,7 +3,7 @@ require 'hashery/core_ext'
 module Hashery
 
   # The CRUDHash is essentailly the same as the Hash class, but it reduces the 
-  # the set of necessary methods ot the fundametal CRUD requirements. All other
+  # the set of necessary methods to the fundametal CRUD requirements. All other
   # methods route through these CRUD methods. This is a better general design,
   # although it is, of course, a little bit slower. The utility of this class
   # becomes appearent when subclassing or delegating, as only a handful of methods
@@ -126,16 +126,13 @@ module Hashery
     end
 
     #
-    # @todo Should CRUDHash#to_h duplicate or just return `self`?
-    def to_h
-      dup
-    end #unless method_defined?(:to_h)
-
-    #
     # @todo Should CRUDHash#to_hash convert to traditional hash?
     def to_hash
       h = {}; each{ |k,v| h[k] = v }; h
     end #unless method_defined?(:to_hash)
+
+    #
+    alias_method :to_h, :to_hash
 
   private
 

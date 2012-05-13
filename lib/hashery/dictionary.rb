@@ -108,7 +108,7 @@ module Hashery
       end
     end
 
-     # New Dictiionary.
+    # New Dictiionary.
 
     def initialize(*args, &blk)
       @order = []
@@ -152,7 +152,7 @@ module Hashery
     # The initializer Dictionary#alpha also provides this.
 
     def order_by_key
-      @order_by = lambda { |k,v| k }
+      @order_by = Proc.new{ |k,v| k }
       order
       self
     end
@@ -170,7 +170,7 @@ module Hashery
     #   Dictionary.new.order_by { |key,value| value }
 
     def order_by_value
-      @order_by = lambda { |k,v| v }
+      @order_by = Proc.new{ |k,v| v }
       order
       self
     end
@@ -291,12 +291,15 @@ module Hashery
 
     def replace(hsh2)
       case hsh2
-      when Hash
-        @order = hsh2.keys
-        @hash  = hsh2
-      else
+      when Dictionary
         @order = hsh2.order
-        @hash  = hsh2.hash
+        @hash  = hsh2.to_h
+      when Hash
+        @hash  = hsh2
+        @order = @hash.keys
+      else
+        @hash  = hsh2.to_h
+        @order = @hash.keys
       end
       reorder
     end
@@ -419,6 +422,13 @@ module Hashery
     def to_h
       @hash.dup
     end
+
+  protected
+
+    def hash_table
+      @hash
+    end
+
   end
 
 end

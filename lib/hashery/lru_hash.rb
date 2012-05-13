@@ -18,9 +18,9 @@ module Hashery
     attr_accessor :default_proc
     attr_accessor :release_proc
 
-    def initialize(max_size, default_value = nil, &block)
-      @max_size = normalize_max(max_size)
-      @default = default_value
+    def initialize(max_size, default_value=nil, &block)
+      @max_size     = normalize_max(max_size)
+      @default      = default_value
       @default_proc = block
 
       @h = {}

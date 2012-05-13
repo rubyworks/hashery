@@ -27,31 +27,9 @@ module Hashery
   #
   class QueryHash < CRUDHash
 
-    #
-    def <<(x)
-      case x
-      when Hash
-        update(x)
-      when Array
-        x.each_slice(2) do |(k,v)|
-          self[k] = v
-        end
-      end
-    end
-
-    # @todo Proper implementation for OpenHash#to_h ?
-    def to_h
-      dup
-    end
-
-    # @todo Proper implementation for OpenHash#to_hash ?
-    def to_hash
-      h = {}; each{ |k,v| h[k] = v }; h
-    end
-
     # Route get and set calls.
     #
-    #   o = OpenHash.new
+    #   o = QueryHash.new
     #   o.a = 1
     #   o.a?  #=> 1
     #   o.b?  #=> nil
