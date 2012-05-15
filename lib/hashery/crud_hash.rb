@@ -15,6 +15,30 @@ module Hashery
   class CRUDHash < ::Hash
 
     #
+    # This method is overriddne to ensure that new entries pass through
+    # the `#store` method.
+    #
+    def self.[](*hash)
+      h = new
+      super(*hash).each{ |k,v| h.store(k, v) }
+      h
+    end
+
+    # Alternate to #new which auto-creates sub-dictionaries as needed.
+    #
+    #   d = CRUDHash.auto
+    #   d["a"]["b"]["c"] = "abc"  #=> { "a"=>{"b"=>{"c"=>"abc"}}}
+    #
+    def self.auto(*args, &block)
+      if block
+        leet = block
+      else
+        leet = lambda { |hsh, key| hsh[key] = new(&leet) }
+      end
+      new(*args, &leet)
+    end
+
+    #
     # @example
     #   ch = CRUDHash.new
     #   ch.key_proc = Proc.new{ |key| key.to_sym }
@@ -34,13 +58,19 @@ module Hashery
       @key_proc
     end
 
+    # Allow `#default_proc` to take a block.
+    def default_proc(&block)
+      self.default_proc = block if block
+      super()
+    end
+
     # CRUD method for checking if key exists.
     def key?(key)
       super cast_key(key)
     end
 
     # CRUD method for reading value.
-    def fetch(key)
+    def read(key)
       super cast_key(key)
     end
 
@@ -52,6 +82,12 @@ module Hashery
     # CRUD method for delete.
     def delete(key)
       super cast_key(key)
+    end
+
+    # Like #read but raises an error if key is not present.
+    def fetch(key)
+      raise KeyError, "key not found: #{key.inspect}" unless key?(key)
+      read key
     end
 
     #
@@ -89,6 +125,7 @@ module Hashery
       other.each do |k,v|
         store(k, v)
       end
+      self
     end
 
     #
@@ -104,10 +141,15 @@ module Hashery
 
     #
     def each #:yield:
-      super do |k,v|
-        yield(k, v)
+      if block_given?
+        keys.each do |k|
+          yield(k, read(k))
+        end
+      else
+        to_enum(:each)
       end
     end
+
     alias each_pair each
 
     #
