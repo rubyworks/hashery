@@ -86,23 +86,31 @@ module Hashery
     # TODO: Use class method for loading from file, not initializer.
 
     #
+    # NOTE: In future versions, `#new` will not take a path, and `#load`
+    # will have to be used.
+    #
+    def self.load(path, load=true)
+      new(path, load)
+    end
+
+    #
     # :inihash is a hash which holds all ini data
     # :comment is a string which holds the comments on the top of the file
     #
     attr_accessor :inihash, :comment
 
     #
-    # Creating a new Ini object
+    # Creating a new IniHash object.
     #
-    # +path+ is a path to the ini file
-    # +load+ if nil restores the data if possible
+    # path - is a path to the ini file
+    # load - if nil restores the data if possible
     #        if true restores the data, if not possible raises an error
     #        if false does not resotre the data
     #
     def initialize(path, load=nil)
-      @path = path
-      @inihash = {}
-      
+      @path    = path if String === path
+      @inihash = (Hash === path ? path.dup : {})
+
       if load or ( load.nil? and FileTest.readable_real? @path )
         restore()
       end
@@ -119,9 +127,12 @@ module Hashery
     # Set the ini data for the key +key+
     #
     def []=(key, value)
-      raise TypeError, "String expected" unless key.is_a? String
-      raise TypeError, "String or Hash expected" unless value.is_a? String or value.is_a? Hash
-      
+      #raise TypeError, "String expected" unless key.is_a? String
+      key = key.to_str
+     
+      #raise TypeError, "String or Hash expected" unless value.is_a? String or value.is_a? Hash
+      value = value.to_str unless Hash === value
+
       @inihash[key] = value
     end
     
@@ -129,8 +140,8 @@ module Hashery
     # Restores the data from file into the object
     #
     def restore()
-      @inihash = Ini.read_from_file(@path)
-      @comment = Ini.read_comment_from_file(@path)
+      @inihash = IniHash.read_from_file(@path)
+      @comment = IniHash.read_comment_from_file(@path)
     end
     
     #
@@ -143,6 +154,30 @@ module Hashery
     #
     def to_h
       @inihash.dup
+    end
+
+    alias :inspect :to_s
+
+    #
+    # Turn a hash (up to 2 levels deepness) into a ini string
+    #
+    # +inihash+ is a hash representing the ini File. Default is a empty hash.
+    #
+    # Returns a string in the ini file format.
+    #
+    def to_s
+      str = ""
+      inihash.each do |key, value|
+        if value.is_a? Hash
+          str << "[#{key.to_s}]\n"
+          value.each do |under_key, under_value|
+            str << "#{under_key.to_s}=#{under_value.to_s unless under_value.nil?}\n"
+          end
+        else
+          str << "#{key.to_s}=#{value.to_s unless value.nil?}\n"
+        end
+      end
+      str
     end
 
     # @todo Sublcass Hash instead of delegating.
@@ -158,25 +193,27 @@ module Hashery
     # returns a hash which represents the data from the file
     #
     def self.read_from_file(path)
-          
+      raise "file not found - #{path}" unless File.file?(path)
+
       inihash = {}
       headline = nil
-      
-      IO.foreach(path) do |line|
 
-        line = line.strip.split(/#/)[0]
-        
+      IO.foreach(path) do |line|
+#p line
+#next if line.nil?
+        line = line.strip.split(/#/)[0].to_s
+#next if line.nil?
+#p line
         # read it only if the line doesn't begin with a "=" and is long enough
         unless line.length < 2 and line[0,1] == "="
           
           # it's a headline if the line begins with a "[" and ends with a "]"
           if line[0,1] == "[" and line[line.length - 1, line.length] == "]"
-            
+
             # get rid of the [] and unnecessary spaces
             headline = line[1, line.length - 2 ].strip
             inihash[headline] = {}
           else
-          
             key, value = line.split(/=/, 2)
             
             key = key.strip unless key.nil?
@@ -207,9 +244,11 @@ module Hashery
       
       IO.foreach(path) do |line|
         line.strip!
+
         break unless line[0,1] == "#" or line == ""
-        
-        comment << "#{line[1, line.length ].strip}\n"
+
+        comment_line = line[1, line.length].to_s
+        comment << "#{comment_line.strip}\n"
       end
       
       comment
@@ -236,10 +275,10 @@ module Hashery
           end
         end
 
-        file << IniHash.to_s(inihash)
+        file << IniHash.text(inihash)
       }
     end
-    
+
     #
     # Turn a hash (up to 2 levels deepness) into a ini string
     #
@@ -247,26 +286,17 @@ module Hashery
     #
     # Returns a string in the ini file format.
     #
-    def self.to_s(inihash={})
-      str = ""
-      
-      inihash.each do |key, value|
-
-        if value.is_a? Hash
-          str << "[#{key.to_s}]\n"
-          
-          value.each do |under_key, under_value|
-            str << "#{under_key.to_s}=#{under_value.to_s unless under_value.nil?}\n"
-          end
-
-        else
-          str << "#{key.to_s}=#{value.to_s unless value2.nil?}\n"
-        end
-      end
-      
-      str
+    # TODO: rename this method to ?
+    #
+    def self.text(inihash={})
+      new(inihash).to_s
     end
-    
+
+    class << self
+      # @deprecate
+      alias_method :to_s, :text
+    end
+
   end
 
 end
