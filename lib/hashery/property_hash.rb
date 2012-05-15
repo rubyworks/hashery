@@ -32,7 +32,7 @@ module Hashery
   #
   #   h[:x] = 5    #=> ArgumentError
   #
-  class PropertyHash < ::Hash
+  class PropertyHash < CRUDHash
 
     #
     def self.properties
@@ -52,47 +52,50 @@ module Hashery
     end
 
     #
-    def initialize(properties={})
-      super()
+    def initialize(properties={}, &block)
+      super(&block)
       fixed = self.class.properties.merge(properties)
       replace(fixed)
     end
 
     #
-    def []=(k,v)
+    def property(key, opts={})
+      store!(key, opts[:default])
+    end
+
+    #
+    alias :store! :store
+    private :store!
+
+    #
+    def store(k,v)
       assert_key!(k)
       super(k,v)
     end
 
     #
-    def update(h)
-      h.keys.each{ |k| assert_key!(k) }
-      super(h)
-    end
+    #def update(h)
+    #  h.keys.each{ |k| assert_key!(k) }
+    #  super(h)
+    #end
 
     #
-    def merge!(h)
-      h.keys.each{ |k| assert_key!(k) }
-      super(h)
-    end
+    #def merge!(h)
+    #  h.keys.each{ |k| assert_key!(k) }
+    #  super(h)
+    #end
 
     #
     def <<(a)
       k,v = *a
-      self[k] = v
-    end
-
-    # Add a new acceptable key.
-    # TODO: Should this be supported?
-    def accept_key!(k,v=nil)
-      self[k] = v
+      store(k,v)
     end
 
   private
 
     def assert_key!(key)
       unless key?(key)
-        raise ArgumentError, "The key '#{key}' is not defined for this FixedHash."
+        raise ArgumentError, "property is not defined -- #{key.inspect}"
       end
     end
 
