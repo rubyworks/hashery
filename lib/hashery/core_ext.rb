@@ -1,82 +1,81 @@
-module Hashery
+class Hash
 
-  # This module is included into Ruby's core Hash class.
+  # Create a hash given an `initial_hash`.
+  def self.create(initial_data={}, &block)
+    o = new &block
+    o.update(initial_data)
+    o
+  end
+
   #
-  # These method derive from Ruby Facets.
-  module CoreExt
+  alias :read :[]
 
-    #
-    def to_h
-      self
+  #
+  def to_hash
+    self  # -or- `h = {}; each{ |k,v| h[k] = v }; h` ?
+  end
+
+  #
+  alias :to_h :to_hash
+
+  # Synonym for Hash#rekey, but modifies the receiver in place (and returns it).
+  #
+  #   foo = { :name=>'Gavin', :wife=>:Lisa }
+  #   foo.rekey!{ |k| k.to_s }  #=>  { "name"=>"Gavin", "wife"=>:Lisa }
+  #   foo.inspect               #=>  { "name"=>"Gavin", "wife"=>:Lisa }
+  #
+  def rekey(key_map=nil, &block)
+    if !(key_map or block)
+      block = lambda{|k| k.to_sym}
     end
 
-    #
-    def to_hash
-      self
+    key_map ||= {} 
+
+    hash = {}
+
+    (keys - key_map.keys).each do |key|
+      hash[key] = self[key]
     end
 
-    # Synonym for Hash#rekey, but modifies the receiver in place (and returns it).
-    #
-    #   foo = { :name=>'Gavin', :wife=>:Lisa }
-    #   foo.rekey!{ |k| k.to_s }  #=>  { "name"=>"Gavin", "wife"=>:Lisa }
-    #   foo.inspect               #=>  { "name"=>"Gavin", "wife"=>:Lisa }
-    #
-    def rekey(key_map=nil, &block)
-      if !(key_map or block)
-        block = lambda{|k| k.to_sym}
-      end
+    key_map.each do |from, to|
+      hash[to] = self[from] if key?(from)
+    end
 
-      key_map ||= {} 
+    hash2 = {}
 
-      hash = {}
-
-      (keys - key_map.keys).each do |key|
-        hash[key] = self[key]
-      end
-
-      key_map.each do |from, to|
-        hash[to] = self[from] if key?(from)
-      end
-
-      hash2 = {}
-
-      if block
-        if block.arity == 1  # TODO: is this condition needed?
-          hash.each do |k,v|
-            nk = block[k]
-            #nk = (NA == nk ? k : nk)  # TODO: Can't support this here.
-            hash2[nk] = v
-          end
-        else
-          hash.each do |k,v|
-            nk = block[k,v]
-            #nk = (NA == nk ? k : nk)  # TODO:
-            hash2[nk] = v
-          end
+    if block
+      case block.arity
+      when 0
+        raise ArgumentError, "arity of 0 for #{block.inspect}"
+      when 2
+        hash.each do |k,v|
+          nk = block.call(k,v)
+          hash2[nk] = v
         end
       else
-        hash2 = hash
+        hash.each do |k,v|
+          nk = block[k]
+          hash2[nk] = v
+        end
       end
-
-      hash2
+    else
+      hash2 = hash
     end
 
-    # Synonym for Hash#rekey, but modifies the receiver in place (and returns it).
-    #
-    #   foo = { :name=>'Gavin', :wife=>:Lisa }
-    #   foo.rekey!{ |k| k.to_s }  #=>  { "name"=>"Gavin", "wife"=>:Lisa }
-    #   foo                       #=>  { "name"=>"Gavin", "wife"=>:Lisa }
-    #
-    # CREDIT: Trans, Gavin Kistner
+    hash2
+  end
 
-    def rekey!(key_map=nil, &block)
-      replace(rekey(key_map, &block))
-    end
+  # Synonym for Hash#rekey, but modifies the receiver in place (and returns it).
+  #
+  #   foo = { :name=>'Gavin', :wife=>:Lisa }
+  #   foo.rekey!{ |k| k.to_s }  #=>  { "name"=>"Gavin", "wife"=>:Lisa }
+  #   foo                       #=>  { "name"=>"Gavin", "wife"=>:Lisa }
+  #
+  # CREDIT: Trans, Gavin Kistner
 
+  def rekey!(key_map=nil, &block)
+    replace(rekey(key_map, &block))
   end
 
 end
 
-class Hash #:nodoc:
-  include Hashery::CoreExt
-end
