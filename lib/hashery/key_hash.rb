@@ -38,13 +38,6 @@ module Hashery
   class KeyHash < CRUDHash
 
     #
-    def self.[](*hash)
-      s = new
-      super(*hash).each{ |k,v| s[k] = v }
-      s
-    end
-
-    #
     # Unlike a regular Hash, a KeyHash's block sets the `key_proc` rather
     # than the `default_proc`.
     #

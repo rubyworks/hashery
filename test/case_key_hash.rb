@@ -170,12 +170,12 @@ testcase KeyHash do
     end
   end
 
-  method :cast_key do
-    test do
-      s = KeyHash.new
-      s.pry.cast_key(:a).assert == 'a'
-    end
-  end
+  #method :cast_key do
+  #  test do
+  #    s = KeyHash.new
+  #    s.send(:cast_key, :a).assert == 'a'
+  #  end
+  #end
 
 end
 
