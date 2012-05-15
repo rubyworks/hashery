@@ -245,7 +245,7 @@ testcase Dictionary do
     test do
       d = Dictionary[:a=>1, :b=>2, :c=>3]
       d.assert.key?(:a)
-      d.refute.key?(:b)
+      d.refute.key?(:d)
     end
   end
 
@@ -253,7 +253,7 @@ testcase Dictionary do
     test do
       d = Dictionary[:a=>1, :b=>2, :c=>3]
       d.assert.has_key?(:a)
-      d.refute.has_key?(:b)
+      d.refute.has_key?(:d)
     end
   end
 
