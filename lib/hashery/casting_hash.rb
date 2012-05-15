@@ -8,6 +8,16 @@ module Hashery
   class CastingHash < CRUDHash
 
     #
+    # Like `#new` but can take a priming Hash or Array-pairs.
+    #
+    # hash - Hash-like object.
+    #
+    # Examples
+    #
+    #   CastingHash[:a,1,:b,2]
+    #
+    # Returns `CastingHash`.
+    #
     def self.[](hash)
       s = new
       hash.each{ |k,v| s[k] = v }
@@ -18,6 +28,9 @@ module Hashery
     # Unlike traditional Hash a CastingHash's block argument
     # coerces key/value pairs when #store is called.
     #
+    # default   - Default value.
+    # cast_proc - Casting procedure.
+    #
     def initialize(default=nil, &cast_proc)
       @cast_proc = cast_proc
       super(default, &nil)
@@ -26,35 +39,75 @@ module Hashery
     #
     # The cast procedure.
     #
-    def cast_proc(&block)
-      @cast_proc = block if block
+    # proc - Casting procedure.
+    #
+    # Returns `Proc` used for casting.
+    #
+    def cast_proc(&proc)
+      @cast_proc = proc if proc
       @cast_proc
     end
 
+    #
+    # Set `cast_proc`. This procedure must take two arguments (`key, value`)
+    # and return the same.
+    #
+    # proc - Casting procedure.
+    #
+    # Returns +proc+.
     #
     def cast_proc=(proc)
       raise ArgumentError unless Proc === proc or NilClass === proc
       @cast_proc = proc
     end
 
-    # CRUD method for create and update.
+    #
+    # CRUD method for create and update. Unlike the parent class
+    # the key, value pair are passed threw the cast_proc before
+    # being set in the underlying hash table.
+    #
+    # key   - Key of entry.
+    # value - Value of entry.
+    #
+    # Returns the +value+.
+    #
     def store(key, value)
       super(*cast_pair(key, value))
     end
 
     #
+    # Replace current entries with those from another Hash,
+    # or Hash-like object. Each entry is run through the
+    # casting procedure as it is added.
+    #
+    # other - Hash-like object.
+    #
+    # Returns +self+.
+    # 
     def replace(other)
       super cast(other)
     end
 
+    #
+    # Convert the CastingHash to a regular Hash.
+    #
+    # Returns an ordinary `Hash`.
     #
     def to_hash
       h = {}; each{ |k,v| h[k] = v }; h
     end
 
     #
+    # Returns an ordinary `Hash`.
+    #
     alias_method :to_h, :to_hash
 
+    #
+    # Recast all entries via the cast procedure.
+    #
+    # TODO: Isn't this the same as `#rehash`?
+    #
+    # Returns +self+.
     #
     def recast!
       replace self
@@ -62,6 +115,15 @@ module Hashery
 
   private
 
+    #
+    # If `cast_proc` is defined then use it to process key-value pair,
+    # otherwise return them as is.
+    #
+    # key   - Key of entry.
+    # value - Value of entry.
+    #
+    # Returns `Array` of key-value pair.
+    #
     def cast_pair(key, value)
       if cast_proc
         return cast_proc.call(key, value)
@@ -73,7 +135,9 @@ module Hashery
     #
     # Cast a given +hash+ according to the `#key_proc` and `#value_proc`.
     #
-    # @param [#each] hash
+    # hash - A `Hash` or anything the responds to `#each` like a hash.
+    #
+    # Returns a recasted `Hash`.
     #
     def cast(hash)
       h = {}
@@ -87,6 +151,8 @@ module Hashery
   end
 
 end
+
+# TODO: Should we add #to_casting_hash to Hash classs?
 
 #class Hash
 #

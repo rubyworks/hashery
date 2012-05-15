@@ -1,28 +1,50 @@
 class Hash
 
+  #
   # Create a hash given an `initial_hash`.
-  def self.create(initial_data={}, &block)
+  #
+  # initial_hash - Hash or hash-like object to use as priming data.
+  # block        - Procedure used by initialize (e.g. default_proc).
+  #
+  # Returns a `Hash`.
+  #
+  def self.create(initial_hash={}, &block)
     o = new &block
-    o.update(initial_data)
+    o.update(initial_hash)
     o
   end
 
   #
+  # Alias for `#[]`.
+  #
   alias :read :[]
 
   #
+  # Convert to Hash.
+  #
   def to_hash
-    self  # -or- `h = {}; each{ |k,v| h[k] = v }; h` ?
+    dup  # -or- `h = {}; each{ |k,v| h[k] = v }; h` ?
   end
 
   #
+  # For a Hash, `#to_h` is the same as `#to_hash`.
+  #
   alias :to_h :to_hash
 
+  #
   # Synonym for Hash#rekey, but modifies the receiver in place (and returns it).
+  #
+  # key_map - Hash of old key to new key.
+  # block   - Procedure to convert keys, which can take just the key
+  #           or both key and value as arguments.
+  #
+  # Examples
   #
   #   foo = { :name=>'Gavin', :wife=>:Lisa }
   #   foo.rekey!{ |k| k.to_s }  #=>  { "name"=>"Gavin", "wife"=>:Lisa }
   #   foo.inspect               #=>  { "name"=>"Gavin", "wife"=>:Lisa }
+  #
+  # Returns `Hash`.
   #
   def rekey(key_map=nil, &block)
     if !(key_map or block)
@@ -65,14 +87,21 @@ class Hash
     hash2
   end
 
+  #
   # Synonym for Hash#rekey, but modifies the receiver in place (and returns it).
+  #
+  # key_map - Hash of old key to new key.
+  # block   - Procedure to convert keys, which can take just the key
+  #           or both key and value as arguments.
+  #
+  # Examples
   #
   #   foo = { :name=>'Gavin', :wife=>:Lisa }
   #   foo.rekey!{ |k| k.to_s }  #=>  { "name"=>"Gavin", "wife"=>:Lisa }
   #   foo                       #=>  { "name"=>"Gavin", "wife"=>:Lisa }
   #
-  # CREDIT: Trans, Gavin Kistner
-
+  # Returns `Hash`.
+  #
   def rekey!(key_map=nil, &block)
     replace(rekey(key_map, &block))
   end
