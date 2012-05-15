@@ -12,6 +12,7 @@ profile 'coverage' do
     SimpleCov.command_name 'RubyTest'
     SimpleCov.start do
       add_filter '/test/'
+      add_filter '/lib/hashery/ordered_hash.rb'
       coverage_dir 'log/coverage'
     end
   end
