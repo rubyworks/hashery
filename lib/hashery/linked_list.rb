@@ -123,6 +123,8 @@ module Hashery
       v
     end
 
+    alias :<< :push
+
     def queue
       r = []
       n = @head
