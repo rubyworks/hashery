@@ -49,5 +49,16 @@ built-in !-methods).
    bk.sort.assert == ['X', 'Y']
 
 So you can see that for the most an OpenCascade is just like
-OpenObject, but it allows you to conveniently build open sub-layers. 
+OpenHash, but it allows us to conveniently build open sub-layers
+easily.
+
+Enumerable still works with OpenCascades too.
+
+    h = {}
+    c = OpenCascade[:a=>1,:b=>{:c=>3}]
+    c.each do |k,v|
+      h[k] = v
+    end
+    OpenCascade.assert === h[:b]
+
 

@@ -28,7 +28,7 @@ testcase OpenCascade do
     test "basic assignment" do
       o = OpenCascade.new
       o[:a] = 1
-      assert_equal(1, o.a)
+      assert_equal(1, o[:a])
     end
   end
 
@@ -60,8 +60,8 @@ testcase OpenCascade do
   method :merge! do
     test do
       o = OpenCascade[:f0=>"f0"]
-      h = { :h0=>"h0" }
       r = OpenCascade[:f0=>"f0", :h0=>"h0"]
+      h = { :h0=>"h0" }
       assert_equal(r, o.merge!(h))
       assert_equal({:f0=>"f0", :h0=>"h0"}, h.merge(o))
     end

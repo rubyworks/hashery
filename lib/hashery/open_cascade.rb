@@ -4,11 +4,9 @@ require 'hashery/open_hash'
 module Hashery
 
   # OpenCascade is subclass of OpenHash. It differs in a few
-  # significant ways.
-  #
-  # The main reason this class is labeled "cascade", every internal
-  # Hash is transformed into an OpenCascade dynamically upon access.
-  # This makes it easy to create "cascading" references.
+  # significant ways. The reason this class is called "cascade" is that
+  # every internal Hash is transformed into an OpenCascade dynamically
+  # upon access. This makes it easy to create "cascading" references.
   #
   #   h = { :x => { :y => { :z => 1 } } }
   #   c = OpenCascade[h]
@@ -20,12 +18,12 @@ module Hashery
   #   c.r                   #=> #<OpenCascade:0x7fac368084c0 {}>
   #   c.a.b                 #=> #<OpenCascade:0x7fac3680a4f0 {}>
   #
-  # But if you set a node, then that will be it's value.
+  # But if you set a node, then that will be that value.
   #
   #   c.a.b = 4             #=> 4
   #
   # To query a node without causing the auto-creation of an OpenCasade
-  # object, use the ?-mark.
+  # instance, use the `?`-mark.
   #
   #   c.a.z?                #=> nil
   #
@@ -34,12 +32,16 @@ module Hashery
   #   h = { :x=>[ {:a=>1}, {:a=>2} ], :y=>1 }
   #   c = OpenCascade[h]
   #   c.x.first.a.assert == 1
-  #   c.x.last.a.assert == 2
+  #   c.x.last.a.assert  == 2
   #
-  # Finally, you can set a node and get the reciever back using
-  # the !-mark.
+  # Finally, you can set call a private method via bang methods using the `!`-mark.
   #
   #   c = OpenCascade.new   #=> #<OpenCascade:0x7fac3680ccf0 {}>
+  #   c.each = 4
+  #   c.each! do |k,v|
+  #     ...
+  #   end
+  #
   #   c.x!(4).y!(3)         #=> #<OpenCascade:0x7fac3680ccf0 {:x=>4, :y=>3}>
   #
   class OpenCascade < OpenHash
@@ -53,33 +55,43 @@ module Hashery
 
     #
     def initialize(*a)
-      super(*a){ |h,k| h[k] = OpenCascade.new }
+      @read = {}
+
+      leet = lambda { |h,k| h[k] = OpenCascade.new(&leet) }
+      super(*a, &leet)
     end
 
+    alias :super_read :read
+
     #
-    def store(key, value)
-      super(key, cast_value(value))
+    def read(key)
+      if @read[cast_key(key)]
+        super(key)
+      else
+        @read[cast_key(key)] = store(key, cast_value(super(key)))
+      end
     end
 
     #
     def method_missing(sym, *args, &blk)
       type = sym.to_s[-1,1]
       name = sym.to_s.gsub(/[=!?]$/, '').to_sym
+
       case type
       when '='
         store(name, args.first)
-      when '!'
-        #@hash.__send__(name, *args, &blk)
-        __send__(name, *args, &blk)
       when '?'
-        key?(name) ? self[name] : nil
-        #key?(name)
+        key?(name) ? super_read(name) : nil    # key?(name)
+      when '!'
+        __send__(name, *args, &blk)
       else
-        if key?(name)
-          self[name] #= transform_entry(self[name])
-        else
-          self[name] #= OpenCascade.new #self.class.new
-        end
+        #if key?(name)
+          read(name)
+        #else
+        #  #default = OpenCascade.new #self.class.new
+        #  #default = default_proc ? default_proc.call(self, name) : default
+        #  store(name, read(name))
+        #end
       end
     end
 
