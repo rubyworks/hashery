@@ -2,6 +2,13 @@ require 'helper'
 
 testcase QueryHash do
 
+  class_method :new do
+    test 'new QueryHash with default proc' do
+      q = QueryHash.new{ |h,k| h[k] = 1 }
+      q[:a].assert == 1
+    end
+  end
+
   class_method :[] do
     test 'creates new QueryHash' do
       s = QueryHash[]
@@ -51,6 +58,11 @@ testcase QueryHash do
     test 'responds to all setter methods' do
       q = QueryHash.new
       q.assert.respond_to?(:anything=)
+    end
+
+    test 'responds to usual methods' do
+      q = QueryHash.new
+      q.assert.respond_to?(:each)
     end
   end
 
@@ -199,12 +211,14 @@ testcase QueryHash do
     end
 
     test 'dynamic bang methods will auto-instantiate' do
-      q = QueryHash.new{ |h,k| h[k] = 'default' }
+      q = QueryHash.new
+      q.default_proc{ |h,k| h[k] = 'default' }
       q.foo!.assert == 'default'
     end
 
     test 'dynamic query methods will NOT auto-instantiate' do
-      q = QueryHash.new{ |h,k| h[k] = 'default' }
+      q = QueryHash.new
+      q.default_proc{ |h,k| h[k] = 'default' }
       q.foo?.assert == nil
     end
   end

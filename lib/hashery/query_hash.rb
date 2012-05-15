@@ -1,6 +1,6 @@
-require 'hashery/crud_hash'
-
 module Hashery
+
+  require 'hashery/key_hash'
 
   # QueryHash is essentially a Hash class, but with some OpenStruct-like features.
   #
@@ -27,6 +27,14 @@ module Hashery
   #
   class QueryHash < CRUDHash
 
+    #
+    # By default the `key_proc` is set to convert all keys to strings via #to_s.
+    #
+    def initialize(*default, &block)
+      @key_proc = Proc.new{ |k| k.to_s }
+      super(*default, &block)
+    end
+
     # Route get and set calls.
     #
     #   o = QueryHash.new
@@ -36,14 +44,15 @@ module Hashery
     #
     def method_missing(s,*a, &b)
       type = s.to_s[-1,1]
-      name = s.to_s.sub(/[!?=]$/, '')
-      key  = name.to_sym
+      name = s.to_s.sub(/[!?=]$/, '')     
+      key  = name  #key  = cast_key(name)
 
       case type
       when '='
-        self[key] = a.first
+        store(key, a.first)
       when '!'
-        self[key]
+        default = (default_proc ? default_proc.call(self, key) : default)
+        key?(key) ?  fetch(key) : store(key, default)
       when '?'
         key?(key) ? fetch(key) : nil
       else
