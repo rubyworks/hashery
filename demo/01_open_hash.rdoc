@@ -38,10 +38,11 @@ be done using the `#open!` method.
   o.merge.assert == 4
 
 Becuase of nature of a writer, a certain set of Hash methods are always
-protected, mainly those buffeted by two underscore (e.g. `__id__`).
+protected, primarily any methods buffeted by underscore (e.g. `__id__`).
 
-  o.__id__ = 4
-  o.__id__.assert! == 4
+  expect ArgumentError do
+    o.__id__ = 4
+  end
 
 Even though writers alwasy use Symbols as keys, because an OpenHash
 is a true Hash object, any object can be used as a key internally.

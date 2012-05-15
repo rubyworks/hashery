@@ -24,13 +24,52 @@ module Hashery
     #private *methods
 
     #
+    # @todo Maybe `safe` should be the first argument?
+    #
+    def initialize(default=nil, safe=false, &block)
+      @safe = safe
+      super(default, &block)
+    end
+
+    #
+    # If safe is set to true, then public methods cannot be overriden
+    # by hash keys.
+    #
+    attr_accessor :safe
+
+    #
+    # Index `value` to `key`. Unless safe mode, will also open up the 
+    # key if it is not already open.
+    #
+    def store(key, value)
+      open!(key)
+      super(key, value)
+    end
+
+    #
     # Open up a slot that that would normally be a Hash method.
     #
     # The only methods that can't be opened are ones starting with `__`.
     #
+    # @param [Array<String,Symbol>] methods
+    #
     def open!(*methods)
-      methods.reject!{ |x| x.to_s =~ /^__/ }
-      (class << self; self; end).class_eval{ private *methods }
+      # only select string and symbols, any other type of key is allowed,
+      # it just won't be accessible via dynamic methods.
+      methods = methods.select{ |x| String === x || Symbol === x }
+      # @todo should we just ignore these instead of raising an error?
+      #methods.reject!{ |x| x.to_s =~ /^__/ }
+      if methods.any?{ |m| m.to_s.start_with?('__') }
+        raise ArgumentError, "cannot set shadow methods"
+      end
+      # only public methods need to be made private
+      methods = methods.map{ |x| x.to_sym }
+      methods = methods & public_methods(true)
+      if @safe
+        raise ArgumentError, "cannot set public method" unless methods.empty?
+      else
+        (class << self; self; end).class_eval{ private *methods }
+      end
     end
 
     # @deprected
@@ -59,19 +98,20 @@ module Hashery
       case type
       when '='
         #open!(key) unless open?(key)
-        self[key] = a.first
+        #self[key] = a.first
+        store(key, a.first)
+      when '?'
+        key?(key)
       when '!'
         # call an underlying private method
         # TODO: limit this to omitted methods (from included) ?
         __send__(name, *a, &b)
-      when '?'
-        key?(key)
       else
-        if key?(key)
-          self[key]
-        else
-          super(s,*a,&b)
-        end
+        #if key?(key)
+          read(key)
+        #else
+        #  super(s,*a,&b)
+        #end
       end
     end
 
