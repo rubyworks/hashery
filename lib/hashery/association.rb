@@ -94,15 +94,15 @@ module Hashery
     end
 
     def to_s
-      return "#{index.to_s}#{value.to_s}"
+      return "#{index} >> #{value}"
     end
 
     def inspect
-      %{#{@index.inspect} >> #{@value.inspect}}
+      "#{index.inspect} >> #{value.inspect}"
     end
 
     def to_ary
-      [ @index, @value ]
+      [index, value]
     end
 
     # Object extensions.

@@ -11,6 +11,28 @@ testcase Association do
     end
   end
 
+  class_method :[] do
+    test do
+      a = Association[:a, 1]
+      a.assert.index == :a
+      a.assert.value == 1
+    end
+  end
+
+  method :index do
+    test do
+      a = Association.new(:a,1)
+      a.index.assert == :a
+    end
+  end
+
+  method :value do
+    test do
+      a = Association.new(:a,1)
+      a.value.assert == 1
+    end
+  end
+
   method :to_ary do
     test do
       k,v = [],[]
@@ -28,13 +50,52 @@ testcase Association do
     end
   end
 
+  method :<=> do
+    test 'when differnt in value' do
+      a = Association.new(:a,1)
+      b = Association.new(:b,2)
+      (a <=> b).assert == -1
+      (b <=> a).assert == 1
+    end
+
+    test 'when equal value' do
+      a = Association.new(:a,1)
+      b = Association.new(:b,1)
+      (a <=> b).assert == 0
+    end
+  end
+
+  method :invert! do
+    test do
+      a = Association.new(:a,1)
+      a.invert!
+      a.index.assert == 1
+      a.value.assert == :a
+    end
+  end
+
+  method :inspect do
+    test do
+      a = Association.new(:a,1)
+      a.inspect.assert == ":a >> 1"
+    end
+  end
+
+  method :to_s do
+    test do
+      a = Association.new(:a,1)
+      a.to_s.assert == "a >> 1"
+    end
+  end
+
 end
 
 testcase Object do
   method :associations do
     test do
-      complex = [ :a >> :b, :a >> :c ]
-      :a.associations.assert == [ :b, :c ]
+      s = 'a'
+      complex = [ s >> :b, s >> :c ]
+      s.associations.assert == [:b, :c]
     end
   end
 
