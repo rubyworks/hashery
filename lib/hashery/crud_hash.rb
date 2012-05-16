@@ -18,10 +18,17 @@ module Hashery
     # This method is overridden to ensure that new entries pass through
     # the `#store` method.
     #
-    #
     def self.[](*hash)
       h = new
-      super(*hash).each{ |k,v| h.store(k, v) }
+      if hash.size == 1
+        hash.first.each do |k,v|
+          h.store(k, v) 
+        end       
+      else
+        hash.each do |(k,v)|
+          h.store(k, v) 
+        end
+      end
       h
     end
 
