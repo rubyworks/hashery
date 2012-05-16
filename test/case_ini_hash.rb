@@ -38,6 +38,13 @@ test_case IniHash do
       h['a'] = '1'
       h.to_s.assert == "a=1\n"
     end
+
+    test do
+      h = IniHash.new('foo.ini', false)
+      h['a'] = '1'
+      h['b'] = {'c'=>3}
+      h.to_s.assert == "a=1\n[b]\nc=3\n"
+    end
   end
 
   class_method :load do

@@ -15,6 +15,6 @@ a value to the same key will raise an ArgumentError.
 The same error will be raised when using #update or #merge!.
 
   expect ArgumentError do
-    h.update( :x=>2 )
+    h.update( "x"=>3 )
   end
 
