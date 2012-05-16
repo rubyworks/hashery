@@ -94,10 +94,14 @@ module Hashery
     end
 
     #
-    # :inihash is a hash which holds all ini data
-    # :comment is a string which holds the comments on the top of the file
+    # The hash which holds all INI data.
     #
-    attr_accessor :inihash, :comment
+    attr_accessor :inihash
+
+    #
+    # The string which holds the comments on the top of the file
+    #
+    attr_accessor :comment
 
     #
     # Creating a new IniHash object.
@@ -139,16 +143,24 @@ module Hashery
     #
     # Restores the data from file into the object
     #
-    def restore()
+    def restore
       @inihash = IniHash.read_from_file(@path)
       @comment = IniHash.read_comment_from_file(@path)
     end
-    
+
     #
-    # Store data from the object in the file
+    # Store data from the object in the file.
     #
-    def update()
+    def save
       IniHash.write_to_file(@path, @inihash, @comment)
+    end
+
+    #
+    # Deprecated: Save INI data to file path. Use #save instead.
+    #
+    def update
+      warn 'IniHash#update is deprecated for this use, use IniHash#save instead.'
+      save
     end
 
     #
@@ -161,7 +173,7 @@ module Hashery
     #
     # Turn a hash (up to 2 levels deepness) into a ini string
     #
-    # +inihash+ is a hash representing the ini File. Default is a empty hash.
+    # inihash - Hash representing the ini File. Default is a empty hash.
     #
     # Returns a string in the ini file format.
     #
@@ -180,7 +192,10 @@ module Hashery
       str
     end
 
-    # @todo Sublcass Hash instead of delegating.
+    # 
+    #
+    # TODO: Sublcass Hash instead of delegating.
+    #
     def method_missing(s,*a,&b)
       @inihash.send(s, *a, &b) if @inihash.respond_to?(s)
     end
@@ -188,9 +203,9 @@ module Hashery
     #
     # Reading data from file
     #
-    # +path+ is a path to the ini file
+    # path - a path to the ini file
     #
-    # returns a hash which represents the data from the file
+    # Returns a `Hash` which represents the data from the file.
     #
     def self.read_from_file(path)
       raise "file not found - #{path}" unless File.file?(path)
@@ -199,11 +214,8 @@ module Hashery
       headline = nil
 
       IO.foreach(path) do |line|
-#p line
-#next if line.nil?
         line = line.strip.split(/#/)[0].to_s
-#next if line.nil?
-#p line
+
         # read it only if the line doesn't begin with a "=" and is long enough
         unless line.length < 2 and line[0,1] == "="
           
@@ -230,14 +242,13 @@ module Hashery
       
       inihash
     end
-    
+
     #
     # Reading comments from file
     #
-    # +path+ is a path to the ini file
+    # path - a path to the INI file
     #
-    # Returns a string with comments from the beginning of the
-    # ini file.
+    # Returns a `String` with the comments from the beginning of the INI file.
     #
     def self.read_comment_from_file(path)
       comment = ""
@@ -253,13 +264,13 @@ module Hashery
       
       comment
     end
-    
+
     #
     # Writing a ini hash into a file
     #
-    # +path+ is a path to the ini file
-    # +inihash+ is a hash representing the ini File. Default is a empty hash.
-    # +comment+ is a string with comments which appear on the
+    # path    - Path to the INI file.
+    # inihash - Hash representing the ini File. Default is a empty hash.
+    # comment - String with comments which appear on the
     #           top of the file. Each line will get a "#" before.
     #           Default is no comment.
     #
@@ -282,11 +293,11 @@ module Hashery
     #
     # Turn a hash (up to 2 levels deepness) into a ini string
     #
-    # +inihash+ is a hash representing the ini File. Default is a empty hash.
+    # inihash - Hash representing the ini File. Default is a empty hash.
     #
-    # Returns a string in the ini file format.
+    # Returns a String in the ini file format.
     #
-    # TODO: rename this method to ?
+    # TODO: Rename `IniHash.text` method to something else ?
     #
     def self.text(inihash={})
       new(inihash).to_s

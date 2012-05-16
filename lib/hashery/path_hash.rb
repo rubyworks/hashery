@@ -16,12 +16,17 @@ module Hashery
   #   
   # Copyright (c) 2006 BehindLogic (http://hash_magic.rubyforge.org)
   #
-  # @author Daniel Parker
+  # Authors: Daniel Parker
   #
-  # @todo This class is very much a work in progess and will be substantially rewritten.
+  # TODO: This class is very much a work in progess and will be substantially rewritten
+  # for future versions.
   #
   class PathHash < Hash
 
+    #
+    # Initialize PathHash.
+    #
+    # hsh - Priming Hash.
     #
     def initialize(hsh={})
       raise ArgumentError, "must be a hash or array of slashed values" unless hsh.is_a?(Hash) || hsh.is_a?(Array)
@@ -65,6 +70,9 @@ module Hashery
       @flat.clear
     end
 
+    #
+    #
+    #
     def fetch(key,default=:ehisehoah0928309q98y30,&block) # :nodoc:
       value = @flat.has_key?(key) ? @flat[key] : self.class.new(@flat.reject {|k,v| !(k == key || k =~ Regexp.new("^#{key}/"))}.inject({}) {|h,(k,v)| h[k.split('/',2)[1]] = v; h})
       if value.is_a?(self.class) && value.empty?
@@ -83,7 +91,14 @@ module Hashery
       end
     end
 
-    # You can use slashed keys here, too.
+    #
+    # Delete entry from Hash. Slashed keys can be used here, too.
+    #
+    # key   - The key to delete.
+    # block - Produces the return value if key not found.
+    #
+    # Returns delete value.
+    #
     def delete(key,&block)
       value = @flat.has_key?(key) ? @flat[key] : self.class.new(@flat.reject {|k,v| !(k == key || k =~ Regexp.new("^#{key}/"))}.inject({}) {|h,(k,v)| h[k.split('/',2)[1]] = v; h})
       return block.call(key) if value.is_a?(self.class) && value.empty? && block_given?
@@ -91,7 +106,8 @@ module Hashery
       return value
     end
 
-    def empty? # :nodoc:
+    #
+    def empty?
       @flat.empty?
     end
 
@@ -100,7 +116,8 @@ module Hashery
       @flat.index(value)
     end
 
-    def inspect # :nodoc:
+    #
+    def inspect
       @flat.inspect.insert(1,'slashed: ')
     end
 

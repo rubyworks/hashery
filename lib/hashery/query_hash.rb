@@ -4,19 +4,19 @@ module Hashery
 
   # QueryHash is essentially a Hash class, but with some OpenStruct-like features.
   #
-  #   q = QueryHash.new
+  #     q = QueryHash.new
   #
   # Entries can be added to the Hash via a setter method.
   #
-  #   q.a = 1
+  #     q.a = 1
   #
   # Then looked up via a query method.
   #
-  #   q.a?  #=> 1
+  #     q.a?  #=> 1
   #
   # The can also be looked up via a bang method.
   # 
-  #   q.a!  #=> 1
+  #     q.a!  #=> 1
   #
   # The difference between query methods and bang methods is that the bang method
   # will auto-instantiate the entry if not present, where as a query method will not.
@@ -35,7 +35,10 @@ module Hashery
       super(*default, &block)
     end
 
+    #
     # Route get and set calls.
+    #
+    # Examples
     #
     #   o = QueryHash.new
     #   o.a = 1
@@ -61,6 +64,13 @@ module Hashery
       end
     end
 
+    #
+    # Custom #respond_to to account for #method_missing.
+    #
+    # Arguments
+    #   name - The method name to check.
+    #
+    # Returns `true` or `false`.
     #
     def respond_to?(name)
       return true if name.to_s.end_with?('=')

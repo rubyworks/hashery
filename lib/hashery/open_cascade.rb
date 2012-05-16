@@ -47,18 +47,18 @@ module Hashery
   class OpenCascade < OpenHash
 
     #
-    def self.[](hash)
-      oc = new
-      hash.each{ |(k,v)| oc.store(k,v) }
-      oc
-    end
+    #def self.[](hash)
+    #  oc = new
+    #  hash.each{ |(k,v)| oc.store(k,v) }
+    #  oc
+    #end
 
     #
-    def initialize(*a)
+    def initialize(*default)
       @read = {}
 
       leet = lambda { |h,k| h[k] = OpenCascade.new(&leet) }
-      super(*a, &leet)
+      super(*default, &leet)
     end
 
     alias :super_read :read

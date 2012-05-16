@@ -10,9 +10,11 @@ module Hashery
   # method needs to be made private. The `#open!` method can be used
   # to handle this.
   #
-  #   o = OpenHash.new
-  #   o.open!(:send)
-  #   o.send = 4
+  # Examples
+  #
+  #     o = OpenHash.new
+  #     o.open!(:send)
+  #     o.send = 4
   #
   class OpenHash < CRUDHash
 
@@ -24,11 +26,13 @@ module Hashery
     #private *methods
 
     #
-    # @todo Maybe `safe` should be the first argument?
+    # Initialize new OpenHash instance.
+    #
+    # TODO: Maybe `safe` should be the first argument?
     #
     def initialize(default=nil, safe=false, &block)
       @safe = safe
-      super(default, &block)
+      super(*[default].compact, &block)
     end
 
     #
@@ -41,6 +45,11 @@ module Hashery
     # Index `value` to `key`. Unless safe mode, will also open up the 
     # key if it is not already open.
     #
+    # key   - Index key to associate with value.
+    # value - Value to be associate with key.
+    #
+    # Returns +value+.
+    #
     def store(key, value)
       open!(key)
       super(key, value)
@@ -51,7 +60,9 @@ module Hashery
     #
     # The only methods that can't be opened are ones starting with `__`.
     #
-    # @param [Array<String,Symbol>] methods
+    # methods - [Array<String,Symbol>] method names
+    #
+    # Returns Array of slot names that were opened.
     #
     def open!(*methods)
       # only select string and symbols, any other type of key is allowed,
@@ -70,6 +81,7 @@ module Hashery
       else
         (class << self; self; end).class_eval{ private *methods }
       end
+      methods
     end
 
     # @deprected
@@ -78,6 +90,10 @@ module Hashery
     #
     # Is a slot open?
     #
+    # method - [String,Symbol] method name
+    #
+    # Returns `true` or `false`.
+    #
     def open?(method)
       ! public_methods(true).include?(method.to_sym)
     end
@@ -85,10 +101,17 @@ module Hashery
     #
     # Make specific Hash methods available for use that have previously opened.
     #
+    # methods - [Array<String,Symbol>] method names
+    #
+    # Returns +methods+.
+    #
     def close!(*methods)
       (class << self; self; end).class_eval{ public *methods }
+      methods
     end
 
+    #
+    #
     #
     def method_missing(s,*a, &b)
       type = s.to_s[-1,1]
