@@ -1,5 +1,4 @@
 require 'hashery/open_hash'
-#require 'facets/nullclass'
 
 module Hashery
 
@@ -54,6 +53,10 @@ module Hashery
     #end
 
     #
+    # Initialize new OpenCascade instance.
+    #
+    # default - The usual default object.
+    #
     def initialize(*default)
       @read = {}
 
@@ -61,8 +64,17 @@ module Hashery
       super(*default, &leet)
     end
 
-    alias :super_read :read
+    #
+    # Alias for original read method.
+    #
+    alias :read! :read
 
+    #
+    # Read value given a +key+.
+    #
+    # key - Index keey to lookup.
+    #
+    # Returns value.
     #
     def read(key)
       if @read[cast_key(key)]
@@ -73,6 +85,8 @@ module Hashery
     end
 
     #
+    #
+    #
     def method_missing(sym, *args, &blk)
       type = sym.to_s[-1,1]
       name = sym.to_s.gsub(/[=!?]$/, '').to_sym
@@ -81,7 +95,7 @@ module Hashery
       when '='
         store(name, args.first)
       when '?'
-        key?(name) ? super_read(name) : nil    # key?(name)
+        key?(name) ? read!(name) : nil    # key?(name)
       when '!'
         __send__(name, *args, &blk)
       else
@@ -103,6 +117,9 @@ module Hashery
 
   private
 
+    #
+    # Cast value, such that Hashes are converted to OpenCascades.
+    # And Hashes in Arrays are converted to OpenCascades as well.
     #
     def cast_value(entry)
       case entry

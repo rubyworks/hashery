@@ -8,37 +8,45 @@ module Hashery
   #     foo['age']  = 30       #=> 30
   #     foo['name'] = 'Bob'
   #
-  # _produces_
+  # produces
   #
   #     ArgumentError: Duplicate key for StaticHash -- 'name'
   #
   # StaticHash has it's orgins in Gavin Kistner's WriteOnceHash
   # class found in his +basiclibrary.rb+ script.
+  #
+  # TODO: Maybe StaticHash isn't bets name for this class?
+  #
+  class StaticHash < CRUDHash
 
-  class StaticHash < ::Hash
-
+    #
     # Set a value for a key. Raises an error if that key already
     # exists with a different value.
-
-    def []=(key, value)
-      if key?(key) && self[key] != value
+    #
+    # key   - Index key to associate with value.
+    # value - Value to associate with key.
+    #
+    # Retruns value.
+    #
+    def store(key, value)
+      if key?(key) && read(key) != value
         raise ArgumentError, "Duplicate key for StaticHash -- #{key.inspect}"
       end
       super(key, value)
     end
 
     #
-    def update(hash)
-      dups = (keys | hash.keys)
-      if dups.empty?
-        super(hash)
-      else
-        raise ArgumentError, "Duplicate key for StaticHash -- #{dups.inspect}"
-      end
-    end
+    #def update(hash)
+    #  dups = (keys | hash.keys)
+    #  if dups.empty?
+    #    super(hash)
+    #  else
+    #    raise ArgumentError, "Duplicate key for StaticHash -- #{dups.inspect}"
+    #  end
+    #end
 
     #
-    alias_method :merge!, :update
+    #alias_method :merge!, :update
 
   end
 

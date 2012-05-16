@@ -28,11 +28,14 @@ module Hashery
   class QueryHash < CRUDHash
 
     #
-    # By default the `key_proc` is set to convert all keys to strings via #to_s.
+    # By default the `key_proc` is set to convert all keys to strings via `#to_s`.
     #
-    def initialize(*default, &block)
+    # default      - Default object, or
+    # default_proc - Default procedure.
+    #
+    def initialize(*default, &default_proc)
       @key_proc = Proc.new{ |k| k.to_s }
-      super(*default, &block)
+      super(*default, &default_proc)
     end
 
     #
@@ -67,8 +70,7 @@ module Hashery
     #
     # Custom #respond_to to account for #method_missing.
     #
-    # Arguments
-    #   name - The method name to check.
+    # name - The method name to check.
     #
     # Returns `true` or `false`.
     #

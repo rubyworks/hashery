@@ -54,7 +54,9 @@ module Hashery
       v.is_a?(self.class) && v.empty? ? nil : v
     end
 
+    #
     # Same as above, except sets value rather than retrieving it.
+    #
     def []=(key,value)
       @flat.reject! {|k,v| k == key || k =~ Regexp.new("^#{key}/")}
       if value.is_a?(Hash)
