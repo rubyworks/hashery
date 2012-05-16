@@ -84,7 +84,7 @@ module Hashery
       methods
     end
 
-    # @deprected
+    # @deprecated
     alias :omit! :open!
 
     #

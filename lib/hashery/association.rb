@@ -103,9 +103,11 @@ module Hashery
     #
     # Compare the values of two associations.
     #
+    # TODO: Comparions with non-associations?
+    #
     # assoc - The other `Association`.
     #
-    # TODO: Comparions with non-associations?
+    # Returns [Integer] `1`, `0`, or `-1`.
     #
     def <=>(assoc)
       return -1 if self.value < assoc.value
@@ -116,6 +118,8 @@ module Hashery
     #
     # Invert association, making the index the value and vice-versa.
     #
+    # Returns [Array] with two-elements reversed.
+    #
     def invert!
       temp = @index
       @index = @value
@@ -125,6 +129,8 @@ module Hashery
     #
     # Produce a string representation.
     #
+    # Returns [String].
+    #
     def to_s
       return "#{index} >> #{value}"
     end
@@ -132,12 +138,16 @@ module Hashery
     #
     # Produce a literal code string for creating an association.
     #
+    # Returns [String].
+    #
     def inspect
       "#{index.inspect} >> #{value.inspect}"
     end
 
     #
-    # Returns two-element `Array`.
+    # Convert to two-element associative array.
+    #
+    # Returns [Array] Two-element Array of index and value pair.
     #
     def to_ary
       [index, value]
@@ -153,7 +163,7 @@ module Hashery
       #
       # to - The value of the association.
       #
-      # Returns an `Association`.
+      # Returns [Association].
       #
       def >>(to)
         Association.new(self, to)

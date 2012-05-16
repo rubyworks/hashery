@@ -304,7 +304,7 @@ module Hashery
     end
 
     class << self
-      # @deprecate
+      # @deprecated
       alias_method :to_s, :text
     end
 
