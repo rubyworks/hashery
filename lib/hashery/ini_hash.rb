@@ -130,6 +130,11 @@ module Hashery
     #
     # Set the ini data for the key +key+
     #
+    # key   - Index key.
+    # value - The value to index.
+    #
+    # Returns +value+.
+    #
     def []=(key, value)
       #raise TypeError, "String expected" unless key.is_a? String
       key = key.to_str
@@ -164,6 +169,8 @@ module Hashery
     end
 
     #
+    # Convert to hash by duplicating the underlying hash table.
+    #
     def to_h
       @inihash.dup
     end
@@ -192,7 +199,8 @@ module Hashery
       str
     end
 
-    # 
+    #
+    # Delegate missing mthods to underlying Hash.
     #
     # TODO: Sublcass Hash instead of delegating.
     #

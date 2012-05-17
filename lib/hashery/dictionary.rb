@@ -74,12 +74,14 @@ module Hashery
         hsh
       end
 
+      #
       # Like #new but the block sets the order.
       #
       def new_by(*args, &blk)
         new(*args).order_by(&blk)
       end
 
+      #
       # Alternate to #new which creates a dictionary sorted by key.
       #
       #   d = Dictionary.alpha
@@ -96,7 +98,10 @@ module Hashery
         new(*args, &block).order_by_key
       end
 
+      #
       # Alternate to #new which auto-creates sub-dictionaries as needed.
+      #
+      # Examples
       #
       #   d = Dictionary.auto
       #   d["a"]["b"]["c"] = "abc"  #=> { "a"=>{"b"=>{"c"=>"abc"}}}
@@ -108,8 +113,9 @@ module Hashery
       end
     end
 
+    #
     # New Dictiionary.
-
+    #
     def initialize(*args, &blk)
       @order = []
       @order_by = nil
@@ -123,20 +129,29 @@ module Hashery
     end
 
     #
-
+    # Order of keys.
+    #
+    # Returns [Array].
+    #
     def order
       reorder if @order_by
       @order
     end
 
+    #
     # Keep dictionary sorted by a specific sort order.
-
+    #
+    # block - Ordering procedure.
+    #
+    # Returns +self+.
+    #
     def order_by( &block )
       @order_by = block
       order
       self
     end
 
+    #
     # Keep dictionary sorted by key.
     #
     #   d = Dictionary.new.order_by_key
@@ -150,13 +165,16 @@ module Hashery
     #   Dictionary.new.order_by { |key,value| key }
     #
     # The initializer Dictionary#alpha also provides this.
-
+    #
+    # Returns +self+.
+    #
     def order_by_key
       @order_by = Proc.new{ |k,v| k }
       order
       self
     end
 
+    #
     # Keep dictionary sorted by value.
     #
     #   d = Dictionary.new.order_by_value
@@ -168,7 +186,7 @@ module Hashery
     # This is equivalent to:
     #
     #   Dictionary.new.order_by { |key,value| value }
-
+    #
     def order_by_value
       @order_by = Proc.new{ |k,v| v }
       order
@@ -176,7 +194,8 @@ module Hashery
     end
 
     #
-
+    # Re-apply the sorting procedure.
+    #
     def reorder
       if @order_by
         assoc = @order.collect{ |k| [k,@hash[k]] }.sort_by(&@order_by)
@@ -190,6 +209,9 @@ module Hashery
     #  super hsh2
     #end
 
+    #
+    # Is the dictionary instance equivalent to another?
+    #
     def ==(hsh2)
       if hsh2.is_a?( Dictionary )
         @order == hsh2.order &&
@@ -199,14 +221,21 @@ module Hashery
       end
     end
 
-    def [] k
-      @hash[ k ]
+    #
+    # Lookup entry with key.
+    #
+    def [] key
+      @hash[ key ]
     end
 
-    def fetch(k, *a, &b)
-      @hash.fetch(k, *a, &b)
+    #
+    # Featch entry given +key+.
+    #
+    def fetch(key, *a, &b)
+      @hash.fetch(key, *a, &b)
     end
 
+    #
     # Store operator.
     #
     #   h[key] = value
@@ -214,7 +243,7 @@ module Hashery
     # Or with additional index.
     #
     #  h[key,index] = value
-
+    #
     def []=(k, i=nil, v=nil)
       if v
         insert(i,k,v)
@@ -223,72 +252,136 @@ module Hashery
       end
     end
 
-    def insert( i,k,v )
-      @order.insert( i,k )
-      @hash.store( k,v )
+    #
+    # Insert entry into dictionary at specific index position.
+    #
+    # index - [Integer] Position of order placement.
+    # key   - [Object]  Key to associate with value.
+    # value - [Object]  Value to associate with key.
+    #
+    # Returns `value` stored.
+    #
+    def insert(index, key, value)
+      @order.insert(index, key)
+      @hash.store(key, value)
     end
 
-    def store( a,b )
-      @order.push( a ) unless @hash.has_key?( a )
-      @hash.store( a,b )
+    #
+    # Add entry into dictionary.
+    #
+    # Returns `value`.
+    #
+    def store(key, value)
+      @order.push(key) unless @hash.has_key?(key)
+      @hash.store(key, value)
     end
 
+    #
+    # Clear dictionary of all entries.
+    #
     def clear
       @order = []
       @hash.clear
     end
 
-    def delete( key )
-      @order.delete( key )
-      @hash.delete( key )
+    #
+    # Delete the entry with given +key+.
+    #
+    def delete(key)
+      @order.delete(key)
+      @hash.delete(key)
     end
 
+    #
+    # Iterate over each key.
+    #
     def each_key
       order.each { |k| yield( k ) }
       self
     end
 
+    #
+    # Iterate over each value.
+    #
     def each_value
       order.each { |k| yield( @hash[k] ) }
       self
     end
 
+    #
+    # Iterate over each key-value pair.
+    #
     def each
       order.each { |k| yield( k,@hash[k] ) }
       self
     end
+
     alias each_pair each
 
+    #
+    # Delete entry if it fits conditional block.
+    #
     def delete_if
       order.clone.each { |k| delete k if yield(k,@hash[k]) }
       self
     end
 
+    #
+    # List of all dictionary values.
+    #
+    # Returns [Array].
+    #
     def values
       ary = []
       order.each { |k| ary.push @hash[k] }
       ary
     end
 
+    #
+    # List of all dictionary keys.
+    #
+    # Returns [Array].
+    #
     def keys
       order
     end
 
+    #
+    # Invert the dictionary.
+    #
+    # Returns [Dictionary] New dictionary that is inverse of the original.
+    #
     def invert
       hsh2 = self.class.new
       order.each { |k| hsh2[@hash[k]] = k }
       hsh2
     end
 
+    #
+    # Reject entries based on give condition block and return
+    # new dictionary.
+    #
+    # Returns [Dictionary].
+    #
     def reject(&block)
       self.dup.delete_if(&block)
     end
 
+    #
+    # Reject entries based on give condition block.
+    #
+    # Returns [Hash] of rejected entries.
+    #
+    # FIXME: This looks like it is implemented wrong!!!
+    #
     def reject!( &block )
       hsh2 = reject(&block)
       self == hsh2 ? nil : hsh2
     end
 
+    #
+    # Replace dictionary entries with new table.
+    #
     def replace(hsh2)
       case hsh2
       when Dictionary
@@ -304,11 +397,17 @@ module Hashery
       reorder
     end
 
+    #
+    # Remove entry from the to top of dictionary.
+    #
     def shift
       key = order.first
       key ? [key,delete(key)] : super
     end
 
+    #
+    # Push entry on to the top of dictionary.
+    #
     def unshift( k,v )
       unless @hash.include?( k )
         @order.unshift( k )
@@ -319,11 +418,17 @@ module Hashery
       end
     end
 
+    #
+    # Same as #push.
+    #
     def <<(kv)
       push(*kv)
     end
 
-    def push( k,v )
+    #
+    # Push entry on to bottom of the dictionary.
+    #
+    def push(k,v)
       unless @hash.include?( k )
         @order.push( k )
         @hash.store( k,v )
@@ -333,49 +438,90 @@ module Hashery
       end
     end
 
+    #
+    # Pop entry off the bottom of dictionary.
+    #
     def pop
       key = order.last
       key ? [key,delete(key)] : nil
     end
 
+    #
+    # Inspection string for Dictionary.
+    #
+    # Returns [String].
+    #
     def inspect
       ary = []
       each {|k,v| ary << k.inspect + "=>" + v.inspect}
       '{' + ary.join(", ") + '}'
     end
 
+    #
+    # Duplicate dictionary.
+    #
+    # Returns [Dictionary].
+    #
     def dup
       a = []
       each{ |k,v| a << k; a << v }
       self.class[*a]
     end
 
+    #
+    # Update dictionary with other hash.
+    #
+    # Returns self.
+    #
     def update( hsh2 )
       hsh2.each { |k,v| self[k] = v }
       reorder
       self
     end
+
     alias :merge! update
 
-    def merge( hsh2 )
+    #
+    # Merge other hash creating new dictionary.
+    #
+    # Returns [Dictionary].
+    #
+    def merge(hsh2)
       self.dup.update(hsh2)
     end
 
+    #
+    # Select items from dictiornary.
+    #
+    # Returns [Array] of two-element arrays.
+    #
     def select
       ary = []
       each { |k,v| ary << [k,v] if yield k,v }
       ary
     end
 
+    #
+    # Reverse the order of the dictionary.
+    #
+    # Returns self.
+    #
     def reverse!
       @order.reverse!
       self
     end
 
+    #
+    # Reverse the order of duplicte dictionary.
+    #
+    # Returns [Dictionary].
+    #
     def reverse
       dup.reverse!
     end
 
+    #
+    # Get/set initial entry value.
     #
     def first(x=nil)
       return @hash[order.first] unless x
@@ -383,48 +529,92 @@ module Hashery
     end
 
     #
+    # Get/set last entry value.
+    #
     def last(x=nil)
       return @hash[order.last] unless x
       order.last(x).collect { |k| @hash[k] }
     end
 
+    #
+    # Number of items in the dictionary.
+    #
     def length
       @order.length
     end
+
     alias :size :length
 
+    #
+    # Is the dictionary empty?
+    #
+    # Returns `true` or `false`.
+    #
     def empty?
       @hash.empty?
     end
 
+    #
+    # Does the dictionary have a given +key+.
+    #
+    # Returns `true` or `false`.
+    #
     def has_key?(key)
       @hash.has_key?(key)
     end
 
+    #
+    # Does the dictionary have a given +key+.
+    #
+    # Returns `true` or `false`.
+    #
     def key?(key)
       @hash.key?(key)
     end
 
+    #
+    # Convert to array.
+    #
+    # Returns [Array] of two-element arrays.
+    #
     def to_a
       ary = []
       each { |k,v| ary << [k,v] }
       ary
     end
 
+    #
+    # Convert to array then to string.
+    #
+    # Returns [String].
+    #
     def to_s
       self.to_a.to_s
     end
 
+    #
+    # Get a duplicate of the underlying hash table.
+    #
+    # Returns [Hash].
+    #
     def to_hash
       @hash.dup
     end
 
+    #
+    # Get a duplicate of the underlying hash table.
+    #
+    # Returns [Hash].
+    #
     def to_h
       @hash.dup
     end
 
   protected
 
+    #
+    # Underlying hash table.
+    #
     def hash_table
       @hash
     end

@@ -41,6 +41,10 @@ module Hashery
     #
     # Route get and set calls.
     #
+    # s - [Symbol] Name of method.
+    # a - [Array] Method arguments.
+    # b - [Proc] Block argument.
+    #
     # Examples
     #
     #   o = QueryHash.new
