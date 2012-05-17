@@ -28,7 +28,6 @@ module Hashery
     include Enumerable
 
     # Represents a single node of the linked list.
-
     class Node
       attr_accessor :key, :value, :prev_node, :next_node
 
@@ -40,17 +39,27 @@ module Hashery
       end
     end
 
+    #
+    # Initialize new LinkedList instance.
+    #
     def initialize
-      @head = Node.new
-      @tail = Node.new
+      @head   = Node.new
+      @tail   = Node.new
       @lookup = Hash.new
+
       node_join(@head,@tail)
     end
 
+    #
+    #
+    #
     def [](v)
       @lookup[v].value
     end
 
+    #
+    #
+    #
     def []=(k,v)
       if @lookup.has_key?(k)
         @lookup[k].value = v
@@ -63,30 +72,48 @@ module Hashery
       v
     end
 
+    #
+    # Is linked list empty?
+    #
     def empty?
       @lookup.empty?
     end
 
-    def delete(k)
-      n = @lookup.delete(k)
+    #
+    # Remove node idenified by key.
+    #
+    def delete(key)
+      n = @lookup.delete(key)
       v = n ? node_purge(n) : nil
       v
     end
 
+    #
+    #
+    #
     def first
       @head.next_node.value
     end
 
+    #
+    #
+    #
     def last
       @tail.prev_node.value
     end
 
+    #
+    #
+    #
     def shift
       k = @head.next_node.key
       n = @lookup.delete(k)
       node_delete(n) if n
     end
 
+    #
+    #
+    #
     def unshift(v)
       if @lookup.has_key?(v)
         n = @lookup[v]
@@ -102,12 +129,18 @@ module Hashery
       v
     end
 
+    #
+    #
+    #
     def pop
       k = @tail.prev_node.key
       n = @lookup.delete(k)
       node_delete(n) if n
     end
 
+    #
+    #
+    #
     def push(v)
       if @lookup.has_key?(v)
         n = @lookup[v]
@@ -125,6 +158,11 @@ module Hashery
 
     alias :<< :push
 
+    #
+    # Produces an Array of key values.
+    #
+    # Returns [Array].
+    #
     def queue
       r = []
       n = @head
@@ -134,19 +172,33 @@ module Hashery
       r
     end
 
+    #
+    # Converts to an Array of node values.
+    #
+    # Returns [Array].
+    #
     def to_a
       r = []
       n = @head
       while (n = n.next_node) and n != @tail
-              r << n.value
+        r << n.value
       end
       r
     end
 
+    #
+    # Number of nodes.
+    #
     def length
       @lookup.length
     end
 
+    alias size length
+
+    #
+    # Iterate over nodes, starting with the head node
+    # and ending with the tail node.
+    #
     def each
       n = @head
       while (n = n.next_node) and n != @tail
@@ -154,13 +206,23 @@ module Hashery
       end
     end
 
-    private
+  private
 
+    #
+    # Delete a node.
+    #
+    # n - A node.
+    #
     def node_delete(n)
       node_join(n.prev_node,n.next_node)
       v = n.value
     end
 
+    #
+    # Purge a node.
+    #
+    # n - A node.
+    #
     def node_purge(n)
       node_join(n.prev_node,n.next_node)
       v = n.value
@@ -171,6 +233,11 @@ module Hashery
       v
     end
 
+    # Join two nodes.
+    #
+    # a - A node.
+    # b - A node.
+    #
     def node_join(a,b)
       a.next_node = b
       b.prev_node = a
