@@ -1,5 +1,5 @@
---output-dir doc
 --plugin tomdoc
+--output-dir doc
 --title Hashery
 --protected
 --private
