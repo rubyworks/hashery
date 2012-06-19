@@ -1,6 +1,7 @@
 <html>
 <head>
   <title>Hashery Demonstrandum</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
 
   <!-- TODO: most of the css before the '*' can be removed. -->
 
@@ -99,14 +100,22 @@
     .wikistyle pre.console code{padding:0!important;font-size:100%!important;background-color:black!important;border:none!important;color:white!important;}
     .wikistyle pre.console span{color:#888!important;}
     .wikistyle pre.console span.command{color:yellow!important;}
-
-    .title { font-size: 2em; }
   </style>
 
   
 
   <!-- JQuery is needed -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript" language="javascript"></script>
+
+  <!-- Highlight.js -->
+  <script src="http://yandex.st/highlightjs/6.1/highlight.min.js"></script>
+  <link rel="stylesheet" href="http://yandex.st/highlightjs/6.1/styles/github.min.css">
+
+  <script>
+    $(document).ready(function() {
+      $('pre').each(function(i, e) {hljs.highlightBlock(e)});
+    });
+  </script>
 
 </head>
 
@@ -128,7 +137,7 @@
       <!-- TODO: find a preminatn image on web to use -->
       <!-- <img src="http://www.cdnjs.com/images/poweredbycloudflare.png" align="left" style="padding-right: 10px;" alt=""/> -->
 
-      <div class="title">Hashery Demonstrandum</div>
+      <div style="font-size: 2em">Hashery Demonstrandum</div>
 
       <h1>Table of Contents</h1>
 
