@@ -15,7 +15,6 @@ copyrights:
   year: '2010'
   license: BSD-2-Clause
 requirements:
-- name: blankslate
 - name: detroit
   groups:
   - build
@@ -36,20 +35,33 @@ repositories:
   scm: git
   name: upstream
 resources:
-  home: http://rubyworks.github.com/hashery
-  code: http://github.com/rubyworks/hashery
-  mail: http://groups.google.com/group/rubyworks-mailinglist
-  docs: http://rubydoc.info/github/rubyworks/hashery/master/frames
-  wiki: http://wiki.github.com/rubyworks/hashery
-  gems: http://rubygems.org/gems/hashery
+- uri: http://rubyworks.github.com/hashery
+  label: Website
+  type: home
+- uri: http://github.com/rubyworks/hashery
+  label: Source Code
+  type: code
+- uri: http://groups.google.com/group/rubyworks-mailinglist
+  label: Mailing List
+  type: mail
+- uri: http://rubydoc.info/github/rubyworks/hashery/master/frames
+  label: Documentation
+  type: docs
+- uri: http://wiki.github.com/rubyworks/hashery
+  label: User Guide
+  type: wiki
+- uri: http://rubygems.org/gems/hashery
+  type: gems
+categories: []
 extra: {}
 load_path:
 - lib
+- alt
 revision: 0
 created: '2010-04-21'
 summary: Facets-bread collection of Hash-like classes.
 title: Hashery
-version: 1.5.1
+version: 2.0.0
 name: hashery
 description: ! 'The Hashery is a collection of Hash-like classes, spun-off from the
   original
@@ -59,4 +71,4 @@ description: ! 'The Hashery is a collection of Hash-like classes, spun-off from 
   more featured Dictionary class, a number of open classes, similiar to the
 
   standard OpenStruct and a few variations on the standard Hash.'
-date: '2012-03-23'
+date: '2012-06-18'
