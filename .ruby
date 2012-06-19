@@ -66,7 +66,7 @@ name: hashery
 description: ! 'The Hashery is a tight collection of Hash-like classes. Included among
   its many
 
-  offerings are the auto-sorting Dictionary class, the efficient LRUHash and the
+  offerings are the auto-sorting Dictionary class, the efficient LRUHash, the
 
   flexible OpenHash and the convenient KeyHash. Nearly every class is a subclass
 
