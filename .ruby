@@ -63,12 +63,14 @@ summary: Facets-bread collection of Hash-like classes.
 title: Hashery
 version: 2.0.0
 name: hashery
-description: ! 'The Hashery is a collection of Hash-like classes, spun-off from the
-  original
+description: ! 'The Hashery is a tight collection of Hash-like classes. Included among
+  its many
 
-  Ruby Facets library. Included are the widely used OrderedHash, the related but
+  offerings are the auto-sorting Dictionary class, the efficient LRUHash and the
 
-  more featured Dictionary class, a number of open classes, similiar to the
+  flexible OpenHash and the convenient KeyHash. Nearly every class is a subclass
 
-  standard OpenStruct and a few variations on the standard Hash.'
+  of the CRUDHash which defines a CRUD model on top of Ruby''s standard Hash
+
+  making it a snap to subclass and augment to fit any specific use case.'
 date: '2012-06-18'

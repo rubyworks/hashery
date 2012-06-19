@@ -1,0 +1,68 @@
+= 
+
+== TODO
+
+=== file://lib/hashery/association.rb
+
+* TODO: Should associations be singleton? (3)
+* TODO: Is it really wise to keep a table of all associations? (5)
+* TODO: Comparions with non-associations? (106)
+
+=== file://lib/hashery/casting_hash.rb
+
+* TODO: Isn't this the same as `#rehash`? (108)
+* TODO: Should we add #to_casting_hash to Hash classs? (155)
+
+=== file://lib/hashery/crud_hash.rb
+
+* TODO: Since a CRUDHash is a subclass of Hash should #to_hash just `#dup`
+insted of converting to traditional Hash? (302)
+* TODO: Since a CRUDHash is a subclass of Hash should #to_h just `#dup`
+insted of converting to traditional Hash? (312)
+* TODO: Consider value callback procs for future version of CRUDHash. (347)
+
+=== file://lib/hashery/ini_hash.rb
+
+* TODO: Use class method for loading from file, not initializer. (86)
+* TODO: Sublcass Hash instead of delegating. (205)
+* TODO: Rename `IniHash.text` method to something else ? (308)
+
+=== file://lib/hashery/open_hash.rb
+
+* TODO: Maybe `safe` should be the first argument? (31)
+* TODO: limit this to omitted methods (from included) ? (130)
+
+=== file://lib/hashery/path_hash.rb
+
+* TODO: This class is very much a work in progess and will be substantially rewritten
+for future versions. (21)
+
+=== file://lib/hashery/static_hash.rb
+
+* TODO: Maybe StaticHash isn't bets name for this class? (18)
+
+=== file://work/deprecated/basic_cascade.rb
+
+* TODO: can't get `self.class` ? (60)
+
+=== file://work/deprecated/basic_struct.rb
+
+* TODO: Need to get __class__ and __id__ in hex form. (54)
+* TODO: Is this wise? How to fake a subclass? (112)
+* TODO: Should this work like #merge or #update ? (176)
+
+=== file://work/deprecated/ostructable.rb
+
+* TODO: Update to matchh current OpenStruct class. (25)
+* TODO: Keep this uptodate with ostruct.rb. (27)
+* TODO: See if Matz will accept it into core so we don't have to anymore. (29)
+* TODO: As with OpenStruct, marshalling is problematic at the moment. (31)
+* TODO: OpenStruct could be compared too, but only if it is loaded. How? (139)
+
+
+== FIXME
+
+=== file://lib/hashery/dictionary.rb
+
+* FIXME: This looks like it is implemented wrong!!! (375)
+
