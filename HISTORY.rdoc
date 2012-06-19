@@ -2,12 +2,13 @@
 
 == 2.0.0 / 2012-05-11
 
-This is a huge release for Hashery which both culls some of it's
-less fitting classes and modules while greatly improving the remaining.
-The first and most immediate change with this release is that it 
-finally uses a proper namespace. All classes and modules are now 
-appropriately kept in the `Hashery` namespace. To get the old behavior 
-you can `include Hashery` as the toplevel.
+This is a big release for Hashery which both culls some of it's
+less fitting classes and modules while greatly improving the rest.
+The first and most immediate change is use of a proper namespace.
+All classes and modules are now appropriately kept in the `Hashery`
+namespace. To get the old behavior you can `include Hashery` as the
+toplevel. For the other changes and improvements dive into the 
+API documentation.
 
 Changes:
 
