@@ -1,0 +1,44 @@
+HashMagic simply contains a couple of spin-off data structures based on the basic Ruby Hash:
+1. SlashedHash
+2. OrderedHash
+
+You can use either of those separately or in combination. Note that ruby-1.9 Hashes are made to keep their order, but I'm not sure about setting an order explicitly for them, and definitely not setting an order ahead of time.
+
+==SlashedHash
+The concept of a SlashedHash is to flatten down a multi-level Hash structure into a single-level Hash whose keys represent the pathway to the data in the original multi-level structure. For example,
+  >> sh = {'a' => 'b', 'c' => {'d' => :e, 'f' => ['a', 'b']}, 'd' => ['e', 'f']}.slashed
+  => {slashed: "a"=>"b", "c/d"=>:e, "d"=>["e", "f"], "c/f"=>["a", "b"]}
+
+Once you transform a Hash into a SlashedHash, the only negative differences are:
+1. All but the end-point (or 'leaf node') data are turned into strings. Restated: Any data at the "end" of a Hash multi-level structure is left alone, but all keys in between, whether string, symbol, or anything else, is turned into a string in order to pack them together into a "slashed" key.
+2. Speed. A Ruby Hash is built into the core and written mostly in C so it is very fast; but a SlashedHash clones the same C functionality on all the Hash's methods so that it can act as a normal Hash but with more sugar.
+
+Like I said, the above mentioned things are the only negative differences. You can still access items by their original keys -- to continue the example above,
+  >> sh['c']['d']
+  => :e
+BUT you can also access the same values by their "slashed" keys:
+  >> sh['c/d']
+  => :e
+  >> sh['c/f']
+  => ["a", "b"]
+And you can access the keys either normally or flattened:
+  >> sh.keys
+  => ["a", "c", "d"]
+  >> sh.flat.keys
+  => ["a", "c/d", "d", "c/f"]
+Accessing one level into the SlashedHash gives you another SlashedHash, if applicable:
+  >> sh['c']
+  => {slashed: "d"=>:e, "f"=>["a", "b"]}
+
+==What good is SlashedHash? What can it do for me?
+
+1) It comes in VERY handy when doing special transformations or multi-level key mappings. Think of reading an XML structure into specific property names (example uses the formattedstring gem syntax):
+  >> joe = "<person><name>Joe Schmoe</name><age>25</age><parent><name>Joseph Schmoe</name><age>56</age></parent>".formatted(:xml).to_hash.slashed
+  => {slashed: "person"=>{"name"=>"Joe Schmoe", "age"=>"25", "parent"=>{"name"=>"Joseph Schmoe", "age"=>"56"}}}
+  >> mapping = {'name' => 'person/name', 'age' => 'person/age', 'parent_name' => 'person/parent/name', 'parent_age' => 'person/parent/age'}
+  >> joe.transform_keys_with_mapping(mapping)
+  => {"name"=>"Joe Schmoe", "parent_name"=>"Joseph Schmoe", "age"=>"25", "parent_age"=>"56"}
+
+2) It is useful for sorting multi-level hashes by integration with OrderedHash.
+
+ / / / Still writing, will come back to this sometime... :) / / /

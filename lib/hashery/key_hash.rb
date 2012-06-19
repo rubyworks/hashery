@@ -50,10 +50,12 @@ module Hashery
 
 end
 
-class Hash
-  # Convert a Hash to a KeyHash object.
-  def to_keyhash
-    Hashery::KeyHash[self]
-  end
-end
+#class Hash
+#  #
+#  # Convert a Hash to a KeyHash object.
+#  #
+#  def to_keyhash
+#    Hashery::KeyHash[self]
+#  end
+#end
 

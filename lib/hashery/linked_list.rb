@@ -28,6 +28,7 @@ module Hashery
     include Enumerable
 
     # Represents a single node of the linked list.
+    #
     class Node
       attr_accessor :key, :value, :prev_node, :next_node
 
@@ -51,14 +52,14 @@ module Hashery
     end
 
     #
+    # Lookup entry by key.
     #
-    #
-    def [](v)
-      @lookup[v].value
+    def [](key)
+      @lookup[key].value
     end
 
     #
-    #
+    # Add node to linked list.
     #
     def []=(k,v)
       if @lookup.has_key?(k)
@@ -89,14 +90,14 @@ module Hashery
     end
 
     #
-    #
+    # Get value of first node.
     #
     def first
       @head.next_node.value
     end
 
     #
-    #
+    # Get value of last node.
     #
     def last
       @tail.prev_node.value

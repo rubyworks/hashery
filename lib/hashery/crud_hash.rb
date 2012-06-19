@@ -18,6 +18,8 @@ module Hashery
     # This method is overridden to ensure that new entries pass through
     # the `#store` method.
     #
+    # hash - [#each] Single Hash, associative array or just a list of pairs.
+    #
     def self.[](*hash)
       h = new
       if hash.size == 1

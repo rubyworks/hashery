@@ -1,0 +1,78 @@
+require 'rubygems'
+require 'rake'
+require 'rake/testtask'
+require 'rake/rdoctask'
+require 'rake/gempackagetask'
+require 'rake/contrib/rubyforgepublisher'
+
+PKG_NAME = 'hash_magic'
+PKG_VERSION = "0.1.0"
+
+PKG_FILES = FileList[
+    "lib/**/*", "rspec/**/*", "[A-Z]*", "Rakefile", "doc/**/*"
+]
+
+desc "Default Task"
+task :default => [ :test ] do
+  # Run the unit tests
+  desc "Run all rspec tests (rake task not yet implemented!)"
+end
+
+# Make a console, useful when working on tests
+desc "Generate a test console"
+task :console do
+   verbose( false ) { sh "irb -I lib/ -r '#{PKG_NAME}'" }
+end
+
+# Genereate the RDoc documentation
+desc "Create documentation"
+Rake::RDocTask.new("doc") { |rdoc|
+  rdoc.title = "Hash Magic"
+  rdoc.rdoc_dir = 'doc'
+  rdoc.rdoc_files.include('README')
+  rdoc.rdoc_files.include('LICENSE')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+}
+
+# Generate the package
+spec = Gem::Specification.new do |s|
+  #### Basic information.
+  s.name = PKG_NAME
+  s.version = PKG_VERSION
+  s.platform = Gem::Platform::RUBY
+  s.description = s.summary = "Adds Hash#ordered and Hash#slashed to Hash, which flavor a hash to behave in certain more humanly manners."
+
+  #### Which files are to be included in this gem?  Everything!  (Except CVS directories.)
+  s.files = PKG_FILES
+
+  #### Load-time details: library and application (you will need one or both).
+  s.require_path = 'lib'
+
+  #### Documentation and testing.
+  s.has_rdoc = true
+  # s.extra_rdoc_files = ["README", "LICENSE"]
+
+  #### Author and project details.
+  s.author = "Daniel Parker"
+  s.email = "gems@behindlogic.com"
+  s.homepage = "http://hash_magic.rubyforge.org"
+  s.rubyforge_project = 'hash-magic'
+end
+
+Rake::GemPackageTask.new(spec) do |pkg|
+  pkg.need_zip = false
+  pkg.need_tar = false
+end
+
+desc "Report code statistics (KLOCs, etc) from the application"
+task :stats do
+  require 'code_statistics'
+  CodeStatistics.new(
+    ["Library", "lib"]
+  ).to_s
+end
+
+desc "Publish new documentation"
+task :publish => [:doc] do
+  `scp -r doc/* dcparker@rubyforge.org:/var/www/gforge-projects/hash-magic`
+end
