@@ -58,11 +58,10 @@ load_path:
 - lib
 - alt
 revision: 0
+name: hashery
+title: Hashery
 created: '2010-04-21'
 summary: Facets-bread collection of Hash-like classes.
-title: Hashery
-version: 2.0.0
-name: hashery
 description: ! 'The Hashery is a tight collection of Hash-like classes. Included among
   its many
 
@@ -73,4 +72,5 @@ description: ! 'The Hashery is a tight collection of Hash-like classes. Included
   of the CRUDHash which defines a CRUD model on top of Ruby''s standard Hash
 
   making it a snap to subclass and augment to fit any specific use case.'
-date: '2012-06-18'
+version: 2.0.1
+date: '2012-07-06'
