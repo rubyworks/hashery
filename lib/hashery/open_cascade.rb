@@ -72,7 +72,7 @@ module Hashery
     #
     # Read value given a +key+.
     #
-    # key - Index keey to lookup.
+    # key - Index key to lookup.
     #
     # Returns value.
     #
@@ -124,7 +124,10 @@ module Hashery
     def cast_value(entry)
       case entry
       when Hash
-        OpenCascade[entry] #self.class.new(val)
+        e = OpenCascade.new
+        e.key_proc = key_proc if key_proc
+        e.merge!(entry)
+        e
       when Array
         entry.map{ |e| cast_value(e) }
       else
@@ -135,6 +138,7 @@ module Hashery
   end
 
 end
+
 
 #--
 # Last, when an entry is not found, 'null' is returned rather then 'nil'.
