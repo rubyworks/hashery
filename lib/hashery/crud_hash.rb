@@ -119,7 +119,7 @@ module Hashery
     # Returns value of Hash entry.
     #
     def read(key)
-      super cast_key(key)
+      Hash.instance_method(:[]).bind(self).call(cast_key(key))
     end
 
     #
