@@ -15,11 +15,6 @@ class Hash
   end
 
   #
-  # Alias for `#[]`.
-  #
-  alias :read :[]
-
-  #
   # Convert to Hash.
   #
   def to_hash
