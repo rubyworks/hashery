@@ -96,6 +96,7 @@ module Hashery
     #
     def open?(method)
       methods = public_methods(true).map{ |m| m.to_sym }
+p methods
       ! methods.include?(method.to_sym)
     end
 
