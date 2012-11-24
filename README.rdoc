@@ -31,7 +31,18 @@ Please see the HISTORY file.
 == HOW TO USE
 
 For usage information, see the individual library files included
-in this collection.
+in this collection and read the demo documents which give
+examples of almost all features.
+
+
+== CORE EXTENSIONS
+
+Hashery adds four core extensions of Ruby's Hash class: `#retreive`,
+`#rekey`, `#rekey!` and `Hash.create`. The first is simply an alias
+for `#[]`. The later two have proven too useful over the years to
+omit. And the last is a convenience class method for populating
+a new hash with another hash upon initialization. All of these are
+sorely missing for Ruby itself, which is why they are provided here.
 
 
 == HOW TO INSTALL
