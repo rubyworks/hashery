@@ -1,9 +1,8 @@
 .rbx
-.reap/digest
+.fire/digest
 .yardoc
 doc
 log
-pkg
 tmp
 web
 DEMO.rdoc

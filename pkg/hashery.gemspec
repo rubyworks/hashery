@@ -7,10 +7,10 @@ module DotRuby
   #
   class GemSpec
 
-    # For which revision of .ruby is this gemspec intended?
-    REVISION = 0 unless defined?(REVISION)
+    # File globs to include in package (unless manifest file exists).
+    FILES = ".meta .yardopts bin ext lib man [A-Z]*.*" unless defined?(FILES)
 
-    #
+    # Standard file patterns.
     PATTERNS = {
       :bin_files  => 'bin/*',
       :lib_files  => 'lib/{**/}*.rb',
@@ -19,23 +19,29 @@ module DotRuby
       :test_files => '{test/{**/}*_test.rb,spec/{**/}*_spec.rb}'
     } unless defined?(PATTERNS)
 
+    # For which revision of metaspec is this gemspec intended?
+    REVISION = 0 unless defined?(REVISION)
+
     #
     def self.instance
       new.to_gemspec
     end
 
+    #
     attr :metadata
-
-    attr :manifest
 
     #
     def initialize
       @metadata = YAML.load_file('.meta')
-      @manifest = Dir.glob('manifest{,.txt}', File::FNM_CASEFOLD).first
 
       if @metadata['revision'].to_i != REVISION
         warn "You have the wrong revision. Trying anyway..."
       end
+    end
+
+    #
+    def manifest
+      @manifest =|| Dir.glob('manifest{,.txt}', File::FNM_CASEFOLD).first
     end
 
     #
@@ -44,30 +50,34 @@ module DotRuby
         case
         when File.directory?('.git')
           :git
+        when File.directory?('.hg')
+          :hg
         end
     end
 
     #
     def files
       @files ||= \
-        #glob_files[patterns[:files]]
-        case
-        when manifest
+        if manifest
           File.readlines(manifest).
             map{ |line| line.strip }.
             reject{ |line| line.empty? || line[0,1] == '#' }
-        when scm == :git
-         `git ls-files -z`.split("\0")
         else
-          Dir.glob('{**/}{.*,*}')  # TODO: be more specific using standard locations ?
+          FILES.split(/\s+/).inject([]) do |g, a|
+            if File.directory?(g)
+              a.concat(Dir.glob(File.join(g, '**', '*')) }.uniq
+            else
+              a.concat(Dir.glob(g)) }.uniq
+            end
+          end
         end.select{ |path| File.file?(path) }
     end
 
     #
     def glob_files(pattern)
-      Dir.glob(pattern).select { |path|
+      Dir.glob(pattern).select do |path|
         File.file?(path) && files.include?(path)
-      }
+      end
     end
 
     #
