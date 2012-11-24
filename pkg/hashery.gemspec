@@ -49,9 +49,9 @@ module DotRuby
     #
     def root
       @root ||= (
-        if File.exist?(ROOT)
+        if Dir.glob(ROOT).first
           Pathname.new(Dir.pwd)
-        elsif File.exist?("../#{ROOT}")
+        elsif Dir.glob("../#{ROOT}").first
           Pathname.new(Dir.pwd).parent
         else
           raise "Can't find root of project containing `#{ROOT}'."
