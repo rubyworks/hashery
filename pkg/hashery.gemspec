@@ -221,6 +221,4 @@ module DotRuby
 
 end
 
-g = DotRuby::GemSpec.instance
-y g
-g
+DotRuby::GemSpec.instance
