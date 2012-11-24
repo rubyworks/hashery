@@ -41,7 +41,7 @@ module DotRuby
 
     #
     def manifest
-      @manifest =|| Dir.glob('manifest{,.txt}', File::FNM_CASEFOLD).first
+      @manifest ||= Dir.glob('manifest{,.txt}', File::FNM_CASEFOLD).first
     end
 
     #
