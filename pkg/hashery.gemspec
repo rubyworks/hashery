@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 require 'yaml'
+require 'pathname'
 
 module DotRuby
 
@@ -8,7 +9,10 @@ module DotRuby
   class GemSpec
 
     # File globs to include in package (unless manifest file exists).
-    FILES = ".meta .yardopts bin ext lib man [A-Z]*.*" unless defined?(FILES)
+    FILES = ".meta .yardopts bin ext lib man spec test [A-Z]*.*" unless defined?(FILES)
+
+    # File globs to omit.
+    OMIT = "Config.rb"
 
     # Standard file patterns.
     PATTERNS = {
@@ -16,7 +20,7 @@ module DotRuby
       :lib_files  => 'lib/{**/}*.rb',
       :ext_files  => 'ext/{**/}extconf.rb',
       :doc_files  => '*.{txt,rdoc,md,markdown,tt,textile}',
-      :test_files => '{test/{**/}*_test.rb,spec/{**/}*_spec.rb}'
+      :test_files => '{test,spec}/{**/}*.rb'
     } unless defined?(PATTERNS)
 
     # For which revision of metaspec is this gemspec intended?
@@ -32,7 +36,7 @@ module DotRuby
 
     #
     def initialize
-      @metadata = YAML.load_file('.meta')
+      @metadata = YAML.load_file(root + '.meta')
 
       if @metadata['revision'].to_i != REVISION
         warn "You have the wrong revision. Trying anyway..."
@@ -40,17 +44,28 @@ module DotRuby
     end
 
     #
+    def root
+      @root ||= (
+        if File.file?('.meta')
+          Pathname.new(Dir.pwd)
+        elsif File.file?('../.meta')
+          Pathname.new(Dir.pwd).parent
+        end
+      )
+    end
+
+    #
     def manifest
-      @manifest ||= Dir.glob('manifest{,.txt}', File::FNM_CASEFOLD).first
+      @manifest ||= Dir.glob(root + 'manifest{,.txt}', File::FNM_CASEFOLD).first
     end
 
     #
     def scm
       @scm ||= \
         case
-        when File.directory?('.git')
+        when (root + '.git').directory?
           :git
-        when File.directory?('.hg')
+        when (root + '.hg').directory?
           :hg
         end
     end
@@ -63,20 +78,31 @@ module DotRuby
             map{ |line| line.strip }.
             reject{ |line| line.empty? || line[0,1] == '#' }
         else
-          FILES.split(/\s+/).inject([]) do |g, a|
-            if File.directory?(g)
-              a.concat(Dir.glob(File.join(g, '**', '*')))
-            else
-              a.concat(Dir.glob(g))
+          list = []
+          Dir.chdir(root) do
+            FILES.split(/\s+/).each do |pattern|
+              list.concat(glob(pattern))
             end
           end
+          list
         end.select{ |path| File.file?(path) }.uniq
     end
 
     #
+    def glob(pattern)
+      if File.directory?(pattern)
+        Dir.glob(File.join(pattern, '**', '*'))
+      else
+        Dir.glob(pattern)
+      end
+    end
+
+    #
     def glob_files(pattern)
-      Dir.glob(pattern).select do |path|
-        File.file?(path) && files.include?(path)
+      Dir.chdir(root) do
+        Dir.glob(pattern).select do |path|
+          File.file?(path) && files.include?(path)
+        end
       end
     end
 
@@ -195,4 +221,6 @@ module DotRuby
 
 end
 
-DotRuby::GemSpec.instance
+g = DotRuby::GemSpec.instance
+y g
+g
