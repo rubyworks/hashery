@@ -1,3 +1,7 @@
+module Hashery
+  VERSION = "2.1.0"
+end
+
 require 'hashery/core_ext'
 
 #require 'hashery/basic_struct'
