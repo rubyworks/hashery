@@ -8,14 +8,14 @@ module DotRuby
   #
   class GemSpec
 
-    # File to look for to find paroject root directory.
-    ROOT = ".meta"
+    # File to look for to find the project's root directory.
+    ROOT = "lib" unless defined?(ROOT)
 
     # File globs to include in package (unless manifest file exists).
     FILES = ".meta .yardopts bin ext lib man spec test [A-Z]*.*" unless defined?(FILES)
 
     # File globs to omit.
-    OMIT = "Config.rb"
+    OMIT = "Config.rb" unless defined?(OMIT)
 
     # Standard file patterns.
     PATTERNS = {
@@ -87,6 +87,9 @@ module DotRuby
           Dir.chdir(root) do
             FILES.split(/\s+/).each do |pattern|
               list.concat(glob(pattern))
+            end
+            OMIT.split(/\s+/).each do |pattern|
+              list = list - glob(pattern)
             end
           end
           list
