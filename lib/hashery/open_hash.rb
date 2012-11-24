@@ -42,6 +42,11 @@ module Hashery
     attr_accessor :safe
 
     #
+    # Alias to original store method.
+    #
+    #alias :store! :store
+
+    #
     # Index `value` to `key`. Unless safe mode, will also open up the 
     # key if it is not already open.
     #
@@ -51,7 +56,7 @@ module Hashery
     # Returns +value+.
     #
     def store(key, value)
-      open!(key)
+      #open!(key)
       super(key, value)
     end
 
