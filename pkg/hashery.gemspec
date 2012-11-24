@@ -65,7 +65,7 @@ module DotRuby
         else
           FILES.split(/\s+/).inject([]) do |g, a|
             if File.directory?(g)
-              a.concat(Dir.glob(File.join(g, '**', '*'))
+              a.concat(Dir.glob(File.join(g, '**', '*')))
             else
               a.concat(Dir.glob(g))
             end
