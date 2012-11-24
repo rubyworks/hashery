@@ -75,7 +75,7 @@ module Hashery
       end
       # only public methods need be made protected
       methods = methods.map{ |x| x.to_sym }
-      methods = methods & public_methods(true)
+      methods = methods & public_methods(true).map{ |x| x.to_sym }
       if @safe
         raise ArgumentError, "cannot set public method" unless methods.empty?
       else
