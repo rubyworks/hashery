@@ -1,5 +1,21 @@
 = RELEASE HISTORY
 
+== 2.1.0 / 2012-11-24
+
+The Hash#read core extension has been renamed to Hash#retrieve to avoid
+any possible confusion with IO objects. This release also fixes a couple
+of issues with 1.8 compatability and makes a few other enhancements.
+
+Changes:
+
+* Rename Hash#read to Hash#retrieve.
+* Deprecate `Dictionary.alpha` in favor of `Dictionary.alphabetic`.
+* Add support for block argument in Dictionary#order_by_key and #order_by_value.
+* Fix OpenHash issues with Ruby 1.8.x compatability.
+* OpenHash methods are opened up via `protected` instead of `private`.
+* Change OpenCascade to auto-create the subclass when inherited.
+
+
 == 2.0.1 / 2012-07-06
 
 This minor release fixes an issue with OpenCascade (#13).
