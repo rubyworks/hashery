@@ -23,6 +23,7 @@ All the usual Hash methods are still available in an OpenHash.
 And they are protected from being overridden by writers.
 
   o.map = 3
+  o.map.class.assert == Enumerator
   o.map.refute == 3
 
 Even so, the underlying Hash object does contain the entry even 
