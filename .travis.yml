@@ -13,5 +13,5 @@ rvm:
   - ree
 env:
   - TESTCOMMAND="qed"
-  - TESTCOMMAND="rubytest -Ilib test/"
+  - TESTCOMMAND="rubytest -Ilib -Itest test/"
 
