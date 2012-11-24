@@ -56,10 +56,14 @@ module Hashery
     include Enumerable
 
     class << self
-      #--
-      # TODO is this needed? Doesn't the super class do this?
-      #++
 
+      #
+      # Create a new Dictionary storing argument pairs as an initial mapping.
+      #
+      # TODO: Is this needed? Doesn't the super class do this?
+      #
+      # Returns Dictionary instance.
+      #
       def [](*args)
         hsh = new
         if Hash === args[0]
@@ -75,16 +79,18 @@ module Hashery
       end
 
       #
-      # Like #new but the block sets the order.
+      # Like #new but the block sets the order instead of the default.
+      #
+      #   Dictionary.new_by{ |k,v| k }
       #
       def new_by(*args, &blk)
         new(*args).order_by(&blk)
       end
 
       #
-      # Alternate to #new which creates a dictionary sorted by key.
+      # Alternate to #new which creates a dictionary sorted by the key as a string.
       #
-      #   d = Dictionary.alpha
+      #   d = Dictionary.alphabetic
       #   d["z"] = 1
       #   d["y"] = 2
       #   d["x"] = 3
@@ -92,11 +98,14 @@ module Hashery
       #
       # This is equivalent to:
       #
-      #   Dictionary.new.order_by { |key,value| key }
-
-      def alpha(*args, &block)
-        new(*args, &block).order_by_key
+      #   Dictionary.new.order_by { |key,value| key.to_s }
+      #
+      def alphabetic(*args, &block)
+        new(*args, &block).order_by { |key,value| key.to_s }
       end
+
+      # DEPRECATED: Use #alphabetic instead.
+      alias :alpha :alphabetic
 
       #
       # Alternate to #new which auto-creates sub-dictionaries as needed.
@@ -120,7 +129,7 @@ module Hashery
       @order = []
       @order_by = nil
       if blk
-        dict = self                                  # This ensure autmatic key entry effect the
+        dict = self                                  # This ensures automatic key entry effect the
         oblk = lambda{ |hsh, key| blk[dict,key] }    # dictionary rather then just the interal hash.
         @hash = Hash.new(*args, &oblk)
       else
@@ -169,7 +178,11 @@ module Hashery
     # Returns +self+.
     #
     def order_by_key
-      @order_by = Proc.new{ |k,v| k }
+      if block_given?
+        @order_by = Proc.new{ |k,v| yield(k) }
+      else
+        @order_by = Proc.new{ |k,v| k }
+      end
       order
       self
     end
@@ -188,7 +201,11 @@ module Hashery
     #   Dictionary.new.order_by { |key,value| value }
     #
     def order_by_value
-      @order_by = Proc.new{ |k,v| v }
+      if block_given?
+        @order_by = Proc.new{ |k,v| yield(v) }
+      else
+        @order_by = Proc.new{ |k,v| v }
+      end
       order
       self
     end
