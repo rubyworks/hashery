@@ -43,6 +43,10 @@ module Hashery
   #
   #   c.x!(4).y!(3)         #=> #<OpenCascade:0x7fac3680ccf0 {:x=>4, :y=>3}>
   #
+  # Subclassing OpenCascade with cause the new subclass to become the class that
+  # is auto-created. If this is not the behavior desired, consider using delegation
+  # instead of subclassing.
+  #
   class OpenCascade < OpenHash
 
     #
@@ -60,7 +64,7 @@ module Hashery
     def initialize(*default)
       @read = {}
 
-      leet = lambda { |h,k| h[k] = OpenCascade.new(&leet) }
+      leet = lambda { |h,k| h[k] = self.class.new(&leet) }
       super(*default, &leet)
     end
 
