@@ -65,12 +65,12 @@ module DotRuby
         else
           FILES.split(/\s+/).inject([]) do |g, a|
             if File.directory?(g)
-              a.concat(Dir.glob(File.join(g, '**', '*')) }.uniq
+              a.concat(Dir.glob(File.join(g, '**', '*')) }
             else
-              a.concat(Dir.glob(g)) }.uniq
+              a.concat(Dir.glob(g))
             end
           end
-        end.select{ |path| File.file?(path) }
+        end.select{ |path| File.file?(path) }.uniq
     end
 
     #
