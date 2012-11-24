@@ -8,6 +8,9 @@ module DotRuby
   #
   class GemSpec
 
+    # File to look for to find paroject root directory.
+    ROOT = ".meta"
+
     # File globs to include in package (unless manifest file exists).
     FILES = ".meta .yardopts bin ext lib man spec test [A-Z]*.*" unless defined?(FILES)
 
@@ -46,10 +49,12 @@ module DotRuby
     #
     def root
       @root ||= (
-        if File.file?('.meta')
+        if File.exist?(ROOT)
           Pathname.new(Dir.pwd)
-        elsif File.file?('../.meta')
+        elsif File.exist?("../#{ROOT}")
           Pathname.new(Dir.pwd).parent
+        else
+          raise "Can't find root of project containing `#{ROOT}'."
         end
       )
     end
