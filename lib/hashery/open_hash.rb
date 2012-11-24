@@ -95,7 +95,8 @@ module Hashery
     # Returns `true` or `false`.
     #
     def open?(method)
-      ! public_methods(true).include?(method.to_sym)
+      methods = public_methods(true).map{ |m| m.to_sym }
+      ! methods.include?(method.to_sym)
     end
 
     #
