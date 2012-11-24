@@ -17,8 +17,8 @@ yard:
 qedoc:
   title: Hashery Demonstrandum
   output:
-    - QED.rdoc
-    - web/qed.html
+    - DEMO.rdoc
+    - web/demo.html
 
 #lemon:
 #  service: Custom

@@ -31,12 +31,14 @@ class Hash
   #
   def to_hash
     dup  # -or- `h = {}; each{ |k,v| h[k] = v }; h` ?
-  end
+  end \
+  unless method_defined?(:to_hash)
 
   #
   # For a Hash, `#to_h` is the same as `#to_hash`.
   #
-  alias :to_h :to_hash
+  alias :to_h :to_hash \
+  unless method_defined?(:to_h)
 
   #
   # Synonym for Hash#rekey, but modifies the receiver in place (and returns it).
