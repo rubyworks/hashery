@@ -22,17 +22,17 @@ All the usual Hash methods are still available in an OpenHash.
 
 And they are protected from being overridden by writers.
 
-  o.map = 3
-  o.map{ |k,v| [k,v] }
+  #o.map = 3
+  c = o.map{ |k,v| [k,v] }
   c.assert.include?([:a,1])
   c.assert.include?([:b,2])
 
 Even so, the underlying Hash object does contain the entry even 
 when it cannot be accessed via a reader method.
 
-  o.to_h.assert == {:a=>1, :b=>2, :map=>3 }
+  o.to_h.assert == { :a=>1, :b=>2, :map=>3 }
 
-We can see if a methods is open or not via the `#open?` method.
+We can see if a method is open or not via the `#open?` method.
 
   o.open?(:a).assert == true
   o.open?(:map).assert == false
