@@ -70,11 +70,9 @@ module Hashery
     # Returns Array of slot names that were opened.
     #
     def open!(*methods)
-      # only select string and symbols, any other type of key is allowed,
+      # Only select string and symbols, any other type of key is allowed,
       # it just won't be accessible via dynamic methods.
       methods = methods.select{ |x| String === x || Symbol === x }
-      # @todo should we just ignore these instead of raising an error?
-      #methods.reject!{ |x| x.to_s =~ /^__/ }
       if methods.any?{ |m| m.to_s.start_with?('__') }
         raise ArgumentError, "cannot open shadow methods"
       end
