@@ -46,10 +46,11 @@ be done using the `#open!` method.
   o.merge.assert == 4
 
 Becuase of nature of a writer, a certain set of Hash methods are always
-protected, primarily any methods buffeted by underscore (e.g. `__id__`).
+protected, in particluar all methods buffered by underscore (e.g. `__id__`).
+So these cannot be opened.
 
   expect ArgumentError do
-    o.__id__ = 4
+    o.open!(:__id__)
   end
 
 Even though writers alwasy use Symbols as keys, because an OpenHash

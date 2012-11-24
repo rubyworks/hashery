@@ -101,7 +101,6 @@ module Hashery
     #
     def open?(method)
       methods = public_methods(true).map{ |m| m.to_sym }
-p methods
       ! methods.include?(method.to_sym)
     end
 
@@ -127,8 +126,6 @@ p methods
 
       case type
       when '='
-        #open!(key) unless open?(key)
-        #self[key] = a.first
         store(key, a.first)
       when '?'
         key?(key)
