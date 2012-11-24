@@ -71,15 +71,15 @@ module Hashery
       # @todo should we just ignore these instead of raising an error?
       #methods.reject!{ |x| x.to_s =~ /^__/ }
       if methods.any?{ |m| m.to_s.start_with?('__') }
-        raise ArgumentError, "cannot set shadow methods"
+        raise ArgumentError, "cannot open shadow methods"
       end
-      # only public methods need to be made private
+      # only public methods need be made protected
       methods = methods.map{ |x| x.to_sym }
       methods = methods & public_methods(true)
       if @safe
         raise ArgumentError, "cannot set public method" unless methods.empty?
       else
-        (class << self; self; end).class_eval{ private *methods }
+        (class << self; self; end).class_eval{ protected *methods }
       end
       methods
     end

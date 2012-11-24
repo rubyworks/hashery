@@ -16,17 +16,26 @@ Writers always use a Symbol for keys in the underlying Hash.
 
 All the usual Hash methods are still available in an OpenHash.
 
-  o.map{ |k,v| [k,v] }
+  c = o.map{ |k,v| [k,v] }
+  c.assert.include?([:a,1])
+  c.assert.include?([:b,2])
 
 And they are protected from being overridden by writers.
 
   o.map = 3
   o.map{ |k,v| [k,v] }
+  c.assert.include?([:a,1])
+  c.assert.include?([:b,2])
 
 Even so, the underlying Hash object does contain the entry even 
-when it can not be accessed via a reader method.
+when it cannot be accessed via a reader method.
 
   o.to_h.assert == {:a=>1, :b=>2, :map=>3 }
+
+We can see if a methods is open or not via the `#open?` method.
+
+  o.open?(:a).assert == true
+  o.open?(:map).assert == false
 
 For some usecases it may be necessary to give up access to one or
 more Hash methods in favor of access to the hash entries. This can
@@ -51,5 +60,5 @@ is a true Hash object, any object can be used as a key internally.
   o[nil] = "Nothing"
   o.to_h.assert == { nil=>"Nothing" }
 
-It simply will not be accessible via a reader method.
+It simply cannot be accessible via a reader method.
 
