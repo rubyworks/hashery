@@ -12,7 +12,27 @@ module Hashery
   # In addition to the CRUD features, CRUDHash supports a `#key_proc`, akin to
   # `#default_proc`, that can be used to normalize keys.
   #
+  # The CRUD methods are:
+  #
+  # * key?
+  # * fetch
+  # * store
+  # * delete
+  #
+  # In addition to these main methods, there are these supporting "CRUD" methods:
+  #
+  # * default
+  # * default_proc
+  # * default_proc=
+  # * key_proc
+  # * key_proc=
+  #
   class CRUDHash < ::Hash
+
+    #
+    # Dummy object for null arguments.
+    #
+    NA = Object.new
 
     #
     # This method is overridden to ensure that new entries pass through
@@ -112,14 +132,19 @@ module Hashery
     end
 
     #
-    # CRUD method for reading value.
+    # CRUD method for read. This method gets the value for a given key.
+    # An error is raised if the key is not present, but an optional argument
+    # can be provided to be returned instead.
     #
-    # key - Hash key to lookup.
+    # key     - Hash key to lookup.
+    # default - Value to return if key is not present.
     #
-    # Returns value of Hash entry.
+    # Raises KeyError when key is not found and default has not been given.
     #
-    def read(key)
-      super cast_key(key)
+    # Returns the `Object` that is the Hash entry's value.
+    #
+    def fetch(key, *default)
+       super(cast_key(key), *default)
     end
 
     #
@@ -145,16 +170,38 @@ module Hashery
       super cast_key(key)
     end
 
+    # END OF CRUD METHODS
+
     #
-    # Like #read but raises an error if key is not present.
+    # Like #fetch but returns the results of calling `default_proc`, if defined,
+    # otherwise `default`.
     #
     # key - Hash key to lookup.
     #
-    # Returns the `Object` that is the Hash entry's value.
+    # Returns value of Hash entry or `nil`.
     #
-    def fetch(key)
-      raise KeyError, "key not found: #{key.inspect}" unless key?(key)
-      read key
+    def retrieve(key)
+      if key?(key)
+        fetch(key)
+      else
+        default_proc ? default_proc.call(self, key) : default
+      end
+    end
+
+    #
+    # Method for reading value. Returns `nil` if key is not present.
+    #
+    # Note that this method used to be the CRUD method instead of #retrieve. Complaints about
+    # #read being indicative of an IO object (though in my opinion that is a bad asumption) have
+    # led to this method's deprecation.
+    #
+    # key - Hash key to lookup.
+    #
+    # Returns value of Hash entry.
+    #
+    def read(key)
+      warn "The #read method as been deprecated. Use #retrieve instead."
+      retrieve(key)
     end
 
     #
@@ -178,21 +225,14 @@ module Hashery
     end
 
     #
-    # Operator for `#read`.
+    # Operator for `#retrieve`.
     #
     # key - Index key to lookup.
     #
     # Returns `Object` value of key.
     #
     def [](key)
-      #if key?(key)
-      #  fetch(key)
-      #elsif default_proc
-      #  default_proc.call(self, key)
-      #else
-      #  default
-      #end
-      read(key)
+      retrieve(key)
     end
 
     #
@@ -246,7 +286,7 @@ module Hashery
     def each #:yield:
       if block_given?
         keys.each do |k|
-          yield(k, read(k))
+          yield(k, retrieve(k))
         end
       else
         to_enum(:each)

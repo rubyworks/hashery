@@ -131,7 +131,7 @@ module Hashery
         __send__(name, *a, &b)
       else
         #if key?(key)
-          read(key)
+          retrieve(key)
         #else
         #  super(s,*a,&b)
         #end

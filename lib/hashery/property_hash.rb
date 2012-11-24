@@ -102,7 +102,7 @@ module Hashery
       if opts[:default]
         store!(key, opts[:default])
       else
-        store!(key, read(key))
+        store!(key, retrieve(key))
       end
     end
 

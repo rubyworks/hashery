@@ -29,7 +29,7 @@ module Hashery
     # Retruns value.
     #
     def store(key, value)
-      if key?(key) && read(key) != value
+      if key?(key) && fetch(key) != value
         raise ArgumentError, "Duplicate key for StaticHash -- #{key.inspect}"
       end
       super(key, value)

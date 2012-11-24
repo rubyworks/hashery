@@ -15,9 +15,16 @@ class Hash
   end
 
   #
-  # Alias for `#[]`.
+  # Like #fetch but returns the results of calling `default_proc`, if defined,
+  # otherwise `default`.
   #
-  alias :read :[]
+  # key - Hash key to lookup.
+  #
+  # Returns value of Hash entry or `nil`.
+  #
+  def retrieve(key)
+    fetch(key, default_proc ? default_proc[self, key] : default)
+  end
 
   #
   # Convert to Hash.

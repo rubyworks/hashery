@@ -67,7 +67,7 @@ module Hashery
     #
     # Alias for original read method.
     #
-    alias :read! :read
+    alias :retrieve! :retrieve
 
     #
     # Read value given a +key+.
@@ -76,11 +76,12 @@ module Hashery
     #
     # Returns value.
     #
-    def read(key)
-      if @read[cast_key(key)]
+    def retrieve(key)
+      ckey = cast_key(key)
+      if @read[ckey]
         super(key)
       else
-        @read[cast_key(key)] = store(key, cast_value(super(key)))
+        @read[ckey] = store(key, cast_value(super(key)))
       end
     end
 
@@ -95,12 +96,12 @@ module Hashery
       when '='
         store(name, args.first)
       when '?'
-        key?(name) ? read!(name) : nil    # key?(name)
+        key?(name) ? retrieve!(name) : nil    # key?(name)
       when '!'
         __send__(name, *args, &blk)
       else
         #if key?(name)
-          read(name)
+          retrieve(name)
         #else
         #  #default = OpenCascade.new #self.class.new
         #  #default = default_proc ? default_proc.call(self, name) : default
