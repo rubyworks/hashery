@@ -1,5 +1,4 @@
 #!mast .ruby .yardopts bin lib man qed spec test [A-Z]*.*
-.ruby
 .yardopts
 lib/hashery/association.rb
 lib/hashery/casting_hash.rb
@@ -38,7 +37,7 @@ test/fixture/example.ini
 test/helper.rb
 HISTORY.rdoc
 DEMO.rdoc
+LICENSE.txt
+README.rdoc
 NOTICE.txt
 Config.rb
-README.rdoc
-LICENSE.txt
