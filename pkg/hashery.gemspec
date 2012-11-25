@@ -12,7 +12,7 @@ module MetaSpec
     ROOT = "lib" unless defined?(ROOT)
 
     # File globs to include in package (unless manifest file exists).
-    FILES = ".meta .yardopts bin ext lib man spec test [A-Z]*.*" unless defined?(FILES)
+    FILES = ".meta .yardopts alt bin ext lib man spec test [A-Z]*.*" unless defined?(FILES)
 
     # File globs to omit.
     OMIT = "Config.rb" unless defined?(OMIT)
