@@ -3,7 +3,7 @@
 require 'yaml'
 require 'pathname'
 
-module DotRuby
+module MetaSpec
 
   #
   class GemSpec
@@ -229,4 +229,4 @@ module DotRuby
 
 end
 
-DotRuby::GemSpec.instance
+MetaSpec::GemSpec.instance
