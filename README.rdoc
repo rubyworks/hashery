@@ -13,19 +13,14 @@
 
 Among Ruby Facets most common additions were an assortment
 of Hash-like classes. To better support this collection
-of libraries it was deemed prudent to create a side project
-specifically for them. Hence the "Facets" Hashery.
+of libraries it was deemed prudent to create a new project
+specifically for them. Hence the *Facets* Hashery.
 
 Included in this collection are the widely used OrderedHash, 
 the related but more featured Dictionary class, a number
-of _open_ classes, similar to the standard OpenStruct, 
-plus a few variations of the standard Hash and a few
+of _open_ classes similar to the standard OpenStruct, 
+some variations of the standard Hash class and a few
 other yummy morsels.
-
-
-== RELEASE NOTES
-
-Please see the HISTORY file.
 
 
 == HOW TO USE
@@ -102,6 +97,11 @@ Yes, we FOSS programmers need to eat too! ;-) No seriously, any help you can
 offer goes a long way toward continued development of Rubyworks projects,
 including Hashery. See the upper right-hand corner on the
 Rubyworks[http://rubyworks.github.com] hompage. Thanks.
+
+
+== RELEASE NOTES
+
+Please see the HISTORY file.
 
 
 == COPYRIGHTS
