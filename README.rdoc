@@ -32,7 +32,7 @@ examples of almost all features.
 
 == CORE EXTENSIONS
 
-Hashery adds four core extensions of Ruby's Hash class: `#retreive`,
+Hashery adds four core extensions of Ruby's Hash class: `#retrieve`,
 `#rekey`, `#rekey!` and `Hash.create`. The first is simply an alias
 for `#[]`. The later two have proven too useful over the years to
 omit. And the last is a convenience class method for populating
@@ -78,7 +78,7 @@ Run the QED specs via:
   $ qed -Ilib demo/
 
 Lemon is used to create low-level unit tests. Run these via the 
-RubyTest univeral test harness.
+RubyTest universal test harness.
 
   $ rubytest -Ilib test/
 
@@ -96,7 +96,7 @@ so I won't bug you with it yet again.
 Yes, we FOSS programmers need to eat too! ;-) No seriously, any help you can
 offer goes a long way toward continued development of Rubyworks projects,
 including Hashery. See the upper right-hand corner on the
-Rubyworks[http://rubyworks.github.com] hompage. Thanks.
+Rubyworks[http://rubyworks.github.com] homepage. Thanks.
 
 
 == RELEASE NOTES
@@ -114,5 +114,5 @@ See COPYING.rdoc file for further details.
 
 Some libraries included in the Hashery have special copyrights
 attributing specific authors. Please see each library script for
-specifics and the NOITCE.txt file for an overview.
+specifics and the NOTICE.txt file for an overview.
 
