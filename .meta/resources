@@ -1,0 +1,18 @@
+--- !!tag:openworks.org,2012:resources
+- uri: http://rubyworks.github.com/hashery
+  label: Website
+  type: home
+- uri: http://github.com/rubyworks/hashery
+  label: Source Code
+  type: code
+- uri: http://groups.google.com/group/rubyworks-mailinglist
+  label: Mailing List
+  type: mail
+- uri: http://rubydoc.info/github/rubyworks/hashery/master/frames
+  label: Documentation
+  type: docs
+- uri: http://wiki.github.com/rubyworks/hashery
+  label: User Guide
+  type: wiki
+- uri: http://rubygems.org/gems/hashery
+  type: gems

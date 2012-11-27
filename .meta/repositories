@@ -1,0 +1,5 @@
+--- !!tag:openworks.org,2012/repositories
+- uri: git://github.com/rubyworks/hashery.git
+  scm: git
+  name: upstream
+
