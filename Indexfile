@@ -40,7 +40,7 @@ repositories(
   upstream: "git://github.com/rubyworks/hashery.git"
 )
 
-company   "RubyWorks"
+organization "RubyWorks"
 
 created   "2010-04-21"
 

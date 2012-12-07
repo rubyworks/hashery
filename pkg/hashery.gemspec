@@ -9,10 +9,10 @@ module MetaSpec
   class GemSpec
 
     # File to look for to find the project's root directory.
-    ROOT = "lib" unless defined?(ROOT)
+    ROOT = "{.index,.ruby}" unless defined?(ROOT)
 
     # File globs to include in package (unless manifest file exists).
-    FILES = ".meta .yardopts alt bin ext lib man spec test [A-Z]*.*" unless defined?(FILES)
+    FILES = ".index .ruby .yardopts alt bin ext lib man spec test [A-Z]*.*" unless defined?(FILES)
 
     # File globs to omit.
     OMIT = "Config.rb" unless defined?(OMIT)
@@ -39,7 +39,7 @@ module MetaSpec
 
     #
     def initialize
-      @metadata = YAML.load_file(root + '.meta')
+      @metadata = YAML.load_file(root + '.index')
 
       if @metadata['revision'].to_i != REVISION
         warn "You have the wrong revision. Trying anyway..."
