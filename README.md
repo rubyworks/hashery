@@ -1,12 +1,14 @@
 # Hashery
 
-[Homepage](http://rubyworks.github.com/hashery) |
-[Development](http://github.com/rubyworks/hashery) |
-[Report Issue](http://github.com/rubyworks/hashery/issues] |
-[Mailing List](http://googlegroups.com/group.rubyworks-mailinglist] |
+[Homepage](http://rubyworks.github.com/hashery) &middot;
+[Development](http://github.com/rubyworks/hashery) &middot;
+[Report Issue](http://github.com/rubyworks/hashery/issues] &middot;
+[Mailing List](http://googlegroups.com/group.rubyworks-mailinglist] &middot;
 [IRC](irc://irc.freenode.net/rubyworks)
 
-[<img src="http://travis-ci.org/rubyworks/hashery.png" />](http://travis-ci.org/rubyworks/hashery)
+[![Gem Version](https://badge.fury.io/rb/hashery.png)](http://badge.fury.io/rb/hashery)
+[![Build Status](https://secure.travis-ci.org/rubyworks/hashery.png)](http://travis-ci.org/rubyworks/hashery) &nbsp; &nbsp;
+[![Flattr Me](http://api.flattr.com/button/flattr-badge-large.png)](http://flattr.com/thing/324911/Rubyworks-Ruby-Development-Fund)
 
 
 ## Description
