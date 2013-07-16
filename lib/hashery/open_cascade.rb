@@ -114,6 +114,10 @@ module Hashery
       end
     end
 
+    def respond_to?(sym, include_private = false)
+      sym != :to_ary && super
+    end
+
     #def each
     #  super do |key, entry|
     #    yield([key, transform_entry(entry)])
