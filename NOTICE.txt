@@ -2,12 +2,6 @@ All copyright holders have released their wares with a compatible
 license or have given permission for their work to be distributed
 under the same license as Hashery.
 
-BasicObject is based on Jim Weirich's BlankSlate class.
-
-    BlankSlate
-    Copyright 2004 by Jim Weirich (jim@weirichhouse.org).
-    All rights reserved.
-
 Dictionary is based on OrderedHash by Jan Molic.
 
     OrderHash 2.0 Copyright (c) 2005 Jan Molic.
@@ -43,4 +37,10 @@ PathHash is based on SlashedHash by Daniel Parker
     HashMagic by Daniel Parker <gems@behindlogic.com>
     Copyright (c) 2006 BehindLogic
     http://hash_magic.rubyforge.org
+
+BasicObject is based on Jim Weirich's BlankSlate class.
+
+    BlankSlate
+    Copyright 2004 by Jim Weirich (jim@weirichhouse.org).
+    All rights reserved.
 

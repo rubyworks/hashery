@@ -1,15 +1,15 @@
-= Hashery
+# Hashery
 
-{Homepage}[http://rubyworks.github.com/hashery] |
-{Development}[http://github.com/rubyworks/hashery] |
-{Report Issue}[http://github.com/rubyworks/hashery/issues] |
-{Mailing List}[http://googlegroups.com/group.rubyworks-mailinglist] |
-{IRC}[irc://irc.freenode.net/rubyworks]
+[Homepage](http://rubyworks.github.com/hashery) |
+[Development](http://github.com/rubyworks/hashery) |
+[Report Issue](http://github.com/rubyworks/hashery/issues] |
+[Mailing List](http://googlegroups.com/group.rubyworks-mailinglist] |
+[IRC](irc://irc.freenode.net/rubyworks)
 
-{<img src="http://travis-ci.org/rubyworks/hashery.png" />}[http://travis-ci.org/rubyworks/hashery]
+[<img src="http://travis-ci.org/rubyworks/hashery.png" />](http://travis-ci.org/rubyworks/hashery)
 
 
-== DESCRIPTION
+## DESCRIPTION
 
 Among Ruby Facets most common additions were an assortment
 of Hash-like classes. To better support this collection
@@ -23,14 +23,14 @@ some variations of the standard Hash class and a few
 other yummy morsels.
 
 
-== HOW TO USE
+## HOW TO USE
 
 For usage information, see the individual library files included
 in this collection and read the demo documents which give
 examples of almost all features.
 
 
-== CORE EXTENSIONS
+## CORE EXTENSIONS
 
 Hashery adds four core extensions of Ruby's Hash class: `#retrieve`,
 `#rekey`, `#rekey!` and `Hash.create`. The first is simply an alias
@@ -40,17 +40,17 @@ a new hash with another hash upon initialization. All of these are
 sorely missing for Ruby itself, which is why they are provided here.
 
 
-== HOW TO INSTALL
+## HOW TO INSTALL
 
 To install with RubyGems simply open a console and type:
 
   $ sudo gem install hashery
 
 Tarball packages are available for manual site installations
-via {Ruby Setup}[http://proutils.github.com/setup].
+via [Ruby Setup](http://proutils.github.com/setup).
 
 
-== AUTHORS
+## AUTHORS
 
 Developers who have contributed code to the project include:
 
@@ -63,15 +63,15 @@ Developers who have contributed code to the project include:
 * Erik Veenstra
 
 
-== CONTRIBUTE
+## CONTRIBUTE
 
 Don't be a lump on a log. See an issue? Have a suggestion? Want to help?
 Well git in there!
 
-=== Testing
+### Testing
 
-Hashery uses QED[http://rubyworks.github.com/qed] and
-Lemon[http://rubyworks.github.com/lemon] test frameworks.
+Hashery uses [QED](http://rubyworks.github.com/qed) and
+[Lemon](http://rubyworks.github.com/lemon) test frameworks.
 The QED framework to create well tested high-level documentation.
 Run the QED specs via:
 
@@ -83,34 +83,34 @@ RubyTest universal test harness.
   $ rubytest -Ilib test/
 
 
-=== Patches
+### Patches
 
-Hashery's repository is hosted on GitHub[http://github.com/rubyworks/hashery].
+Hashery's repository is hosted on [GitHub](http://github.com/rubyworks/hashery).
 If you'd like to offer up a fix or feature, fork the repo and submit a pull
 request (preferably in a topic branch). I assume you have heard
-all the talk about proper {practices}[http://learn.github.com/p/intro.html],
+all the talk about proper [practices](http://learn.github.com/p/intro.html),
 so I won't bug you with it yet again.
 
-=== Donations
+### Donations
 
 Yes, we FOSS programmers need to eat too! ;-) No seriously, any help you can
 offer goes a long way toward continued development of Rubyworks projects,
 including Hashery. See the upper right-hand corner on the
-Rubyworks[http://rubyworks.github.com] homepage. Thanks.
+[Rubyworks](http://rubyworks.github.com) homepage. Thanks.
 
 
-== RELEASE NOTES
+## RELEASE NOTES
 
 Please see the HISTORY file.
 
 
-== COPYRIGHTS
+## COPYRIGHTS
 
 Copyright (c) 2010 Rubyworks
 
-Licensed under the *BSD-2-clause* license.
+Licensed under the *BSD-2-Clause* license.
 
-See COPYING.rdoc file for further details.
+See COPYING.md file for further details.
 
 Some libraries included in the Hashery have special copyrights
 attributing specific authors. Please see each library script for

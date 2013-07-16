@@ -2,7 +2,7 @@
 type: ruby
 revision: 2013
 sources:
-- Indexfile
+- Index.yml
 - Gemfile
 authors:
 - name: Trans
@@ -14,7 +14,7 @@ authors:
 - name: Jeena Paradies
 - name: Erik Veenstra
 organizations:
-- name: RubyWorks
+- name: RubyWorks (http://rubyworks.github.com/)
 requirements:
 - groups:
   - development
@@ -67,10 +67,10 @@ name: hashery
 title: Hashery
 version: 2.1.0
 summary: Facets-bread collection of Hash-like classes.
-description: ! "  The Hashery is a tight collection of Hash-like classes. Included
-  among its many\n  offerings are the auto-sorting Dictionary class, the efficient
-  LRUHash, the\n  flexible OpenHash and the convenient KeyHash. Nearly every class
-  is a subclass\n  of the CRUDHash which defines a CRUD model on top of Ruby's standard
-  Hash\n  making it a snap to subclass and augment to fit any specific use case.\n"
+description: The Hashery is a tight collection of Hash-like classes. Included among
+  its many offerings are the auto-sorting Dictionary class, the efficient LRUHash,
+  the flexible OpenHash and the convenient KeyHash. Nearly every class is a subclass
+  of the CRUDHash which defines a CRUD model on top of Ruby's standard Hash making
+  it a snap to subclass and augment to fit any specific use case.
 created: '2010-04-21'
-date: '2012-12-07'
+date: '2012-12-09'

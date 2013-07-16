@@ -1,6 +1,6 @@
-= RELEASE HISTORY
+# RELEASE HISTORY
 
-== 2.1.0 / 2012-11-24 (Golden Retriever)
+## 2.1.0 / 2012-11-24 (Golden Retriever)
 
 The major change of the 2.1 release is to switch over to `Hash#fetch`
 as the fundamental CRUD read method inplace of the previous `#read` core
@@ -23,7 +23,7 @@ Changes:
 * Change OpenCascade to auto-create the subclass when inherited.
 
 
-== 2.0.1 / 2012-07-06
+## 2.0.1 / 2012-07-06
 
 This minor release fixes an issue with OpenCascade (#13).
 The key_proc procedure wasn't being passed along to sub-cascades. 
@@ -33,7 +33,7 @@ Changes:
 * OpenCascade passes along key_proc to children.
 
 
-== 2.0.0 / 2012-05-11 (Crud Space)
+## 2.0.0 / 2012-05-11 (Crud Space)
 
 This is a big release for Hashery which both culls some of it's
 less fitting classes and modules while greatly improving the rest.
@@ -56,7 +56,7 @@ Changes:
 * Removed open_object.rb, which has long been deprecated.
 
 
-== 1.5.1 / 2012-05-09
+## 1.5.1 / 2012-05-09
 
 This release adds transformative #each method to OpenCascade, to
 ensure #each returns an OpenCascade. Also, BasicCascade has been
@@ -70,7 +70,7 @@ Changes:
 * Renamed `Ini` class to `IniHash` class.
 
 
-== 1.5.0 / 2011-11-10 (Devil's Core)
+## 1.5.0 / 2011-11-10 (Devil's Core)
 
 In this release, CoreExt module has been added to encapsulate
 methods that extend Ruby's core Hash class (there are only a few).
@@ -88,7 +88,7 @@ Changes:
 * Switch license to BSD-2-Clause license.
 
 
-== 1.4.0 / 2011-01-19 (Back To Basics)
+## 1.4.0 / 2011-01-19 (Back To Basics)
 
 This release includes a copy of Ruby Facets' BasicObject class, which
 fixes the loading bug of the previous version. This release also renames
@@ -101,7 +101,7 @@ Changes:
 * Fix basicobject.rb loading issue.
 
 
-== 1.3.0 / 2010-10-01 (Private Property)
+## 1.3.0 / 2010-10-01 (Private Property)
 
 This release fixes a minor bug in CastingHash and adds a new
 PropertyHash class.
@@ -117,7 +117,7 @@ Changes:
   * Fixed CastingHash#new where #to_proc is called against NilClass
 
 
-== 1.2.0 / 2010-06-04 (Fuzzy Wuzzy)
+## 1.2.0 / 2010-06-04 (Fuzzy Wuzzy)
 
 This release makes two significant changes to the Hashery.
 First, we have a new shiny library called FuzzyHash by
@@ -138,7 +138,7 @@ Changes:
   * OpenCascade subclasses OpenHash and handles Array cascading.
 
 
-== 1.1.0 / 2010-04-28 (Ugly Ducklings)
+## 1.1.0 / 2010-04-28 (Ugly Ducklings)
 
 A follow-up release of Hashery that adds two new libraries:
 Association and SparseArray. Both of these may seem like odd
@@ -157,7 +157,7 @@ Changes:
   * Added sparsearray.rb
 
 
-== 1.0.0 / 2010-04-21 (Hatching Hashery)
+## 1.0.0 / 2010-04-21 (Hatching Hashery)
 
 This is the first release of the Facets Hashery.
 Most of included classes come directly from Ruby
