@@ -9,7 +9,7 @@
 [<img src="http://travis-ci.org/rubyworks/hashery.png" />](http://travis-ci.org/rubyworks/hashery)
 
 
-## DESCRIPTION
+## Description
 
 Among Ruby Facets most common additions were an assortment
 of Hash-like classes. To better support this collection
@@ -23,14 +23,14 @@ some variations of the standard Hash class and a few
 other yummy morsels.
 
 
-## HOW TO USE
+## Usage
 
-For usage information, see the individual library files included
-in this collection and read the demo documents which give
+For instruction on usage, please see the individual library files
+included in this collection and read the demo documents which give
 examples of almost all features.
 
 
-## CORE EXTENSIONS
+## Core Extensions
 
 Hashery adds four core extensions of Ruby's Hash class: `#retrieve`,
 `#rekey`, `#rekey!` and `Hash.create`. The first is simply an alias
@@ -40,7 +40,7 @@ a new hash with another hash upon initialization. All of these are
 sorely missing for Ruby itself, which is why they are provided here.
 
 
-## HOW TO INSTALL
+## Installation
 
 To install with RubyGems simply open a console and type:
 
@@ -50,7 +50,7 @@ Tarball packages are available for manual site installations
 via [Ruby Setup](http://proutils.github.com/setup).
 
 
-## AUTHORS
+## Authors
 
 Developers who have contributed code to the project include:
 
@@ -63,7 +63,7 @@ Developers who have contributed code to the project include:
 * Erik Veenstra
 
 
-## CONTRIBUTE
+## Contributing
 
 Don't be a lump on a log. See an issue? Have a suggestion? Want to help?
 Well git in there!
@@ -99,12 +99,7 @@ including Hashery. See the upper right-hand corner on the
 [Rubyworks](http://rubyworks.github.com) homepage. Thanks.
 
 
-## RELEASE NOTES
-
-Please see the HISTORY file.
-
-
-## COPYRIGHTS
+## Copyrights
 
 Copyright (c) 2010 Rubyworks
 
