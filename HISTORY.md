@@ -1,9 +1,20 @@
 # RELEASE HISTORY
 
+## 2.1.1 / 2013-08-21
+
+This minor release simply clarifies the licensing. The entire library
+is now distributed under the BSD-2-Clause license, also known as
+the FreeBSD license.
+
+Changes:
+
+* Clarify licensing.
+
+
 ## 2.1.0 / 2012-11-24 (Golden Retriever)
 
 The major change of the 2.1 release is to switch over to `Hash#fetch`
-as the fundamental CRUD read method inplace of the previous `#read` core
+as the fundamental CRUD read method in-place of the previous `#read` core
 extension (an alias of `#[]`). This is a pretty fundamental change which
 required modification of a number of classes. So please do extra-diligence
 and file an issue if you experience any problems.
