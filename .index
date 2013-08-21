@@ -26,6 +26,11 @@ requirements:
   - test
   version: '>= 0'
   name: lemon
+- groups:
+  - development
+  - test
+  version: '>= 0'
+  name: rubytest-cli
 conflicts: []
 alternatives: []
 resources:

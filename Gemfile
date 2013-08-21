@@ -2,9 +2,10 @@
 
 source "http://rubygems.org"
 
-group "development" do
+group "development", "test" do
   #gem "detroit", :group => "build"
-  gem "qed",     :group => "test"
-  gem "lemon",   :group => "test"
+  gem "qed"
+  gem "lemon"
+  gem "rubytest-cli"
 end
 
