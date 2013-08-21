@@ -108,3 +108,15 @@ testcase Hash do
   end
 
 end
+
+testcase Array do
+
+  method :flatten do
+    test "array can be flattened if contains OpenCascade" do
+      cascade = OpenCascade[:foo=>"bar"]
+      array = [cascade]
+      array.flatten # should not raise error
+    end
+  end
+
+end
