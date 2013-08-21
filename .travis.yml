@@ -1,16 +1,12 @@
 ---
 language: ruby
-# NOTE: For some reason this fails for 1.9.2 on Travis CO.
-# It passes for 1.9.2 just fine om local machine. Can't
-# figure out why.
 script: "bundle exec $TESTCOMMAND"
 rvm:
   - 1.8.7
-  #- 1.9.2
   - 1.9.3
+  - 2.0.0
   - rbx
   - jruby
-  - ree
 env:
   - TESTCOMMAND="qed"
   - TESTCOMMAND="rubytest -Ilib -Itest test/"
