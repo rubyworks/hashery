@@ -2,13 +2,15 @@
 
 ## 2.1.1 / 2013-08-21
 
-This minor release simply clarifies the licensing. The entire library
-is now distributed under the BSD-2-Clause license, also known as
-the FreeBSD license.
+This minor release clarifies the licensing. The entire library is now
+distributed under the BSD-2-Clause license, also known as the FreeBSD
+license. In addition this release provides a bug fix for flattening
+arrays that contain an OpenCascade object.
 
 Changes:
 
 * Clarify licensing.
+* Fix #flatten on Arrays that contain an OpenCascade.
 
 
 ## 2.1.0 / 2012-11-24 (Golden Retriever)
