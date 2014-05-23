@@ -82,7 +82,7 @@ Run the QED specs via:
 Lemon is used to create low-level unit tests. Run these via the 
 RubyTest universal test harness.
 
-  $ rubytest -Ilib test/
+  $ rubytest -Ilib -Itest test/
 
 
 ### Patches
