@@ -6,10 +6,6 @@
 [Mailing List](http://googlegroups.com/group.rubyworks-mailinglist] &middot;
 [IRC](irc://irc.freenode.net/rubyworks)
 
-[![Gem Version](https://badge.fury.io/rb/hashery.png)](http://badge.fury.io/rb/hashery)
-[![Build Status](https://secure.travis-ci.org/rubyworks/hashery.png)](http://travis-ci.org/rubyworks/hashery) &nbsp; &nbsp;
-[![Flattr Me](http://api.flattr.com/button/flattr-badge-large.png)](http://flattr.com/thing/324911/Rubyworks-Ruby-Development-Fund)
-
 
 ## Description
 
@@ -23,6 +19,16 @@ the related but more featured Dictionary class, a number
 of _open_ classes similar to the standard OpenStruct, 
 some variations of the standard Hash class and a few
 other yummy morsels.
+
+
+## Status
+
+[![Gem Version](http://img.shields.io/gem/v/hashery.svg?style=flat)](http://rubygems.org/gem/hashery)
+[![Build Status](http://img.shields.io/travis/rubyworks/hashery.svg?style=flat)](http://travis-ci.org/rubyworks/hashery)
+[![Fork Me](http://img.shields.io/badge/scm-github-blue.svg?style=flat)](http://github.com/rubyworks/hashery)
+[![Report Issue](http://img.shields.io/github/issues/rubyworks/hashery.svg?style=flat)](http://github.com/rubyworks/hashery/issues)
+[![Gittip](http://img.shields.io/badge/gittip-$1/wk-green.svg?style=flat)](https://www.gittip.com/on/github/rubyworks/)
+[![Flattr Me](http://api.flattr.com/button/flattr-badge-large.png)](http://flattr.com/thing/324911/Rubyworks-Ruby-Development-Fund)
 
 
 ## Usage
