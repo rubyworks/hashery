@@ -2,8 +2,8 @@
 
 [Homepage](http://rubyworks.github.com/hashery) &middot;
 [Development](http://github.com/rubyworks/hashery) &middot;
-[Report Issue](http://github.com/rubyworks/hashery/issues] &middot;
-[Mailing List](http://googlegroups.com/group.rubyworks-mailinglist] &middot;
+[Report Issue](http://github.com/rubyworks/hashery/issues) &middot;
+[Mailing List](http://googlegroups.com/group.rubyworks-mailinglist) &middot;
 [IRC](irc://irc.freenode.net/rubyworks)
 
 
