@@ -52,10 +52,14 @@ sorely missing for Ruby itself, which is why they are provided here.
 
 To install with RubyGems simply open a console and type:
 
-  $ sudo gem install hashery
+    $ sudo gem install hashery
+
+Or add it as a dependency to your project's Gemfile:
+
+    gem "hashery"
 
 Tarball packages are available for manual site installations
-via [Ruby Setup](http://proutils.github.com/setup).
+via [Ruby Setup](http://rubyworks.github.com/setup).
 
 
 ## Authors
@@ -83,13 +87,11 @@ Hashery uses [QED](http://rubyworks.github.com/qed) and
 The QED framework to create well tested high-level documentation.
 Run the QED specs via:
 
-  $ qed -Ilib demo/
+    $ qed -Ilib demo/
 
-Lemon is used to create low-level unit tests. Run these via the 
-RubyTest universal test harness.
+Lemon is used to create low-level unit tests. Run these via the Rubytest:
 
-  $ rubytest -Ilib -Itest test/
-
+    $ rubytest -Ilib -Itest test/
 
 ### Patches
 
@@ -113,7 +115,7 @@ Copyright (c) 2010 Rubyworks
 
 Licensed under the *BSD-2-Clause* license.
 
-See COPYING.md file for further details.
+See LICENSE.txt file for further details.
 
 Some libraries included in the Hashery have special copyrights
 attributing specific authors. Please see each library script for
