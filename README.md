@@ -4,7 +4,7 @@
 [![Build Status](http://img.shields.io/travis/rubyworks/hashery.svg?style=flat)](http://travis-ci.org/rubyworks/hashery)
 [![Fork Me](http://img.shields.io/badge/scm-github-blue.svg?style=flat)](http://github.com/rubyworks/hashery)
 [![Report Issue](http://img.shields.io/github/issues/rubyworks/hashery.svg?style=flat)](http://github.com/rubyworks/hashery/issues)
-[![Gittip](http://img.shields.io/badge/gittip-$1/wk-green.svg?style=flat)](https://www.gittip.com/on/github/rubyworks/)
+[![Gittip](http://img.shields.io/badge/gittip-$1/wk-green.svg?style=flat)](https://www.gittip.com/rubyworksorg/)
 
 [Homepage](http://rubyworks.github.com/hashery) &middot;
 [Development](http://github.com/rubyworks/hashery) &middot;
@@ -109,10 +109,10 @@ so I won't bug you with it yet again.
 
 Yes, we FOSS programmers need to eat too! ;-) No seriously, any help you can
 offer goes a long way toward continued development of Rubyworks projects,
-including Hashery. See the upper right-hand corner on the
-[Rubyworks](http://rubyworks.github.com) homepage. Thanks.
+including Hashery. Hop over to our [Gittips](https://www.gittip.com/rubyworksorg/)
+page, or see the upper right-hand corner on the [Rubyworks](http://rubyworks.github.com) homepage.
+Thanks!
 
-&nbsp; &nbsp; <script data-gittip-username="rubyworksorg" src="//gttp.co/v1.js"></script>
 
 ## Copyrights
 
