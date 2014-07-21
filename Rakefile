@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-ignore 'web', 'log', 'doc', 'tmp', 'work'
+#ignore 'web', 'log', 'doc', 'tmp', 'work'
 
 desc 'run tests'
 task 'test' do
