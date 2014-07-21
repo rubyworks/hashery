@@ -79,11 +79,10 @@ Well *git* in there!
 
 The project is hosted on Github so the easiest means of communication 
 is via the [Issues](http://github.com/rubyworks/hashery/issues) page.
+For more direct communication you can try the **#rubyworks** IRC channel
+on **irc.freenode.net**.
 
-For more direct communication you can try the #rubyworks IRC channel
-on irc.freenode.net.
-
-[![IRC](https://kiwiirc.com/buttons/irc.freenode.net/rubyworks.png)](https://kiwiirc.com/client/irc.freenode.net/?nick=user1|?#rubyworks)
+* [![IRC](https://kiwiirc.com/buttons/irc.freenode.net/rubyworks.png)](https://kiwiirc.com/client/irc.freenode.net/?nick=user1|?#rubyworks)
 
 ### Testing
 
@@ -103,7 +102,7 @@ Lemon is used to create low-level unit tests. Run these via the Rubytest:
 Hashery's repository is hosted on [GitHub](http://github.com/rubyworks/hashery).
 If you'd like to offer up a fix or feature, fork the repo and submit a pull
 request (preferably in a topic branch). I assume you have heard
-all the talk about proper [practices](http://learn.github.com/p/intro.html),
+all the talk about proper [practices](https://github.com/rubyworks/rubyworks.github.com/wiki/GitHub-Best-Pactices),
 so I won't bug you with it yet again.
 
 ### Donations
