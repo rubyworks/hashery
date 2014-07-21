@@ -1,32 +1,30 @@
 # Hashery
 
+[![Gem Version](http://img.shields.io/gem/v/hashery.svg?style=flat)](http://rubygems.org/gem/hashery)
+[![Build Status](http://img.shields.io/travis/rubyworks/hashery.svg?style=flat)](http://travis-ci.org/rubyworks/hashery)
+[![Fork Me](http://img.shields.io/badge/scm-github-blue.svg?style=flat)](http://github.com/rubyworks/hashery)
+[![Report Issue](http://img.shields.io/github/issues/rubyworks/hashery.svg?style=flat)](http://github.com/rubyworks/hashery/issues)
+[![Gittip](http://img.shields.io/badge/gittip-$1/wk-green.svg?style=flat)](https://www.gittip.com/on/github/rubyworks/)
+
 [Homepage](http://rubyworks.github.com/hashery) &middot;
 [Development](http://github.com/rubyworks/hashery) &middot;
 [Report Issue](http://github.com/rubyworks/hashery/issues) &middot;
 [Mailing List](http://googlegroups.com/group.rubyworks-mailinglist) &middot;
 [![IRC](https://kiwiirc.com/buttons/irc.freenode.net/rubyworks.png)](https://kiwiirc.com/client/irc.freenode.net/?nick=user1|?#rubyworks)
 
+
 ## Description
 
 Among Ruby Facets most common additions were an assortment
 of Hash-like classes. To better support this collection
 of libraries it was deemed prudent to create a new project
-specifically for them. Hence the *Facets* Hashery.
+specifically for them. Hence the *Facets Hashery*.
 
 Included in this collection are the widely used OrderedHash, 
 the related but more featured Dictionary class, a number
 of _open_ classes similar to the standard OpenStruct, 
 some variations of the standard Hash class and a few
 other yummy morsels.
-
-
-## Status
-
-[![Gem Version](http://img.shields.io/gem/v/hashery.svg?style=flat)](http://rubygems.org/gem/hashery)
-[![Build Status](http://img.shields.io/travis/rubyworks/hashery.svg?style=flat)](http://travis-ci.org/rubyworks/hashery)
-[![Fork Me](http://img.shields.io/badge/scm-github-blue.svg?style=flat)](http://github.com/rubyworks/hashery)
-[![Report Issue](http://img.shields.io/github/issues/rubyworks/hashery.svg?style=flat)](http://github.com/rubyworks/hashery/issues)
-[![Gittip](http://img.shields.io/badge/gittip-$1/wk-green.svg?style=flat)](https://www.gittip.com/on/github/rubyworks/)
 
 
 ## Usage
@@ -36,7 +34,7 @@ included in this collection and read the demo documents which give
 examples of almost all features.
 
 
-## Core Extensions
+### Core Extensions
 
 Hashery adds four core extensions of Ruby's Hash class: `#retrieve`,
 `#rekey`, `#rekey!` and `Hash.create`. The first is simply an alias
