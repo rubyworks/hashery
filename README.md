@@ -9,8 +9,7 @@
 [Homepage](http://rubyworks.github.com/hashery) &middot;
 [Development](http://github.com/rubyworks/hashery) &middot;
 [Report Issue](http://github.com/rubyworks/hashery/issues) &middot;
-[Mailing List](http://googlegroups.com/group.rubyworks-mailinglist) &middot;
-[![IRC](https://kiwiirc.com/buttons/irc.freenode.net/rubyworks.png)](https://kiwiirc.com/client/irc.freenode.net/?nick=user1|?#rubyworks)
+[Chat](https://kiwiirc.com/client/irc.freenode.net/?nick=user1|?#rubyworks)
 
 
 ## Description
@@ -74,7 +73,17 @@ Developers who have contributed code to the project include:
 ## Contributing
 
 Don't be a lump on a log. See an issue? Have a suggestion? Want to help?
-Well git in there!
+Well *git* in there!
+
+### Communicating
+
+The project is hosted on Github so the easiest means of communication 
+is via the [Issues](http://github.com/rubyworks/hashery/issues) page.
+
+For more direct communication you can try the #rubyworks IRC channel
+on irc.freenode.net.
+
+[![IRC](https://kiwiirc.com/buttons/irc.freenode.net/rubyworks.png)](https://kiwiirc.com/client/irc.freenode.net/?nick=user1|?#rubyworks)
 
 ### Testing
 
