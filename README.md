@@ -82,7 +82,7 @@ is via the [Issues](http://github.com/rubyworks/hashery/issues) page.
 For more direct communication you can try the **#rubyworks** IRC channel
 on **irc.freenode.net**.
 
-* [![IRC](https://kiwiirc.com/buttons/irc.freenode.net/rubyworks.png)](https://kiwiirc.com/client/irc.freenode.net/?nick=user1|?#rubyworks)
+&nbsp; &nbsp; [![IRC](https://kiwiirc.com/buttons/irc.freenode.net/rubyworks.png)](https://kiwiirc.com/client/irc.freenode.net/?nick=user1|?#rubyworks)
 
 ### Testing
 
@@ -112,6 +112,7 @@ offer goes a long way toward continued development of Rubyworks projects,
 including Hashery. See the upper right-hand corner on the
 [Rubyworks](http://rubyworks.github.com) homepage. Thanks.
 
+&nbsp; &nbsp; <script data-gittip-username="rubyworksorg" src="//gttp.co/v1.js"></script>
 
 ## Copyrights
 
