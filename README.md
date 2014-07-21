@@ -4,8 +4,7 @@
 [Development](http://github.com/rubyworks/hashery) &middot;
 [Report Issue](http://github.com/rubyworks/hashery/issues) &middot;
 [Mailing List](http://googlegroups.com/group.rubyworks-mailinglist) &middot;
-[IRC](irc://irc.freenode.net/rubyworks)
-
+[![IRC](https://kiwiirc.com/buttons/irc.freenode.net/rubyworks.png)](https://kiwiirc.com/client/irc.freenode.net/?nick=user1|?#rubyworks)
 
 ## Description
 
