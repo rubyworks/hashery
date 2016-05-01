@@ -43,8 +43,9 @@ testcase KeyHash do
 
   method :initialize do
     test do
-      s = KeyHash.new
-      assert(s)
+      StandardError.refute.raised? do
+        s = KeyHash.new
+      end
     end
   end
 
