@@ -19,17 +19,17 @@ requirements:
 - groups:
   - development
   - test
-  version: '>= 0'
+  version: ">= 0"
   name: qed
 - groups:
   - development
   - test
-  version: '>= 0'
+  version: ">= 0"
   name: lemon
 - groups:
   - development
   - test
-  version: '>= 0'
+  version: ">= 0"
   name: rubytest-cli
 conflicts: []
 alternatives: []
@@ -67,7 +67,7 @@ paths:
   - alt
 name: hashery
 title: Hashery
-version: 2.1.1
+version: 2.1.2
 summary: Facets-bread collection of Hash-like classes.
 description: The Hashery is a tight collection of Hash-like classes. Included among
   its many offerings are the auto-sorting Dictionary class, the efficient LRUHash,
@@ -75,4 +75,4 @@ description: The Hashery is a tight collection of Hash-like classes. Included am
   of the CRUDHash which defines a CRUD model on top of Ruby's standard Hash making
   it a snap to subclass and augment to fit any specific use case.
 created: '2010-04-21'
-date: '2013-08-21'
+date: '2016-05-01'
