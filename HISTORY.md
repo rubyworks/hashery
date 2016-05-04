@@ -1,5 +1,14 @@
 # RELEASE HISTORY
 
+## 2.1.2 / 2016-05-02
+
+Minor release fixes a test for KeyHash. And that's it.
+
+Changes:
+
+* Fix initialize test for KeyHash class.
+
+
 ## 2.1.1 / 2013-08-21
 
 This minor release clarifies the licensing. The entire library is now
