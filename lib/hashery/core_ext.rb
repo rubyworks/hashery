@@ -9,7 +9,7 @@ class Hash
   # Returns a `Hash`.
   #
   def self.create(initial_hash={}, &block)
-    o = new &block
+    o = new(&block)
     o.update(initial_hash)
     o
   end

@@ -216,7 +216,7 @@ module Hashery
     #
     def node_delete(n)
       node_join(n.prev_node,n.next_node)
-      v = n.value
+      n.value
     end
 
     #
