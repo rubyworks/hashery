@@ -1,5 +1,33 @@
 # RELEASE HISTORY
 
+## 2.2.0 / unreleased
+
+This release concentrates on LRUHash, by far the most used part of the
+Hashery. Its public API is unchanged, but it has been reimplemented on top
+of Ruby's ordered Hash instead of a linked list of nodes, which makes it
+about twice as fast, and a number of bugs have been fixed. It also
+modernizes the project: Ruby 2.7 or newer is now required, the gem is
+built from a plain gemspec, and CI runs on GitHub Actions.
+
+Changes:
+
+* LRUHash is about 2x faster, using Ruby's ordered Hash internally.
+* Fix LRUHash#dup and #clone, which shared state with the original.
+* Fix LRUHash#inspect and #to_s, which showed keys and values with #to_s
+  and failed under frozen string literals.
+* LRUHash#keys and #values now list most recently used first, like #each.
+* LRUHash#fetch accepts a default argument and its KeyError names the key.
+* LRUHash#delete accepts a block for missing keys, like Hash#delete.
+* LRUHash#delete_if returns an Enumerator when called without a block.
+* Add LRUHash#length.
+* Fix IniHash.new with a Hash, and so IniHash.text and .write_to_file.
+* Fix IniHash.write_to_file with a comment (used String#each).
+* Fix `require 'hashery/static_hash'` on its own.
+* Prepare for frozen string literals and fix warnings under `ruby -w`.
+* Require Ruby 2.7 or newer.
+* Replace Indexer metadata (.index, Index.yml) with hashery.gemspec.
+* Replace Travis CI with GitHub Actions.
+
 ## 2.1.2 / 2016-05-02
 
 Minor release fixes a test for KeyHash. And that's it.
