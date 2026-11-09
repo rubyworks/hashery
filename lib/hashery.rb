@@ -1,6 +1,4 @@
-module Hashery
-  VERSION = "2.1.0"
-end
+require 'hashery/version'
 
 require 'hashery/core_ext'
 

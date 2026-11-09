@@ -1,11 +1,11 @@
-# encoding: UTF-8
+source "https://rubygems.org"
 
-source "http://rubygems.org"
+gemspec
 
-group "development", "test" do
-  #gem "detroit", :group => "build"
+group :development, :test do
+  gem "rake"
   gem "qed"
+  gem "ae"
   gem "lemon"
   gem "rubytest-cli"
 end
-
