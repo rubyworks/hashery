@@ -185,7 +185,7 @@ module Hashery
     # Returns a string in the ini file format.
     #
     def to_s
-      str = ""
+      str = +""
       inihash.each do |key, value|
         if value.is_a? Hash
           str << "[#{key.to_s}]\n"
@@ -259,7 +259,7 @@ module Hashery
     # Returns a `String` with the comments from the beginning of the INI file.
     #
     def self.read_comment_from_file(path)
-      comment = ""
+      comment = +""
       
       IO.foreach(path) do |line|
         line.strip!
