@@ -115,7 +115,7 @@ module Hashery
       @path    = path if String === path
       @inihash = (Hash === path ? path.dup : {})
 
-      if load or ( load.nil? and FileTest.readable_real? @path )
+      if load or ( load.nil? and @path and FileTest.readable_real? @path )
         restore()
       end
     end
@@ -289,7 +289,7 @@ module Hashery
       File.open(path, "w") { |file|
         
         unless comment.nil?
-          comment.each do |line|
+          comment.each_line do |line|
             file << "# #{line}"
           end
         end
