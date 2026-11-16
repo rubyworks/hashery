@@ -82,7 +82,7 @@ module Hashery
       if @safe
         raise ArgumentError, "cannot set public method" unless methods.empty?
       else
-        (class << self; self; end).class_eval{ protected *methods }
+        (class << self; self; end).class_eval{ protected(*methods) }
       end
       methods
     end
@@ -110,7 +110,7 @@ module Hashery
     # Returns +methods+.
     #
     def close!(*methods)
-      (class << self; self; end).class_eval{ public *methods }
+      (class << self; self; end).class_eval{ public(*methods) }
       methods
     end
 

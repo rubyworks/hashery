@@ -1,3 +1,5 @@
+require 'hashery/crud_hash'
+
 module Hashery
 
   # StaticHash ia a Hash object which raises an error if any

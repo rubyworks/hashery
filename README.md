@@ -1,15 +1,12 @@
 # Hashery
 
-[![Gem Version](http://img.shields.io/gem/v/hashery.svg?style=flat)](http://rubygems.org/gem/hashery)
-[![Build Status](http://img.shields.io/travis/rubyworks/hashery.svg?style=flat)](http://travis-ci.org/rubyworks/hashery)
-[![Fork Me](http://img.shields.io/badge/scm-github-blue.svg?style=flat)](http://github.com/rubyworks/hashery)
-[![Report Issue](http://img.shields.io/github/issues/rubyworks/hashery.svg?style=flat)](http://github.com/rubyworks/hashery/issues)
-[![Gittip](http://img.shields.io/badge/gittip-$1/wk-green.svg?style=flat)](https://www.gittip.com/rubyworksorg/)
+[![Gem Version](https://img.shields.io/gem/v/hashery.svg?style=flat)](https://rubygems.org/gems/hashery)
+[![CI](https://github.com/rubyworks/hashery/actions/workflows/ci.yml/badge.svg)](https://github.com/rubyworks/hashery/actions/workflows/ci.yml)
+[![Report Issue](https://img.shields.io/github/issues/rubyworks/hashery.svg?style=flat)](https://github.com/rubyworks/hashery/issues)
 
-[Homepage](http://rubyworks.github.com/hashery) &middot;
-[Development](http://github.com/rubyworks/hashery) &middot;
-[Report Issue](http://github.com/rubyworks/hashery/issues) &middot;
-[Chat](https://kiwiirc.com/client/irc.freenode.net/?nick=user1|?#rubyworks)
+[Homepage](https://rubyworks.github.io/hashery) &middot;
+[Development](https://github.com/rubyworks/hashery) &middot;
+[Report Issue](https://github.com/rubyworks/hashery/issues)
 
 
 ## Description
@@ -19,11 +16,10 @@ of Hash-like classes. To better support this collection
 of libraries it was deemed prudent to create a new project
 specifically for them. Hence the *Facets Hashery*.
 
-Included in this collection are the widely used OrderedHash, 
-the related but more featured Dictionary class, a number
-of _open_ classes similar to the standard OpenStruct, 
-some variations of the standard Hash class and a few
-other yummy morsels.
+Included in this collection are the widely used LRUHash,
+the auto-sorting Dictionary class, a number of _open_ classes
+similar to the standard OpenStruct, some variations of the
+standard Hash class and a few other yummy morsels.
 
 
 ## Usage
@@ -31,6 +27,36 @@ other yummy morsels.
 For instruction on usage, please see the individual library files
 included in this collection and read the demo documents which give
 examples of almost all features.
+
+
+### LRUHash
+
+`Hashery::LRUHash` is a size-limited Hash that evicts the least recently
+used entry when full. It can be required on its own:
+
+```ruby
+require 'hashery/lru_hash'
+
+cache = Hashery::LRUHash.new(2)
+cache[:a] = 1
+cache[:b] = 2
+cache[:a]            # reading :a makes it the most recently used
+cache[:c] = 3        # full, so :b, the least recently used, is evicted
+
+cache.keys           # => [:c, :a]  (most recently used first)
+cache.fetch(:b, 0)   # => 0
+```
+
+Reading with `#[]`, `#fetch`, `#assoc`, `#rassoc`, `#key` or `#values_at`
+marks an entry as most recently used; `#has_key?`, `#has_value?` and iteration
+do not. Like `Hash.new`, it takes an optional default value or block. Set
+`#release_proc` to be told about every entry that leaves the cache:
+
+```ruby
+cache.release_proc = ->(key, value) { value.close }
+```
+
+An LRUHash is not thread-safe; guard it with a `Mutex` if threads share it.
 
 
 ### Core Extensions
@@ -45,16 +71,14 @@ sorely missing for Ruby itself, which is why they are provided here.
 
 ## Installation
 
-To install with RubyGems simply open a console and type:
+Hashery requires Ruby 2.7 or newer. To install with RubyGems simply
+open a console and type:
 
-    $ sudo gem install hashery
+    $ gem install hashery
 
 Or add it as a dependency to your project's Gemfile:
 
     gem "hashery"
-
-Tarball packages are available for manual site installations
-via [Ruby Setup](http://rubyworks.github.com/setup).
 
 
 ## Authors
@@ -77,41 +101,34 @@ Well *git* in there!
 
 ### Communicating
 
-The project is hosted on Github so the easiest means of communication 
-is via the [Issues](http://github.com/rubyworks/hashery/issues) page.
-For more direct communication you can try the **#rubyworks** IRC channel
-on **irc.freenode.net**.
-
-&nbsp; &nbsp; [![IRC](https://kiwiirc.com/buttons/irc.freenode.net/rubyworks.png)](https://kiwiirc.com/client/irc.freenode.net/?nick=user1|?#rubyworks)
+The project is hosted on GitHub so the easiest means of communication
+is via the [Issues](https://github.com/rubyworks/hashery/issues) page.
 
 ### Testing
 
-Hashery uses [QED](http://rubyworks.github.com/qed) and
-[Lemon](http://rubyworks.github.com/lemon) test frameworks.
+Hashery uses [QED](https://rubyworks.github.io/qed) and
+[Lemon](https://rubyworks.github.io/lemon) test frameworks.
 The QED framework to create well tested high-level documentation.
-Run the QED specs via:
+Lemon is used to create low-level unit tests. Install the development
+dependencies and run both via:
 
-    $ qed -Ilib demo/
+    $ bundle install
+    $ bundle exec rake
 
-Lemon is used to create low-level unit tests. Run these via the Rubytest:
+Or run the QED specs on their own via:
 
-    $ rubytest -Ilib -Itest test/
+    $ bundle exec qed -Ilib demo/
+
+And the Lemon unit tests via Rubytest:
+
+    $ bundle exec rubytest -Ilib -Itest test/
 
 ### Patches
 
-Hashery's repository is hosted on [GitHub](http://github.com/rubyworks/hashery).
+Hashery's repository is hosted on [GitHub](https://github.com/rubyworks/hashery).
 If you'd like to offer up a fix or feature, fork the repo and submit a pull
 request (preferably in a topic branch). I assume you have heard
-all the talk about proper [practices](https://github.com/rubyworks/rubyworks.github.com/wiki/GitHub-Best-Pactices),
-so I won't bug you with it yet again.
-
-### Donations
-
-Yes, we FOSS programmers need to eat too! ;-) No seriously, any help you can
-offer goes a long way toward continued development of Rubyworks projects,
-including Hashery. Hop over to our [Gittips](https://www.gittip.com/rubyworksorg/)
-page, or see the upper right-hand corner on the [Rubyworks](http://rubyworks.github.com) homepage.
-Thanks!
+all the talk about proper practices, so I won't bug you with it yet again.
 
 
 ## Copyrights

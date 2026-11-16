@@ -324,7 +324,7 @@ module Hashery
     # 
     def replace(other)
       super cast(other)
-   end
+    end
 
     #
     # Get the values at.
@@ -334,7 +334,7 @@ module Hashery
     # Returns `Array` of values.
     #
     def values_at(*keys)
-      super *keys.map{ |key| cast_key(key) }
+      super(*keys.map{ |key| cast_key(key) })
     end
 
     # Convert CRUDHash to regular Hash.

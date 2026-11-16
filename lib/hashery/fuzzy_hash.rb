@@ -177,7 +177,7 @@ module Hashery
       unless @fuzz_test
         @fuzz_test = Object.new
         @fuzz_test.instance_variable_set(:'@fuzzies', fuzzies)
-        method = "
+        method = +"
           def match(str)
             case str\n
         "

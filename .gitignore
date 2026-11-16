@@ -10,3 +10,7 @@ tmp/
 web/
 DEMO.rdoc
 DEMO.md
+
+pkg/
+.bundle/
+vendor/

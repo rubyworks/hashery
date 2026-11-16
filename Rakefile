@@ -1,20 +1,19 @@
-#!/usr/bin/env ruby
+require 'bundler/gem_tasks'
 
-#ignore 'web', 'log', 'doc', 'tmp', 'work'
-
-desc 'run tests'
+desc 'run unit tests'
 task 'test' do
-  sh 'rubytest test/'
+  sh 'rubytest -Ilib -Itest test/'
 end
 
 desc 'run demos'
 task 'demo' do
-  sh 'qed demo/'
+  sh 'qed -Ilib demo/'
 end
 
 desc 'coverage report'
 task 'coverage' do
-  system({'p'=>'coverage'}, 'qed demo/')
-  system({'p'=>'coverage'}, 'rubytest test/')
+  system({'p'=>'coverage'}, 'qed -Ilib demo/')
+  system({'p'=>'coverage'}, 'rubytest -Ilib -Itest test/')
 end
 
+task 'default' => ['test', 'demo']
