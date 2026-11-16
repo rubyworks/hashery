@@ -14,8 +14,8 @@ testcase Association do
   class_method :[] do
     test do
       a = Association[:a, 1]
-      a.assert.index == :a
-      a.assert.value == 1
+      a.index.assert == :a
+      a.value.assert == 1
     end
   end
 
