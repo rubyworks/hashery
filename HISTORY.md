@@ -1,6 +1,6 @@
 # RELEASE HISTORY
 
-## 2.2.0 / unreleased
+## 2.2.0 / 2026-11-16
 
 This release concentrates on LRUHash, by far the most used part of the
 Hashery. Its public API is unchanged, but it has been reimplemented on top
