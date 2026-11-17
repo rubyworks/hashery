@@ -1,201 +1,252 @@
-<HTML>
-<HEAD>
-  <TITLE>Hashery</TITLE>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hashery: Hash-like classes for Ruby</title>
+<meta name="description" content="Hashery is a collection of Hash-like classes for Ruby: an LRU cache, a dictionary that keeps itself sorted, hashes you can read like objects, and more.">
+<link rel="icon" href="assets/images/ruby.png">
+<style>
+  :root {
+    --page: #ffffff;
+    --ink: #3a2e24;
+    --brown: #552200;
+    --link: #773300;
+    --orange: #ee6600;
+    --muted: #7a6656;
+    --code-bg: #2e1d10;
+    --code-ink: #f4e4d2;
+    --code-note: #b8916b;
+    --code-sym: #ffb070;
+    --serif: "Palatino Linotype", Palatino, "URW Palladio L", P052, "TeX Gyre Pagella", "Book Antiqua", Georgia, serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  }
 
-  <META NAME="description" CONTENT="The Hashery is a collection of Hash-like classes, spun-off from the original Ruby Facets library. Included are the widely used OrderedHash, the related but more featured Dictionary class, a number of open classes, similiar to the standard OpenStruct and a few variations on the standard Hash."> 
+  * { box-sizing: border-box; }
 
-  <LINK rel="shortcut icon" href="assets/images/ruby.png"/>
+  html { background: var(--page); color: var(--ink); }
 
-  <LINK type="text/css" rel="stylesheet" href="assets/styles/reset.css" />
-  <LINK type="text/css" rel="stylesheet" href="assets/styles/custom.css" />
+  body {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 1.125rem;
+    line-height: 1.65;
+    -webkit-text-size-adjust: 100%;
+  }
 
-  <SCRIPT language="javascript" type="text/javascript" src="assets/scripts/jquery.js"></SCRIPT>
-  <SCRIPT language="javascript" type="text/javascript" src="assets/scripts/highlight.js"></SCRIPT>
+  .page { max-width: 44rem; margin: 0 auto; padding: 1.25rem 1.5rem 3rem; }
 
-  <SCRIPT type="text/javascript">
-    $(document).ready(function() {
-      $('pre').wrapInner('<code></code>');
-      hljs.tabReplace = '    ';
-      hljs.initHighlightingOnLoad('ruby');
-    });
-  </SCRIPT>
+  a { color: var(--link); text-underline-offset: 0.15em; text-decoration-thickness: 1px; }
+  a:hover { color: var(--brown); text-decoration-thickness: 2px; }
+  a:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; border-radius: 2px; }
 
-  <LINK type="text/css" rel="stylesheet" href="assets/styles/highlight.css" />
-</HEAD>
-<BODY>
+  ::selection { background: #ffd9b8; }
 
-<div id="header">
-<div class="centered">
-  <div id="nav">
-    <ul>
-      <li><a href="http://rubydoc.info/github/rubyworks/hashery/master/file/QED.rdoc">QED Guide</a></li>
-      <li><a href="http://rubydoc.info/github/rubyworks/hashery/master/frames">API Guide</a></li>
-      <li><a href="http://wiki.github.com/rubyworks/hashery">User Guide</a></li>
-      <li><a href="http://groups.google.com/group/rubyworks-mailinglist">Mailing List</a></li>
-      <li><a href="http://rubygems.org/gems/hashery">RubyGem</a></li>
-      <li><a href="http://github.com/rubyworks/hashery">Development</a></li>
-    </ul>
-  </div>
+  /* Header */
 
-  <div class="title">
-    <h1>Hashery {<img src="assets/images/logo.jpg" style="vertical-align: bottom; height: 140px;" />}</h1>
-  </div>
+  .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem 1.25rem; font-size: 1rem; }
+  .links a { font-weight: bold; text-decoration: none; }
+  .links a:hover { text-decoration: underline; }
+
+  .mark {
+    margin: 1.5rem 0 0.5rem;
+    font-size: clamp(3rem, 13vw, 6.75rem);
+    line-height: 1;
+    font-weight: bold;
+    color: var(--brown);
+    white-space: nowrap;
+    letter-spacing: -0.01em;
+  }
+  .mark img { height: 1.08em; width: auto; vertical-align: -0.24em; margin: 0 0.04em; }
+
+  .lead { font-size: 1.3rem; line-height: 1.5; margin: 1rem 0 1.5rem; max-width: 36rem; }
+
+  /* Text */
+
+  h2 { color: var(--brown); font-size: 1.75rem; line-height: 1.2; margin: 3rem 0 0.5rem; }
+  h3 { color: var(--brown); font-size: 1.15rem; font-style: italic; font-weight: normal; margin: 1.75rem 0 0.5rem; }
+  p { margin: 0 0 1rem; }
+
+  code { font-family: var(--mono); font-size: 0.84em; }
+  p code, li code, dd code { color: var(--brown); }
+
+  pre {
+    margin: 0 0 1.25rem;
+    padding: 1rem 1.25rem;
+    background: var(--code-bg);
+    color: var(--code-ink);
+    border-radius: 6px;
+    overflow-x: auto;
+    line-height: 1.5;
+  }
+  pre code { font-size: 0.9rem; }
+  pre .c { color: var(--code-note); }
+  pre .s { color: var(--code-sym); }
+  pre.shell code::before { content: "$ "; color: var(--code-note); user-select: none; }
+
+  /* The classes */
+
+  dl { margin: 0; }
+  .class { display: grid; grid-template-columns: 9.5rem 1fr; gap: 0 1rem; padding: 0.4rem 0; }
+  dt { font-weight: bold; }
+  dt a { text-decoration: none; }
+  dt a:hover { text-decoration: underline; }
+  dd { margin: 0; }
+
+  @media (max-width: 34rem) {
+    .class { grid-template-columns: 1fr; padding: 0.5rem 0; }
+  }
+
+  /* Footer */
+
+  footer { margin-top: 3.5rem; padding-top: 1.25rem; border-top: 1px solid #e6d8cb; font-size: 1rem; color: var(--muted); }
+  footer p { margin-bottom: 0.75rem; }
+
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <nav class="links" aria-label="Hashery elsewhere">
+    <a href="https://rubygems.org/gems/hashery">RubyGems</a>
+    <a href="https://rubydoc.info/gems/hashery">API docs</a>
+    <a href="https://github.com/rubyworks/hashery">Source</a>
+    <a href="https://github.com/rubyworks/hashery/issues">Issues</a>
+  </nav>
+
+  <h1 class="mark"><span class="visually-hidden">Hashery</span><span aria-hidden="true">Hashery {<img src="assets/images/logo.jpg" alt="" width="310" height="414">}</span></h1>
+
+  <p class="lead">A collection of Hash-like classes for Ruby: a cache that
+  drops what was used least recently, a dictionary that keeps itself sorted,
+  hashes you can read like objects, and more.</p>
+
+  <pre class="shell"><code>gem install hashery</code></pre>
+
+  <p>Hashery needs Ruby 2.7 or newer. <code>require 'hashery'</code> loads
+  most of the classes, or require just the one you need, such as
+  <code>require 'hashery/lru_hash'</code>.</p>
+</header>
+
+<main>
+
+<h2 id="lruhash">LRUHash</h2>
+
+<p>An LRUHash holds a fixed number of entries. When it's full, adding one
+drops the entry that was used least recently. pdf-reader uses it to cache
+the objects it reads from a PDF.</p>
+
+<pre><code>require <span class="s">'hashery/lru_hash'</span>
+
+cache = Hashery::LRUHash.new(2)
+cache[<span class="s">:a</span>] = 1
+cache[<span class="s">:b</span>] = 2
+cache[<span class="s">:a</span>]            <span class="c"># reading :a makes it the most recently used</span>
+cache[<span class="s">:c</span>] = 3        <span class="c"># full, so :b is dropped</span>
+
+cache.keys           <span class="c"># =&gt; [:c, :a]</span>
+cache.fetch(<span class="s">:b</span>, 0)   <span class="c"># =&gt; 0</span></code></pre>
+
+<p>Reading an entry with <code>[]</code>, <code>fetch</code> and the like
+counts as using it; checking for a key or iterating doesn't. Set
+<code>release_proc</code> to hear about each entry that leaves. An LRUHash
+isn't thread-safe, so guard it with a Mutex if threads share it.</p>
+
+<h2 id="dictionary">Dictionary</h2>
+
+<p>A Dictionary keeps its entries in order, with array-like methods to
+match, and can keep itself sorted by key or by value as entries are
+added.</p>
+
+<pre><code>require <span class="s">'hashery/dictionary'</span>
+
+fruit = Hashery::Dictionary.new.order_by_key
+fruit[<span class="s">:pear</span>]  = 3
+fruit[<span class="s">:apple</span>] = 5
+fruit[<span class="s">:fig</span>]   = 1
+
+fruit.keys    <span class="c"># =&gt; [:apple, :fig, :pear]</span></code></pre>
+
+<h2 id="classes">All the classes</h2>
+
+<p>Each class is documented in its
+<a href="https://github.com/rubyworks/hashery/tree/master/lib/hashery">source file</a>,
+and the <a href="https://github.com/rubyworks/hashery/tree/master/demo">demos</a>
+show most of them at work.</p>
+
+<h3>Caches and ordering</h3>
+<dl>
+  <div class="class"><dt><a href="https://github.com/rubyworks/hashery/blob/master/lib/hashery/lru_hash.rb">LRUHash</a></dt>
+    <dd>A Hash of limited size that drops the least recently used entry.</dd></div>
+  <div class="class"><dt><a href="https://github.com/rubyworks/hashery/blob/master/lib/hashery/dictionary.rb">Dictionary</a></dt>
+    <dd>An ordered Hash that can keep itself sorted by key or value.</dd></div>
+  <div class="class"><dt><a href="https://github.com/rubyworks/hashery/blob/master/lib/hashery/linked_list.rb">LinkedList</a></dt>
+    <dd>A doubly linked list whose elements can be looked up by key.</dd></div>
+  <div class="class"><dt><a href="https://github.com/rubyworks/hashery/blob/master/lib/hashery/ordered_hash.rb">OrderedHash</a></dt>
+    <dd>An insertion-ordered Hash, from before Ruby's own Hash kept order.</dd></div>
+</dl>
+
+<h3>Keys you can call</h3>
+<dl>
+  <div class="class"><dt><a href="https://github.com/rubyworks/hashery/blob/master/lib/hashery/open_hash.rb">OpenHash</a></dt>
+    <dd>A Hash whose keys also work as methods, like OpenStruct.</dd></div>
+  <div class="class"><dt><a href="https://github.com/rubyworks/hashery/blob/master/lib/hashery/open_cascade.rb">OpenCascade</a></dt>
+    <dd>An OpenHash that does the same for the hashes inside it, so
+    <code>config.db.host</code> works.</dd></div>
+  <div class="class"><dt><a href="https://github.com/rubyworks/hashery/blob/master/lib/hashery/query_hash.rb">QueryHash</a></dt>
+    <dd>A Hash whose keys are read with <code>?</code> and <code>!</code>
+    methods, such as <code>q.name?</code>.</dd></div>
+</dl>
+
+<h3>Control over keys and values</h3>
+<dl>
+  <div class="class"><dt><a href="https://github.com/rubyworks/hashery/blob/master/lib/hashery/key_hash.rb">KeyHash</a></dt>
+    <dd>A Hash that passes every key through a block, to normalize it.
+    Stash is its old name.</dd></div>
+  <div class="class"><dt><a href="https://github.com/rubyworks/hashery/blob/master/lib/hashery/casting_hash.rb">CastingHash</a></dt>
+    <dd>A Hash that passes keys and values through procs of your own.</dd></div>
+  <div class="class"><dt><a href="https://github.com/rubyworks/hashery/blob/master/lib/hashery/property_hash.rb">PropertyHash</a></dt>
+    <dd>A Hash that accepts only the keys it was given at the start.</dd></div>
+  <div class="class"><dt><a href="https://github.com/rubyworks/hashery/blob/master/lib/hashery/static_hash.rb">StaticHash</a></dt>
+    <dd>A Hash that raises an error when a key is set a second time.</dd></div>
+  <div class="class"><dt><a href="https://github.com/rubyworks/hashery/blob/master/lib/hashery/fuzzy_hash.rb">FuzzyHash</a></dt>
+    <dd>A Hash whose keys can be regular expressions that match on lookup.</dd></div>
+  <div class="class"><dt><a href="https://github.com/rubyworks/hashery/blob/master/lib/hashery/path_hash.rb">PathHash</a></dt>
+    <dd>A nested Hash you can also reach into with keys like
+    <code>"a/b"</code>.</dd></div>
+  <div class="class"><dt><a href="https://github.com/rubyworks/hashery/blob/master/lib/hashery/crud_hash.rb">CRUDHash</a></dt>
+    <dd>A Hash built on a handful of core methods, for subclassing.</dd></div>
+</dl>
+
+<h3>And also</h3>
+<dl>
+  <div class="class"><dt><a href="https://github.com/rubyworks/hashery/blob/master/lib/hashery/ini_hash.rb">IniHash</a></dt>
+    <dd>A Hash that reads and writes INI files.</dd></div>
+  <div class="class"><dt><a href="https://github.com/rubyworks/hashery/blob/master/lib/hashery/association.rb">Association</a></dt>
+    <dd>A pair of objects, written <code>:apple &gt;&gt; :fruit</code>.</dd></div>
+</dl>
+
+<p style="margin-top: 1.5rem"><code>require 'hashery'</code> also adds a
+few methods to Ruby's Hash: <code>rekey</code>, <code>rekey!</code>,
+<code>retrieve</code> and <code>Hash.create</code>.</p>
+
+</main>
+
+<footer>
+  <p>Hashery began in 2010 with the Hash classes of
+  <a href="https://rubyworks.github.io/facets/">Ruby Facets</a>. Its
+  contributors include Kirk Haines, Joshua Hull, Robert Klemme, Jan Molic,
+  George Moschovitis, Jeena Paradies and Erik Veenstra. See the
+  <a href="https://github.com/rubyworks/hashery/blob/master/HISTORY.md">release history</a>
+  for what's changed.</p>
+  <p>Copyright © 2010 Rubyworks. Distributed under the
+  <a href="https://github.com/rubyworks/hashery/blob/master/LICENSE.txt">BSD-2-Clause license</a>.</p>
+</footer>
+
 </div>
-</div>
-
-<div class="main">
-<div class="centered">
-  <div id="doc">
-    <p>Hashery, as the name suggests, is a collection of Hash-like classes.
-    Many of Hashery's classes were originally
-    part of <a href="http://rubyworks.github.com/facets">Ruby Facets</a> before
-    Facets refocused on extension methods and shed most of it's add-on libraries
-    in early 2010. Since then Hashery has refined the classes it started with,
-    and has added a number of excellent new classes along the way.</p>
-
-    <p>Among Hashery's many classes are <code>Dictionary</code>, <code>FuzzyHash</code>,
-    <code>OpenHash</code>, <code>OpenCascade</code>, <code>OrderedHash</code>,
-    <code>QueryHash</code>, <code>Stash</code> and more.</p>
-
-    <br/>
-
-    <a href="#" onclick="$('#readme').toggle();">Toggle README</a>
-  </div>
-</div>
-</div>
-
-<div id="readme" style="display: none;">
-<div class="centered">
-
-<div class="section" id="section_description"><h2>DESCRIPTION</h2>
-<p>
-Among Ruby Facets most common additions were an assortment of Hash-like
-classes. To better support this collection of libraries it was deemed
-prudent to create a separate project specifically for them. Hence the
-&#8220;Facets&#8221; Hashery.
-</p>
-<p>
-Included in this collection are the widely used OrderedHash,  the related
-but more featured Dictionary class, a number of <em>open</em> classes,
-similar to the standard OpenStruct, plus a number of other variations on
-the standard Hash and a few other useful bits. See the API documentation
-for a complete rundown.
-</p>
-</div><div class="section" id="section_release_notes"><h2>RELEASE NOTES</h2>
-<p>
-Please see the HISTORY file.
-</p>
-</div><div class="section" id="section_how_to_use"><h2>HOW TO USE</h2>
-<p>
-For usage information, see the individual library files include in this
-collection.
-</p>
-</div><div class="section" id="section_how_to_install"><h2>HOW TO INSTALL</h2>
-<p>
-To install with RubyGems simply open a console and type:
-</p>
-<pre>
-  $ sudo gem install hashery
-</pre>
-<p>
-Tarball packages are available for manual site installations via <a
-href="http://proutils.github.com/setup">Ruby Setup</a>.
-</p>
-</div>
-
-<div class="section" id="section_authors"><h2>AUTHORS</h2>
-<p>
-Contributing authors include:
-</p>
-<ul>
-<li><p>
-Kirk Haines
-</p>
-</li>
-<li><p>
-Joshua Hull
-</p>
-</li>
-<li><p>
-Robert Klemme
-</p>
-</li>
-<li><p>
-Jan Molic
-</p>
-</li>
-<li><p>
-George Moschovitis
-</p>
-</li>
-<li><p>
-Jeena Paradies
-</p>
-</li>
-<li><p>
-Erik Veenstra
-</p>
-</li>
-</ul>
-</div>
-
-<div class="section" id="section_license"><h2>LICENSE</h2>
-<p>
-Copyright &#169; 2010 Rubyworks
-</p>
-<p>
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-</p>
-<ol>
-<li>Redistributions of source code must retain the above copyright notice,
-this list of conditions and the following disclaimer.</li>
-<li>Redistributions in binary form must reproduce the above copyright
-notice, this list of conditions and the following disclaimer in the
-documentation and/or other materials provided with the distribution.
-</li>
-</ol>
-<p>
-THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
-NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR  SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
-OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-</p>
-<br/>
-</div>
-
-</div>
-</div>
-
-<div id="footer">
-<div class="centered">
-  <div class="advert">
-    <script type="text/javascript"><!--
-    google_ad_client = "pub-1126154564663472";
-    /* RUBYWORKS 09-10-02 728x90 */
-    google_ad_slot = "0788888658";
-    google_ad_width = 728;
-    google_ad_height = 90;
-    //-->
-    </script>
-    <script type="text/javascript"
-    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-    </script>
-  </div>
-  <div class="copyright">
-    Copyright &copy; 2010 Thomas Sawyer
-  </div>
-</div>
-</div>
-
-</BODY>
-</HTML>
-
-<!-- WebMe Copyright (c) 2009 Thomas Sawyer -->
-
+</body>
+</html>
