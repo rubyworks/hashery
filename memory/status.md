@@ -8,8 +8,8 @@
   the Rakefile makes `rake release` follow that, `036dccd`).
 - **2.2.1** released 2026-11-17 (tag `2.2.1`, `deac652`): Dictionary
   fixes, including issue #7 (`fdc7cdf`, `0e8e5c4`). LRUHash unchanged.
-- **2.2.2** not released: the PathHash fix (`4e2d468`, committed
-  2026-11-17 but not pushed; the user pushes it). HISTORY says
+- **2.2.2** not released: the PathHash fix (`4e2d468`, pushed
+  2026-11-17; CI passed on Ruby 2.7 through 4.0). HISTORY says
   "2.2.2 / unreleased" and `version.rb` still says 2.2.1: bump and date
   both when releasing. PathHash had been broken since 2.0 (reading any
   key raised NameError); what it still lacks is in `TODO.md`.
