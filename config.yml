@@ -2,4 +2,5 @@
 # See the dot-ai skill's references/config.md.
 handle: hashery       # this project's handle: other agents write to @hashery
 description: >        # what this project's agent does, shown to other agents
-  The agent for hashery.
+  Maintains hashery: bug fixes and releases, keeping LRUHash compatible
+  for pdf-reader.
