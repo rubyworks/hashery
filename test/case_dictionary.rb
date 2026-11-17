@@ -217,30 +217,38 @@ testcase Dictionary do
   end
 
   method :each_key do
-    d = Dictionary[:a=>1, :b=>2, :c=>3]
-    d.order_by_key
-    a = []
-    d.each_key{ |k| a << k }
-    a.assert == [:a, :b, :c]
+    test do
+      d = Dictionary[:a=>1, :b=>2, :c=>3]
+      d.order_by_key
+      a = []
+      d.each_key{ |k| a << k }
+      a.assert == [:a, :b, :c]
+    end
   end
 
   method :each_value do
-    d = Dictionary[:a=>1, :b=>2, :c=>3]
-    d.order_by_value
-    a = []
-    d.each_value{ |v| a << v }
-    a.assert == [1, 2, 3]
+    test do
+      d = Dictionary[:a=>1, :b=>2, :c=>3]
+      d.order_by_value
+      a = []
+      d.each_value{ |v| a << v }
+      a.assert == [1, 2, 3]
+    end
   end
 
   method :clear do
-    d = Dictionary[:a=>1, :b=>2, :c=>3]
-    d.clear
-    d.to_a.assert == []
+    test do
+      d = Dictionary[:a=>1, :b=>2, :c=>3]
+      d.clear
+      d.to_a.assert == []
+    end
   end
 
   method :fetch do
-    d = Dictionary[:a=>1, :b=>2, :c=>3]
-    d.fetch(:a).assert == 1
+    test do
+      d = Dictionary[:a=>1, :b=>2, :c=>3]
+      d.fetch(:a).assert == 1
+    end
   end
 
   method :key? do

@@ -72,8 +72,10 @@ test_case IniHash do
   end
 
   class_method :load do
-    h = IniHash.load('test/fixture/example.ini')
-    h['a'].assert == '1'
+    test do
+      h = IniHash.load('test/fixture/example.ini')
+      h['a'].assert == '1'
+    end
   end
 
 end
