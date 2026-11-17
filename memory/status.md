@@ -8,6 +8,11 @@
   the Rakefile makes `rake release` follow that, `036dccd`).
 - **2.2.1** released 2026-11-17 (tag `2.2.1`, `deac652`): Dictionary
   fixes, including issue #7 (`fdc7cdf`, `0e8e5c4`). LRUHash unchanged.
+- **2.2.2** not released: the PathHash fix (`4e2d468`, committed
+  2026-11-17 but not pushed; the user pushes it). HISTORY says
+  "2.2.2 / unreleased" and `version.rb` still says 2.2.1: bump and date
+  both when releasing. PathHash had been broken since 2.0 (reading any
+  key raised NameError); what it still lacks is in `TODO.md`.
 
 ## Constraints
 
@@ -20,9 +25,18 @@
 
 ## Open
 
-Nothing open.
+- **HTTPS enforcement for the site.** GitHub's API refuses it ("The
+  certificate does not exist yet", 2026-11-17), so http still serves the
+  page without redirecting. Left for the user to try under Settings >
+  Pages.
 
 ## Done
+
+- **Website rebuilt** (2026-11-17, `gh-pages` `29bd8f3`): one
+  self-contained page drawn from the README, keeping the
+  "Hashery {egg}" logo, which the user wanted kept. `qed.html` redirects
+  to `demo/` on GitHub. The repo's Website field now points to
+  https://rubyworks.github.io/hashery (it was a dead github.com address).
 
 - **Dropped `rubytest-cli` for `rubytest >= 0.10`** in the Gemfile
   (`eb335d0`, 2026-11-17); CI passed on Ruby 2.7 through 4.0, with no
