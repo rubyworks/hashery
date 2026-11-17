@@ -1,5 +1,31 @@
 # RELEASE HISTORY
 
+## 2.2.1 / unreleased
+
+This release fixes a number of bugs in Dictionary. Most notably, a
+Dictionary kept in order with `order_by_key` or `order_by_value` could no
+longer be read at all (not even inspected) once it held a key or value
+that didn't compare with the others, such as `nil` (#7). Now sorting by
+such an order raises and leaves the Dictionary as it was, and adding an
+entry the order can't place raises without storing it. LRUHash is
+unchanged.
+
+Changes:
+
+* Fix Dictionary sort orders that can't sort the entries (#7).
+* Fix Dictionary#dup and #clone, which shared state with the original
+  (clone), or dropped the sort order and default (dup).
+* Fix Dictionary#reject!, which returned a filtered copy instead of
+  removing entries.
+* Fix Dictionary#shift on an empty Dictionary, and #shift and #pop with
+  a `nil` key.
+* Fix Dictionary[hash] and #replace, which shared the given hash or
+  order instead of copying it.
+* Fix Dictionary#insert with an existing key or an index past the end.
+* Fix Dictionary#[]= with an index and a `nil` or `false` value.
+* Fix Dictionary#delete removing 1.0 from the order along with 1.
+* Fix Dictionary#== for a sorted Dictionary changed since it was read.
+
 ## 2.2.0 / 2026-11-16
 
 This release concentrates on LRUHash, by far the most used part of the
