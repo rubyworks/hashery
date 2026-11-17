@@ -330,6 +330,15 @@ testcase Dictionary do
       s = d[:foo]
       s.class.assert == Dictionary
     end
+
+    test "copy fills itself, not the original" do
+      d = Dictionary.auto
+      d[:a][:b] = 1
+      c = d.dup
+      c[:x][:y] = 2
+      d.keys.assert == [:a]
+      c.keys.assert == [:a, :x]
+    end
   end
 
   # Sorting entries that don't compare (issue #7).
@@ -415,6 +424,158 @@ testcase Dictionary do
       d = Dictionary[0, 1].order_by_key
       ArgumentError.assert.raised? { d.insert(0, :a, 2) }
       d.keys.assert == [0]
+    end
+  end
+
+  # Other fixes.
+
+  method :insert do
+    test "moves an existing key" do
+      d = Dictionary['a', 1, 'b', 2, 'c', 3]
+      d.insert(0, 'c', 9)
+      d.keys.assert == ['c', 'a', 'b']
+      d['c'].assert == 9
+    end
+
+    test "past the end adds at the end" do
+      d = Dictionary['a', 1, 'b', 2]
+      d.insert(5, 'c', 3)
+      d.keys.assert == ['a', 'b', 'c']
+    end
+  end
+
+  method :[]= do
+    test "with an index and a nil value" do
+      d = Dictionary[:a, 1]
+      d[:b, 0] = nil
+      d.to_a.assert == [[:b, nil], [:a, 1]]
+    end
+  end
+
+  method :delete do
+    test "matches keys as the hash does" do
+      d = Dictionary[1, :a, 1.0, :b]
+      d.delete(1)
+      d.keys.assert == [1.0]
+      d.length.assert == 1
+    end
+  end
+
+  method :shift do
+    test "when empty" do
+      Dictionary.new.shift.assert == nil
+    end
+
+    test "with a nil key" do
+      d = Dictionary[nil, 1, :a, 2]
+      d.shift.assert == [nil, 1]
+      d.keys.assert == [:a]
+    end
+  end
+
+  method :pop do
+    test "when empty" do
+      Dictionary.new.pop.assert == nil
+    end
+
+    test "with a nil key" do
+      d = Dictionary[:a, 1, nil, 2]
+      d.pop.assert == [nil, 2]
+      d.keys.assert == [:a]
+    end
+  end
+
+  method :reject! do
+    test "removes entries in place" do
+      d = Dictionary[:a, 1, :b, 2]
+      d.reject!{ |k,v| k == :a }.assert.equal?(d)
+      d.to_a.assert == [[:b, 2]]
+    end
+
+    test "returns nil when nothing is removed" do
+      d = Dictionary[:a, 1]
+      d.reject!{ false }.assert == nil
+    end
+  end
+
+  class_method :[] do
+    test "copies a hash argument" do
+      h = {:a=>1}
+      d = Dictionary[h]
+      d[:b] = 2
+      h.assert == {:a=>1}
+    end
+  end
+
+  method :replace do
+    test "copies another dictionary's order" do
+      a = Dictionary[:x, 1]
+      d = Dictionary.new
+      d.replace(a)
+      d[:y] = 2
+      a.keys.assert == [:x]
+    end
+
+    test "keeps the old entries if the sort order can't place the new ones" do
+      d = Dictionary[0, 1].order_by_key
+      ArgumentError.assert.raised? { d.replace(:a=>1, 2=>3) }
+      d.to_a.assert == [[0, 1]]
+    end
+  end
+
+  method :dup do
+    test "keeps the sort order" do
+      d = Dictionary.new.order_by{ |k,v| -v }
+      d[:a] = 1
+      d[:b] = 2
+      c = d.dup
+      c[:c] = 3
+      c.keys.assert == [:c, :b, :a]
+    end
+
+    test "keeps the default" do
+      Dictionary.new(0).dup[:x].assert == 0
+    end
+
+    test "is independent of the original" do
+      d = Dictionary[:a, 1]
+      c = d.dup
+      c[:b] = 2
+      c.delete(:a)
+      d.to_a.assert == [[:a, 1]]
+    end
+  end
+
+  method :clone do
+    test "is independent of the original" do
+      d = Dictionary[:a, 1]
+      c = d.clone
+      c[:b] = 2
+      d.keys.assert == [:a]
+    end
+  end
+
+  method :merge do
+    test "keeps the sort order" do
+      d = Dictionary[:b, 1].order_by_key
+      d.merge(:a=>2).keys.assert == [:a, :b]
+    end
+  end
+
+  method :reverse do
+    test "of a sorted dictionary" do
+      d = Dictionary[:a, 1, :b, 2].order_by_key
+      d.reverse.keys.assert == [:b, :a]
+      d.keys.assert == [:a, :b]
+    end
+  end
+
+  method :== do
+    test "with a sorted dictionary changed since it was last read" do
+      d = Dictionary.new.order_by_key
+      d[:b] = 1
+      d[:a] = 2
+      d.assert == Dictionary[:a, 2, :b, 1]
     end
   end
 

@@ -128,13 +128,23 @@ module Hashery
     def initialize(*args, &blk)
       @order = []
       @order_by = nil
+      @block = blk
       if blk
-        dict = self                                  # This ensures automatic key entry effect the
-        oblk = lambda{ |hsh, key| blk[dict,key] }    # dictionary rather then just the interal hash.
-        @hash = Hash.new(*args, &oblk)
+        @hash = Hash.new(*args, &default_proc_for(blk))
       else
         @hash = Hash.new(*args)
       end
+    end
+
+    #
+    # Make a copy independent of the original, as #dup and #clone do. It
+    # keeps the original's order, sort rule and default.
+    #
+    def initialize_copy(source)
+      super
+      @order = source.order.dup
+      @hash  = @hash.dup
+      @hash.default_proc = default_proc_for(@block) if @block
     end
 
     #
@@ -231,7 +241,7 @@ module Hashery
     #
     def ==(hsh2)
       if hsh2.is_a?( Dictionary )
-        @order == hsh2.order &&
+        order == hsh2.order &&
         @hash  == hsh2.instance_variable_get("@hash")
       else
         false
@@ -261,16 +271,18 @@ module Hashery
     #
     #  h[key,index] = value
     #
-    def []=(k, i=nil, v=nil)
-      if v
-        insert(i,k,v)
-      else
+    def []=(k, i=nil, v=NO_VALUE)
+      if NO_VALUE.equal?(v)
         store(k,i)
+      else
+        insert(i,k,v)
       end
     end
 
     #
-    # Insert entry into dictionary at specific index position.
+    # Insert entry into dictionary at specific index position. If +key+ is
+    # already present, it moves to that position. An index past the end
+    # adds the entry at the end.
     #
     # index - [Integer] Position of order placement.
     # key   - [Object]  Key to associate with value.
@@ -280,6 +292,8 @@ module Hashery
     #
     def insert(index, key, value)
       check_order(key, value)
+      remove_from_order(key) if @hash.key?(key)
+      index = @order.size if index > @order.size
       @order.insert(index, key)
       @hash.store(key, value)
     end
@@ -307,7 +321,7 @@ module Hashery
     # Delete the entry with given +key+.
     #
     def delete(key)
-      @order.delete(key)
+      remove_from_order(key) if @hash.key?(key)
       @hash.delete(key)
     end
 
@@ -387,30 +401,30 @@ module Hashery
     end
 
     #
-    # Reject entries based on give condition block.
+    # Remove entries for which the block is true.
     #
-    # Returns [Hash] of rejected entries.
-    #
-    # FIXME: This looks like it is implemented wrong!!!
+    # Returns +self+, or +nil+ if nothing was removed.
     #
     def reject!( &block )
-      hsh2 = reject(&block)
-      self == hsh2 ? nil : hsh2
+      before = length
+      delete_if(&block)
+      length == before ? nil : self
     end
 
     #
-    # Replace dictionary entries with new table. If a sort order is set and
-    # can't sort the new entries, it raises and the dictionary keeps its
-    # old entries.
+    # Replace dictionary entries with new table. The dictionary copies the
+    # entries, so later changes to either one don't affect the other. If a
+    # sort order is set and can't sort the new entries, it raises and the
+    # dictionary keeps its old entries.
     #
     def replace(hsh2)
       old_hash, old_order = @hash, @order
       case hsh2
       when Dictionary
-        @order = hsh2.order
+        @order = hsh2.order.dup
         @hash  = hsh2.to_h
       when Hash
-        @hash  = hsh2
+        @hash  = hsh2.dup
         @order = @hash.keys
       else
         @hash  = hsh2.to_h
@@ -425,9 +439,12 @@ module Hashery
     #
     # Remove entry from the to top of dictionary.
     #
+    # Returns the [key, value] pair, or +nil+ if the dictionary is empty.
+    #
     def shift
+      return nil if empty?
       key = order.first
-      key ? [key,delete(key)] : super
+      [key,delete(key)]
     end
 
     #
@@ -468,9 +485,12 @@ module Hashery
     #
     # Pop entry off the bottom of dictionary.
     #
+    # Returns the [key, value] pair, or +nil+ if the dictionary is empty.
+    #
     def pop
+      return nil if empty?
       key = order.last
-      key ? [key,delete(key)] : nil
+      [key,delete(key)]
     end
 
     #
@@ -482,17 +502,6 @@ module Hashery
       ary = []
       each {|k,v| ary << k.inspect + "=>" + v.inspect}
       '{' + ary.join(", ") + '}'
-    end
-
-    #
-    # Duplicate dictionary.
-    #
-    # Returns [Dictionary].
-    #
-    def dup
-      a = []
-      each{ |k,v| a << k; a << v }
-      self.class[*a]
     end
 
     #
@@ -539,12 +548,15 @@ module Hashery
     end
 
     #
-    # Reverse the order of duplicte dictionary.
+    # Reverse the order of duplicte dictionary. The copy doesn't keep the
+    # sort order, if one is set, since that would undo the reversal.
     #
     # Returns [Dictionary].
     #
     def reverse
-      dup.reverse!
+      copy = dup
+      copy.order_by
+      copy.reverse!
     end
 
     #
@@ -648,6 +660,21 @@ module Hashery
 
   private
 
+    # Marks the value argument of #[]= as not given, since +nil+ and
+    # +false+ are values that can be stored.
+    NO_VALUE = Object.new.freeze
+    private_constant :NO_VALUE
+
+    #
+    # Default proc for the internal hash, which passes the block this
+    # dictionary rather than the internal hash, so automatic key entry
+    # goes through the dictionary.
+    #
+    def default_proc_for(blk)
+      dict = self
+      lambda{ |hsh, key| blk[dict,key] }
+    end
+
     #
     # Set the sort rule and sort by it. If sorting fails, put back the
     # previous rule before raising, so the dictionary stays readable.
@@ -677,6 +704,15 @@ module Hashery
       other = @order[i]
       [[key, value], [other, @hash[other]]].sort_by(&@order_by)
       nil
+    end
+
+    #
+    # Remove +key+ from the order, matching it as the hash does (with
+    # #eql?), so a key like 1.0 isn't taken for 1.
+    #
+    def remove_from_order(key)
+      i = @order.index{ |k| k.eql?(key) }
+      @order.delete_at(i) if i
     end
 
   end
