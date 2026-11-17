@@ -31,3 +31,12 @@ Nothing open.
   (`mail/sent/20261117-135738Z-@rubyworks--rubytest-no-frozen-string-bug-two-small-issues.md`;
   reply `mail/received/20261117-145045Z-@rubyworks--rubytest-0.10.0-released-009ca915.md`).
   Note that rubytest 0.10 fails a run that finds no tests.
+- **rubytest 0.11.0** (released 2026-11-17) needs no change: checked
+  2026-11-17 in a scratch copy of `eb335d0`, where on Ruby 2.7 and 4.0
+  the 259 unit tests (also with frozen string literals), the 10 demos and
+  `rake test` all pass. It folds in every companion gem (rubytest-tap,
+  -summary, -progress, -outline, -suite, -rake, -html), now archived, and
+  some will be yanked from RubyGems: never depend on them. It adds
+  `Test::Rake::TestTask` (`require 'rubytest/rake'`), which doesn't read
+  `etc/test.rb`, so the coverage task would still shell out; not adopted.
+  Per `mail/received/20261117-191327Z-@rubyworks--rubytest-0.11.0-released-733efef2.md`.
