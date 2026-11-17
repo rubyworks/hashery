@@ -3,6 +3,11 @@ name: CI
 on:
   push:
   pull_request:
+  workflow_dispatch:
+  # Monthly, to catch breakage from new Ruby or dependency releases
+  # when nothing has been pushed.
+  schedule:
+    - cron: '0 6 1 * *'
 
 permissions:
   contents: read
