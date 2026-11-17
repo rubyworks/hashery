@@ -7,5 +7,5 @@ group :development, :test do
   gem "qed"
   gem "ae"
   gem "lemon"
-  gem "rubytest-cli"
+  gem "rubytest", ">= 0.10"
 end
