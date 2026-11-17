@@ -148,16 +148,20 @@ module Hashery
     end
 
     #
-    # Keep dictionary sorted by a specific sort order.
+    # Keep dictionary sorted by a specific sort order. Without a block,
+    # stop sorting and keep the current order.
+    #
+    # If the entries can't be sorted this way (a +nil+ key among others,
+    # or keys of types that don't compare), it raises and the dictionary
+    # keeps its previous order. While a sort order is set, adding an entry
+    # it can't place raises too, and nothing is stored.
     #
     # block - Ordering procedure.
     #
     # Returns +self+.
     #
     def order_by( &block )
-      @order_by = block
-      order
-      self
+      sort_with(block)
     end
 
     #
@@ -179,12 +183,10 @@ module Hashery
     #
     def order_by_key
       if block_given?
-        @order_by = Proc.new{ |k,v| yield(k) }
+        sort_with(Proc.new{ |k,v| yield(k) })
       else
-        @order_by = Proc.new{ |k,v| k }
+        sort_with(Proc.new{ |k,v| k })
       end
-      order
-      self
     end
 
     #
@@ -202,12 +204,10 @@ module Hashery
     #
     def order_by_value
       if block_given?
-        @order_by = Proc.new{ |k,v| yield(v) }
+        sort_with(Proc.new{ |k,v| yield(v) })
       else
-        @order_by = Proc.new{ |k,v| v }
+        sort_with(Proc.new{ |k,v| v })
       end
-      order
-      self
     end
 
     #
@@ -279,6 +279,7 @@ module Hashery
     # Returns `value` stored.
     #
     def insert(index, key, value)
+      check_order(key, value)
       @order.insert(index, key)
       @hash.store(key, value)
     end
@@ -289,6 +290,7 @@ module Hashery
     # Returns `value`.
     #
     def store(key, value)
+      check_order(key, value)
       @order.push(key) unless @hash.has_key?(key)
       @hash.store(key, value)
     end
@@ -397,9 +399,12 @@ module Hashery
     end
 
     #
-    # Replace dictionary entries with new table.
+    # Replace dictionary entries with new table. If a sort order is set and
+    # can't sort the new entries, it raises and the dictionary keeps its
+    # old entries.
     #
     def replace(hsh2)
+      old_hash, old_order = @hash, @order
       case hsh2
       when Dictionary
         @order = hsh2.order
@@ -412,6 +417,9 @@ module Hashery
         @order = @hash.keys
       end
       reorder
+    rescue Exception
+      @hash, @order = old_hash, old_order
+      raise
     end
 
     #
@@ -427,6 +435,7 @@ module Hashery
     #
     def unshift( k,v )
       unless @hash.include?( k )
+        check_order( k,v )
         @order.unshift( k )
         @hash.store( k,v )
         true
@@ -447,6 +456,7 @@ module Hashery
     #
     def push(k,v)
       unless @hash.include?( k )
+        check_order( k,v )
         @order.push( k )
         @hash.store( k,v )
         true
@@ -634,6 +644,39 @@ module Hashery
     #
     def hash_table
       @hash
+    end
+
+  private
+
+    #
+    # Set the sort rule and sort by it. If sorting fails, put back the
+    # previous rule before raising, so the dictionary stays readable.
+    #
+    def sort_with(rule)
+      previous, @order_by = @order_by, rule
+      begin
+        order
+      rescue Exception
+        @order_by = previous
+        raise
+      end
+      self
+    end
+
+    #
+    # While a sort rule is set, raise before storing an entry the rule
+    # can't place among the others, since every read would fail after.
+    # Comparing with one other entry is enough to catch a +nil+, or a key
+    # of a type that doesn't compare with the rest, without sorting on
+    # every write.
+    #
+    def check_order(key, value)
+      return unless @order_by
+      i = @order.index{ |k| !k.eql?(key) }
+      return unless i
+      other = @order[i]
+      [[key, value], [other, @hash[other]]].sort_by(&@order_by)
+      nil
     end
 
   end

@@ -332,5 +332,91 @@ testcase Dictionary do
     end
   end
 
+  # Sorting entries that don't compare (issue #7).
+
+  method :order_by_key do
+    test "with a nil key raises and leaves the dictionary usable" do
+      d = Dictionary.new
+      d[0] = 1
+      d[nil] = 2
+      ArgumentError.assert.raised? { d.order_by_key }
+      d.keys.assert == [0, nil]
+      d.inspect.assert == "{0=>1, nil=>2}"
+    end
+
+    test "with keys of different types raises and leaves the dictionary usable" do
+      d = Dictionary[:b, 1, 'a', 2]
+      ArgumentError.assert.raised? { d.order_by_key }
+      d.keys.assert == [:b, 'a']
+    end
+  end
+
+  method :order_by_value do
+    test "with a nil value raises and leaves the dictionary usable" do
+      d = Dictionary[:a, 2, :b, nil]
+      ArgumentError.assert.raised? { d.order_by_value }
+      d.values.assert == [2, nil]
+    end
+  end
+
+  method :order_by do
+    test "keeps the previous order if the new one fails" do
+      d = Dictionary[:b, 1, :a, nil]
+      d.order_by_key
+      ArgumentError.assert.raised? { d.order_by{ |k,v| v } }
+      d[:c] = 3
+      d.keys.assert == [:a, :b, :c]
+    end
+
+    test "without a block stops sorting" do
+      d = Dictionary[:b, 1, :a, 2].order_by_key
+      d.order_by
+      d[:"0"] = 3
+      d.keys.assert == [:a, :b, :"0"]
+    end
+  end
+
+  method :store do
+    test "refuses a key the sort order can't place" do
+      d = Dictionary.new.order_by_key
+      d.store(0, 1)
+      ArgumentError.assert.raised? { d.store(nil, 2) }
+      d.keys.assert == [0]
+      d.refute.key?(nil)
+    end
+
+    test "refuses a value the sort order can't place" do
+      d = Dictionary.new.order_by_value
+      d.store(:a, 1)
+      d.store(:b, 2)
+      ArgumentError.assert.raised? { d.store(:a, nil) }
+      d.to_a.assert == [[:a, 1], [:b, 2]]
+    end
+  end
+
+  method :push do
+    test "refuses a key the sort order can't place" do
+      d = Dictionary[0, 1].order_by_key
+      ArgumentError.assert.raised? { d.push(:a, 2) }
+      d.keys.assert == [0]
+    end
+  end
+
+  method :unshift do
+    test "refuses a key the sort order can't place" do
+      d = Dictionary[0, 1].order_by_key
+      ArgumentError.assert.raised? { d.unshift(:a, 2) }
+      d.keys.assert == [0]
+    end
+  end
+
+  method :insert do
+    test "refuses a key the sort order can't place" do
+      d = Dictionary[0, 1].order_by_key
+      ArgumentError.assert.raised? { d.insert(0, :a, 2) }
+      d.keys.assert == [0]
+    end
+  end
+
 end
 
