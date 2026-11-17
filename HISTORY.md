@@ -1,6 +1,6 @@
 # RELEASE HISTORY
 
-## 2.2.1 / unreleased
+## 2.2.1 / 2026-11-17
 
 This release fixes a number of bugs in Dictionary. Most notably, a
 Dictionary kept in order with `order_by_key` or `order_by_value` could no
