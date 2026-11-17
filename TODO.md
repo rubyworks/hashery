@@ -43,6 +43,15 @@ unless pdf-reader chose to upgrade.
   `replace` with such a Dictionary takes on the same proc. Either drop the
   default from the copy or rebuild it for the Hash.
 
+### PathHash
+
+* **Keep its entries where Hash can see them, or stop subclassing Hash.**
+  PathHash is a Hash but keeps its entries in a table of its own, so the
+  Hash methods it doesn't override see an empty Hash: `select` and `any?`
+  find nothing, `{}.merge(path_hash)` adds nothing, and `merge` stores the
+  new entries where PathHash never looks. 2.2.2 overrides the common
+  reads (`each`, `size`, `key?`, `values`, `to_a`, `to_h`) but not these.
+
 ### Whole library
 
 * **Base every hash class on one base class with callbacks** (issue #16),

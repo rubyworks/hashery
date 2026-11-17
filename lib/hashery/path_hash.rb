@@ -24,14 +24,30 @@ module Hashery
   class PathHash < Hash
 
     #
+    # Create a PathHash from a Hash, or from key-value pairs as Hash[] takes.
+    #
+    def self.[](*args)
+      new(Hash[*args])
+    end
+
+    #
     # Initialize PathHash.
     #
     # hsh - Priming Hash.
     #
     def initialize(hsh={})
       raise ArgumentError, "must be a hash or array of slashed values" unless hsh.is_a?(Hash) || hsh.is_a?(Array)
+      hsh = hsh.expand if hsh.is_a?(PathHash)
       @constructor = hsh.is_a?(Hash) ? hsh.class : Hash
       @flat = flatten_to_hash(hsh)
+    end
+
+    #
+    # Copies get their own table, so changing one doesn't change the other.
+    #
+    def initialize_copy(source)
+      super
+      @flat = @flat.dup
     end
 
     # Standard Hash methods, plus the overwritten ones
@@ -44,21 +60,18 @@ module Hashery
     #   hash['c/d']
     #
     def [](key)
-      rg = Regexp.new("^#{key}/?")
-      start_obj = if @constructor == OrderedHash
-        @constructor.new((@flat.instance_variable_get(:@keys_in_order) || []).collect {|e| e.gsub(rg,'')})
-      else
-        @constructor.new
-      end
-      v = @flat.has_key?(key) ? @flat[key] : self.class.new(@flat.reject {|k,v| !(k == key || k =~ rg)}.inject(start_obj) {|h,(k,v)| h[k.gsub(rg,'')] = v; h})
-      v.is_a?(self.class) && v.empty? ? nil : v
+      key = key.to_s
+      return @flat[key] if @flat.has_key?(key)
+      sub = subtree(key)
+      sub.empty? ? nil : self.class.new(sub)
     end
 
     #
     # Same as above, except sets value rather than retrieving it.
     #
     def []=(key,value)
-      @flat.reject! {|k,v| k == key || k =~ Regexp.new("^#{key}/")}
+      key = key.to_s
+      @flat.reject! {|k,v| under?(k, key)}
       if value.is_a?(Hash)
         flatten_to_hash(value).each do |hk,hv|
           @flat[key.to_s+'/'+hk.to_s] = hv
@@ -70,27 +83,20 @@ module Hashery
 
     def clear # :nodoc:
       @flat.clear
+      self
     end
 
     #
-    #
+    # Like Hash#fetch, but slashed keys can be used here, too.
     #
     def fetch(key,default=:ehisehoah0928309q98y30,&block) # :nodoc:
-      value = @flat.has_key?(key) ? @flat[key] : self.class.new(@flat.reject {|k,v| !(k == key || k =~ Regexp.new("^#{key}/"))}.inject({}) {|h,(k,v)| h[k.split('/',2)[1]] = v; h})
-      if value.is_a?(self.class) && value.empty?
-        if default == :ehisehoah0928309q98y30
-          if block_given?
-            block.call(key)
-          else
-            raise IndexError
-          end
-          value
-        else
-          default
-        end
-      else
-        value
-      end
+      key = key.to_s
+      return @flat[key] if @flat.has_key?(key)
+      sub = subtree(key)
+      return self.class.new(sub) unless sub.empty?
+      return block.call(key) if block
+      return default unless default == :ehisehoah0928309q98y30
+      raise KeyError, "key not found: #{key.inspect}"
     end
 
     #
@@ -102,9 +108,10 @@ module Hashery
     # Returns delete value.
     #
     def delete(key,&block)
-      value = @flat.has_key?(key) ? @flat[key] : self.class.new(@flat.reject {|k,v| !(k == key || k =~ Regexp.new("^#{key}/"))}.inject({}) {|h,(k,v)| h[k.split('/',2)[1]] = v; h})
-      return block.call(key) if value.is_a?(self.class) && value.empty? && block_given?
-      @flat.keys.reject {|k| !(k == key || k =~ Regexp.new("^#{key}/"))}.each {|k| @flat.delete(k)}
+      key = key.to_s
+      return block ? block.call(key) : nil unless key?(key)
+      value = self[key]
+      @flat.delete_if {|k,v| under?(k, key)}
       return value
     end
 
@@ -113,9 +120,51 @@ module Hashery
       @flat.empty?
     end
 
+    #
+    # Is there a value at this key, or below it? Slashed keys can be used.
+    #
+    def key?(key)
+      key = key.to_s
+      @flat.any? {|k,v| under?(k, key)}
+    end
+    alias_method :has_key?, :key?
+    alias_method :include?, :key?
+    alias_method :member?, :key?
+
     # This gives you the slashed key of the value, no matter where the value is in the tree.
-    def index(value)
-      @flat.index(value)
+    def key(value)
+      @flat.key(value)
+    end
+    alias_method :index, :key
+
+    #
+    # Iterate over the top-level keys and their values, as #[] gives them.
+    #
+    def each
+      return to_enum(:each) { size } unless block_given?
+      keys.each {|k| yield k, self[k]}
+      self
+    end
+    alias_method :each_pair, :each
+
+    #
+    # The number of top-level keys.
+    #
+    def size
+      keys.size
+    end
+    alias_method :length, :size
+
+    #
+    # The values of the top-level keys, as #[] gives them.
+    #
+    def values
+      keys.map {|k| self[k]}
+    end
+
+    #
+    def to_a
+      keys.map {|k| [k, self[k]]}
     end
 
     #
@@ -132,6 +181,7 @@ module Hashery
     # end up with an array holding several hashes.
     def rehash # :nodoc:
       @flat.rehash
+      self
     end
 
     # Gives a list of all keys in all levels in the multi-level hash, joined by slashes.
@@ -145,8 +195,9 @@ module Hashery
 
     # Expands the whole hash to Hash objects ... not useful very often, it seems.
     def expand
-      inject({}) {|h,(k,v)| h[k] = v.is_a?(SlashedHash) ? v.expand : v; h}
+      keys.inject({}) {|h,k| v = self[k]; h[k] = v.is_a?(PathHash) ? v.expand : v; h}
     end
+    alias_method :to_h, :expand
 
     def to_string_array
       flatten_to_array(flat,[])
@@ -156,45 +207,68 @@ module Hashery
       self
     end
 
-    # Same as ordered! but returns a new SlashedHash object instead of modifying the same.
+    # Same as ordered! but returns a new PathHash object instead of modifying the same.
     def ordered(*keys_in_order)
       dup.ordered!(*keys_in_order)
     end
 
-    # Sets the SlashedArray as ordered. The *keys_in_order must be a flat array
-    # of slashed keys that specify the order for each level:
+    # Puts the entries in the given order. The *keys_in_order must be a flat
+    # array of slashed keys that specify the order for each level; entries
+    # not named keep their order, after those that are:
     #
-    #   s = {'a'=>{'b'=>'c', 'c'=>'d'}, 'b'=>'c'}.slashed
+    #   s = PathHash['a'=>{'b'=>'c', 'c'=>'d'}, 'b'=>'c']
     #   s.ordered!('b', 'a/c', 'a/b')
     #   s.expand # => {'b'=>'c', 'a'=>{'c'=>'d', 'b'=>'c'}}
-    #   # Note that the expanded hashes will *still* be ordered!
     #
     def ordered!(*keys_in_order)
-      return self if @constructor == OrderedHash
-      @constructor = OrderedHash
-      @flat = @flat.ordered(*keys_in_order)
+      ordered = @flat.class.new
+      keys_in_order.each do |key|
+        key = key.to_s
+        @flat.each {|k,v| ordered[k] = v if under?(k, key) && !ordered.has_key?(k)}
+      end
+      @flat.each {|k,v| ordered[k] = v unless ordered.has_key?(k)}
+      @flat = ordered
       self
     end
 
     #
+    # A PathHash equals another with the same entries, or a Hash that would
+    # make one.
+    #
     def ==(other)
       case other
-      when SlashedHash
-        @slashed == other.instance_variable_get(:@slashed)
+      when PathHash
+        @flat == other.flat
       when Hash
-        self == SlashedHash.new(other)
+        self == PathHash.new(other)
       else
-        raise TypeError, "Cannot compare #{other.class.name} with SlashedHash"
+        false
       end
     end
 
     private
 
-      def flatten_to_hash(hsh)
-        flat = @constructor.new
+      # Is the flat key +k+ the key +key+, or below it?
+      def under?(k, key)
+        k == key || k.start_with?(key + '/')
+      end
+
+      # The entries below +key+, with +key+ taken off the front of their keys.
+      def subtree(key)
+        prefix = key + '/'
+        @flat.each_with_object(@constructor.new) do |(k,v),h|
+          h[k[prefix.size..-1]] = v if k.start_with?(prefix)
+        end
+      end
+
+      def flatten_to_hash(hsh, flat=@constructor.new)
         if hsh.is_a?(Array)
           hsh.each do |e|
-            flat.merge!(flatten_to_hash(e))
+            if e.is_a?(Hash) || e.is_a?(Array)
+              flat.merge!(flatten_to_hash(e))
+            else
+              flatten_to_hash(e, flat)
+            end
           end
         elsif hsh.is_a?(Hash)
           hsh.each do |k,v|

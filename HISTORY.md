@@ -1,5 +1,19 @@
 # RELEASE HISTORY
 
+## 2.2.2 / unreleased
+
+This release fixes PathHash, which had been broken for years: reading any
+key raised NameError. PathHash also has tests of its own now. LRUHash is
+unchanged.
+
+Changes:
+
+* Fix PathHash. `[]`, `==`, `expand`, `ordered!` and `index` raised
+  errors; `size`, `each`, `key?`, `values` and `to_a` saw no entries;
+  copies shared entries with the original; a key also matched longer keys
+  that started with it (`a` matched `ab`); `fetch` ignored its block; and
+  `delete` returned an empty PathHash instead of nil for a missing key.
+
 ## 2.2.1 / 2026-11-17
 
 This release fixes a number of bugs in Dictionary. Most notably, a
