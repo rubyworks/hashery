@@ -30,6 +30,19 @@ unless pdf-reader chose to upgrade.
   read reorders entries, so a truly frozen LRUHash must either raise on
   every read or stop tracking recency once frozen. Pick one.
 
+### Dictionary
+
+* **Decide what `reverse!` means for a sorted Dictionary.** It does nothing
+  now: the sort order is applied again on the next read. It could drop the
+  sort order, or reverse it (sort descending) from then on. `reverse`
+  already returns an unsorted, reversed copy.
+
+* **`to_h` and `to_hash` copy the default proc as is.** For a Dictionary
+  made with a block, such as `Dictionary.auto`, that proc writes into the
+  Dictionary, not the returned Hash: `d.to_h[:x]` adds `:x` to `d`.
+  `replace` with such a Dictionary takes on the same proc. Either drop the
+  default from the copy or rebuild it for the Hash.
+
 ### Whole library
 
 * **Base every hash class on one base class with callbacks** (issue #16),
