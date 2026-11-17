@@ -14,7 +14,7 @@ working on the code needs belongs in the project's own docs, not here.
 
 | File | What it holds |
 |---|---|
-| `status.md` | Release state, the pdf-reader constraint, and open follow-ups (dropping rubytest-cli for rubytest 0.10) |
+| `status.md` | Release state, the pdf-reader constraint, and the rubytest 0.10 switch |
 
 Keep each note short and dated (`*Updated YYYY-MM-DD*`), with absolute
 dates and commit hashes. Check the code or `git log` before acting on
