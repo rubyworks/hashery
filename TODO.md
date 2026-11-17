@@ -36,11 +36,4 @@ unless pdf-reader chose to upgrade.
   so the variations (CRUDHash, KeyHash, CastingHash, ...) become
   configurations of it instead of separate implementations.
 
-## Elsewhere
-
-* **Rubytest crashes with frozen string literals turned on**
-  (`RUBYOPT=--enable=frozen-string-literal`). That's a bug in the rubytest
-  gem, not Hashery, but it's why CI only runs the QED demos in that mode,
-  not the unit tests. Once it's fixed, add the unit tests to that CI step.
-
 See also `work/NOTES.rdoc` for the TODO comments collected from the source.

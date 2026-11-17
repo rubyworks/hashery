@@ -30,8 +30,10 @@ jobs:
         run: bundle exec rubytest -Ilib -Itest test/
       - name: Demos
         run: bundle exec qed -Ilib demo/
-      - name: Demos with frozen string literals
+      - name: Unit tests and demos with frozen string literals
         if: matrix.ruby == '4.0'
-        run: bundle exec qed -Ilib demo/
+        run: |
+          bundle exec rubytest -Ilib -Itest test/
+          bundle exec qed -Ilib demo/
         env:
           RUBYOPT: --enable=frozen-string-literal
