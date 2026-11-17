@@ -1,6 +1,6 @@
 # RELEASE HISTORY
 
-## 2.2.2 / unreleased
+## 2.2.2 / 2026-11-17
 
 This release fixes PathHash, which had been broken for years: reading any
 key raised NameError. PathHash also has tests of its own now. LRUHash is
